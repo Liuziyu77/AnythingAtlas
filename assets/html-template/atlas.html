@@ -9,13 +9,11 @@
 {{STYLES}}
   </style>
 </head>
-<body>
+<body class="theme-{{THEME}}" data-theme="{{THEME}}">
   <a class="skip-link" href="#atlas-main">{{SKIP_LABEL}}</a>
   <header class="hero">
     <div class="hero__contours" aria-hidden="true"></div>
     <div class="hero__inner">
-      {{LOGO}}
-      <p class="eyebrow">{{BRAND}}</p>
       <h1>{{TITLE}}</h1>
       <p class="hero__summary">{{SUMMARY}}</p>
       <div class="hero__meta">{{GENERATED_META}}</div>
@@ -24,7 +22,7 @@
   <div class="atlas-shell">
     <aside class="atlas-nav" aria-label="{{NAV_LABEL}}">
       <div class="atlas-nav__inner">
-        <p class="atlas-nav__title">{{BRAND}}</p>
+        <p class="atlas-nav__title">{{NAV_LABEL}}</p>
         <nav>
           <ol>
 {{NAVIGATION}}

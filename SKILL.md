@@ -14,6 +14,7 @@ Turn an unfamiliar topic into a verified knowledge atlas and an executable learn
 - Verify that recommended resources exist and that titles, authors, URLs, dates, and access conditions are accurate.
 - Prefer the smallest sufficient set of complementary resources over a long undifferentiated list.
 - Explain why every resource is included, who it suits, what to focus on, and what its limitations are.
+- Write compactly: prioritize decisions, evidence, exact resource assignments, and actions over generic explanation.
 - Make every roadmap stage executable with tasks, time, milestones, deliverables, and completion criteria.
 - Produce both a complete Markdown file and a polished, self-contained HTML file.
 - Generate both files from the same structured content and validate their parity before delivery.
@@ -126,12 +127,23 @@ Treat the JSON as an intermediate build artifact, not as a required user deliver
 
 Read [references/html-design-guidelines.md](references/html-design-guidelines.md).
 
+Choose the HTML theme from the user’s preference and topic classification:
+
+- `atlas` for broad, interdisciplinary, or mixed topics, and as the default;
+- `scholar` for mature academic fields and theory-heavy study;
+- `archive` for history, people, organizations, and source-led investigation;
+- `signal` for fast-moving technology, AI, software, and research frontiers;
+- `workshop` for practical skills, projects, and learn-by-doing paths.
+
+Set the choice in `meta.theme`, or pass it explicitly with `--theme`. User preference overrides the automatic mapping when it does not reduce readability.
+
 Run:
 
 ```bash
 python3 scripts/build_atlas.py \
   --input /path/to/atlas.json \
-  --output-dir /path/to/output
+  --output-dir /path/to/output \
+  --theme <atlas|scholar|archive|signal|workshop>
 ```
 
 Create:
@@ -141,7 +153,19 @@ anything-atlas-<topic-slug>.md
 anything-atlas-<topic-slug>.html
 ```
 
-Use the bundled logo by default. Keep the HTML self-contained by embedding its CSS and logo.
+Present the research before the learning path. Keep this order in both deliverables:
+
+1. confirmed brief;
+2. topic brief;
+3. knowledge map;
+4. source and channel plan;
+5. recommended starting point;
+6. curated resources;
+7. detailed roadmap;
+8. source notes;
+9. next action.
+
+Keep the HTML self-contained by embedding its CSS. Do not place the AnythingAtlas logo, a brand banner, or a brand block in the generated atlas. Credit AnythingAtlas once, as text, in the footer.
 
 Run validation separately when reviewing existing output:
 

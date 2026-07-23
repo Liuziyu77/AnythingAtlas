@@ -1,0 +1,218 @@
+/* Scholar — warm editorial layout for mature academic fields. */
+
+.theme-scholar {
+  color-scheme: light;
+  --ink: #251f1b;
+  --muted: #6e6259;
+  --blue: #7b2638;
+  --cyan: #a9663d;
+  --indigo: #56356d;
+  --line: #d8cec0;
+  --soft: #f3eee5;
+  --paper: #fffdf8;
+  --success-bg: #eef3e9;
+  --warning-bg: #fff4dc;
+  --danger-bg: #fae9e9;
+  --shadow: 0 16px 42px rgba(58, 43, 30, 0.08);
+  --radius: 8px;
+  --content: 1020px;
+  background:
+    linear-gradient(rgba(91, 70, 50, 0.025) 1px, transparent 1px),
+    #f2ede4;
+  background-size: 100% 28px;
+  font-family:
+    Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Songti SC", "Noto Serif CJK SC", serif;
+}
+
+.theme-scholar a {
+  color: #7b2638;
+}
+
+.theme-scholar .hero {
+  min-height: 390px;
+  color: #251f1b;
+  background:
+    linear-gradient(90deg, rgba(123, 38, 56, 0.06) 1px, transparent 1px),
+    linear-gradient(#fffdf8, #f5eee2);
+  background-size: 72px 100%;
+  border-top: 10px solid #7b2638;
+  border-bottom: 1px solid #bfae9d;
+}
+
+.theme-scholar .hero__contours {
+  opacity: 0.35;
+  background:
+    radial-gradient(circle at 83% 34%, rgba(123, 38, 56, 0.11), transparent 22%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 31px,
+      rgba(77, 56, 39, 0.055) 32px 33px
+    );
+  mask-image: none;
+}
+
+.theme-scholar .hero__inner {
+  padding: 86px 38px 76px;
+}
+
+.theme-scholar .hero h1 {
+  max-width: 820px;
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC",
+    serif;
+  font-size: clamp(2.7rem, 7vw, 5.5rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.theme-scholar .hero__summary {
+  max-width: 710px;
+  color: #5f5147;
+  font-size: 1.16rem;
+}
+
+.theme-scholar .meta-pill {
+  color: #5b463d;
+  background: rgba(255, 253, 248, 0.72);
+  border-color: #cdbfae;
+  border-radius: 2px;
+  backdrop-filter: blur(6px);
+}
+
+.theme-scholar .atlas-shell {
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: var(--content);
+  padding-top: 26px;
+}
+
+.theme-scholar .atlas-nav {
+  z-index: 20;
+}
+
+.theme-scholar .atlas-nav__inner {
+  position: sticky;
+  top: 10px;
+  padding: 12px 14px;
+  background: rgba(255, 253, 248, 0.94);
+  border-color: #d8cec0;
+  border-radius: 5px;
+  box-shadow: 0 8px 24px rgba(58, 43, 30, 0.08);
+}
+
+.theme-scholar .atlas-nav__title {
+  display: none;
+}
+
+.theme-scholar .atlas-nav ol {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px 14px;
+}
+
+.theme-scholar .atlas-nav a {
+  font-family:
+    Inter, ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei",
+    sans-serif;
+  font-size: 0.78rem;
+}
+
+.theme-scholar .atlas-nav a::before,
+.theme-scholar .section-kicker {
+  color: #a9663d;
+}
+
+.theme-scholar .atlas-section {
+  padding: clamp(28px, 5vw, 50px);
+  border-color: #d8cec0;
+  border-radius: 8px;
+}
+
+.theme-scholar .atlas-section > h2 {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #d8cec0;
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC",
+    serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 650;
+}
+
+.theme-scholar .atlas-section h3 {
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC",
+    serif;
+}
+
+.theme-scholar .brief-item,
+.theme-scholar .map-node,
+.theme-scholar .resource-card,
+.theme-scholar .plan-block {
+  background: #fffaf2;
+  border-color: #ddd0c0;
+  border-radius: 5px;
+}
+
+.theme-scholar .chip {
+  color: #663347;
+  background: #f8eaf0;
+  border-color: #e7cbd4;
+  border-radius: 3px;
+}
+
+.theme-scholar .starting-card,
+.theme-scholar .next-card {
+  color: #fffdf8;
+  background: #70273a;
+  border-radius: 6px;
+}
+
+.theme-scholar .starting-card dt,
+.theme-scholar .next-card dt {
+  color: #f3c9a8;
+}
+
+.theme-scholar .resource-card {
+  border-top-color: #7b2638;
+}
+
+.theme-scholar .roadmap::before {
+  background: #b58a6c;
+}
+
+.theme-scholar .roadmap-stage {
+  background: #fffaf2;
+  border-color: #d8cec0;
+  border-radius: 5px;
+}
+
+.theme-scholar .roadmap-stage__number {
+  background: #7b2638;
+  border-color: #fffdf8;
+  border-radius: 4px;
+}
+
+.theme-scholar .atlas-section[data-section="roadmap"] {
+  margin-top: 48px;
+  border-top: 6px solid #7b2638;
+}
+
+.theme-scholar .atlas-footer strong {
+  color: #7b2638;
+}
+
+@media (max-width: 860px) {
+  .theme-scholar .hero {
+    min-height: 0;
+  }
+
+  .theme-scholar .atlas-nav__inner {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .theme-scholar .atlas-nav ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

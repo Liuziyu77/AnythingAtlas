@@ -77,6 +77,22 @@ AnythingAtlas 会根据课题类型，切换资料选择、信息渠道与验证
 1. `anything-atlas-<主题标识>.md`——规范、便于携带和编辑的图谱。
 2. `anything-atlas-<主题标识>.html`——使用精心设计的独立页面呈现。
 
+两份文件先呈现需求简报、主题简介、知识图谱、来源策略、推荐起点和精选资源，再给出详细学习路线图，最后补充来源说明与下一步行动。
+
+## 🎨 HTML 主题
+
+AnythingAtlas 会根据课题自动选择视觉主题，也可以由用户指定。五套主题共用同一份内容与语义结构，均支持移动端、打印和离线打开。
+
+| 主题 | 适合的课题 | 视觉方向 |
+| --- | --- | --- |
+| `atlas` | 跨领域、综合型或未明确分类的主题 | 清晰的地图式层级，蓝色信息卡片；默认主题 |
+| `scholar` | 成熟学科、理论学习、学术综述 | 温暖的编辑排版与纸张质感，适合长文阅读 |
+| `archive` | 历史、人物、组织、一手材料研究 | 档案卷宗感、克制的棕褐色与文献线索 |
+| `signal` | AI、软件、前沿技术与快速变化的研究 | 深色高对比界面，突出版本、证据与技术信号 |
+| `workshop` | 实践技能、项目制学习、动手训练 | 醒目的模块与检查点，强调任务、产出和进度 |
+
+生成的 HTML 不使用图片 Logo，只在页脚以文字标记 `AnythingAtlas`。
+
 ## 🚀 快速开始
 
 AnythingAtlas 采用开放的 [Agent Skills](https://agentskills.io/) 结构。同一份 `SKILL.md` 可以在 Codex、Claude Code 以及其他兼容 Agent Skills 的客户端中使用，无需为每个平台重写工作流程。
@@ -116,6 +132,17 @@ Python 和大语言模型知识，每周可以学习八小时，持续十二周�
 
 如果缺少会影响结果的重要信息，AnythingAtlas 会先集中提出一组后续问题，再开始研究。
 
+使用仓库内示例直接生成双格式文件：
+
+```bash
+python3 scripts/build_atlas.py \
+  --input examples/sample-atlas.json \
+  --output-dir /tmp/anything-atlas-output \
+  --theme workshop
+```
+
+可选主题为 `atlas`、`scholar`、`archive`、`signal` 和 `workshop`。命令行的 `--theme` 优先于 JSON 中的 `meta.theme`；两者都未设置时使用 `atlas`。
+
 ## 🗂️ 仓库结构
 
 ```text
@@ -125,8 +152,11 @@ AnythingAtlas/
 ├── references/                      按需读取的研究与输出规范
 ├── scripts/                         Markdown/HTML 渲染与验证
 ├── assets/
-│   ├── logo/logo.png                项目 logo
-│   └── html-template/               独立图谱模板与样式
+│   ├── logo/logo.png                README 项目 Logo
+│   └── html-template/
+│       ├── atlas.html               独立图谱语义模板
+│       ├── atlas.css                五套主题共用的基础样式
+│       └── themes/                  五套视觉主题与打印样式
 ├── examples/
 │   ├── sample-atlas.json            可直接构建的规范示例
 │   ├── anything-atlas-*.md          生成的 Markdown 示例
@@ -164,7 +194,7 @@ AnythingAtlas/
 
 ## 🚧 当前状态
 
-AnythingAtlas 目前是一个早期功能原型。核心 skill 工作流程、主题感知型策略、规范内容模型、双格式渲染器、独立 HTML 设计和内容一致性验证器均已实现。资源研究能力仍取决于运行该 skill 的智能体可以使用哪些工具。
+AnythingAtlas 目前是一个早期功能原型。核心 skill 工作流程、主题感知型策略、规范内容模型、双格式渲染器、五套独立 HTML 主题、统一打印样式和内容一致性验证器均已实现。资源研究能力仍取决于运行该 skill 的智能体可以使用哪些工具。
 
 如果您对于 AnythingAtlas 有任何**功能改进**或**体验改善**的建议，欢迎提出 issue 和 PR，我们将在24小时之内进行改善。也欢迎给本项目点一个Star，感谢支持。
 

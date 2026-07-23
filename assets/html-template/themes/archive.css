@@ -1,0 +1,208 @@
+/* Archive — tactile dossier styling for history, people, and institutions. */
+
+.theme-archive {
+  color-scheme: light;
+  --ink: #332a20;
+  --muted: #756755;
+  --blue: #7e3e28;
+  --cyan: #9b6d36;
+  --indigo: #5d4738;
+  --line: #d0c1a7;
+  --soft: #eee5d3;
+  --paper: #fbf6e9;
+  --success-bg: #edf0dc;
+  --warning-bg: #f7e9c8;
+  --danger-bg: #f2ded6;
+  --shadow: 0 12px 28px rgba(63, 47, 30, 0.13);
+  --radius: 3px;
+  --content: 1160px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(95, 71, 40, 0.06), transparent 26%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(82, 61, 37, 0.022) 0 1px,
+      transparent 1px 5px
+    ),
+    #e9dfca;
+  font-family:
+    "Iowan Old Style", Baskerville, Georgia, "Songti SC", "Noto Serif CJK SC",
+    serif;
+}
+
+.theme-archive a {
+  color: #7e3e28;
+}
+
+.theme-archive .hero {
+  color: #f8eedb;
+  background:
+    linear-gradient(rgba(52, 38, 26, 0.18), rgba(52, 38, 26, 0.18)),
+    repeating-linear-gradient(
+      90deg,
+      #3a2a22 0 74px,
+      #433126 74px 75px
+    );
+  border-bottom: 8px solid #a2753f;
+}
+
+.theme-archive .hero__contours {
+  opacity: 0.42;
+  background:
+    linear-gradient(115deg, transparent 60%, rgba(245, 226, 188, 0.10)),
+    repeating-radial-gradient(
+      ellipse at 88% 18%,
+      transparent 0 28px,
+      rgba(245, 226, 188, 0.16) 29px 30px,
+      transparent 31px 56px
+    );
+}
+
+.theme-archive .hero__inner {
+  padding-top: 78px;
+  padding-bottom: 72px;
+}
+
+.theme-archive .hero h1 {
+  max-width: 860px;
+  font-size: clamp(2.55rem, 6.5vw, 5.2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.theme-archive .hero__summary {
+  color: #e8d8bd;
+}
+
+.theme-archive .meta-pill {
+  color: #f5e7ce;
+  background: rgba(251, 246, 233, 0.08);
+  border-color: rgba(245, 231, 206, 0.30);
+  border-radius: 2px;
+}
+
+.theme-archive .atlas-nav__inner {
+  background:
+    linear-gradient(90deg, rgba(126, 62, 40, 0.035) 1px, transparent 1px),
+    #fbf6e9;
+  background-size: 18px 100%;
+  border-color: #c8b89e;
+  border-radius: 3px;
+  box-shadow: 6px 8px 0 rgba(91, 67, 42, 0.08);
+}
+
+.theme-archive .atlas-nav__title {
+  color: #7e3e28;
+}
+
+.theme-archive .atlas-nav a::before,
+.theme-archive .section-kicker {
+  color: #9b6d36;
+}
+
+.theme-archive .atlas-section {
+  background:
+    linear-gradient(rgba(92, 66, 38, 0.018) 1px, transparent 1px),
+    #fbf6e9;
+  background-size: 100% 30px;
+  border-color: #c8b89e;
+  border-radius: 3px;
+  box-shadow:
+    0 1px 0 #fff inset,
+    7px 9px 0 rgba(91, 67, 42, 0.08);
+}
+
+.theme-archive .atlas-section > h2 {
+  padding-bottom: 12px;
+  border-bottom: 3px double #b29c7b;
+  font-weight: 650;
+}
+
+.theme-archive .brief-item,
+.theme-archive .map-node,
+.theme-archive .resource-card,
+.theme-archive .plan-block {
+  background: rgba(255, 251, 241, 0.80);
+  border-color: #d1c2a8;
+  border-radius: 2px;
+}
+
+.theme-archive .map-node::before {
+  width: 5px;
+  background: #9b6d36;
+}
+
+.theme-archive .chip {
+  color: #60452f;
+  background: #eadbc0;
+  border-color: #d6c19e;
+  border-radius: 2px;
+}
+
+.theme-archive .channel-list li {
+  background: #eee3cf;
+  border-left: 3px solid #9b6d36;
+  border-radius: 0;
+}
+
+.theme-archive .starting-card,
+.theme-archive .next-card {
+  color: #fff7e8;
+  background:
+    linear-gradient(135deg, #6f3828, #8b5931);
+  border: 1px solid #4e2d22;
+  border-radius: 3px;
+}
+
+.theme-archive .starting-card dt,
+.theme-archive .next-card dt {
+  color: #efd3a2;
+}
+
+.theme-archive .resource-card {
+  border-top: 0;
+  border-left: 6px solid #7e3e28;
+}
+
+.theme-archive .roadmap::before {
+  width: 1px;
+  background: none;
+  border-left: 2px dashed #9b6d36;
+}
+
+.theme-archive .roadmap-stage {
+  background: #fdf8ec;
+  border-color: #c8b89e;
+  border-radius: 2px;
+}
+
+.theme-archive .roadmap-stage::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 22px;
+  width: 74px;
+  height: 8px;
+  background: #d7bd8f;
+}
+
+.theme-archive .roadmap-stage__number {
+  background: #7e3e28;
+  border-color: #fbf6e9;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 rgba(62, 41, 27, 0.16);
+}
+
+.theme-archive .atlas-section[data-section="roadmap"] {
+  margin-top: 56px;
+}
+
+.theme-archive .atlas-footer {
+  color: #756755;
+  border-top: 1px solid #c8b89e;
+}
+
+.theme-archive .atlas-footer strong {
+  color: #7e3e28;
+}
+

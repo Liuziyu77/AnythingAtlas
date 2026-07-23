@@ -6,8 +6,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from atlas_common import load_atlas, project_root
-from render_html import render_html
+from atlas_common import AVAILABLE_THEMES, load_atlas, project_root
+from render_html import built_in_style_paths, render_html
 from render_markdown import render_markdown
 from validate_deliverables import validate_deliverables
 
@@ -27,18 +27,23 @@ def main() -> int:
         help="HTML template path",
     )
     parser.add_argument(
-        "--css",
-        default=str(root / "assets/html-template/atlas.css"),
-        help="CSS asset path",
+        "--theme",
+        choices=AVAILABLE_THEMES,
+        help="Built-in visual theme; defaults to meta.theme or atlas",
     )
     parser.add_argument(
-        "--logo",
-        default=str(root / "assets/logo/logo.png"),
-        help="Logo image to embed",
+        "--css",
+        help="Custom CSS path; replaces the built-in theme styles",
     )
     args = parser.parse_args()
 
     data = load_atlas(args.input)
+    theme = args.theme or str(data["meta"].get("theme") or "atlas")
+    css_paths = (
+        [Path(args.css)]
+        if args.css
+        else built_in_style_paths(root, theme)
+    )
     basename = args.basename or f"anything-atlas-{data['meta']['slug']}"
     if Path(basename).name != basename or basename in {"", ".", ".."}:
         parser.error("--basename must be a simple filename without directories.")
@@ -55,8 +60,8 @@ def main() -> int:
         render_html(
             data,
             Path(args.template),
-            Path(args.css),
-            Path(args.logo),
+            css_paths,
+            theme,
         ),
         encoding="utf-8",
     )
@@ -71,7 +76,7 @@ def main() -> int:
         return 1
 
     print(f"[OK] Markdown: {markdown_path}")
-    print(f"[OK] HTML: {html_path}")
+    print(f"[OK] HTML ({theme}): {html_path}")
     print("[OK] Deliverables are synchronized and valid.")
     return 0
 

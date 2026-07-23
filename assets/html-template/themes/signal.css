@@ -1,0 +1,229 @@
+/* Signal — dark, high-contrast interface for fast-moving technology. */
+
+.theme-signal {
+  color-scheme: dark;
+  --ink: #eef5ff;
+  --muted: #9fb0c8;
+  --blue: #66a3ff;
+  --cyan: #35e0d0;
+  --indigo: #a88cff;
+  --line: #263853;
+  --soft: #0b1423;
+  --paper: #101d30;
+  --warning-bg: #322815;
+  --danger-bg: #361b26;
+  --success-bg: #143329;
+  --shadow: 0 20px 52px rgba(0, 0, 0, 0.32);
+  --radius: 14px;
+  --content: 1180px;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(79, 132, 205, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 132, 205, 0.07) 1px, transparent 1px),
+    #07101d;
+  background-size: 30px 30px;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.theme-signal a {
+  color: #66c7ff;
+}
+
+.theme-signal a:hover {
+  color: #6ff5df;
+}
+
+.theme-signal .hero {
+  min-height: 410px;
+  color: #f2f8ff;
+  background:
+    radial-gradient(circle at 78% 25%, rgba(53, 224, 208, 0.19), transparent 25%),
+    radial-gradient(circle at 19% 5%, rgba(102, 163, 255, 0.23), transparent 32%),
+    linear-gradient(135deg, #050b14, #0a1930 58%, #0c2731);
+  border-bottom: 1px solid #2d4d66;
+}
+
+.theme-signal .hero__contours {
+  opacity: 0.8;
+  background:
+    linear-gradient(90deg, transparent 49.7%, rgba(53, 224, 208, 0.15) 50%, transparent 50.3%),
+    linear-gradient(transparent 49.7%, rgba(102, 163, 255, 0.10) 50%, transparent 50.3%);
+  background-size: 120px 120px;
+  mask-image: linear-gradient(90deg, transparent 15%, #000 100%);
+}
+
+.theme-signal .hero__inner {
+  padding-top: 92px;
+  padding-bottom: 78px;
+}
+
+.theme-signal .hero h1 {
+  max-width: 900px;
+  font-size: clamp(2.65rem, 7vw, 5.6rem);
+  font-weight: 760;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.theme-signal .hero__summary {
+  color: #afc8e5;
+}
+
+.theme-signal .meta-pill {
+  color: #cce2f7;
+  background: rgba(102, 163, 255, 0.08);
+  border-color: #31516f;
+  border-radius: 6px;
+  backdrop-filter: blur(10px);
+}
+
+.theme-signal .atlas-nav__inner {
+  background: rgba(12, 24, 42, 0.92);
+  border-color: #263853;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.30);
+}
+
+.theme-signal .atlas-nav__title {
+  color: #35e0d0;
+}
+
+.theme-signal .atlas-nav a {
+  color: #9fb0c8;
+}
+
+.theme-signal .atlas-nav a::before,
+.theme-signal .section-kicker {
+  color: #35e0d0;
+}
+
+.theme-signal .atlas-nav a:hover {
+  color: #eef5ff;
+  background: #14243a;
+}
+
+.theme-signal .atlas-section {
+  background:
+    linear-gradient(145deg, rgba(18, 34, 56, 0.96), rgba(12, 24, 42, 0.98));
+  border-color: #263853;
+  box-shadow: var(--shadow);
+}
+
+.theme-signal .atlas-section > h2 {
+  color: #f3f8ff;
+}
+
+.theme-signal .lead {
+  color: #bed0e5;
+}
+
+.theme-signal .brief-item,
+.theme-signal .map-node,
+.theme-signal .resource-card,
+.theme-signal .plan-block,
+.theme-signal .roadmap-stage {
+  color: #e6effb;
+  background:
+    linear-gradient(145deg, rgba(22, 39, 63, 0.96), rgba(15, 29, 48, 0.96));
+  border-color: #2a405f;
+}
+
+.theme-signal .brief-item dt,
+.theme-signal .fact-label,
+.theme-signal .resource-card__creator,
+.theme-signal .roadmap-stage__timing {
+  color: #8fa6c2;
+}
+
+.theme-signal .map-node::before {
+  background: linear-gradient(#66a3ff, #35e0d0);
+}
+
+.theme-signal .chip {
+  color: #c9ecff;
+  background: #172e4b;
+  border-color: #2c557b;
+}
+
+.theme-signal .channel-list li {
+  background: #0c192b;
+  border: 1px solid #243c5a;
+}
+
+.theme-signal .channel-priority {
+  color: #35e0d0;
+}
+
+.theme-signal .starting-card,
+.theme-signal .next-card {
+  color: #f5fbff;
+  background:
+    linear-gradient(130deg, #173e77, #0d665f);
+  border: 1px solid #3d7398;
+}
+
+.theme-signal .starting-card dt,
+.theme-signal .next-card dt {
+  color: #93fff1;
+}
+
+.theme-signal .resource-card {
+  border-top-color: #35e0d0;
+}
+
+.theme-signal .resource-card__body strong {
+  color: #a9d3ff;
+}
+
+.theme-signal .roadmap::before {
+  background: linear-gradient(#66a3ff, #35e0d0);
+  box-shadow: 0 0 16px rgba(53, 224, 208, 0.36);
+}
+
+.theme-signal .roadmap-stage__number {
+  color: #06101b;
+  background: #35e0d0;
+  border-color: #101d30;
+  box-shadow: 0 0 20px rgba(53, 224, 208, 0.30);
+}
+
+.theme-signal .deliverable {
+  color: #b9f7e6;
+  background: #143329;
+  border-left-color: #35cfa7;
+}
+
+.theme-signal .source-note {
+  color: #d8e8fa;
+  background: #101f34;
+  border-left-color: #66a3ff;
+}
+
+.theme-signal .source-note--caution,
+.theme-signal .source-note--warning {
+  color: #f0d7a1;
+  background: #322815;
+  border-left-color: #dcae4d;
+}
+
+.theme-signal .atlas-section[data-section="roadmap"] {
+  margin-top: 56px;
+  border-color: #355779;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+}
+
+.theme-signal .atlas-footer {
+  color: #8094ae;
+  border-top: 1px solid #203551;
+}
+
+.theme-signal .atlas-footer strong {
+  color: #35e0d0;
+}
+
+@media (max-width: 860px) {
+  .theme-signal .hero {
+    min-height: 0;
+  }
+}

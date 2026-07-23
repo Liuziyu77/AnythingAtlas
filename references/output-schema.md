@@ -6,7 +6,7 @@ Use one JSON model as the source for Markdown and HTML.
 
 | Field | Type | Purpose |
 | --- | --- | --- |
-| `meta` | object | Title, topic, slug, language, date, summary, total time |
+| `meta` | object | Title, topic, slug, language, date, summary, total time, HTML theme |
 | `brief` | object | Confirmed goal, background, preferences, constraints, assumptions |
 | `topic_brief` | object | Overview, importance, expected outcomes |
 | `knowledge_map` | array | Concepts or branches with descriptions and dependencies |
@@ -61,6 +61,9 @@ Include:
 
 ## Consistency rules
 
+- Set `meta.theme` to `atlas`, `scholar`, `archive`, `signal`, or `workshop`.
+- Use `atlas` for mixed topics, `scholar` for academic study, `archive` for source-led historical work, `signal` for fast-moving technology, and `workshop` for practical projects unless the user chooses a theme.
+- Preserve top-level presentation order: brief, topic brief, knowledge map, source plan, starting point, resources, roadmap, source notes, next action.
 - Use stable resource IDs in roadmap assignments.
 - Keep all URLs canonical and absolute.
 - Use ISO dates when exact dates are known.
@@ -68,5 +71,6 @@ Include:
 - Write empty optional arrays instead of filler text.
 - Do not put essential content only in presentation-specific fields.
 - Ensure all user-facing text is already in the requested language before rendering.
+- Prefer precise facts, selections, and actions over generic explanatory prose.
 
 See `examples/sample-atlas.json` for a complete buildable example.

@@ -9,7 +9,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
-from atlas_common import labels_for, load_atlas
+from atlas_common import AVAILABLE_THEMES, labels_for, load_atlas
 
 
 class AtlasHTMLCollector(HTMLParser):
@@ -24,9 +24,15 @@ class AtlasHTMLCollector(HTMLParser):
         self.h1_count = 0
         self.main_count = 0
         self.nav_count = 0
+        self.footer_count = 0
+        self.footer_text: list[str] = []
+        self.in_footer = False
         self.style_count = 0
         self.external_stylesheets = 0
         self.lang = ""
+        self.body_classes: set[str] = set()
+        self.section_order: list[str] = []
+        self.brand_image_count = 0
 
     def handle_starttag(
         self, tag: str, attrs: list[tuple[str, str | None]]
@@ -36,6 +42,8 @@ class AtlasHTMLCollector(HTMLParser):
             self.ids.add(str(attributes["id"]))
         if tag == "html":
             self.lang = str(attributes.get("lang") or "")
+        elif tag == "body":
+            self.body_classes = set(str(attributes.get("class") or "").split())
         elif tag == "h1":
             self.h1_count += 1
         elif tag == "main":
@@ -44,16 +52,36 @@ class AtlasHTMLCollector(HTMLParser):
             self.nav_count += 1
         elif tag == "style":
             self.style_count += 1
+        elif tag == "section" and attributes.get("id"):
+            self.section_order.append(str(attributes["id"]))
+        elif tag == "footer":
+            self.footer_count += 1
+            self.in_footer = True
         elif tag == "a" and attributes.get("href"):
             self.links.add(str(attributes["href"]))
         elif tag == "img" and attributes.get("src"):
             self.image_sources.append(str(attributes["src"]))
+            image_fingerprint = " ".join(
+                (
+                    str(attributes.get("class") or ""),
+                    str(attributes.get("alt") or ""),
+                    str(attributes.get("src") or ""),
+                )
+            ).lower()
+            if "hero__logo" in image_fingerprint or "anythingatlas" in image_fingerprint:
+                self.brand_image_count += 1
         elif tag == "link" and str(attributes.get("rel") or "").lower() == "stylesheet":
             self.external_stylesheets += 1
 
     def handle_data(self, data: str) -> None:
         if data.strip():
             self.text.append(data)
+            if self.in_footer:
+                self.footer_text.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "footer":
+            self.in_footer = False
 
 
 def normalized(value: Any) -> str:
@@ -110,15 +138,43 @@ def validate_deliverables(
         "notes",
         "next",
     }
+    expected_section_order = [
+        "brief",
+        "topic",
+        "knowledge",
+        "sources",
+        "start",
+        "resources",
+        "roadmap",
+        "notes",
+        "next",
+    ]
 
     for section_label in section_labels:
         if section_label not in markdown:
             errors.append(f"Markdown is missing section: {section_label}")
         if normalized(section_label) not in html_text:
             errors.append(f"HTML is missing section: {section_label}")
+    markdown_section_positions = [
+        markdown.find(f"## {number}. {section_label}")
+        for number, section_label in enumerate(section_labels, start=1)
+    ]
+    if (
+        any(position < 0 for position in markdown_section_positions)
+        or markdown_section_positions != sorted(markdown_section_positions)
+    ):
+        errors.append(
+            "Markdown sections must present the research atlas before the roadmap."
+        )
     missing_ids = sorted(section_ids - collector.ids)
     if missing_ids:
         errors.append(f"HTML is missing section IDs: {', '.join(missing_ids)}")
+    if collector.section_order != expected_section_order:
+        errors.append(
+            "HTML sections must present the research atlas before the roadmap; "
+            f"expected {', '.join(expected_section_order)}, found "
+            f"{', '.join(collector.section_order) or 'none'}."
+        )
 
     for resource in data["resources"]:
         title = normalized(resource["title"])
@@ -152,14 +208,31 @@ def validate_deliverables(
         )
     if collector.nav_count < 1:
         errors.append("HTML must contain section navigation.")
+    if collector.footer_count != 1:
+        errors.append(
+            f"HTML must contain exactly one footer; found {collector.footer_count}."
+        )
+    if "AnythingAtlas" not in normalized(" ".join(collector.footer_text)):
+        errors.append("HTML footer must include the AnythingAtlas text credit.")
     if collector.style_count < 1:
         errors.append("HTML must contain embedded CSS.")
     if collector.external_stylesheets:
         errors.append("HTML must not depend on external stylesheets.")
     if not collector.lang:
         errors.append("HTML must declare a document language.")
-    if not any(source.startswith("data:image/") for source in collector.image_sources):
-        errors.append("HTML must embed the AnythingAtlas logo as a data URI.")
+    if collector.brand_image_count:
+        errors.append("HTML must use text-only AnythingAtlas branding, not a logo image.")
+    theme_classes = {
+        name[len("theme-") :]
+        for name in collector.body_classes
+        if name.startswith("theme-")
+    }
+    if len(theme_classes) != 1 or not theme_classes.issubset(AVAILABLE_THEMES):
+        errors.append(
+            "HTML body must declare exactly one built-in visual theme: "
+            + ", ".join(AVAILABLE_THEMES)
+            + "."
+        )
 
     unresolved = sorted(set(re.findall(r"\{\{[A-Z0-9_]+\}\}", html)))
     if unresolved:

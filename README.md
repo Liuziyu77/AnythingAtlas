@@ -77,6 +77,22 @@ Every completed run creates:
 1. `anything-atlas-<topic-slug>.md` — a structured, portable, editable atlas.
 2. `anything-atlas-<topic-slug>.html` — a thoughtfully designed standalone presentation.
 
+Both files present the confirmed brief, topic brief, knowledge map, source strategy, recommended starting point, and curated resources before the detailed learning roadmap, followed by source notes and the next action.
+
+## 🎨 HTML themes
+
+AnythingAtlas selects a visual theme from the topic, or the user can choose one. All five themes share the same content and semantic structure and work on mobile, in print, and offline.
+
+| Theme | Best fit | Visual direction |
+| --- | --- | --- |
+| `atlas` | Interdisciplinary, mixed, or unclassified topics | Clear cartographic hierarchy and blue information cards; the default |
+| `scholar` | Mature disciplines, theory, and academic synthesis | Warm editorial typography and a paper-like long-form reading flow |
+| `archive` | History, people, organizations, and primary-source research | Archival dossier styling, restrained sepia, and document cues |
+| `signal` | AI, software, frontier technology, and fast-moving research | Dark high-contrast interface that foregrounds versions, evidence, and technical signals |
+| `workshop` | Practical skills, project-based learning, and hands-on training | Bold modules and checkpoints that emphasize tasks, outputs, and progress |
+
+Generated HTML uses no image logo. It credits `AnythingAtlas` once, as text, in the footer.
+
 ## 🚀 Quick start
 
 AnythingAtlas follows the open [Agent Skills](https://agentskills.io/) format. The same `SKILL.md` works with Codex, Claude Code, and other Agent Skills-compatible clients; the core workflow does not need to be rewritten for each platform.
@@ -117,6 +133,17 @@ Chinese.
 
 If important information is missing, AnythingAtlas asks a compact set of follow-up questions before researching.
 
+Build both deliverables from the included example:
+
+```bash
+python3 scripts/build_atlas.py \
+  --input examples/sample-atlas.json \
+  --output-dir /tmp/anything-atlas-output \
+  --theme workshop
+```
+
+Available themes are `atlas`, `scholar`, `archive`, `signal`, and `workshop`. The CLI `--theme` overrides `meta.theme` in the JSON model; `atlas` is used when neither is set.
+
 ## 🗂️ Repository structure
 
 ```text
@@ -126,8 +153,11 @@ AnythingAtlas/
 ├── references/                      On-demand research and output policies
 ├── scripts/                         Markdown/HTML rendering and validation
 ├── assets/
-│   ├── logo/logo.png                Project logo
-│   └── html-template/               Standalone atlas template and styles
+│   ├── logo/logo.png                README project logo
+│   └── html-template/
+│       ├── atlas.html               Standalone semantic template
+│       ├── atlas.css                Shared foundation for all themes
+│       └── themes/                  Five visual themes and print styles
 ├── examples/
 │   ├── sample-atlas.json            Buildable canonical example
 │   ├── anything-atlas-*.md          Generated Markdown example
@@ -165,7 +195,7 @@ AnythingAtlas/
 
 ## 🚧 Status
 
-AnythingAtlas is an early functional prototype. The core skill workflow, topic-aware policies, canonical content model, dual renderers, standalone HTML design, and parity validator are implemented. Resource research still depends on the tools available to the agent running the skill.
+AnythingAtlas is an early functional prototype. The core skill workflow, topic-aware policies, canonical content model, dual renderers, five standalone HTML themes, shared print styles, and parity validator are implemented. Resource research still depends on the tools available to the agent running the skill.
 
 If you have ideas for **feature improvements** or a better **user experience**, please open an issue or PR. We will work on improvements within 24 hours. If you find AnythingAtlas useful, please consider giving the project a Star—thank you for your support.
 

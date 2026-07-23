@@ -4,6 +4,7 @@
     "topic": "Python programming for a complete beginner",
     "slug": "python-foundations",
     "language": "en",
+    "theme": "workshop",
     "generated_at": "2026-07-23",
     "summary": "A practical six-week path from Python syntax to a small automation project.",
     "estimated_total_time": "6 weeks · 5 hours per week"

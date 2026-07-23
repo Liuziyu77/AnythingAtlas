@@ -280,4 +280,4 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 
 ---
 
-*AnythingAtlas · Map the best way into any topic.*
+*AnythingAtlas · Map the best way into any topic*

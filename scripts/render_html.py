@@ -4,14 +4,19 @@
 from __future__ import annotations
 
 import argparse
-import base64
-import mimetypes
 import re
 from html import escape
 from pathlib import Path
 from typing import Any
 
-from atlas_common import labels_for, listify, load_atlas, project_root, resource_index
+from atlas_common import (
+    AVAILABLE_THEMES,
+    labels_for,
+    listify,
+    load_atlas,
+    project_root,
+    resource_index,
+)
 
 
 SECTION_KEYS = (
@@ -56,16 +61,16 @@ def definition_item(label: str, value: Any) -> str:
     return f"<div class=\"brief-item\"><dt>{h(label)}</dt><dd>{content}</dd></div>"
 
 
-def embed_image(path: Path, alt: str) -> str:
-    """Return an embedded image element or an empty string."""
-    if not path.is_file():
-        return ""
-    mime = mimetypes.guess_type(path.name)[0] or "image/png"
-    encoded = base64.b64encode(path.read_bytes()).decode("ascii")
-    return (
-        f'<img class="hero__logo" src="data:{h(mime)};base64,{encoded}" '
-        f'alt="{h(alt)}">'
-    )
+def built_in_style_paths(root: Path, theme: str) -> list[Path]:
+    """Return the base, theme, and print styles for a built-in theme."""
+    if theme not in AVAILABLE_THEMES:
+        raise ValueError(f"Unknown HTML theme: {theme}")
+    template_root = root / "assets/html-template"
+    return [
+        template_root / "atlas.css",
+        template_root / "themes" / f"{theme}.css",
+        template_root / "themes" / "print.css",
+    ]
 
 
 def section(number: int, section_id: str, title: str, body: str) -> str:
@@ -314,8 +319,8 @@ def render_next_action(data: dict[str, Any], labels: dict[str, str]) -> str:
 def render_html(
     data: dict[str, Any],
     template_path: Path,
-    css_path: Path,
-    logo_path: Path,
+    css_paths: list[Path],
+    theme: str,
 ) -> str:
     """Return a complete, self-contained HTML atlas."""
     meta = data["meta"]
@@ -355,14 +360,16 @@ def render_html(
         )
 
     template = template_path.read_text(encoding="utf-8")
-    styles = css_path.read_text(encoding="utf-8")
+    styles = "\n\n".join(path.read_text(encoding="utf-8") for path in css_paths)
+    footer_credit = labels["footer_credit"].format(
+        brand="<strong>AnythingAtlas</strong>"
+    )
     replacements = {
         "{{LANG}}": h(language),
+        "{{THEME}}": h(theme),
         "{{META_DESCRIPTION}}": h(meta["summary"]),
-        "{{DOCUMENT_TITLE}}": h(f"{meta['title']} · AnythingAtlas"),
+        "{{DOCUMENT_TITLE}}": h(meta["title"]),
         "{{STYLES}}": styles,
-        "{{LOGO}}": embed_image(logo_path, "AnythingAtlas"),
-        "{{BRAND}}": h(labels["brand"]),
         "{{SKIP_LABEL}}": h(labels["skip_label"]),
         "{{NAV_LABEL}}": h(labels["nav_label"]),
         "{{TITLE}}": h(meta["title"]),
@@ -371,8 +378,7 @@ def render_html(
         "{{NAVIGATION}}": navigation,
         "{{CONTENT}}": "\n".join(rendered_sections),
         "{{FOOTER}}": (
-            f"<strong>AnythingAtlas</strong> · {h(labels['tagline'])} "
-            f"· {h(labels['generated'])}: {h(meta['generated_at'])}"
+            f"{footer_credit} · {h(labels['generated'])}: {h(meta['generated_at'])}"
         ),
     }
     for placeholder, value in replacements.items():
@@ -391,25 +397,30 @@ def main() -> int:
         help="HTML template path",
     )
     parser.add_argument(
-        "--css",
-        default=str(root / "assets/html-template/atlas.css"),
-        help="CSS asset path",
+        "--theme",
+        choices=AVAILABLE_THEMES,
+        help="Built-in visual theme; defaults to meta.theme or atlas",
     )
     parser.add_argument(
-        "--logo",
-        default=str(root / "assets/logo/logo.png"),
-        help="Logo image to embed",
+        "--css",
+        help="Custom CSS path; replaces the built-in theme styles",
     )
     args = parser.parse_args()
 
     data = load_atlas(args.input)
+    theme = args.theme or str(data["meta"].get("theme") or "atlas")
+    css_paths = (
+        [Path(args.css)]
+        if args.css
+        else built_in_style_paths(root, theme)
+    )
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(
-        render_html(data, Path(args.template), Path(args.css), Path(args.logo)),
+        render_html(data, Path(args.template), css_paths, theme),
         encoding="utf-8",
     )
-    print(f"[OK] Wrote HTML: {output}")
+    print(f"[OK] Wrote HTML ({theme}): {output}")
     return 0
 
 

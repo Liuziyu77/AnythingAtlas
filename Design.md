@@ -931,13 +931,53 @@ By default, the HTML should be self-contained, responsive, accessible, and print
 
 默认情况下，HTML 应是自包含、响应式、无障碍且适合打印的。它应使用语义化 HTML 与内嵌 CSS，使文件无需构建步骤或网络连接即可在本地打开。只有在用户提出要求或明确允许时，才可以使用外部资源。
 
+Generated HTML should not include the AnythingAtlas image logo or a separate brand block. It should carry one restrained, text-only AnythingAtlas credit in the footer.
+
+生成的 HTML 不应包含 AnythingAtlas 图片 Logo 或单独的品牌区块，只需在页脚保留一处克制的 AnythingAtlas 文字署名。
+
+The information architecture should explain the atlas before prescribing the path. Present the confirmed brief, topic brief, knowledge map, source and channel plan, recommended starting point, and curated resources first; then present the detailed roadmap, followed by source notes and the next action.
+
+信息架构应先解释图谱，再给出路径。首先呈现已确认的需求简报、主题简介、知识图谱、来源与渠道方案、推荐起点及精选资源；随后给出详细路线图，最后补充来源说明与下一步行动。
+
+#### Built-in Theme System
+
+**内置主题系统**
+
+AnythingAtlas should choose a visual theme from the topic classification and the user’s preference. Every theme must preserve the same content, semantic structure, responsive behavior, print behavior, and accessibility requirements.
+
+AnythingAtlas 应根据课题分类与用户偏好选择视觉主题。所有主题都必须保留相同的内容、语义结构、响应式行为、打印行为与无障碍要求。
+
+* `atlas` is the default for broad, interdisciplinary, mixed, or unclassified topics.
+
+  `atlas` 是跨领域、综合型、混合型或未明确分类课题的默认主题。
+
+* `scholar` is for mature academic fields, theory-heavy study, and scholarly synthesis.
+
+  `scholar` 适用于成熟学科、理论学习与学术综述。
+
+* `archive` is for history, people, organizations, and primary-source investigation.
+
+  `archive` 适用于历史、人物、组织及一手材料研究。
+
+* `signal` is for AI, software, fast-moving technology, and research frontiers.
+
+  `signal` 适用于 AI、软件、快速发展的技术与研究前沿。
+
+* `workshop` is for practical skills, project-based learning, and hands-on training.
+
+  `workshop` 适用于实践技能、项目制学习与动手训练。
+
+An explicit user choice should override automatic theme selection unless it would materially reduce readability. The selected theme should be recorded in the shared content model so that rendering is deterministic.
+
+只要不会明显损害可读性，用户明确指定的主题应覆盖自动选择结果。所选主题应记录在共享内容模型中，以保证渲染结果确定且可复现。
+
 The visual design should include, where appropriate:
 
 在适当情况下，视觉设计应包括：
 
-* a clear cover, title, and executive summary;
+* a clear cover, title, and executive summary without an image logo;
 
-  清晰的封面、标题与执行摘要；
+  不使用图片 Logo 的清晰封面、标题与执行摘要；
 
 * persistent or easily accessible section navigation;
 
@@ -1531,7 +1571,14 @@ AnythingAtlas/
 ├── assets/
 │   └── html-template/
 │       ├── atlas.html
-│       └── atlas.css
+│       ├── atlas.css
+│       └── themes/
+│           ├── atlas.css
+│           ├── scholar.css
+│           ├── archive.css
+│           ├── signal.css
+│           ├── workshop.css
+│           └── print.css
 ├── evals/
 │   ├── finance/
 │   ├── artificial-intelligence/
@@ -1825,9 +1872,9 @@ AnythingAtlas is currently in the **early functional prototype stage**.
 
 AnythingAtlas 目前处于**早期功能原型阶段**。
 
-The repository now includes the core Skill workflow, topic-aware reference policies, a shared JSON content model, deterministic Markdown and self-contained HTML renderers, a polished HTML template, and a deliverable-parity validator.
+The repository now includes the core Skill workflow, topic-aware reference policies, a shared JSON content model, deterministic Markdown and self-contained HTML renderers, five polished HTML themes, shared print styles, and a deliverable-parity validator.
 
-仓库目前已经包含核心 Skill 工作流程、主题感知型参考策略、共享 JSON 内容模型、确定性的 Markdown 与自包含 HTML 渲染器、精美 HTML 模板，以及交付文件一致性验证器。
+仓库目前已经包含核心 Skill 工作流程、主题感知型参考策略、共享 JSON 内容模型、确定性的 Markdown 与自包含 HTML 渲染器、五套精美 HTML 主题、统一打印样式，以及交付文件一致性验证器。
 
 The initial goal is to validate one core hypothesis:
 

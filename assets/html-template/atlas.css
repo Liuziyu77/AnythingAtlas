@@ -108,26 +108,6 @@ button:focus-visible {
   padding: 58px 32px 64px;
 }
 
-.hero__logo {
-  display: block;
-  width: min(660px, 92%);
-  max-height: 150px;
-  margin: 0 0 30px;
-  object-fit: contain;
-  object-position: left center;
-  border-radius: 16px;
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.18);
-}
-
-.eyebrow {
-  margin: 0 0 12px;
-  color: #86edf3;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-}
-
 .hero h1 {
   max-width: 900px;
   margin: 0;
@@ -467,6 +447,7 @@ button:focus-visible {
   align-items: center;
   gap: 7px;
   margin-top: 16px;
+  overflow-wrap: anywhere;
   font-weight: 800;
 }
 
@@ -609,15 +590,11 @@ button:focus-visible {
 }
 
 @media (max-width: 620px) {
-  .hero__logo {
-    width: 100%;
-    max-height: 112px;
-  }
-
   .atlas-nav ol,
   .brief-grid,
   .map-grid,
   .plan-grid,
+  .resource-grid,
   .roadmap-stage__grid {
     grid-template-columns: 1fr;
   }
@@ -682,12 +659,10 @@ button:focus-visible {
     padding: 0 0 22px;
   }
 
-  .hero__contours,
-  .hero__logo {
+  .hero__contours {
     display: none;
   }
 
-  .eyebrow,
   .hero__summary,
   .meta-pill {
     color: #333;

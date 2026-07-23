@@ -1,0 +1,118 @@
+/* Shared print normalization loaded after every visual theme. */
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body[class*="theme-"] {
+    color: #111 !important;
+    background: #fff !important;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 10.5pt;
+  }
+
+  body[class*="theme-"] .hero {
+    min-height: 0;
+    color: #111 !important;
+    background: #fff !important;
+    border: 0;
+    border-bottom: 2px solid #333;
+  }
+
+  body[class*="theme-"] .hero__inner {
+    padding: 0 0 22px;
+  }
+
+  body[class*="theme-"] .hero__summary,
+  body[class*="theme-"] .meta-pill {
+    color: #333 !important;
+    background: #fff !important;
+    border-color: #bbb !important;
+  }
+
+  body[class*="theme-"] .atlas-shell {
+    display: block;
+    max-width: none;
+    padding: 24px 0;
+  }
+
+  body[class*="theme-"] .atlas-section {
+    overflow: visible;
+    margin: 0 0 18px;
+    padding: 16px 0;
+    color: #111 !important;
+    background: #fff !important;
+    border: 0;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .atlas-section::after,
+  body[class*="theme-"] .roadmap-stage::before {
+    display: none;
+  }
+
+  body[class*="theme-"] .brief-item,
+  body[class*="theme-"] .map-node,
+  body[class*="theme-"] .resource-card,
+  body[class*="theme-"] .plan-block,
+  body[class*="theme-"] .roadmap-stage,
+  body[class*="theme-"] .source-note {
+    color: #111 !important;
+    background: #fff !important;
+    border-color: #aaa !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .starting-card,
+  body[class*="theme-"] .next-card,
+  body[class*="theme-"] .deliverable {
+    color: #111 !important;
+    background: #f2f2f2 !important;
+    border: 1px solid #aaa;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .starting-card dt,
+  body[class*="theme-"] .next-card dt,
+  body[class*="theme-"] .fact-label,
+  body[class*="theme-"] .brief-item dt,
+  body[class*="theme-"] .roadmap-stage__timing,
+  body[class*="theme-"] .resource-card__creator {
+    color: #444 !important;
+  }
+
+  body[class*="theme-"] .chip,
+  body[class*="theme-"] .meta-pill {
+    color: #111 !important;
+    background: #fff !important;
+    border: 1px solid #aaa !important;
+  }
+
+  body[class*="theme-"] .roadmap::before {
+    background: #777 !important;
+    border: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .roadmap-stage__number {
+    color: #fff !important;
+    background: #333 !important;
+    border-color: #fff !important;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .atlas-footer {
+    color: #444 !important;
+    border-top: 1px solid #aaa;
+  }
+
+  body[class*="theme-"] .atlas-footer strong {
+    color: #111 !important;
+  }
+}

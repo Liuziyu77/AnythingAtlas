@@ -57,11 +57,20 @@ REQUIRED_STAGE_FIELDS = (
     "optional",
 )
 
+AVAILABLE_THEMES = (
+    "atlas",
+    "scholar",
+    "archive",
+    "signal",
+    "workshop",
+)
+
 
 LABELS = {
     "en": {
         "brand": "AnythingAtlas",
-        "tagline": "Map the best way into any topic.",
+        "tagline": "Map the best way into any topic",
+        "footer_credit": "Built with {brand}",
         "skip_label": "Skip to the atlas",
         "nav_label": "Atlas sections",
         "generated": "Generated",
@@ -123,7 +132,8 @@ LABELS = {
     },
     "zh": {
         "brand": "AnythingAtlas",
-        "tagline": "绘制进入任何主题的最佳路径。",
+        "tagline": "规划学习任何主题的最佳路径",
+        "footer_credit": "由 {brand} 生成",
         "skip_label": "跳转到知识图谱正文",
         "nav_label": "知识图谱章节",
         "generated": "生成日期",
@@ -236,6 +246,10 @@ def validate_model(data: dict[str, Any]) -> list[str]:
                 errors.append(f"meta.{field} is required.")
         if meta.get("slug") and slugify(str(meta["slug"])) != meta["slug"]:
             errors.append("meta.slug must already be lowercase hyphen-case.")
+        if meta.get("theme") and meta["theme"] not in AVAILABLE_THEMES:
+            errors.append(
+                "meta.theme must be one of: " + ", ".join(AVAILABLE_THEMES)
+            )
 
     for object_name in ("brief", "topic_brief", "source_plan", "starting_point", "next_action"):
         if not isinstance(data.get(object_name), dict):
