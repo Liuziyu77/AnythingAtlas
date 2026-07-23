@@ -6,6 +6,8 @@
 
 <p align="center"><strong>Map the best way into any topic</strong></p>
 
+<p align="center"><strong>规划学习任何主题的最佳路径</strong></p>
+
 <p align="center">
   <a href="https://agentskills.io/"><img src="https://img.shields.io/badge/Agent_Skills-Compatible-0B1F3A?style=flat-square" alt="Agent Skills compatible"></a>
   <a href="https://learn.chatgpt.com/docs/build-skills"><img src="https://img.shields.io/badge/Codex-Supported-10A37F?style=flat-square" alt="Codex supported"></a>
