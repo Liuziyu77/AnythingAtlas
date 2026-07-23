@@ -1504,10 +1504,12 @@ AnythingAtlas 智能体
 **建议的仓库结构**
 
 ```text
-anything-atlas/
+AnythingAtlas/
 ├── README.md
 ├── SKILL.md
 ├── LICENSE
+├── agents/
+│   └── openai.yaml
 ├── references/
 │   ├── clarification-policy.md
 │   ├── topic-taxonomy.md
@@ -1546,6 +1548,14 @@ anything-atlas/
 This structure is a design proposal and may change during implementation.
 
 这一结构仅为设计提案，可能会在实现过程中发生变化。
+
+The shared cross-agent contract lives in `SKILL.md` and follows the open Agent Skills format. Platform-specific metadata remains an optional adapter rather than part of the core workflow.
+
+跨 Agent 共用的能力契约位于 `SKILL.md`，并遵循开放的 Agent Skills 格式。平台专属元数据只是可选适配层，不属于核心工作流程。
+
+`agents/openai.yaml` is reserved for OpenAI/Codex presentation, invocation policy, and tool dependencies. A plain Claude Code skill reads `SKILL.md` directly and does not require a parallel `agents/claude.yaml`; add another platform file only when that platform publishes an official metadata contract.
+
+`agents/openai.yaml` 仅用于 OpenAI/Codex 的界面展示、调用策略与工具依赖。Claude Code 以普通 skill 方式使用时会直接读取 `SKILL.md`，无需额外创建 `agents/claude.yaml`；只有当其他平台发布正式的元数据规范时，才应增加对应的平台文件。
 
 The HTML template belongs in `assets/` because it is reused in generated output, while rendering and parity checks belong in deterministic scripts.
 

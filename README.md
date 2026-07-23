@@ -4,85 +4,98 @@
 
 <h1 align="center">AnythingAtlas</h1>
 
-<p align="center"><strong>Map the best way into any topic.</strong></p>
+<p align="center"><strong>Map the best way into any topic</strong></p>
 
 <p align="center">
   English · <a href="README.zh-CN.md">简体中文</a>
 </p>
 
-AnythingAtlas is a Codex skill for entering unfamiliar fields with a trustworthy knowledge map, a carefully verified resource set, and a detailed learning or exploration roadmap.
+## What is AnythingAtlas?
 
-It does more than return a reading list. AnythingAtlas first clarifies what the user actually wants, determines which evidence and information channels fit the topic, verifies the resources, and then produces two synchronized deliverables: an editable Markdown atlas and a polished, self-contained HTML atlas.
+AnythingAtlas is an Agent Skill built for the first step into unfamiliar territory. You can use it with Claude Code, Codex, and other Agent Skills-compatible frameworks.
 
-## What it does
+When you begin learning a new field or confronting an unfamiliar subject, the hardest part is often not finding information. It is working out what truly matters, which resources are worth your time, and where to begin. Whether you want to enter quantitative finance, research AI agents, understand a historical event, or master a practical skill, AnythingAtlas turns scattered books, courses, papers, experts, archives, repositories, and online noise into a clear map of the field: its foundations, the resources worth learning from, how to use them, and a step-by-step plan that takes you from beginner to advanced.
 
-- Proactively clarifies scope, goals, background, time, language, formats, depth, and access constraints.
-- Classifies the topic before choosing sources.
-- Adapts its discovery policy to academic fields, fast-moving technology, history, people, industries, practical skills, social issues, and current events.
-- Searches topic-appropriate channels such as academic indexes, archives, official documentation, repositories, institutions, expert accounts, and professional communities.
-- Verifies titles, creators, URLs, dates, access conditions, relevance, authority, and limitations.
-- Curates a small complementary core instead of a long undifferentiated list.
-- Builds a staged roadmap with exact assignments, tasks, time estimates, milestones, deliverables, and completion criteria.
-- Generates synchronized Markdown and responsive, accessible, print-friendly HTML.
+All you need to do is tell AnythingAtlas what you want to learn and how much time you have. It will guide you through a focused set of questions, search broadly for carefully selected learning resources, and build a personalized study plan around your needs.
+
+## Features
+
+- **Proactive clarification:** AnythingAtlas asks about the details that shape what and how you want to learn, including scope, goals, background, time, language, content format, and desired depth.
+- **Topic-aware discovery:** It distinguishes between knowledge domains, academic questions, new skills, events, and other topic types, then applies a suitable discovery strategy and chooses sources accordingly.
+- **Broad research:** It searches the information channels that fit the topic, including academic indexes, archives, official documentation, code repositories, professional institutions, expert accounts, and practitioner communities.
+- **Information verification:** It checks the authority and reliability of resources and information.
+- **Learning design:** It builds a roadmap with explicit resource assignments, tasks, time estimates, milestones, stage deliverables, and completion criteria.
+- **Easy reading:** It produces synchronized Markdown alongside responsive, accessible, print-friendly HTML.
 
 ## How it works
 
 ```text
-Initial request
+Initial request: the topic and the time available
    ↓
-Focused clarification and confirmed brief
+Focused clarification and confirmed brief: guided questions to understand the learner and their needs
    ↓
-Topic classification and knowledge map
+Topic classification and knowledge map: a discovery strategy suited to the field, skill, and timeframe
    ↓
-Source and information-channel plan
+Source and information-channel plan: define how information quality will be verified
    ↓
 Discovery, verification, ranking, and curation
    ↓
-Detailed personalized roadmap
+Detailed personalized roadmap: carefully selected resources and a tailored study plan
    ↓
-Markdown file + polished self-contained HTML file
+Output: Markdown file + polished, self-contained HTML file
 ```
 
-Different topics use different evidence policies. A history atlas should prioritize primary records and archives; a fast-moving AI atlas should emphasize current papers, repositories, benchmarks, and active researchers; a practical-skill atlas should emphasize official documentation, demonstrations, projects, and feedback.
+AnythingAtlas changes its resource selection, information channels, and verification priorities to match the type of topic:
+
+| Topic type | Priority resources | Main information channels | Core evaluation criteria |
+| --- | --- | --- | --- |
+| Mature academic field | Textbooks, review papers, university courses, professional standards | Library catalogs, academic indexes, university course pages, professional societies | Canonical status, academic consensus, systematic coverage |
+| Fast-moving technology | Recent papers, technical reports, source code, benchmarks | Preprint servers, conference proceedings, official repositories, research labs, expert briefings | Recency, reproducibility, maintenance activity |
+| Historical event | Primary documents, archives, oral histories, scholarly monographs | National and local archives, library collections, museums, academic databases | Provenance, historical context, separation of fact from interpretation |
+| Person or organization | Interviews, speeches, institutional records, biographies, credible reporting | Official websites, institutional archives, interview collections, news databases | First-party records and external verification, chronology, conflicts of interest |
+| Industry research | Official statistics, regulatory filings, corporate disclosures, research reports | Regulatory databases, statistics portals, company filings, industry associations, professional publications | Data definitions, conflicts of interest, timeliness |
+| Practical skill | Official documentation, demonstrations, structured courses, practice projects | Official documentation sites, course platforms, project repositories, practitioner communities | Practicality, progression of difficulty, quality of practice and feedback |
+| Social issue | Official data, systematic research, policy documents, multiple perspectives | Public institutions, review databases, research centers, methodologically transparent civil-society organizations | Research methods, sample representativeness, separation of evidence from opinion |
+| Current event | First-party statements, public records, timelines, credible reporting | Government and institutional websites, judicial or legislative records, news agencies, real-time data sources | Chronology, cross-source verification, update status |
 
 ## Output contract
 
 Every completed run creates:
 
-1. `anything-atlas-<topic-slug>.md` — the canonical, portable, editable atlas.
-2. `anything-atlas-<topic-slug>.html` — the same content presented as a designed standalone document.
-
-Both files contain:
-
-- the confirmed user brief and assumptions;
-- a topic brief and dependency-aware knowledge map;
-- the source and channel plan;
-- a recommended starting point;
-- verified resource cards with rationale, focus, level, time, and limitations;
-- a detailed staged roadmap;
-- source notes, disagreements, and caveats;
-- one immediate next action.
-
-The HTML file embeds its CSS and logo, requires no build step or network connection, and includes responsive and print layouts.
+1. `anything-atlas-<topic-slug>.md` — a structured, portable, editable atlas.
+2. `anything-atlas-<topic-slug>.html` — a thoughtfully designed standalone presentation.
 
 ## Quick start
 
-Place or symlink this repository at:
+AnythingAtlas follows the open [Agent Skills](https://agentskills.io/) format. The same `SKILL.md` works with Codex, Claude Code, and other Agent Skills-compatible clients; the core workflow does not need to be rewritten for each platform.
 
-```text
-$CODEX_HOME/skills/anything-atlas
+The repository is named `AnythingAtlas`; `anything-atlas` is the skill identifier in `SKILL.md` and the recommended installation-directory name.
+
+| Agent | User-level location | Project-level location | Explicit invocation |
+| --- | --- | --- | --- |
+| [Codex](https://learn.chatgpt.com/docs/build-skills) | `~/.agents/skills/anything-atlas` | `<project-root>/.agents/skills/anything-atlas` | `$anything-atlas` |
+| [Claude Code](https://code.claude.com/docs/en/skills) | `~/.claude/skills/anything-atlas` | `<project-root>/.claude/skills/anything-atlas` | `/anything-atlas` |
+| Other Agent Skills-compatible clients | Follow the client documentation | Follow the client documentation | Client-specific |
+
+Install for Codex:
+
+```bash
+mkdir -p ~/.agents/skills
+git clone https://github.com/Liuziyu77/AnythingAtlas.git ~/.agents/skills/anything-atlas
 ```
 
-When `CODEX_HOME` is not set, use:
+Install for Claude Code:
 
-```text
-~/.codex/skills/anything-atlas
+```bash
+mkdir -p ~/.claude/skills
+git clone https://github.com/Liuziyu77/AnythingAtlas.git ~/.claude/skills/anything-atlas
 ```
 
-Then invoke the skill with a topic:
+If you have already cloned `AnythingAtlas`, copy or symlink that checkout into the relevant directory instead. Then invoke it explicitly, or describe your goal naturally and let the agent match the skill from its `description`:
 
 ```text
-$anything-atlas
+Codex: $anything-atlas
+Claude Code: /anything-atlas
 
 I want to understand modern AI agents well enough to propose a research
 project. I know basic Python and language models, can study eight hours
@@ -92,33 +105,18 @@ Chinese.
 
 If important information is missing, AnythingAtlas asks a compact set of follow-up questions before researching.
 
-## Build the included example
+### About `agents/openai.yaml`
 
-The renderer uses one JSON content model to create both deliverables:
+AnythingAtlas’s cross-agent behavior lives in the root `SKILL.md`. `agents/openai.yaml` is optional, OpenAI/Codex-specific metadata for presentation, invocation policy, and tool dependencies; it is not a universal registry for every agent.
 
-```bash
-python3 scripts/build_atlas.py \
-  --input examples/sample-atlas.json \
-  --output-dir /tmp/anything-atlas-output
-```
-
-Validate an existing pair:
-
-```bash
-python3 scripts/validate_deliverables.py \
-  --input examples/sample-atlas.json \
-  --markdown /tmp/anything-atlas-output/anything-atlas-python-foundations.md \
-  --html /tmp/anything-atlas-output/anything-atlas-python-foundations.html
-```
-
-The scripts use only the Python standard library.
+Claude Code reads `SKILL.md` directly from `.claude/skills/`, so a plain skill installation does not need an invented `agents/claude.yaml`. If another host later defines an official metadata format, it should be added as a separate platform adapter instead of being mixed into `openai.yaml`.
 
 ## Repository structure
 
 ```text
-anything-atlas/
+AnythingAtlas/
 ├── SKILL.md                         Core agent workflow
-├── agents/openai.yaml               Codex UI metadata
+├── agents/openai.yaml               OpenAI/Codex UI and dependency metadata
 ├── references/                      On-demand research and output policies
 ├── scripts/                         Markdown/HTML rendering and validation
 ├── assets/
@@ -162,6 +160,8 @@ anything-atlas/
 ## Status
 
 AnythingAtlas is an early functional prototype. The core skill workflow, topic-aware policies, canonical content model, dual renderers, standalone HTML design, and parity validator are implemented. Resource research still depends on the tools available to the agent running the skill.
+
+If you have ideas for **feature improvements** or a better **user experience**, please open an issue or PR. We will work on improvements within 24 hours. If you find AnythingAtlas useful, please consider giving the project a Star—thank you for your support.
 
 ## License
 
