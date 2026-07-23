@@ -4,6 +4,8 @@
 
 <h1 align="center">AnythingAtlas</h1>
 
+<p align="center"><strong>Map the best way into any topic</strong></p>
+
 <p align="center"><strong>规划学习任何主题的最佳路径</strong></p>
 
 <p align="center">
