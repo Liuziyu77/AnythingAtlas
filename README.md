@@ -24,7 +24,9 @@
 
 AnythingAtlas is an Agent Skill built for the first step into unfamiliar territory. You can use it with Claude Code, Codex, and other Agent Skills-compatible frameworks.
 
-When you begin learning a new field or confronting an unfamiliar subject, the hardest part is often not finding information. It is working out what truly matters, which resources are worth your time, and where to begin. Whether you want to enter quantitative finance, research AI agents, understand a historical event, or master a practical skill, AnythingAtlas turns scattered books, courses, papers, experts, archives, repositories, and online noise into a clear map of the field: its foundations, the resources worth learning from, how to use them, and a step-by-step plan that takes you from beginner to advanced.
+When you begin learning a new field or confronting an unfamiliar subject, the hardest part is often not finding information. It is working out what truly matters, which resources are worth your time, and where to begin.
+
+Whether you want to enter quantitative finance, research AI agents, understand a historical event, or master a practical skill, AnythingAtlas turns scattered books, courses, papers, experts, archives, repositories, and online noise into a clear map of the field: its foundations, the resources worth learning from, how to use them, and a step-by-step plan that takes you from beginner to advanced.
 
 **All you need to do is tell AnythingAtlas what you want to learn and how much time you have. It will guide you through a focused set of questions, search broadly for carefully selected learning resources, and build a personalized study plan around your needs.**
 
