@@ -7,6 +7,14 @@
 <p align="center"><strong>Map the best way into any topic</strong></p>
 
 <p align="center">
+  <a href="https://agentskills.io/"><img src="https://img.shields.io/badge/Agent_Skills-Compatible-0B1F3A?style=flat-square" alt="Agent Skills compatible"></a>
+  <a href="https://learn.chatgpt.com/docs/build-skills"><img src="https://img.shields.io/badge/Codex-Supported-10A37F?style=flat-square" alt="Codex supported"></a>
+  <a href="https://code.claude.com/docs/en/skills"><img src="https://img.shields.io/badge/Claude_Code-Supported-D97757?style=flat-square" alt="Claude Code supported"></a>
+  <img src="https://img.shields.io/badge/Output-Markdown_%2B_HTML-167B94?style=flat-square" alt="Markdown and HTML output">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-075FC8?style=flat-square" alt="Apache 2.0 license"></a>
+</p>
+
+<p align="center">
   English · <a href="README.zh-CN.md">简体中文</a>
 </p>
 
@@ -16,7 +24,7 @@ AnythingAtlas is an Agent Skill built for the first step into unfamiliar territo
 
 When you begin learning a new field or confronting an unfamiliar subject, the hardest part is often not finding information. It is working out what truly matters, which resources are worth your time, and where to begin. Whether you want to enter quantitative finance, research AI agents, understand a historical event, or master a practical skill, AnythingAtlas turns scattered books, courses, papers, experts, archives, repositories, and online noise into a clear map of the field: its foundations, the resources worth learning from, how to use them, and a step-by-step plan that takes you from beginner to advanced.
 
-All you need to do is tell AnythingAtlas what you want to learn and how much time you have. It will guide you through a focused set of questions, search broadly for carefully selected learning resources, and build a personalized study plan around your needs.
+**All you need to do is tell AnythingAtlas what you want to learn and how much time you have. It will guide you through a focused set of questions, search broadly for carefully selected learning resources, and build a personalized study plan around your needs.**
 
 ## ✨ Features
 

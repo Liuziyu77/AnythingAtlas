@@ -7,6 +7,14 @@
 <p align="center"><strong>规划学习任何主题的最佳路径</strong></p>
 
 <p align="center">
+  <a href="https://agentskills.io/"><img src="https://img.shields.io/badge/Agent_Skills-Compatible-0B1F3A?style=flat-square" alt="兼容 Agent Skills"></a>
+  <a href="https://learn.chatgpt.com/docs/build-skills"><img src="https://img.shields.io/badge/Codex-Supported-10A37F?style=flat-square" alt="支持 Codex"></a>
+  <a href="https://code.claude.com/docs/en/skills"><img src="https://img.shields.io/badge/Claude_Code-Supported-D97757?style=flat-square" alt="支持 Claude Code"></a>
+  <img src="https://img.shields.io/badge/Output-Markdown_%2B_HTML-167B94?style=flat-square" alt="输出 Markdown 和 HTML">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-075FC8?style=flat-square" alt="Apache 2.0 许可证"></a>
+</p>
+
+<p align="center">
   <a href="README.md">English</a> · 简体中文
 </p>
 
@@ -17,7 +25,7 @@ AnythingAtlas 是一项为“踏入陌生领域的第一步”而生的 Agent sk
 当你想要学习一个全新领域或者面对一个陌生课题的时候，最难的往往不是找不到资料，而是面对海量资料不知道什么是真正重要的、哪些是有价值学习的、或者应该从哪里开始学习。
 无论你想进入量化金融、研究 AI 智能体、理解一个历史事件，还是掌握一项实践技能，AnythingAtlas 都会把散落在书籍、课程、论文、专家、档案、代码仓库与网络噪声中的信息，整理成一张清晰的领域地图：领域最基础的是什么、有哪些资料可以学习，如何使用这些资料，并帮你指定由浅入深的学习计划。
 
-你只需要做：告诉 AnythingAtlas 想学的主题是什么？想花多少时间学习？之后，AnythingAtlas 将主动引导提问，全网为你寻找精心筛选的学习资料，制定定制化的个人学习计划。
+**你只需要做：告诉 AnythingAtlas 想学的主题是什么？想花多少时间学习？之后，AnythingAtlas 将主动引导提问，全网为你寻找精心筛选的学习资料，制定定制化的个人学习计划。**
 
 ## ✨ 功能
 
