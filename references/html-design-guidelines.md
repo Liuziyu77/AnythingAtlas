@@ -20,6 +20,10 @@ Include:
 
 - a focused hero with the atlas title and executive summary;
 - a compact confirmed-brief panel;
+- an answer-first orientation panel with concrete recommendations;
+- a field guide that surfaces representative examples and selection rules;
+- a practical action kit for setup, first-session tasks, and decision checks;
+- compact resource tracks matched to session length and format preference;
 - easy section navigation;
 - knowledge-map cards with dependencies;
 - source-plan callouts;
@@ -30,16 +34,21 @@ Include:
 Present the atlas in this sequence:
 
 1. confirmed brief;
-2. topic brief;
-3. knowledge map;
-4. source and channel plan;
-5. recommended starting point;
-6. curated resources;
-7. detailed roadmap;
-8. source notes;
-9. next action.
+2. direct orientation;
+3. field guide;
+4. practical action kit;
+5. knowledge map;
+6. resource tracks;
+7. curated resources;
+8. detailed roadmap;
+9. source and channel plan;
+10. source notes;
+11. next action.
 
-The first six sections establish what the field contains, which evidence matters, and which resources were selected. Only then should the page present the learning roadmap.
+The first screenful after the brief should make the answer and recommended
+direction obvious. Keep methodology and source strategy after the roadmap as an
+evidence appendix. Use comparison cards or compact tables when the user must
+distinguish several options.
 
 ## Accessibility
 
@@ -81,7 +90,7 @@ Check:
 
 1. standalone opening without network access;
 2. section and resource parity with Markdown;
-3. research sections appear before the roadmap;
+3. the direct answer and practical sections appear before the roadmap;
 4. heading and landmark structure;
 5. internal anchors;
 6. external URL schemes;

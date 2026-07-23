@@ -32,10 +32,14 @@ Whether you want to enter quantitative finance, research AI agents, understand a
 
 ## ✨ Features
 
-- **Proactive clarification:** AnythingAtlas asks about the details that shape what and how you want to learn, including scope, goals, background, time, language, content format, and desired depth.
+- **Proactive clarification:** AnythingAtlas asks only about details that change the result, including the goal, starting point, urgency, normal session length, preferred format, language, access, and desired depth.
+- **Answer first:** It leads with a direct conclusion, concrete recommendations, and decisive trade-offs instead of making the user read through generic background.
+- **Practical field guide:** It maps the actual tools, platforms, products, people, institutions, methods, works, or representative players the user will encounter.
 - **Topic-aware discovery:** It distinguishes between knowledge domains, academic questions, new skills, events, and other topic types, then applies a suitable discovery strategy and chooses sources accordingly.
 - **Broad research:** It searches the information channels that fit the topic, including academic indexes, archives, official documentation, code repositories, professional institutions, expert accounts, and practitioner communities.
 - **Information verification:** It checks the authority and reliability of resources and information.
+- **Resource fit:** It builds short-session, balanced, or deep resource tracks that specify who each route suits and exactly what to consume.
+- **Action kit:** For practical requests, it names the setup and gives a first-session workflow, decision rules, and relevant safety or quality checks.
 - **Learning design:** It builds a roadmap with explicit resource assignments, tasks, time estimates, milestones, stage deliverables, and completion criteria.
 - **Easy reading:** It produces synchronized Markdown alongside responsive, accessible, print-friendly HTML.
 
@@ -46,13 +50,15 @@ Initial request: the topic and the time available
    ↓
 Focused clarification and confirmed brief: guided questions to understand the learner and their needs
    ↓
-Topic classification and knowledge map: a discovery strategy suited to the field, skill, and timeframe
+Direct orientation and field guide: answer the real question and map concrete options
    ↓
-Source and information-channel plan: define how information quality will be verified
+Practical action kit: setup, first-session workflow, and decision rules
    ↓
-Discovery, verification, ranking, and curation
+Topic classification, discovery, verification, ranking, and curation
    ↓
-Detailed personalized roadmap: carefully selected resources and a tailored study plan
+User-fit resource tracks and a detailed personalized roadmap
+   ↓
+Source and information-channel appendix: show how information quality was verified
    ↓
 Output: Markdown file + polished, self-contained HTML file
 ```
@@ -77,7 +83,15 @@ Every completed run creates:
 1. `anything-atlas-<topic-slug>.md` — a structured, portable, editable atlas.
 2. `anything-atlas-<topic-slug>.html` — a thoughtfully designed standalone presentation.
 
-Both files present the confirmed brief, topic brief, knowledge map, source strategy, recommended starting point, and curated resources before the detailed learning roadmap, followed by source notes and the next action.
+Both files use an answer-first sequence: confirmed brief, direct orientation,
+field guide, practical action kit, knowledge map, user-fit resource tracks,
+curated resources, detailed roadmap, source strategy, source notes, and the
+next action.
+
+The answer-first content model is schema `0.2`. It replaces the earlier
+`topic_brief` and `starting_point` fields with required `orientation`,
+`field_guide`, `action_kit`, and `resource_tracks` fields; older JSON models
+must be migrated before building.
 
 ## 🎨 HTML themes
 
@@ -144,6 +158,12 @@ python3 scripts/build_atlas.py \
 
 Available themes are `atlas`, `scholar`, `archive`, `signal`, and `workshop`. The CLI `--theme` overrides `meta.theme` in the JSON model; `atlas` is used when neither is set.
 
+Run the structural regression suite:
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
 ## 🗂️ Repository structure
 
 ```text
@@ -162,6 +182,7 @@ AnythingAtlas/
 │   ├── sample-atlas.json            Buildable canonical example
 │   ├── anything-atlas-*.md          Generated Markdown example
 │   └── anything-atlas-*.html        Generated standalone HTML example
+├── tests/                           Structural tests and qualitative cases
 ├── Design.md                        Bilingual product design
 ├── README.md                        English documentation
 ├── README.zh-CN.md                  Simplified Chinese documentation
@@ -171,10 +192,12 @@ AnythingAtlas/
 ## 🎯 Design principles
 
 - Clarify before research.
+- Answer before background.
 - Trust before volume.
-- Map before path.
+- Name concrete options, not only categories.
 - Plan channels before discovery.
 - Explain every recommendation.
+- Match resources to the user's session length and preferred format.
 - Separate evidence from commentary.
 - Adapt to the topic and the user.
 - Preserve uncertainty.
@@ -186,12 +209,14 @@ AnythingAtlas/
 - [Skill instructions](SKILL.md)
 - [Product design](Design.md)
 - [Clarification policy](references/clarification-policy.md)
+- [Specificity and resource-fit policy](references/specificity-and-resource-fit.md)
 - [Topic taxonomy](references/topic-taxonomy.md)
 - [Source and channel policies](references/source-and-channel-policies.md)
 - [Credibility criteria](references/credibility-criteria.md)
 - [Roadmap schema](references/roadmap-schema.md)
 - [Output schema](references/output-schema.md)
 - [HTML design guidelines](references/html-design-guidelines.md)
+- [Qualitative regression cases](tests/quality-cases.md)
 
 ## 🚧 Status
 

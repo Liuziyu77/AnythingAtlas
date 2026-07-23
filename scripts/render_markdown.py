@@ -65,18 +65,78 @@ def render_markdown(data: dict[str, Any]) -> str:
     for key, label_key in brief_fields:
         lines.extend(labeled_value(labels[label_key], brief.get(key)))
 
-    topic_brief = data["topic_brief"]
-    lines.extend(["", f"## 2. {labels['topic_brief']}", ""])
-    for key in ("overview", "why_it_matters"):
-        if topic_brief.get(key):
-            lines.extend(
-                [f"### {labels[key]}", "", str(topic_brief[key]).strip(), ""]
-            )
-    if topic_brief.get("outcomes"):
-        lines.extend([f"### {labels['outcomes']}", ""])
-        lines.extend(bullet_lines(topic_brief["outcomes"]))
+    orientation = data["orientation"]
+    lines.extend(["", f"## 2. {labels['orientation']}", ""])
+    lines.extend(
+        [
+            f"### {labels['bottom_line']}",
+            "",
+            str(orientation["bottom_line"]).strip(),
+            "",
+            f"### {labels['key_points']}",
+            "",
+        ]
+    )
+    lines.extend(bullet_lines(orientation["key_points"]))
+    lines.extend(["", f"### {labels['recommendations']}", ""])
+    for recommendation in orientation["recommendations"]:
+        lines.extend(
+            [
+                f"#### {inline(recommendation['choice'])}",
+                "",
+                f"- **{labels['best_for']}:** {inline(recommendation['best_for'])}",
+                f"- **{labels['rationale']}:** {inline(recommendation['why'])}",
+                f"- **{labels['tradeoffs']}:** {inline(recommendation['tradeoffs'])}",
+                "",
+            ]
+        )
+    lines.extend([f"### {labels['tradeoffs']}", ""])
+    lines.extend(bullet_lines(orientation["tradeoffs"]))
 
-    lines.extend(["", f"## 3. {labels['knowledge_map']}", ""])
+    field_guide = data["field_guide"]
+    lines.extend(["", f"## 3. {labels['field_guide']}", ""])
+    lines.extend(labeled_value(labels["as_of"], field_guide.get("as_of")))
+    lines.extend(labeled_value(labels["scope"], field_guide.get("scope")))
+    lines.append("")
+    for entry in field_guide["entries"]:
+        lines.extend(
+            [
+                f"### {inline(entry['name'])}",
+                "",
+                f"- **{labels['category']}:** {inline(entry['category'])}",
+                f"- **{labels['why_it_matters']}:** "
+                f"{inline(entry['why_it_matters'])}",
+                f"- **{labels['representative_examples']}:** "
+                + ", ".join(
+                    inline(item) for item in listify(entry["representative_examples"])
+                ),
+                f"- **{labels['selection_note']}:** "
+                f"{inline(entry['selection_note'])}",
+                "",
+            ]
+        )
+
+    action_kit = data["action_kit"]
+    lines.extend([f"## 4. {labels['action_kit']}", ""])
+    if listify(action_kit.get("setup")):
+        lines.extend([f"### {labels['setup']}", ""])
+        for item in action_kit["setup"]:
+            lines.extend(
+                [
+                    f"- **{inline(item['item'])}:** "
+                    f"{inline(item['recommendation'])} — "
+                    f"{labels['rationale']}: {inline(item['why'])}"
+                ]
+            )
+        lines.append("")
+    for key in ("first_session", "decision_rules", "safety_checks", "failure_modes"):
+        values = listify(action_kit.get(key))
+        if values:
+            lines.extend([f"### {labels[key]}", ""])
+            lines.extend(bullet_lines(values))
+            lines.append("")
+
+    lines.extend([f"## 5. {labels['knowledge_map']}", ""])
     for node in data["knowledge_map"]:
         lines.extend([f"### {inline(node['name'])}", "", str(node["description"]).strip()])
         dependencies = listify(node.get("depends_on"))
@@ -90,42 +150,30 @@ def render_markdown(data: dict[str, Any]) -> str:
             )
         lines.append("")
 
-    source_plan = data["source_plan"]
-    lines.extend([f"## 4. {labels['source_plan']}", ""])
-    for key in (
-        "topic_type",
-        "materials",
-        "channels",
-        "credibility_policy",
-        "recency",
-        "cautions",
-    ):
-        value = source_plan.get(key)
-        if key == "channels" and value:
-            if lines and lines[-1] != "":
-                lines.append("")
-            lines.append(f"### {labels[key]}")
-            lines.append("")
-            for channel in listify(value):
-                if isinstance(channel, dict):
-                    name = inline(channel.get("name", ""))
-                    priority = inline(channel.get("priority", ""))
-                    reason = inline(channel.get("reason", ""))
-                    suffix = f" ({priority})" if priority else ""
-                    lines.append(f"- **{name}{suffix}:** {reason}")
-                else:
-                    lines.append(f"- {inline(channel)}")
-            lines.append("")
-        else:
-            lines.extend(labeled_value(labels[key], value))
+    lines.extend(["", f"## 6. {labels['resource_tracks']}", ""])
+    for track in data["resource_tracks"]:
+        assigned = [
+            resources[resource_id]["title"]
+            for resource_id in track["resource_ids"]
+            if resource_id in resources
+        ]
+        lines.extend(
+            [
+                f"### {inline(track['title'])}",
+                "",
+                f"- **{labels['best_for']}:** {inline(track['best_for'])}",
+                f"- **{labels['cadence']}:** {inline(track['cadence'])}",
+                f"- **{labels['assigned_resources']}:** "
+                + ", ".join(inline(item) for item in assigned),
+                "",
+                f"**{labels['sequence']}**",
+                "",
+            ]
+        )
+        lines.extend(bullet_lines(track["sequence"]))
+        lines.append("")
 
-    starting = data["starting_point"]
-    lines.extend(["", f"## 5. {labels['starting_point']}", ""])
-    for key in ("action", "resource", "reason"):
-        if starting.get(key):
-            lines.append(f"- **{labels[key]}:** {inline(starting[key])}")
-
-    lines.extend(["", f"## 6. {labels['resources']}", ""])
+    lines.extend([f"## 7. {labels['resources']}", ""])
     for resource in data["resources"]:
         title = inline(resource["title"])
         url = str(resource["url"])
@@ -139,6 +187,8 @@ def render_markdown(data: dict[str, Any]) -> str:
                 f"- **{labels['level']}:** {inline(resource['level'])}",
                 f"- **{labels['format']}:** {inline(resource['format'])}",
                 f"- **{labels['resource_time']}:** {inline(resource['time'])}",
+                f"- **{labels['best_for']}:** {inline(resource['best_for'])}",
+                f"- **{labels['access']}:** {inline(resource['access'])}",
                 f"- **{labels['verified_on']}:** {inline(resource['verified_on'])}",
                 "",
                 f"**{labels['why']}:** {str(resource['why']).strip()}",
@@ -150,7 +200,7 @@ def render_markdown(data: dict[str, Any]) -> str:
             ]
         )
 
-    lines.extend([f"## 7. {labels['roadmap']}", ""])
+    lines.extend([f"## 8. {labels['roadmap']}", ""])
     for stage in sorted(data["roadmap"], key=lambda item: item["stage"]):
         assigned = [
             resources[resource_id]["title"]
@@ -191,7 +241,37 @@ def render_markdown(data: dict[str, Any]) -> str:
             lines.extend(bullet_lines(optional))
         lines.append("")
 
-    lines.extend([f"## 8. {labels['source_notes']}", ""])
+    source_plan = data["source_plan"]
+    lines.extend([f"## 9. {labels['source_plan']}", ""])
+    for key in (
+        "topic_type",
+        "materials",
+        "channels",
+        "credibility_policy",
+        "recency",
+        "format_fit",
+        "cautions",
+    ):
+        value = source_plan.get(key)
+        if key == "channels" and value:
+            if lines and lines[-1] != "":
+                lines.append("")
+            lines.append(f"### {labels[key]}")
+            lines.append("")
+            for channel in listify(value):
+                if isinstance(channel, dict):
+                    name = inline(channel.get("name", ""))
+                    priority = inline(channel.get("priority", ""))
+                    reason = inline(channel.get("reason", ""))
+                    suffix = f" ({priority})" if priority else ""
+                    lines.append(f"- **{name}{suffix}:** {reason}")
+                else:
+                    lines.append(f"- {inline(channel)}")
+            lines.append("")
+        else:
+            lines.extend(labeled_value(labels[key], value))
+
+    lines.extend([f"## 10. {labels['source_notes']}", ""])
     for note in data["source_notes"]:
         if isinstance(note, dict):
             topic = inline(note.get("topic", labels["source_notes"]))
@@ -202,7 +282,7 @@ def render_markdown(data: dict[str, Any]) -> str:
             lines.append(f"- {inline(note)}")
 
     next_action = data["next_action"]
-    lines.extend(["", f"## 9. {labels['next_action']}", ""])
+    lines.extend(["", f"## 11. {labels['next_action']}", ""])
     for key in ("action", "when", "output"):
         if next_action.get(key):
             lines.append(f"- **{labels[key]}:** {inline(next_action[key])}")

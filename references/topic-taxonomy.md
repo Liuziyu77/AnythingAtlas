@@ -28,6 +28,9 @@ Assess:
 - **Scope:** global, regional, national, or local.
 - **Mode:** theoretical, practical, or mixed.
 - **Access:** public, subscription, institutional, or restricted.
+- **User mode:** orient, decide, do, troubleshoot, monitor, or study.
+- **Urgency:** immediate, near-term, scheduled, or open-ended.
+- **Consumption pattern:** short-session, long-form, hands-on, reference, or mixed.
 
 ## Knowledge-map checklist
 
@@ -41,4 +44,15 @@ Map:
 6. common misconceptions;
 7. deeper or adjacent branches.
 
-Do not force every topic into an academic-discipline structure. For an event, emphasize chronology and evidence; for a skill, emphasize progression and practice; for a person, emphasize life phases, works, context, and primary records.
+Also build a user-facing field guide. A knowledge map explains how concepts
+depend on one another; a field guide explains what concrete choices, actors,
+tools, works, products, methods, or segments the user will encounter now.
+Include representative examples and selection rules rather than category names
+alone.
+
+Do not force every topic into an academic-discipline structure. For an event,
+emphasize chronology and evidence; for a skill, emphasize progression,
+practice, and the actual toolchain; for a person, emphasize life phases, works,
+context, and primary records; for an industry, include segments, representative
+players, products or services, metrics, and selection trade-offs; for a
+decision request, lead with the options and conditions that alter the choice.

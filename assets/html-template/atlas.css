@@ -256,6 +256,10 @@ button:focus-visible {
 
 .brief-grid,
 .map-grid,
+.decision-grid,
+.field-grid,
+.setup-grid,
+.track-grid,
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -264,6 +268,10 @@ button:focus-visible {
 
 .brief-item,
 .map-node,
+.decision-card,
+.field-card,
+.setup-card,
+.track-card,
 .resource-card,
 .plan-block {
   min-width: 0;
@@ -309,8 +317,87 @@ button:focus-visible {
 }
 
 .map-node h3,
+.decision-card h3,
+.field-card h3,
+.setup-card h3,
+.track-card h3,
 .resource-card h3 {
   margin-top: 0;
+}
+
+.answer-card {
+  padding: 22px;
+  background: linear-gradient(135deg, var(--success-bg), #f6fffb);
+  border: 1px solid #b9e7d8;
+  border-left: 5px solid var(--success);
+  border-radius: 16px;
+}
+
+.answer-card .lead {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.decision-card {
+  border-top: 4px solid var(--success);
+}
+
+.decision-card p,
+.field-card p,
+.setup-card p,
+.track-card p {
+  margin: 10px 0;
+}
+
+.guide-meta {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.35fr) minmax(0, 1.65fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.guide-meta > div {
+  padding: 12px 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+.guide-meta dt,
+.field-card__category {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.guide-meta dd {
+  margin: 0;
+}
+
+.field-card {
+  border-top: 4px solid var(--cyan);
+}
+
+.field-card ul,
+.track-card ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.setup-grid,
+.track-grid {
+  margin-bottom: 22px;
+}
+
+.setup-card {
+  border-left: 4px solid var(--indigo);
+}
+
+.track-card {
+  border-top: 4px solid var(--indigo);
 }
 
 .dependency-list,
@@ -593,6 +680,10 @@ button:focus-visible {
   .atlas-nav ol,
   .brief-grid,
   .map-grid,
+  .decision-grid,
+  .field-grid,
+  .setup-grid,
+  .track-grid,
   .plan-grid,
   .resource-grid,
   .roadmap-stage__grid {
@@ -689,6 +780,10 @@ button:focus-visible {
 
   .resource-card,
   .map-node,
+  .decision-card,
+  .field-card,
+  .setup-card,
+  .track-card,
   .roadmap-stage,
   .starting-card,
   .next-card {

@@ -146,6 +146,10 @@
 
 .theme-scholar .brief-item,
 .theme-scholar .map-node,
+.theme-scholar .decision-card,
+.theme-scholar .field-card,
+.theme-scholar .setup-card,
+.theme-scholar .track-card,
 .theme-scholar .resource-card,
 .theme-scholar .plan-block {
   background: #fffaf2;

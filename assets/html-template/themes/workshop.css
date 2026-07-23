@@ -116,6 +116,10 @@
 
 .theme-workshop .brief-item,
 .theme-workshop .map-node,
+.theme-workshop .decision-card,
+.theme-workshop .field-card,
+.theme-workshop .setup-card,
+.theme-workshop .track-card,
 .theme-workshop .resource-card,
 .theme-workshop .plan-block {
   background: #fafbfe;

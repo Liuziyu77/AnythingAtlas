@@ -120,9 +120,13 @@ AnythingAtlas 旨在回答一个更有用的问题：
 
 **AnythingAtlas 能做什么**
 
-AnythingAtlas begins with the user’s topic and actively clarifies the goal, current background, available time, language preferences, preferred resource formats, desired depth, and access constraints.
+AnythingAtlas begins with the user’s topic and actively clarifies the goal,
+current background, urgency, available time, normal session length, language
+preferences, preferred resource formats, desired depth, and access
+constraints.
 
-AnythingAtlas 从用户提出的主题出发，主动澄清目标、当前背景、可用时间、语言偏好、偏好的资源形式、期望深度以及访问限制。
+AnythingAtlas 从用户提出的主题出发，主动澄清目标、当前背景、紧迫程度、
+可用时间、单次学习时长、语言偏好、偏好的资源形式、期望深度以及访问限制。
 
 When the request is underspecified, AnythingAtlas asks focused follow-up questions before researching or generating the final atlas. It may infer low-impact preferences, but it should state those assumptions and seek confirmation whenever they could materially change the recommendations or roadmap.
 
@@ -136,9 +140,13 @@ It then produces a structured knowledge atlas containing:
 
   一份经过确认的用户需求与限制条件简报；
 
-* a concise introduction to the topic;
+* a direct, decision-useful orientation;
 
-  对该主题的简明介绍；
+  直接且有助于决策的结论；
+
+* a concrete field guide and practical action kit;
+
+  具体的领域实战地图与实操工具箱；
 
 * a map of its major concepts and branches;
 
@@ -151,6 +159,10 @@ It then produces a structured knowledge atlas containing:
 * a topic-specific plan for required materials and information channels;
 
   一份针对该课题所需资料与信息渠道制定的专属方案；
+
+* resource tracks matched to the user's cadence and preferred formats;
+
+  匹配用户节奏与内容形式偏好的资源路线；
 
 * selected books and textbooks;
 
@@ -782,12 +794,22 @@ Evaluate resources using criteria such as:
 | Timeliness<br>时效性 | Whether the material remains current<br>材料是否仍然符合当前情况 |
 | Depth<br>深度 | How thoroughly the resource covers the topic<br>资源对主题的覆盖有多深入 |
 | Practicality<br>实践性 | Availability of examples, exercises, projects, or evidence<br>是否提供示例、练习、项目或证据 |
+| Format fit<br>形式适配 | Whether the medium and unit length fit the user's normal sessions<br>媒介形式与内容单元长度是否适合用户的日常节奏 |
 | Reliability<br>可靠性 | Quality of sourcing, review, documentation, or primary evidence<br>来源标注、评审、文档或一手证据的质量 |
 | Complementarity<br>互补性 | Whether the resource adds something not already covered<br>资源是否补充了尚未覆盖的内容 |
 
 ### 8. Build the Atlas
 
 **8. 构建图谱**
+
+Write the direct orientation first, then build the dated field guide, practical
+action kit, knowledge map, and user-fit resource tracks. Every concrete
+recommendation should identify its audience or condition, rationale, and
+trade-off. Every field-guide entry should name representative examples.
+
+先写直接结论，再构建带日期的领域实战地图、实操工具箱、知识图谱与适合
+用户节奏的资源路线。每项具体建议都应说明适合人群或条件、推荐原因与取舍；
+每个领域地图条目都应命名代表性例子。
 
 Organize the selected resources by role:
 
@@ -935,9 +957,16 @@ Generated HTML should not include the AnythingAtlas image logo or a separate bra
 
 生成的 HTML 不应包含 AnythingAtlas 图片 Logo 或单独的品牌区块，只需在页脚保留一处克制的 AnythingAtlas 文字署名。
 
-The information architecture should explain the atlas before prescribing the path. Present the confirmed brief, topic brief, knowledge map, source and channel plan, recommended starting point, and curated resources first; then present the detailed roadmap, followed by source notes and the next action.
+The information architecture should answer before it explains. Present the
+confirmed brief, direct orientation, concrete field guide, practical action
+kit, knowledge map, user-fit resource tracks, curated resources, and detailed
+roadmap first. Put the source and channel plan after the roadmap as an evidence
+appendix, followed by source notes and the next action.
 
-信息架构应先解释图谱，再给出路径。首先呈现已确认的需求简报、主题简介、知识图谱、来源与渠道方案、推荐起点及精选资源；随后给出详细路线图，最后补充来源说明与下一步行动。
+信息架构应先回答，再解释。首先呈现已确认的需求简报、直接结论、具体的
+领域实战地图、实操工具箱、知识图谱、适合用户节奏的资源路线、精选资源
+与详细路线图；来源与渠道方案作为证据附录放在路线图之后，最后补充来源
+说明与下一步行动。
 
 #### Built-in Theme System
 
@@ -983,13 +1012,23 @@ The visual design should include, where appropriate:
 
   持久显示或易于访问的章节导航；
 
+* an answer-first recommendation panel and a concrete field guide;
+
+  先给答案的建议面板与具体的领域实战地图；
+
+* a practical setup and first-session action kit;
+
+  实际准备步骤与第一次实操工具箱；
+
 * a visual knowledge map or dependency overview;
 
   可视化知识图谱或依赖关系概览；
 
-* readable resource cards with role, level, time, format, and rationale;
+* readable resource tracks and cards with audience fit, cadence, role, level,
+  time, format, access, and rationale;
 
-  易读的资源卡片，展示用途、级别、所需时间、形式与推荐理由；
+  易读的资源路线与卡片，展示适合人群、节奏、用途、级别、所需时间、
+  形式、获取方式与推荐理由；
 
 * a staged roadmap rendered as a timeline or milestone sequence;
 
@@ -1019,9 +1058,14 @@ anything-atlas-<主题标识>.html
 
 **3. 同步与验证**
 
-Both files must be generated from the same structured content model and must agree on the confirmed brief, assumptions, source and channel plan, selected resources, citations, ranking, roadmap, and next action.
+Both files must be generated from the same schema `0.2` structured content
+model and must agree on the confirmed brief, direct orientation, field guide,
+action kit, knowledge map, resource tracks, selected resources, roadmap, source
+and channel plan, evidence notes, and next action.
 
-两份文件必须基于同一份结构化内容模型生成，并且在已确认的需求简报、假设、来源与渠道方案、所选资源、引用、排序、路线图和下一步行动上保持一致。
+两份文件必须基于同一份 `0.2` 版结构化内容模型生成，并且在已确认的
+需求简报、直接结论、领域实战地图、实操工具箱、知识图谱、资源路线、所选
+资源、路线图、来源与渠道方案、证据说明和下一步行动上保持一致。
 
 Before delivery, verify that:
 
@@ -1065,53 +1109,60 @@ A compact record of the topic scope, goal, current level, time, language and for
 
 简要记录课题范围、目标、当前水平、时间、语言与形式偏好、期望深度、限制条件，以及需求澄清过程中接受的所有假设。
 
-### 2. Topic Brief
+### 2. Direct Orientation
 
-**2. 主题简介**
+**2. 直接结论**
 
-A concise explanation of:
+The bottom line, decision-relevant points, concrete recommendations, and their
+conditions or trade-offs. This section answers the user's real question before
+providing background.
 
-简要说明：
+直接给出结论、会改变决策的要点、具体建议及其适用条件或取舍。本节必须
+在补充背景之前回答用户真正的问题。
 
-* what the topic is;
+### 3. Field Guide
 
-  该主题是什么；
+**3. 领域实战地图**
 
-* why it matters;
+A dated map of the concrete segments, approaches, tools, products, works,
+people, organizations, or representative players the user will encounter,
+including examples and selection rules.
 
-  它为什么重要；
+以日期标记用户会遇到的具体板块、方法、工具、产品、作品、人物、机构或
+代表性参与者，并给出具体例子与选择规则。
 
-* what the user should expect to learn.
+### 4. Practical Action Kit
 
-  用户可以预期学到什么。
+**4. 实操工具箱**
 
-### 3. Knowledge Map
+The actual setup, first-session workflow, decision rules, relevant safety or
+quality checks, and likely failure modes.
 
-**3. 知识图谱**
+实际所需的准备、第一次实操流程、决策规则、相关安全或质量检查，以及常见
+失败方式。
+
+### 5. Knowledge Map
+
+**5. 知识图谱**
 
 A structured view of the main concepts, branches, and dependencies.
 
 以结构化方式呈现主要概念、分支与依赖关系。
 
-### 4. Source and Channel Plan
+### 6. Resource Tracks
 
-**4. 来源与渠道方案**
+**6. 资源学习路线**
 
-An explanation of the required material types, preferred information channels, credibility policy, recency requirements, primary-versus-secondary source balance, and channels to avoid or treat cautiously.
+One or more exact resource sequences matched to session length, preferred
+format, and desired depth, each with its audience, cadence, and consumption
+order.
 
-说明所需资料类型、首选信息渠道、可信度策略、时效性要求、一手与二手来源的比例，以及应避开或谨慎对待的渠道。
+根据单次可用时间、内容形式偏好与期望深度组织一条或多条明确的资源路线；
+每条路线都说明适合谁、采用什么节奏、按什么顺序使用资料。
 
-### 5. Recommended Starting Point
+### 7. Curated Resource Atlas
 
-**5. 推荐起点**
-
-The single best first resource or action.
-
-最适合作为第一步的单项资源或行动。
-
-### 6. Curated Resource Atlas
-
-**6. 精选资源图谱**
+**7. 精选资源图谱**
 
 Resources organized by category and role.
 
@@ -1145,21 +1196,36 @@ Each recommendation should explain:
 
   预计需要投入的时间；
 
+* access conditions and format fit;
+
+  获取条件与内容形式是否适合；
+
 * relevant limitations.
 
   相关局限。
 
-### 7. Detailed Learning or Exploration Roadmap
+### 8. Detailed Learning or Exploration Roadmap
 
-**7. 详细学习或探索路线图**
+**8. 详细学习或探索路线图**
 
 A staged plan based on the user’s goal and constraints. Each stage should include objectives, dependencies, exact resource assignments, tasks, estimated effort, milestones, deliverables, completion criteria, and optional branches.
 
 一份根据用户目标与限制条件制定的分阶段计划。每个阶段都应包括目标、依赖关系、明确的资源安排、任务、预计投入、里程碑、产出、完成标准与可选分支。
 
-### 8. Source Notes
+### 9. Source and Channel Plan
 
-**8. 来源说明**
+**9. 来源与渠道方案**
+
+An evidence appendix covering required material types, preferred information
+channels, credibility policy, recency requirements, primary-versus-secondary
+source balance, and channels treated cautiously.
+
+作为证据附录，说明所需资料类型、首选信息渠道、可信度策略、时效性要求、
+一手与二手来源比例，以及应谨慎对待的渠道。
+
+### 10. Source Notes
+
+**10. 来源说明**
 
 Important information about:
 
@@ -1189,9 +1255,9 @@ Important information about:
 
   来源之间的分歧。
 
-### 9. Next Action
+### 11. Next Action
 
-**9. 下一步行动**
+**11. 下一步行动**
 
 One concrete action that the user can take immediately.
 

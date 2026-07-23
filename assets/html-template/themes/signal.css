@@ -120,6 +120,10 @@
 
 .theme-signal .brief-item,
 .theme-signal .map-node,
+.theme-signal .decision-card,
+.theme-signal .field-card,
+.theme-signal .setup-card,
+.theme-signal .track-card,
 .theme-signal .resource-card,
 .theme-signal .plan-block,
 .theme-signal .roadmap-stage {
@@ -127,6 +131,16 @@
   background:
     linear-gradient(145deg, rgba(22, 39, 63, 0.96), rgba(15, 29, 48, 0.96));
   border-color: #2a405f;
+}
+
+.theme-signal .answer-card {
+  color: #e6effb;
+  background: linear-gradient(135deg, #143329, #112b2b);
+  border-color: #2e735f;
+}
+
+.theme-signal .answer-card .lead {
+  color: #eef8f5;
 }
 
 .theme-signal .brief-item dt,

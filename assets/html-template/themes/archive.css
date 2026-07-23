@@ -120,6 +120,10 @@
 
 .theme-archive .brief-item,
 .theme-archive .map-node,
+.theme-archive .decision-card,
+.theme-archive .field-card,
+.theme-archive .setup-card,
+.theme-archive .track-card,
 .theme-archive .resource-card,
 .theme-archive .plan-block {
   background: rgba(255, 251, 241, 0.80);
@@ -205,4 +209,3 @@
 .theme-archive .atlas-footer strong {
   color: #7e3e28;
 }
-

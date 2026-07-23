@@ -15,6 +15,7 @@ Verify candidates before ranking them.
 | Access | Can the user obtain it in the required language, budget, and region? |
 | Fit | Is the level and format appropriate? |
 | Independence | Are commercial, ideological, or institutional conflicts visible? |
+| Specific utility | Does it help the user make the requested decision or complete the requested action? |
 
 ## Ranking dimensions
 
@@ -28,6 +29,8 @@ Score qualitatively or numerically:
 - practicality;
 - reliability;
 - complementarity.
+- session-length and format fit;
+- actionability for the confirmed goal.
 
 Do not collapse all dimensions into one opaque score. Explain the decisive trade-offs.
 
@@ -44,6 +47,13 @@ Capture when available:
 - access date for changing pages;
 - access conditions;
 - verification note.
+
+For tools, platforms, creators, accounts, and communities, also capture:
+
+- current availability and region;
+- ownership, sponsorship, or commercial incentives when material;
+- last meaningful update or activity;
+- what the resource is reliable for and what it should not be trusted for.
 
 ## Conflict handling
 

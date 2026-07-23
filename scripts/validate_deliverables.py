@@ -118,34 +118,40 @@ def validate_deliverables(
     labels = labels_for(data["meta"].get("language"))
     section_labels = (
         labels["confirmed_brief"],
-        labels["topic_brief"],
+        labels["orientation"],
+        labels["field_guide"],
+        labels["action_kit"],
         labels["knowledge_map"],
-        labels["source_plan"],
-        labels["starting_point"],
+        labels["resource_tracks"],
         labels["resources"],
         labels["roadmap"],
+        labels["source_plan"],
         labels["source_notes"],
         labels["next_action"],
     )
     section_ids = {
         "brief",
-        "topic",
+        "orientation",
+        "field",
+        "action",
         "knowledge",
-        "sources",
-        "start",
+        "tracks",
         "resources",
         "roadmap",
+        "sources",
         "notes",
         "next",
     }
     expected_section_order = [
         "brief",
-        "topic",
+        "orientation",
+        "field",
+        "action",
         "knowledge",
-        "sources",
-        "start",
+        "tracks",
         "resources",
         "roadmap",
+        "sources",
         "notes",
         "next",
     ]
@@ -164,14 +170,16 @@ def validate_deliverables(
         or markdown_section_positions != sorted(markdown_section_positions)
     ):
         errors.append(
-            "Markdown sections must present the research atlas before the roadmap."
+            "Markdown sections must present the direct answer and practical "
+            "guidance before the roadmap, with source methodology afterward."
         )
     missing_ids = sorted(section_ids - collector.ids)
     if missing_ids:
         errors.append(f"HTML is missing section IDs: {', '.join(missing_ids)}")
     if collector.section_order != expected_section_order:
         errors.append(
-            "HTML sections must present the research atlas before the roadmap; "
+            "HTML sections must present the direct answer and practical guidance "
+            "before the roadmap, with source methodology afterward; "
             f"expected {', '.join(expected_section_order)}, found "
             f"{', '.join(collector.section_order) or 'none'}."
         )
@@ -187,6 +195,60 @@ def validate_deliverables(
             errors.append(f"Markdown is missing resource URL: {url}")
         if url not in collector.links:
             errors.append(f"HTML is missing resource link: {url}")
+
+    parity_items: list[Any] = [
+        data["orientation"]["bottom_line"],
+        *data["orientation"]["key_points"],
+        *data["orientation"]["tradeoffs"],
+        *(
+            value
+            for recommendation in data["orientation"]["recommendations"]
+            for value in (
+                recommendation["choice"],
+                recommendation["best_for"],
+                recommendation["why"],
+                recommendation["tradeoffs"],
+            )
+        ),
+        data["field_guide"]["as_of"],
+        data["field_guide"]["scope"],
+        *(
+            value
+            for entry in data["field_guide"]["entries"]
+            for value in (
+                entry["name"],
+                entry["category"],
+                entry["why_it_matters"],
+                *entry["representative_examples"],
+                entry["selection_note"],
+            )
+        ),
+        *(
+            value
+            for item in data["action_kit"]["setup"]
+            for value in (item["item"], item["recommendation"], item["why"])
+        ),
+        *data["action_kit"]["first_session"],
+        *data["action_kit"]["decision_rules"],
+        *data["action_kit"]["safety_checks"],
+        *data["action_kit"]["failure_modes"],
+        *(
+            value
+            for track in data["resource_tracks"]
+            for value in (
+                track["title"],
+                track["best_for"],
+                track["cadence"],
+                *track["sequence"],
+            )
+        ),
+    ]
+    for item in parity_items:
+        value = normalized(item)
+        if value not in normalized(markdown.replace("\\", "")):
+            errors.append(f"Markdown is missing answer-first content: {value}")
+        if value not in html_text:
+            errors.append(f"HTML is missing answer-first content: {value}")
 
     for stage in data["roadmap"]:
         title = normalized(stage["title"])

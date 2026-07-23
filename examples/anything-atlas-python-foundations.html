@@ -264,6 +264,10 @@ button:focus-visible {
 
 .brief-grid,
 .map-grid,
+.decision-grid,
+.field-grid,
+.setup-grid,
+.track-grid,
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -272,6 +276,10 @@ button:focus-visible {
 
 .brief-item,
 .map-node,
+.decision-card,
+.field-card,
+.setup-card,
+.track-card,
 .resource-card,
 .plan-block {
   min-width: 0;
@@ -317,8 +325,87 @@ button:focus-visible {
 }
 
 .map-node h3,
+.decision-card h3,
+.field-card h3,
+.setup-card h3,
+.track-card h3,
 .resource-card h3 {
   margin-top: 0;
+}
+
+.answer-card {
+  padding: 22px;
+  background: linear-gradient(135deg, var(--success-bg), #f6fffb);
+  border: 1px solid #b9e7d8;
+  border-left: 5px solid var(--success);
+  border-radius: 16px;
+}
+
+.answer-card .lead {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.decision-card {
+  border-top: 4px solid var(--success);
+}
+
+.decision-card p,
+.field-card p,
+.setup-card p,
+.track-card p {
+  margin: 10px 0;
+}
+
+.guide-meta {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.35fr) minmax(0, 1.65fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.guide-meta > div {
+  padding: 12px 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+.guide-meta dt,
+.field-card__category {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.guide-meta dd {
+  margin: 0;
+}
+
+.field-card {
+  border-top: 4px solid var(--cyan);
+}
+
+.field-card ul,
+.track-card ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.setup-grid,
+.track-grid {
+  margin-bottom: 22px;
+}
+
+.setup-card {
+  border-left: 4px solid var(--indigo);
+}
+
+.track-card {
+  border-top: 4px solid var(--indigo);
 }
 
 .dependency-list,
@@ -601,6 +688,10 @@ button:focus-visible {
   .atlas-nav ol,
   .brief-grid,
   .map-grid,
+  .decision-grid,
+  .field-grid,
+  .setup-grid,
+  .track-grid,
   .plan-grid,
   .resource-grid,
   .roadmap-stage__grid {
@@ -697,6 +788,10 @@ button:focus-visible {
 
   .resource-card,
   .map-node,
+  .decision-card,
+  .field-card,
+  .setup-card,
+  .track-card,
   .roadmap-stage,
   .starting-card,
   .next-card {
@@ -842,6 +937,10 @@ button:focus-visible {
 
 .theme-workshop .brief-item,
 .theme-workshop .map-node,
+.theme-workshop .decision-card,
+.theme-workshop .field-card,
+.theme-workshop .setup-card,
+.theme-workshop .track-card,
 .theme-workshop .resource-card,
 .theme-workshop .plan-block {
   background: #fafbfe;
@@ -999,7 +1098,13 @@ button:focus-visible {
   }
 
   body[class*="theme-"] .brief-item,
+  body[class*="theme-"] .answer-card,
+  body[class*="theme-"] .guide-meta > div,
   body[class*="theme-"] .map-node,
+  body[class*="theme-"] .decision-card,
+  body[class*="theme-"] .field-card,
+  body[class*="theme-"] .setup-card,
+  body[class*="theme-"] .track-card,
   body[class*="theme-"] .resource-card,
   body[class*="theme-"] .plan-block,
   body[class*="theme-"] .roadmap-stage,
@@ -1023,6 +1128,7 @@ button:focus-visible {
 
   body[class*="theme-"] .starting-card dt,
   body[class*="theme-"] .next-card dt,
+  body[class*="theme-"] .answer-card .lead,
   body[class*="theme-"] .fact-label,
   body[class*="theme-"] .brief-item dt,
   body[class*="theme-"] .roadmap-stage__timing,
@@ -1080,12 +1186,14 @@ button:focus-visible {
         <nav>
           <ol>
             <li><a href="#brief">Confirmed User Brief</a></li>
-            <li><a href="#topic">Topic Brief</a></li>
+            <li><a href="#orientation">Direct Orientation</a></li>
+            <li><a href="#field">Field Guide</a></li>
+            <li><a href="#action">Practical Action Kit</a></li>
             <li><a href="#knowledge">Knowledge Map</a></li>
-            <li><a href="#sources">Source and Channel Plan</a></li>
-            <li><a href="#start">Recommended Starting Point</a></li>
+            <li><a href="#tracks">Resource Tracks</a></li>
             <li><a href="#resources">Curated Resource Atlas</a></li>
             <li><a href="#roadmap">Detailed Learning or Exploration Roadmap</a></li>
+            <li><a href="#sources">Source and Channel Plan</a></li>
             <li><a href="#notes">Source Notes</a></li>
             <li><a href="#next">Next Action</a></li>
           </ol>
@@ -1098,48 +1206,53 @@ button:focus-visible {
         <h2>Confirmed User Brief</h2>
         <dl class="brief-grid"><div class="brief-item"><dt>Goal</dt><dd>Write small, useful Python programs and become ready for a project-focused intermediate course.</dd></div><div class="brief-item"><dt>Starting point</dt><dd>No Python experience and only limited prior programming exposure.</dd></div><div class="brief-item"><dt>Available time</dt><dd>5 hours per week for 6 weeks</dd></div><div class="brief-item"><dt>Language</dt><dd>English</dd></div><div class="brief-item"><dt>Preferred formats</dt><dd><ul><li>Written tutorials</li><li>Hands-on exercises</li><li>Small projects</li></ul></dd></div><div class="brief-item"><dt>Desired depth</dt><dd>Beginner foundation with practical application</dd></div><div class="brief-item"><dt>Constraints</dt><dd><ul><li>Prefer free web-accessible resources</li><li>Keep the core set to three resources</li></ul></dd></div><div class="brief-item"><dt>Assumptions</dt><dd><ul><li>The learner can install Python or use a browser-based environment</li><li>The learner wants general automation rather than data science specialization</li></ul></dd></div></dl>
       </section>
-      <section id="topic" class="atlas-section" data-section="topic">
+      <section id="orientation" class="atlas-section" data-section="orientation">
         <p class="section-kicker">02</p>
-        <h2>Topic Brief</h2>
-        <h3>Overview</h3>
-        <p class="lead">Python is a general-purpose programming language with readable syntax and a large standard library. A strong beginner path combines language fundamentals, frequent coding practice, debugging, and one useful project.</p>
-        <h3>Why it matters</h3>
-        <p>Python can automate everyday tasks and provides a foundation for later study in web development, data, scientific computing, and artificial intelligence.</p>
-        <h3>Expected outcomes</h3>
-        <ul><li>Read and write small Python programs</li><li>Use control flow, functions, collections, files, and exceptions</li><li>Debug common errors</li><li>Complete and explain a small automation project</li></ul>
+        <h2>Direct Orientation</h2>
+<div class="answer-card"><p class="fact-label">Bottom line</p><p class="lead">Start with the official Python runtime and a plain code editor, learn only the syntax needed to automate one real file or text task, and use short exercises for feedback. Do not begin with frameworks, data-science stacks, or a long survey course.</p></div><h3>What matters</h3><ul><li>Typing and modifying working examples builds useful fluency faster than passive watching.</li><li>Functions, collections, files, and error handling cover most beginner automation tasks.</li><li>One small end-to-end script is a better six-week checkpoint than broad but shallow topic coverage.</li></ul><h3>Recommendations</h3><div class="decision-grid"><article class="decision-card"><h3>Official tutorial plus a local Python installation</h3><p><strong>Best for:</strong> Learning canonical behavior and becoming comfortable running real files</p><p><strong>Why:</strong> It keeps the environment close to how Python is actually used and provides authoritative syntax explanations.</p><p><strong>Trade-offs:</strong> The tutorial assumes some general programming familiarity, so a complete beginner needs a gentler project resource alongside it.</p></article><article class="decision-card"><h3>Automate the Boring Stuff as the project spine</h3><p><strong>Best for:</strong> A complete beginner motivated by useful office or file automation</p><p><strong>Why:</strong> Its examples turn syntax into recognizable tasks instead of treating Python as abstract theory.</p><p><strong>Trade-offs:</strong> The book is much broader than this plan; only the assigned chapters and one project should be core.</p></article></div><h3>Trade-offs</h3><ul><li>A browser notebook reduces setup friction but hides some file, terminal, and environment skills.</li><li>A video-first route feels easier initially but needs deliberate typing and debugging to produce durable skill.</li></ul>
+      </section>
+      <section id="field" class="atlas-section" data-section="field">
+        <p class="section-kicker">03</p>
+        <h2>Field Guide</h2>
+<dl class="guide-meta"><div><dt>As of</dt><dd>2026-07-23</dd></div><div><dt>Scope</dt><dd>Beginner Python environments, editors, learning resources, and practice options for general automation; excludes web frameworks, data science, and production deployment.</dd></div></dl><div class="field-grid"><article class="field-card"><h3>Runtime and environment</h3><p class="field-card__category">Where Python code runs</p><p><strong>Why it matters:</strong> A local runtime teaches files and terminal execution, while a browser environment removes installation friction.</p><p><strong>Representative examples:</strong></p><ul><li>Python from python.org</li><li>IDLE</li><li>Google Colab</li></ul><p><strong>Selection note:</strong> Use local Python for the core path; use Colab only if installation is blocked.</p></article><article class="field-card"><h3>Code editor</h3><p class="field-card__category">Where programs are written and debugged</p><p><strong>Why it matters:</strong> A lightweight editor with syntax highlighting and a visible terminal reduces avoidable friction.</p><p><strong>Representative examples:</strong></p><ul><li>Visual Studio Code with the Microsoft Python extension</li><li>IDLE</li></ul><p><strong>Selection note:</strong> Choose VS Code if comfortable installing an editor; choose IDLE for the smallest possible setup.</p></article><article class="field-card"><h3>Guided practice</h3><p class="field-card__category">Feedback and repetition</p><p><strong>Why it matters:</strong> Short exercises expose gaps that reading alone does not reveal.</p><p><strong>Representative examples:</strong></p><ul><li>Exercism Python track</li><li>Exercises from Automate the Boring Stuff</li></ul><p><strong>Selection note:</strong> Use Exercism for concept repetition and the book exercises for project context.</p></article></div>
+      </section>
+      <section id="action" class="atlas-section" data-section="action">
+        <p class="section-kicker">04</p>
+        <h2>Practical Action Kit</h2>
+<h3>Setup</h3><div class="setup-grid"><article class="setup-card"><h3>Python runtime</h3><p><strong>Recommendation:</strong> Install the current stable Python 3 release from python.org and confirm python3 --version in a terminal.</p><p><strong>Why:</strong> It provides the canonical interpreter and makes later file-automation tasks realistic.</p></article><article class="setup-card"><h3>Editor</h3><p><strong>Recommendation:</strong> Use Visual Studio Code with the Microsoft Python extension, or IDLE if a smaller setup is preferable.</p><p><strong>Why:</strong> Both support a beginner workflow without introducing a framework or complex project tooling.</p></article></div><h3>First session</h3><ul><li>Create hello.py, print one line, and run it from the terminal.</li><li>Add a variable, input, one condition, and one loop by modifying a working example.</li><li>Trigger a SyntaxError and a NameError deliberately, then read and fix each traceback.</li><li>Save a short note explaining how to run the file again.</li></ul><h3>Decision rules</h3><ul><li>If local installation takes more than 20 minutes, complete the first session in Google Colab and return to local setup in week one.</li><li>Do not add a library until the standard library clearly cannot complete the chosen task.</li><li>Every learning session must end with code that runs or a documented error that was explained.</li></ul><h3>Safety or quality checks</h3><ul><li>Practice on copies of files until the script has a dry-run or verification step.</li><li>Do not paste secrets, credentials, or private work documents into public browser notebooks.</li></ul><h3>Failure modes</h3><ul><li>Watching examples without typing them: pause and reproduce each example from memory.</li><li>Changing tools repeatedly: keep one runtime and editor for the six-week core path.</li><li>Starting an oversized project: reduce it to one input, one transformation, and one output.</li></ul>
       </section>
       <section id="knowledge" class="atlas-section" data-section="knowledge">
-        <p class="section-kicker">03</p>
+        <p class="section-kicker">05</p>
         <h2>Knowledge Map</h2>
         <div class="map-grid"><article class="map-node"><h3>Execution and basic syntax</h3><p>Running Python, expressions, variables, strings, numbers, and basic input and output.</p></article><article class="map-node"><h3>Control flow and functions</h3><p>Conditions, loops, reusable functions, arguments, return values, and scope.</p><div class="dependency-list" aria-label="Depends on"><span class="fact-label">Depends on</span><span class="chip">Execution and basic syntax</span></div></article><article class="map-node"><h3>Data and files</h3><p>Lists, dictionaries, sets, text processing, files, and structured data.</p><div class="dependency-list" aria-label="Depends on"><span class="fact-label">Depends on</span><span class="chip">Control flow and functions</span></div></article><article class="map-node"><h3>Reliable small programs</h3><p>Errors, debugging, tests, decomposition, and an end-to-end automation script.</p><div class="dependency-list" aria-label="Depends on"><span class="fact-label">Depends on</span><span class="chip">Data and files</span></div></article></div>
       </section>
-      <section id="sources" class="atlas-section" data-section="sources">
-        <p class="section-kicker">04</p>
-        <h2>Source and Channel Plan</h2>
-        <div class="plan-grid"><div class="plan-block"><p class="fact-label">Topic type</p>Practical skill with a mature technical foundation</div><div class="plan-block"><p class="fact-label">Required materials</p><ul><li>Official language tutorial</li><li>Beginner-friendly project book</li><li>Automated coding exercises</li></ul></div><div class="plan-block"><p class="fact-label">Credibility policy</p><ul><li>Prefer official documentation for language behavior</li><li>Use current author-maintained material for projects</li><li>Use exercises as practice rather than as the sole explanation</li></ul></div><div class="plan-block"><p class="fact-label">Recency rule</p>Check documentation version and platform availability at the time of use.</div><div class="plan-block plan-block--wide"><p class="fact-label">Channel cautions</p><ul><li>The official tutorial assumes some general programming familiarity</li><li>Exercise catalogs and access features can change</li></ul></div><div class="plan-block plan-block--wide"><p class="fact-label">Priority channels</p><ul class="channel-list"><li><strong>Official Python documentation</strong><span class="channel-priority">Primary</span><br>Canonical language explanations and current syntax</li><li><strong>Author-maintained open book</strong><span class="channel-priority">Primary</span><br>Guided practical projects with a beginner orientation</li><li><strong>Exercise platform</strong><span class="channel-priority">Complementary</span><br>Repeated practice, automated checks, and optional mentoring</li></ul></div></div>
-      </section>
-      <section id="start" class="atlas-section" data-section="start">
-        <p class="section-kicker">05</p>
-        <h2>Recommended Starting Point</h2>
-        <div class="starting-card"><dl><dt>Action</dt><dd>Run the first examples in Python and modify each one.</dd><dt>Resource</dt><dd>The Python Tutorial, sections 1–3</dd><dt>Why this first</dt><dd>It establishes the canonical vocabulary and gives immediate hands-on feedback.</dd></dl></div>
+      <section id="tracks" class="atlas-section" data-section="tracks">
+        <p class="section-kicker">06</p>
+        <h2>Resource Tracks</h2>
+<div class="track-grid"><article class="track-card"><h3>Short-session practical track</h3><p><strong>Best for:</strong> A beginner learning in 30–45 minute sessions who wants visible progress every day</p><p><strong>Cadence:</strong> Five 30–45 minute sessions per week</p><p><strong>Assigned resources:</strong> Automate the Boring Stuff with Python, Python on Exercism, The Python Tutorial</p><p class="fact-label">Sequence</p><ul><li>Read one assigned Automate the Boring Stuff section for no more than 15 minutes.</li><li>Type and alter the example for 15 minutes.</li><li>Use the remaining time for one small Exercism task or one debugging note.</li><li>Consult the matching Python Tutorial section only when a concept needs a canonical explanation.</li></ul></article><article class="track-card"><h3>Reference-first track</h3><p><strong>Best for:</strong> A learner who prefers precise written explanations and can sustain 60–90 minute sessions</p><p><strong>Cadence:</strong> Three 60–90 minute sessions per week</p><p><strong>Assigned resources:</strong> The Python Tutorial, Automate the Boring Stuff with Python, Python on Exercism</p><p class="fact-label">Sequence</p><ul><li>Study the assigned Python Tutorial section and run every example.</li><li>Complete the matching project-book chapter.</li><li>Finish one or two concept exercises and record any errors that required documentation.</li></ul></article></div>
       </section>
       <section id="resources" class="atlas-section" data-section="resources">
-        <p class="section-kicker">06</p>
+        <p class="section-kicker">07</p>
         <h2>Curated Resource Atlas</h2>
-        <div class="resource-grid"><article class="resource-card" data-resource-id="python-tutorial"><h3>The Python Tutorial</h3><p class="resource-card__creator">Python Software Foundation</p><div class="card-meta"><span class="chip">Role: Core foundation</span><span class="chip">Level: Beginner with some general programming familiarity</span><span class="chip">Format: Web documentation with examples</span><span class="chip">Time: 12–16 hours for selected sections</span><span class="chip">Type: Official tutorial</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It is the canonical introduction to Python language concepts and current standard behavior.</p><p><strong>Focus:</strong> Sections 1–8 first; use later sections as references when the roadmap calls for them.</p><p><strong>Limitations:</strong> It explicitly expects basic programming understanding and is less project-driven than a beginner course.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://docs.python.org/3/tutorial/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="automate-book"><h3>Automate the Boring Stuff with Python</h3><p class="resource-card__creator">Al Sweigart</p><div class="card-meta"><span class="chip">Role: Guided learning</span><span class="chip">Level: Complete beginner</span><span class="chip">Format: Book chapters and practical projects</span><span class="chip">Time: 14–18 hours for selected chapters and one project</span><span class="chip">Type: Open web book</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It connects fundamentals to concrete automation tasks and is available to read online.</p><p><strong>Focus:</strong> Chapters 1–12, then choose one automation chapter that matches the learner’s interests.</p><p><strong>Limitations:</strong> The project breadth is wider than this six-week path, so most later chapters should be treated as optional.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://automatetheboringstuff.com/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="exercism-python"><h3>Python on Exercism</h3><p class="resource-card__creator">Exercism</p><div class="card-meta"><span class="chip">Role: Practice</span><span class="chip">Level: Beginner to advanced</span><span class="chip">Format: Coding exercises, automated analysis, and mentoring</span><span class="chip">Time: 8–10 hours for selected beginner exercises</span><span class="chip">Type: Exercise track</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It provides deliberate practice and fast feedback that complements reading and projects.</p><p><strong>Focus:</strong> Complete the tutorial exercise and selected concept exercises on basics, conditions, loops, strings, lists, and dictionaries.</p><p><strong>Limitations:</strong> The catalog and mentoring availability can change, and an account may be needed for the full workflow.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://exercism.org/tracks/python">Open resource <span aria-hidden="true">↗</span></a></article></div>
+        <div class="resource-grid"><article class="resource-card" data-resource-id="python-tutorial"><h3>The Python Tutorial</h3><p class="resource-card__creator">Python Software Foundation</p><div class="card-meta"><span class="chip">Role: Core foundation</span><span class="chip">Level: Beginner with some general programming familiarity</span><span class="chip">Format: Web documentation with examples</span><span class="chip">Time: 12–16 hours for selected sections</span><span class="chip">Best for: Learners who want precise, canonical explanations and do not mind dense reading</span><span class="chip">Access: Free web access; no account required</span><span class="chip">Type: Official tutorial</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It is the canonical introduction to Python language concepts and current standard behavior.</p><p><strong>Focus:</strong> Sections 1–8 first; use later sections as references when the roadmap calls for them.</p><p><strong>Limitations:</strong> It explicitly expects basic programming understanding and is less project-driven than a beginner course.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://docs.python.org/3/tutorial/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="automate-book"><h3>Automate the Boring Stuff with Python</h3><p class="resource-card__creator">Al Sweigart</p><div class="card-meta"><span class="chip">Role: Guided learning</span><span class="chip">Level: Complete beginner</span><span class="chip">Format: Book chapters and practical projects</span><span class="chip">Time: 14–18 hours for selected chapters and one project</span><span class="chip">Best for: Complete beginners motivated by short, useful automation projects</span><span class="chip">Access: Free to read on the web; optional paid editions and courses</span><span class="chip">Type: Open web book</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It connects fundamentals to concrete automation tasks and is available to read online.</p><p><strong>Focus:</strong> Chapters 1–12, then choose one automation chapter that matches the learner’s interests.</p><p><strong>Limitations:</strong> The project breadth is wider than this six-week path, so most later chapters should be treated as optional.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://automatetheboringstuff.com/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="exercism-python"><h3>Python on Exercism</h3><p class="resource-card__creator">Exercism</p><div class="card-meta"><span class="chip">Role: Practice</span><span class="chip">Level: Beginner to advanced</span><span class="chip">Format: Coding exercises, automated analysis, and mentoring</span><span class="chip">Time: 8–10 hours for selected beginner exercises</span><span class="chip">Best for: Short practice sessions with immediate automated feedback</span><span class="chip">Access: Free account-based web platform</span><span class="chip">Type: Exercise track</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It provides deliberate practice and fast feedback that complements reading and projects.</p><p><strong>Focus:</strong> Complete the tutorial exercise and selected concept exercises on basics, conditions, loops, strings, lists, and dictionaries.</p><p><strong>Limitations:</strong> The catalog and mentoring availability can change, and an account may be needed for the full workflow.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://exercism.org/tracks/python">Open resource <span aria-hidden="true">↗</span></a></article></div>
       </section>
       <section id="roadmap" class="atlas-section" data-section="roadmap">
-        <p class="section-kicker">07</p>
+        <p class="section-kicker">08</p>
         <h2>Detailed Learning or Exploration Roadmap</h2>
         <div class="roadmap"><article class="roadmap-stage" data-stage="1"><div class="roadmap-stage__number" aria-hidden="true">1</div><h3>Learn to read and run Python</h3><p class="roadmap-stage__timing">Duration: 2 weeks · Weekly effort: 5 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Run Python programs</li><li>Use values, variables, strings, conditions, loops, and functions</li><li>Explain a traceback at a basic level</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>None</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul><li>The Python Tutorial</li><li>Automate the Boring Stuff with Python</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Work through Python Tutorial sections 1–4</li><li>Complete Automate the Boring Stuff chapters 1–5</li><li>Rewrite five examples from memory and deliberately trigger three errors</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">A command-line number or text game using at least one function and one loop.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>Explain variables, conditions, loops, functions, and exceptions without notes</li><li>Fix a syntax error and a simple runtime error</li><li>Run the deliverable from a clean terminal session</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Add input validation to the game</li></ul></div></div></article><article class="roadmap-stage" data-stage="2"><div class="roadmap-stage__number" aria-hidden="true">2</div><h3>Work with data and files</h3><p class="roadmap-stage__timing">Duration: 2 weeks · Weekly effort: 5 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Use lists and dictionaries</li><li>Process text and files</li><li>Break a problem into small functions</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>Complete Stage 1</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul><li>The Python Tutorial</li><li>Automate the Boring Stuff with Python</li><li>Python on Exercism</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Study Python Tutorial sections 5, 7, and 8</li><li>Complete Automate the Boring Stuff chapters 6–10</li><li>Solve six selected Exercism concept exercises</li><li>Write a script that reads a text file and produces a summary</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">A tested text-processing utility with a short usage guide.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>Choose an appropriate list or dictionary for a new problem</li><li>Read and write a UTF-8 text file safely</li><li>Explain the program’s function boundaries and error handling</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Add JSON input or output</li></ul></div></div></article><article class="roadmap-stage" data-stage="3"><div class="roadmap-stage__number" aria-hidden="true">3</div><h3>Build a useful automation project</h3><p class="roadmap-stage__timing">Duration: 2 weeks · Weekly effort: 5 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Plan a small program</li><li>Use documentation independently</li><li>Test and explain an end-to-end script</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>Complete Stage 2</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul><li>Automate the Boring Stuff with Python</li><li>Python on Exercism</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Choose one automation problem involving files, text, or structured data</li><li>Write a one-page plan before coding</li><li>Implement the project in small functions</li><li>Test normal, empty, and invalid inputs</li><li>Write a concise retrospective</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">A reusable automation script, tests or a verification checklist, and a one-page project note.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>A new user can run the script from the usage instructions</li><li>The script handles at least two failure cases</li><li>The learner can explain every function and identify the next improvement</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Package the script as a command-line tool</li><li>Request feedback on one Exercism solution</li></ul></div></div></article></div>
       </section>
+      <section id="sources" class="atlas-section" data-section="sources">
+        <p class="section-kicker">09</p>
+        <h2>Source and Channel Plan</h2>
+        <div class="plan-grid"><div class="plan-block"><p class="fact-label">Topic type</p>Practical skill with a mature technical foundation</div><div class="plan-block"><p class="fact-label">Required materials</p><ul><li>Official language tutorial</li><li>Beginner-friendly project book</li><li>Automated coding exercises</li><li>Current runtime and editor setup documentation</li></ul></div><div class="plan-block"><p class="fact-label">Credibility policy</p><ul><li>Prefer official documentation for language behavior and installation</li><li>Use current author-maintained material for projects</li><li>Use exercises as practice rather than as the sole explanation</li><li>Treat platform popularity as a usability signal, not proof of technical authority</li></ul></div><div class="plan-block"><p class="fact-label">Recency rule</p>Check the current Python 3 release, documentation version, editor extension, and platform availability at the time of use.</div><div class="plan-block"><p class="fact-label">Format and cadence fit</p>The core track uses 15-minute reading or demonstration units plus hands-on practice for 30–45 minute sessions; the alternative track supports longer reference-first sessions.</div><div class="plan-block plan-block--wide"><p class="fact-label">Channel cautions</p><ul><li>The official tutorial assumes some general programming familiarity</li><li>Exercise catalogs, mentoring features, and editor workflows can change</li></ul></div><div class="plan-block plan-block--wide"><p class="fact-label">Priority channels</p><ul class="channel-list"><li><strong>Official Python documentation</strong><span class="channel-priority">Primary</span><br>Canonical language explanations, downloads, and current syntax</li><li><strong>Author-maintained open book</strong><span class="channel-priority">Primary</span><br>Guided practical projects with a beginner orientation</li><li><strong>Exercise platform</strong><span class="channel-priority">Complementary</span><br>Repeated short-session practice, automated checks, and optional mentoring</li><li><strong>Official editor and extension documentation</strong><span class="channel-priority">Supporting</span><br>Current installation and debugging workflow</li></ul></div></div>
+      </section>
       <section id="notes" class="atlas-section" data-section="notes">
-        <p class="section-kicker">08</p>
+        <p class="section-kicker">10</p>
         <h2>Source Notes</h2>
         <ul class="source-notes"><li class="source-note source-note--caution"><strong>Official tutorial audience:</strong> The Python Tutorial says it is designed for programmers new to Python rather than people entirely new to programming, so the project book supplies extra beginner scaffolding.</li><li class="source-note source-note--note"><strong>Changing platforms:</strong> Exercise counts, mentoring features, and access workflows may change; verify the current track before assigning exact exercises.</li><li class="source-note source-note--note"><strong>Scope:</strong> This roadmap intentionally postpones classes, packaging, web frameworks, data science, and advanced testing.</li></ul>
       </section>
       <section id="next" class="atlas-section" data-section="next">
-        <p class="section-kicker">09</p>
+        <p class="section-kicker">11</p>
         <h2>Next Action</h2>
         <div class="next-card"><dl><dt>Action</dt><dd>Open The Python Tutorial and run the examples in sections 1–3, changing at least one value in every example.</dd><dt>When</dt><dd>Today, for 45 minutes</dd><dt>Expected output</dt><dd>A saved Python file containing three modified examples and one sentence about what each demonstrates.</dd></dl></div>
       </section>

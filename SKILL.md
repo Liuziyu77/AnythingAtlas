@@ -1,6 +1,6 @@
 ---
 name: anything-atlas
-description: Research and curate a trustworthy entry into any unfamiliar topic. Use when a user asks for a reading list, learning resources, books, courses, papers, experts or accounts to follow, a knowledge map, a topic research plan, or a personalized curriculum or roadmap. Proactively clarify goals and constraints, classify the topic, select topic-appropriate materials and information channels, verify and rank resources, build a detailed staged roadmap, and always deliver synchronized Markdown and polished self-contained HTML files.
+description: Research and curate a trustworthy, action-first entry into any unfamiliar topic. Use when a user asks for practical orientation, concrete tools or options, a field map, a reading list, learning resources, books, videos, courses, papers, experts or accounts to follow, a topic research plan, or a personalized curriculum or roadmap. Clarify only material gaps, match resources to format and session-length preferences, verify and rank sources, build an executable first-session kit and staged roadmap, and always deliver synchronized Markdown and polished self-contained HTML files.
 ---
 
 # AnythingAtlas
@@ -14,6 +14,14 @@ Turn an unfamiliar topic into a verified knowledge atlas and an executable learn
 - Verify that recommended resources exist and that titles, authors, URLs, dates, and access conditions are accurate.
 - Prefer the smallest sufficient set of complementary resources over a long undifferentiated list.
 - Explain why every resource is included, who it suits, what to focus on, and what its limitations are.
+- Answer first: put the direct conclusion, concrete options, and decisive
+  trade-offs before background, methodology, and the learning plan.
+- Include a field guide with exact, representative tools, platforms, products,
+  works, people, institutions, methods, or players appropriate to the topic.
+- Match resources to the user's preferred format and normal session length;
+  provide distinct quick, balanced, or deep tracks when useful.
+- For action-oriented requests, name the actual setup and give an executable
+  first-session workflow.
 - Write compactly: prioritize decisions, evidence, exact resource assignments, and actions over generic explanation.
 - Make every roadmap stage executable with tasks, time, milestones, deliverables, and completion criteria.
 - Produce both a complete Markdown file and a polished, self-contained HTML file.
@@ -31,7 +39,7 @@ Read [references/clarification-policy.md](references/clarification-policy.md). A
 - desired outcome;
 - current knowledge and prerequisites;
 - available time, target date, and intensity;
-- preferred language, formats, and practice modes;
+- preferred language, formats, normal session length, and practice modes;
 - depth, budget, geography, and access;
 - sources or viewpoints to include or avoid.
 
@@ -39,9 +47,18 @@ Summarize the interpreted brief and consequential assumptions. Ask for confirmat
 
 Do not present the final atlas until the brief is sufficiently clear.
 
+When the user wants to act immediately and learn afterward, treat those as two
+linked horizons: a minimum viable first-session outcome and a follow-on
+learning cadence. Infer a short-form preference when the user only has short
+daily sessions; do not ask again unless the choice remains consequential.
+
 ### 2. Classify and map the topic
 
-Read [references/topic-taxonomy.md](references/topic-taxonomy.md). Classify the request by domain type, maturity, rate of change, evidentiary burden, controversy, geographic scope, and theory–practice balance.
+Read [references/topic-taxonomy.md](references/topic-taxonomy.md) and
+[references/specificity-and-resource-fit.md](references/specificity-and-resource-fit.md).
+Classify the request by domain type, maturity, rate of change, evidentiary
+burden, controversy, geographic scope, theory–practice balance, user mode,
+urgency, and consumption pattern.
 
 Build a dependency-aware knowledge map containing:
 
@@ -52,6 +69,10 @@ Build a dependency-aware knowledge map containing:
 - important people and institutions;
 - common misconceptions;
 - optional deeper directions.
+
+Separately build a field guide that names the concrete landscape the user will
+encounter: major segments, representative choices or actors, what each is
+known for, and how to select among them. Date-stamp it when the field changes.
 
 ### 3. Design the source and channel plan
 
@@ -64,7 +85,10 @@ Specify before searching:
 - primary-versus-secondary source balance;
 - recency, language, geography, budget, and access rules;
 - excluded or low-trust channels;
-- credibility and conflict-handling criteria.
+- credibility and conflict-handling criteria;
+- format and session-length fit;
+- channels for actual tools, platforms, practitioners, creators, accounts,
+  communities, products, or official portals relevant to the task.
 
 Do not apply the same policy to a mature academic field, fast-moving technology, historical event, public figure, industry, practical skill, and current event.
 
@@ -80,7 +104,9 @@ Verify every recommended resource:
 - distinguish original evidence, expert interpretation, educational summary, and opinion;
 - note ideological, commercial, geographic, or methodological limitations;
 - use current web research whenever recency can affect the answer;
-- never invent a citation, account, course, paper, archive, or URL.
+- never invent a citation, account, course, paper, archive, or URL;
+- verify concrete field-guide entries, tools, platforms, representative
+  examples, and ongoing-update accounts when included.
 
 If a claim or resource cannot be verified, omit it or label the uncertainty explicitly.
 
@@ -100,6 +126,10 @@ Assign each selected resource a role:
 
 Keep the core set deliberately small. Move useful but nonessential materials into optional branches.
 
+Organize the selected resources into one or more user-fit tracks. Every track
+must state who it fits, the cadence, exact resource order, and exact portions
+to consume. Do not mix books, videos, sites, and accounts indiscriminately.
+
 ### 6. Build the detailed roadmap
 
 Read [references/roadmap-schema.md](references/roadmap-schema.md).
@@ -117,11 +147,20 @@ For every stage, provide:
 
 Fit the roadmap to the confirmed time budget. End with one action the user can take immediately.
 
+For urgent practical requests, create the concrete setup and minimum viable
+first-session path before the longer roadmap. Do not replace requested action
+with theory, simulation, or warnings alone unless a specific safety, legal,
+access, or feasibility constraint requires it.
+
 ### 7. Build the shared content model
 
 Read [references/output-schema.md](references/output-schema.md). Create one UTF-8 JSON content model that contains every section, resource, citation, assumption, and roadmap stage.
 
 Treat the JSON as an intermediate build artifact, not as a required user deliverable. Store it in a temporary location unless the user requests the source data.
+
+The model must carry the direct orientation, field guide, action kit, resource
+tracks, curated resources, roadmap, and evidence notes. Do not bury essential
+recommendations in prose that the renderers cannot preserve.
 
 ### 8. Render and validate both files
 
@@ -153,17 +192,19 @@ anything-atlas-<topic-slug>.md
 anything-atlas-<topic-slug>.html
 ```
 
-Present the research before the learning path. Keep this order in both deliverables:
+Keep this answer-first order in both deliverables:
 
 1. confirmed brief;
-2. topic brief;
-3. knowledge map;
-4. source and channel plan;
-5. recommended starting point;
-6. curated resources;
-7. detailed roadmap;
-8. source notes;
-9. next action.
+2. direct orientation;
+3. field guide;
+4. practical action kit;
+5. knowledge map;
+6. resource tracks;
+7. curated resources;
+8. detailed roadmap;
+9. source and channel plan;
+10. source notes;
+11. next action.
 
 Keep the HTML self-contained by embedding its CSS. Do not place the AnythingAtlas logo, a brand banner, or a brand block in the generated atlas. Credit AnythingAtlas once, as text, in the footer.
 
@@ -187,6 +228,8 @@ Do not paste the entire atlas into chat unless the user requests it. Do not clai
 ## Reference routing
 
 - Read `clarification-policy.md` whenever the request is underspecified.
+- Read `specificity-and-resource-fit.md` before mapping, curating, or writing
+  any atlas.
 - Read `topic-taxonomy.md` and `source-and-channel-policies.md` before research.
 - Read `credibility-criteria.md` while verifying and ranking resources.
 - Read `roadmap-schema.md` before writing the roadmap.
@@ -198,5 +241,11 @@ Do not paste the entire atlas into chat unless the user requests it. Do not clai
 - Preserve disagreement between reliable sources instead of manufacturing consensus.
 - Separate facts, interpretations, and recommendations.
 - State important omissions and inaccessible sources.
-- For medical, legal, financial, or other high-stakes topics, provide educational orientation rather than professional advice and prioritize current authoritative sources.
+- For medical, legal, financial, or other high-stakes topics, prioritize
+  current authoritative sources and clearly separate facts, analysis, and
+  recommendations. Give specific conditional or scenario-based options when
+  the user asks for decision support and the material variables are known.
+  Never imply licensure, a fiduciary relationship, a diagnosis, guaranteed
+  outcomes, or unsupported certainty.
+- Do not use a disclaimer as a substitute for answering the user's question.
 - Avoid using popularity as a substitute for expertise.

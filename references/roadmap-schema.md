@@ -29,12 +29,17 @@ Every stage must contain:
 - Mark skippable material.
 - End every stage with a checkpoint.
 - End the roadmap with a capstone or synthesis outcome when appropriate.
+- When the user wants to act immediately, place a minimum viable first-session
+  task before the longer curriculum. Teach only the prerequisites required for
+  that action, then expand depth.
+- Match assignments to the user's normal session length. Break a long resource
+  into exact short units instead of assigning it wholesale.
 
 ## Time adaptation
 
 | Available time | Recommended shape |
 | --- | --- |
-| A few hours | Orientation, one core resource, one verification task |
+| A few hours | Direct orientation, concrete setup, one core resource, one action and one verification task |
 | 1–2 weeks | Foundation plus one guided exercise |
 | 1–3 months | Multi-stage curriculum with a project or synthesis |
 | 3–12 months | Foundations, specialization, practice, and capstone |
@@ -45,6 +50,9 @@ Every stage must contain:
 Do not write “read this book” without scope. Assign chapters, sections, lectures, or a stopping point whenever possible.
 
 Do not overload a stage. Prefer one primary resource plus complementary evidence or practice.
+
+When multiple formats are plausible, assign one named resource track rather
+than mixing unrelated books, videos, sites, and accounts into every stage.
 
 ## Completion examples
 
