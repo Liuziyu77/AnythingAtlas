@@ -80,63 +80,6 @@ Three fields, three learning goals, and three visual themes. Select a cover to o
   </tr>
 </table>
 
-## 🗺️ How it works
-
-```text
-Initial request: the topic and the time available
-   ↓
-Focused clarification and confirmed brief: guided questions to understand the learner and their needs
-   ↓
-Compact core guide: answer the real question, map concrete options, and give the first action
-   ↓
-Topic classification, discovery, verification, ranking, and curation
-   ↓
-Clickable user-fit resource tracks and a detailed personalized roadmap
-   ↓
-Channel-grouped source directory: official sites, books, YouTube, Bilibili, repositories, and other relevant channels
-   ↓
-Output: Markdown file + polished, self-contained HTML file
-```
-
-AnythingAtlas changes its resource selection, information channels, and verification priorities to match the type of topic:
-
-| Topic type | Priority resources | Main information channels | Core evaluation criteria |
-| --- | --- | --- | --- |
-| Mature academic field | Textbooks, review papers, university courses, professional standards | Library catalogs, academic indexes, university course pages, professional societies | Canonical status, academic consensus, systematic coverage |
-| Fast-moving technology | Recent papers, technical reports, source code, benchmarks | Preprint servers, conference proceedings, official repositories, research labs, expert briefings | Recency, reproducibility, maintenance activity |
-| Historical event | Primary documents, archives, oral histories, scholarly monographs | National and local archives, library collections, museums, academic databases | Provenance, historical context, separation of fact from interpretation |
-| Person or organization | Interviews, speeches, institutional records, biographies, credible reporting | Official websites, institutional archives, interview collections, news databases | First-party records and external verification, chronology, conflicts of interest |
-| Industry research | Official statistics, regulatory filings, corporate disclosures, research reports | Regulatory databases, statistics portals, company filings, industry associations, professional publications | Data definitions, conflicts of interest, timeliness |
-| Practical skill | Official documentation, demonstrations, structured courses, practice projects | Official documentation sites, course platforms, project repositories, practitioner communities | Practicality, progression of difficulty, quality of practice and feedback |
-| Social issue | Official data, systematic research, policy documents, multiple perspectives | Public institutions, review databases, research centers, methodologically transparent civil-society organizations | Research methods, sample representativeness, separation of evidence from opinion |
-| Current event | First-party statements, public records, timelines, credible reporting | Government and institutional websites, judicial or legislative records, news agencies, real-time data sources | Chronology, cross-source verification, update status |
-
-## 📦 Output contract
-
-Every completed run creates:
-
-1. `anything-atlas-<topic-slug>.md` — a structured, portable, editable atlas.
-2. `anything-atlas-<topic-slug>.html` — a thoughtfully designed standalone presentation.
-
-Both files use the same compact five-section sequence: confirmed brief, core
-guide, curated resources with user-fit tracks, detailed roadmap, and a final
-channel-grouped source directory. Resources assigned in a track or roadmap are
-clickable in both Markdown and HTML.
-
-## 🎨 HTML themes
-
-AnythingAtlas selects a visual theme from the topic, or the user can choose one. All five themes share the same content and semantic structure and work on mobile, in print, and offline.
-
-| Theme | Best fit | Visual direction |
-| --- | --- | --- |
-| `atlas` | Interdisciplinary, mixed, or unclassified topics | Clear cartographic hierarchy and blue information cards; the default |
-| `scholar` | Mature disciplines, theory, and academic synthesis | Warm editorial typography and a paper-like long-form reading flow |
-| `archive` | History, people, organizations, and primary-source research | Archival dossier styling, restrained sepia, and document cues |
-| `signal` | AI, software, frontier technology, and fast-moving research | Dark high-contrast interface that foregrounds versions, evidence, and technical signals |
-| `workshop` | Practical skills, project-based learning, and hands-on training | Bold modules and checkpoints that emphasize tasks, outputs, and progress |
-
-Generated HTML uses no image logo. It credits `AnythingAtlas` once, as text, in the footer.
-
 ## 🚀 Quick start
 
 AnythingAtlas follows the open [Agent Skills](https://agentskills.io/) format. The same `SKILL.md` works with Codex, Claude Code, and other Agent Skills-compatible clients; the core workflow does not need to be rewritten for each platform.
@@ -193,6 +136,63 @@ Run the structural regression suite:
 ```bash
 python3 -m unittest discover -s tests -v
 ```
+
+## 📦 Output contract
+
+Every completed run creates:
+
+1. `anything-atlas-<topic-slug>.md` — a structured, portable, editable atlas.
+2. `anything-atlas-<topic-slug>.html` — a thoughtfully designed standalone presentation.
+
+Both files use the same compact five-section sequence: confirmed brief, core
+guide, curated resources with user-fit tracks, detailed roadmap, and a final
+channel-grouped source directory. Resources assigned in a track or roadmap are
+clickable in both Markdown and HTML.
+
+## 🎨 HTML themes
+
+AnythingAtlas selects a visual theme from the topic, or the user can choose one. All five themes share the same content and semantic structure and work on mobile, in print, and offline.
+
+| Theme | Best fit | Visual direction |
+| --- | --- | --- |
+| `atlas` | Interdisciplinary, mixed, or unclassified topics | Clear cartographic hierarchy and blue information cards; the default |
+| `scholar` | Mature disciplines, theory, and academic synthesis | Warm editorial typography and a paper-like long-form reading flow |
+| `archive` | History, people, organizations, and primary-source research | Archival dossier styling, restrained sepia, and document cues |
+| `signal` | AI, software, frontier technology, and fast-moving research | Dark high-contrast interface that foregrounds versions, evidence, and technical signals |
+| `workshop` | Practical skills, project-based learning, and hands-on training | Bold modules and checkpoints that emphasize tasks, outputs, and progress |
+
+Generated HTML uses no image logo. It credits `AnythingAtlas` once, as text, in the footer.
+
+## 🗺️ How it works
+
+```text
+Initial request: the topic and the time available
+   ↓
+Focused clarification and confirmed brief: guided questions to understand the learner and their needs
+   ↓
+Compact core guide: answer the real question, map concrete options, and give the first action
+   ↓
+Topic classification, discovery, verification, ranking, and curation
+   ↓
+Clickable user-fit resource tracks and a detailed personalized roadmap
+   ↓
+Channel-grouped source directory: official sites, books, YouTube, Bilibili, repositories, and other relevant channels
+   ↓
+Output: Markdown file + polished, self-contained HTML file
+```
+
+AnythingAtlas changes its resource selection, information channels, and verification priorities to match the type of topic:
+
+| Topic type | Priority resources | Main information channels | Core evaluation criteria |
+| --- | --- | --- | --- |
+| Mature academic field | Textbooks, review papers, university courses, professional standards | Library catalogs, academic indexes, university course pages, professional societies | Canonical status, academic consensus, systematic coverage |
+| Fast-moving technology | Recent papers, technical reports, source code, benchmarks | Preprint servers, conference proceedings, official repositories, research labs, expert briefings | Recency, reproducibility, maintenance activity |
+| Historical event | Primary documents, archives, oral histories, scholarly monographs | National and local archives, library collections, museums, academic databases | Provenance, historical context, separation of fact from interpretation |
+| Person or organization | Interviews, speeches, institutional records, biographies, credible reporting | Official websites, institutional archives, interview collections, news databases | First-party records and external verification, chronology, conflicts of interest |
+| Industry research | Official statistics, regulatory filings, corporate disclosures, research reports | Regulatory databases, statistics portals, company filings, industry associations, professional publications | Data definitions, conflicts of interest, timeliness |
+| Practical skill | Official documentation, demonstrations, structured courses, practice projects | Official documentation sites, course platforms, project repositories, practitioner communities | Practicality, progression of difficulty, quality of practice and feedback |
+| Social issue | Official data, systematic research, policy documents, multiple perspectives | Public institutions, review databases, research centers, methodologically transparent civil-society organizations | Research methods, sample representativeness, separation of evidence from opinion |
+| Current event | First-party statements, public records, timelines, credible reporting | Government and institutional websites, judicial or legislative records, news agencies, real-time data sources | Chronology, cross-source verification, update status |
 
 ## 🗂️ Repository structure
 
