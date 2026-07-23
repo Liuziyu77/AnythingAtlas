@@ -6,7 +6,7 @@
 
 <p align="center"><strong>Map the best way into any topic</strong></p>
 
-<p align="center"><strong>规划学习任何主题的最佳路径</strong></p>
+<p align="center"><strong>规划任何主题的最佳学习路径</strong></p>
 
 <p align="center">
   <a href="https://agentskills.io/"><img src="https://img.shields.io/badge/Agent_Skills-Compatible-0B1F3A?style=flat-square" alt="兼容 Agent Skills"></a>
