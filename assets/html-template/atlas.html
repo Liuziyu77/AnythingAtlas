@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <title>{{DOCUMENT_TITLE}}</title>
+  <style>
+{{STYLES}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#atlas-main">{{SKIP_LABEL}}</a>
+  <header class="hero">
+    <div class="hero__contours" aria-hidden="true"></div>
+    <div class="hero__inner">
+      {{LOGO}}
+      <p class="eyebrow">{{BRAND}}</p>
+      <h1>{{TITLE}}</h1>
+      <p class="hero__summary">{{SUMMARY}}</p>
+      <div class="hero__meta">{{GENERATED_META}}</div>
+    </div>
+  </header>
+  <div class="atlas-shell">
+    <aside class="atlas-nav" aria-label="{{NAV_LABEL}}">
+      <div class="atlas-nav__inner">
+        <p class="atlas-nav__title">{{BRAND}}</p>
+        <nav>
+          <ol>
+{{NAVIGATION}}
+          </ol>
+        </nav>
+      </div>
+    </aside>
+    <main id="atlas-main" class="atlas-main">
+{{CONTENT}}
+    </main>
+  </div>
+  <footer class="atlas-footer">
+    {{FOOTER}}
+  </footer>
+</body>
+</html>

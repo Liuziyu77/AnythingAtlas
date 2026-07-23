@@ -1,0 +1,281 @@
+{
+  "meta": {
+    "title": "Python Programming Foundations",
+    "topic": "Python programming for a complete beginner",
+    "slug": "python-foundations",
+    "language": "en",
+    "generated_at": "2026-07-23",
+    "summary": "A practical six-week path from Python syntax to a small automation project.",
+    "estimated_total_time": "6 weeks · 5 hours per week"
+  },
+  "brief": {
+    "goal": "Write small, useful Python programs and become ready for a project-focused intermediate course.",
+    "background": "No Python experience and only limited prior programming exposure.",
+    "time": "5 hours per week for 6 weeks",
+    "language": "English",
+    "formats": [
+      "Written tutorials",
+      "Hands-on exercises",
+      "Small projects"
+    ],
+    "depth": "Beginner foundation with practical application",
+    "constraints": [
+      "Prefer free web-accessible resources",
+      "Keep the core set to three resources"
+    ],
+    "assumptions": [
+      "The learner can install Python or use a browser-based environment",
+      "The learner wants general automation rather than data science specialization"
+    ]
+  },
+  "topic_brief": {
+    "overview": "Python is a general-purpose programming language with readable syntax and a large standard library. A strong beginner path combines language fundamentals, frequent coding practice, debugging, and one useful project.",
+    "why_it_matters": "Python can automate everyday tasks and provides a foundation for later study in web development, data, scientific computing, and artificial intelligence.",
+    "outcomes": [
+      "Read and write small Python programs",
+      "Use control flow, functions, collections, files, and exceptions",
+      "Debug common errors",
+      "Complete and explain a small automation project"
+    ]
+  },
+  "knowledge_map": [
+    {
+      "name": "Execution and basic syntax",
+      "description": "Running Python, expressions, variables, strings, numbers, and basic input and output.",
+      "depends_on": []
+    },
+    {
+      "name": "Control flow and functions",
+      "description": "Conditions, loops, reusable functions, arguments, return values, and scope.",
+      "depends_on": [
+        "Execution and basic syntax"
+      ]
+    },
+    {
+      "name": "Data and files",
+      "description": "Lists, dictionaries, sets, text processing, files, and structured data.",
+      "depends_on": [
+        "Control flow and functions"
+      ]
+    },
+    {
+      "name": "Reliable small programs",
+      "description": "Errors, debugging, tests, decomposition, and an end-to-end automation script.",
+      "depends_on": [
+        "Data and files"
+      ]
+    }
+  ],
+  "source_plan": {
+    "topic_type": "Practical skill with a mature technical foundation",
+    "materials": [
+      "Official language tutorial",
+      "Beginner-friendly project book",
+      "Automated coding exercises"
+    ],
+    "channels": [
+      {
+        "name": "Official Python documentation",
+        "priority": "Primary",
+        "reason": "Canonical language explanations and current syntax"
+      },
+      {
+        "name": "Author-maintained open book",
+        "priority": "Primary",
+        "reason": "Guided practical projects with a beginner orientation"
+      },
+      {
+        "name": "Exercise platform",
+        "priority": "Complementary",
+        "reason": "Repeated practice, automated checks, and optional mentoring"
+      }
+    ],
+    "credibility_policy": [
+      "Prefer official documentation for language behavior",
+      "Use current author-maintained material for projects",
+      "Use exercises as practice rather than as the sole explanation"
+    ],
+    "recency": "Check documentation version and platform availability at the time of use.",
+    "cautions": [
+      "The official tutorial assumes some general programming familiarity",
+      "Exercise catalogs and access features can change"
+    ]
+  },
+  "starting_point": {
+    "action": "Run the first examples in Python and modify each one.",
+    "resource": "The Python Tutorial, sections 1–3",
+    "reason": "It establishes the canonical vocabulary and gives immediate hands-on feedback."
+  },
+  "resources": [
+    {
+      "id": "python-tutorial",
+      "title": "The Python Tutorial",
+      "creator": "Python Software Foundation",
+      "url": "https://docs.python.org/3/tutorial/",
+      "type": "Official tutorial",
+      "role": "Core foundation",
+      "level": "Beginner with some general programming familiarity",
+      "format": "Web documentation with examples",
+      "time": "12–16 hours for selected sections",
+      "why": "It is the canonical introduction to Python language concepts and current standard behavior.",
+      "focus": "Sections 1–8 first; use later sections as references when the roadmap calls for them.",
+      "limitations": "It explicitly expects basic programming understanding and is less project-driven than a beginner course.",
+      "verified_on": "2026-07-23"
+    },
+    {
+      "id": "automate-book",
+      "title": "Automate the Boring Stuff with Python",
+      "creator": "Al Sweigart",
+      "url": "https://automatetheboringstuff.com/",
+      "type": "Open web book",
+      "role": "Guided learning",
+      "level": "Complete beginner",
+      "format": "Book chapters and practical projects",
+      "time": "14–18 hours for selected chapters and one project",
+      "why": "It connects fundamentals to concrete automation tasks and is available to read online.",
+      "focus": "Chapters 1–12, then choose one automation chapter that matches the learner’s interests.",
+      "limitations": "The project breadth is wider than this six-week path, so most later chapters should be treated as optional.",
+      "verified_on": "2026-07-23"
+    },
+    {
+      "id": "exercism-python",
+      "title": "Python on Exercism",
+      "creator": "Exercism",
+      "url": "https://exercism.org/tracks/python",
+      "type": "Exercise track",
+      "role": "Practice",
+      "level": "Beginner to advanced",
+      "format": "Coding exercises, automated analysis, and mentoring",
+      "time": "8–10 hours for selected beginner exercises",
+      "why": "It provides deliberate practice and fast feedback that complements reading and projects.",
+      "focus": "Complete the tutorial exercise and selected concept exercises on basics, conditions, loops, strings, lists, and dictionaries.",
+      "limitations": "The catalog and mentoring availability can change, and an account may be needed for the full workflow.",
+      "verified_on": "2026-07-23"
+    }
+  ],
+  "roadmap": [
+    {
+      "stage": 1,
+      "title": "Learn to read and run Python",
+      "duration": "2 weeks",
+      "weekly_effort": "5 hours",
+      "objectives": [
+        "Run Python programs",
+        "Use values, variables, strings, conditions, loops, and functions",
+        "Explain a traceback at a basic level"
+      ],
+      "prerequisites": [
+        "None"
+      ],
+      "resource_ids": [
+        "python-tutorial",
+        "automate-book"
+      ],
+      "tasks": [
+        "Work through Python Tutorial sections 1–4",
+        "Complete Automate the Boring Stuff chapters 1–5",
+        "Rewrite five examples from memory and deliberately trigger three errors"
+      ],
+      "deliverable": "A command-line number or text game using at least one function and one loop.",
+      "completion_criteria": [
+        "Explain variables, conditions, loops, functions, and exceptions without notes",
+        "Fix a syntax error and a simple runtime error",
+        "Run the deliverable from a clean terminal session"
+      ],
+      "optional": [
+        "Add input validation to the game"
+      ]
+    },
+    {
+      "stage": 2,
+      "title": "Work with data and files",
+      "duration": "2 weeks",
+      "weekly_effort": "5 hours",
+      "objectives": [
+        "Use lists and dictionaries",
+        "Process text and files",
+        "Break a problem into small functions"
+      ],
+      "prerequisites": [
+        "Complete Stage 1"
+      ],
+      "resource_ids": [
+        "python-tutorial",
+        "automate-book",
+        "exercism-python"
+      ],
+      "tasks": [
+        "Study Python Tutorial sections 5, 7, and 8",
+        "Complete Automate the Boring Stuff chapters 6–10",
+        "Solve six selected Exercism concept exercises",
+        "Write a script that reads a text file and produces a summary"
+      ],
+      "deliverable": "A tested text-processing utility with a short usage guide.",
+      "completion_criteria": [
+        "Choose an appropriate list or dictionary for a new problem",
+        "Read and write a UTF-8 text file safely",
+        "Explain the program’s function boundaries and error handling"
+      ],
+      "optional": [
+        "Add JSON input or output"
+      ]
+    },
+    {
+      "stage": 3,
+      "title": "Build a useful automation project",
+      "duration": "2 weeks",
+      "weekly_effort": "5 hours",
+      "objectives": [
+        "Plan a small program",
+        "Use documentation independently",
+        "Test and explain an end-to-end script"
+      ],
+      "prerequisites": [
+        "Complete Stage 2"
+      ],
+      "resource_ids": [
+        "automate-book",
+        "exercism-python"
+      ],
+      "tasks": [
+        "Choose one automation problem involving files, text, or structured data",
+        "Write a one-page plan before coding",
+        "Implement the project in small functions",
+        "Test normal, empty, and invalid inputs",
+        "Write a concise retrospective"
+      ],
+      "deliverable": "A reusable automation script, tests or a verification checklist, and a one-page project note.",
+      "completion_criteria": [
+        "A new user can run the script from the usage instructions",
+        "The script handles at least two failure cases",
+        "The learner can explain every function and identify the next improvement"
+      ],
+      "optional": [
+        "Package the script as a command-line tool",
+        "Request feedback on one Exercism solution"
+      ]
+    }
+  ],
+  "source_notes": [
+    {
+      "topic": "Official tutorial audience",
+      "severity": "caution",
+      "note": "The Python Tutorial says it is designed for programmers new to Python rather than people entirely new to programming, so the project book supplies extra beginner scaffolding."
+    },
+    {
+      "topic": "Changing platforms",
+      "severity": "note",
+      "note": "Exercise counts, mentoring features, and access workflows may change; verify the current track before assigning exact exercises."
+    },
+    {
+      "topic": "Scope",
+      "severity": "note",
+      "note": "This roadmap intentionally postpones classes, packaging, web frameworks, data science, and advanced testing."
+    }
+  ],
+  "next_action": {
+    "action": "Open The Python Tutorial and run the examples in sections 1–3, changing at least one value in every example.",
+    "when": "Today, for 45 minutes",
+    "output": "A saved Python file containing three modified examples and one sentence about what each demonstrates."
+  }
+}

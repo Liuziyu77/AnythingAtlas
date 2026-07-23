@@ -1,0 +1,4 @@
+interface:
+  display_name: "AnythingAtlas"
+  short_description: "Build verified learning atlases and roadmaps"
+  default_prompt: "Use $anything-atlas to clarify my learning goal, research the topic, and create a verified roadmap in Markdown and HTML."
