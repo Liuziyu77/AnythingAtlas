@@ -28,7 +28,57 @@ When you begin learning a new field or confronting an unfamiliar subject, the ha
 
 Whether you want to enter quantitative finance, research AI agents, understand a historical event, or master a practical skill, AnythingAtlas turns scattered books, courses, papers, experts, archives, repositories, and online noise into a clear map of the field: its foundations, the resources worth learning from, how to use them, and a step-by-step plan that takes you from beginner to advanced.
 
+## 🚀 How to use
+
 **All you need to do is tell AnythingAtlas what you want to learn and how much time you have. It will guide you through a focused set of questions, search broadly for carefully selected learning resources, and build a personalized study plan around your needs.**
+
+### 🖼️ Example Gallery
+
+Three fields, three learning goals, and three visual themes. Select a cover to open the complete self-contained HTML atlas.
+
+<table>
+  <tr>
+    <td width="33.33%" align="center" valign="top">
+      <a href="examples/anything-atlas-classical-music-from-scratch.html">
+        <img src="assets/gallery/music.svg" alt="Learning to Hear Classical Music case cover" width="100%">
+      </a>
+      <br>
+      <strong>🎼 Learning to Hear Classical Music</strong>
+      <br>
+      <sub><code>Scholar</code> · 24 weeks · Listening first</sub>
+      <br><br>
+      Build from musical language, periods, and representative works to comparing interpretations.
+      <br><br>
+      <a href="examples/anything-atlas-classical-music-from-scratch.html"><strong>Explore the atlas →</strong></a>
+    </td>
+    <td width="33.33%" align="center" valign="top">
+      <a href="examples/anything-atlas-impressionism-for-museum-visitors.html">
+        <img src="assets/gallery/museum.svg" alt="Impressionism for Museum Visitors case cover" width="100%">
+      </a>
+      <br>
+      <strong>🖼️ Impressionism for Museum Visitors</strong>
+      <br>
+      <sub><code>Archive</code> · 8 weeks · Museum ready</sub>
+      <br><br>
+      Learn to read light, color, brushwork, subject, and composition while looking at art.
+      <br><br>
+      <a href="examples/anything-atlas-impressionism-for-museum-visitors.html"><strong>Explore the atlas →</strong></a>
+    </td>
+    <td width="33.33%" align="center" valign="top">
+      <a href="examples/anything-atlas-portrait-photography-8-week-portfolio.html">
+        <img src="assets/gallery/portrait.svg" alt="Portrait Photography 8-Week Portfolio case cover" width="100%">
+      </a>
+      <br>
+      <strong>📷 Portrait Photography Portfolio</strong>
+      <br>
+      <sub><code>Workshop</code> · 8 weeks · Portfolio first</sub>
+      <br><br>
+      Move from exposure, focus, and natural light to a coherent series of 8–12 portraits.
+      <br><br>
+      <a href="examples/anything-atlas-portrait-photography-8-week-portfolio.html"><strong>Explore the atlas →</strong></a>
+    </td>
+  </tr>
+</table>
 
 ## ✨ Features
 
@@ -171,6 +221,7 @@ AnythingAtlas/
 ├── references/                      On-demand research and output policies
 ├── scripts/                         Markdown/HTML rendering and validation
 ├── assets/
+│   ├── gallery/                     README case cover artwork
 │   ├── logo/logo.png                README project logo
 │   └── html-template/
 │       ├── atlas.html               Standalone semantic template

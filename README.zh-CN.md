@@ -28,7 +28,57 @@ AnythingAtlas 是一项为“踏入陌生领域的第一步”而生的 Agent sk
 
 无论你想进入量化金融、研究 AI 智能体、理解一个历史事件，还是掌握一项实践技能，AnythingAtlas 都会把散落在书籍、课程、论文、专家、档案、代码仓库与网络噪声中的信息，整理成一张清晰的领域地图：领域最基础的是什么、有哪些资料可以学习，如何使用这些资料，并帮你指定由浅入深的学习计划。
 
+## 🚀 使用方法
+
 **你只需要做：告诉 AnythingAtlas 想学的主题是什么？想花多少时间学习？之后，AnythingAtlas 将主动引导提问，全网为你寻找精心筛选的学习资料，制定定制化的个人学习计划。**
+
+### 🖼️ 案例 Gallery
+
+三个不同领域、三种学习目标、三套视觉主题。点击封面查看完整的自包含 HTML 图谱。
+
+<table>
+  <tr>
+    <td width="33.33%" align="center" valign="top">
+      <a href="examples/anything-atlas-classical-music-from-scratch.html">
+        <img src="assets/gallery/music.svg" alt="从零开始听懂古典音乐案例封面" width="100%">
+      </a>
+      <br>
+      <strong>🎼 从零开始听懂古典音乐</strong>
+      <br>
+      <sub><code>Scholar</code> · 24 周 · 聆听优先</sub>
+      <br><br>
+      从音乐语言、历史时期和代表作品，逐步练到比较不同演绎。
+      <br><br>
+      <a href="examples/anything-atlas-classical-music-from-scratch.html"><strong>查看完整图谱 →</strong></a>
+    </td>
+    <td width="33.33%" align="center" valign="top">
+      <a href="examples/anything-atlas-impressionism-for-museum-visitors.html">
+        <img src="assets/gallery/museum.svg" alt="印象派绘画看展案例封面" width="100%">
+      </a>
+      <br>
+      <strong>🖼️ 从“看不懂”到会看印象派</strong>
+      <br>
+      <sub><code>Archive</code> · 8 周 · 看展导向</sub>
+      <br><br>
+      用光线、色彩、笔触、题材与构图建立真正可用的观展方法。
+      <br><br>
+      <a href="examples/anything-atlas-impressionism-for-museum-visitors.html"><strong>查看完整图谱 →</strong></a>
+    </td>
+    <td width="33.33%" align="center" valign="top">
+      <a href="examples/anything-atlas-portrait-photography-8-week-portfolio.html">
+        <img src="assets/gallery/portrait.svg" alt="八周人像摄影作品集案例封面" width="100%">
+      </a>
+      <br>
+      <strong>📷 八周人像摄影作品集</strong>
+      <br>
+      <sub><code>Workshop</code> · 8 周 · 成片导向</sub>
+      <br><br>
+      从曝光、对焦和自然光，推进到一组统一的 8–12 张人像作品。
+      <br><br>
+      <a href="examples/anything-atlas-portrait-photography-8-week-portfolio.html"><strong>查看完整图谱 →</strong></a>
+    </td>
+  </tr>
+</table>
 
 ## ✨ 功能
 
@@ -168,6 +218,7 @@ AnythingAtlas/
 ├── references/                      按需读取的研究与输出规范
 ├── scripts/                         Markdown/HTML 渲染与验证
 ├── assets/
+│   ├── gallery/                     README 案例封面
 │   ├── logo/logo.png                README 项目 Logo
 │   └── html-template/
 │       ├── atlas.html               独立图谱语义模板

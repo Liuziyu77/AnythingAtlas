@@ -1,0 +1,1291 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一套非专业、重观看的 8 周路径：理解印象派为何出现，认识核心艺术家，用色彩、光线、笔触、题材和构图读画，并厘清它与学院派、后印象派的关系。">
+  <title>印象派绘画：从“看不懂”到会看展</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #0b1638;
+  --muted: #53627f;
+  --blue: #1769e0;
+  --cyan: #00aabd;
+  --indigo: #3f3ccf;
+  --line: #dce7f4;
+  --soft: #f4f8fd;
+  --paper: #ffffff;
+  --warning: #9a5b00;
+  --warning-bg: #fff7e8;
+  --danger: #9d2f43;
+  --danger-bg: #fff1f3;
+  --success: #176c57;
+  --success-bg: #eaf9f4;
+  --shadow: 0 18px 48px rgba(18, 52, 98, 0.10);
+  --radius: 22px;
+  --content: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(28, 90, 181, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 90, 181, 0.025) 1px, transparent 1px),
+    var(--soft);
+  background-size: 34px 34px;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: #075fc8;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--indigo);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(0, 170, 189, 0.42);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 10px 16px;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 10px;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--paper);
+  background:
+    radial-gradient(circle at 82% 20%, rgba(0, 210, 218, 0.32), transparent 28%),
+    radial-gradient(circle at 14% 0%, rgba(89, 126, 255, 0.38), transparent 34%),
+    linear-gradient(125deg, #071533 0%, #122864 52%, #0e6181 100%);
+}
+
+.hero__contours {
+  position: absolute;
+  inset: 0;
+  opacity: 0.26;
+  background:
+    repeating-radial-gradient(
+      ellipse at 90% 15%,
+      transparent 0 26px,
+      rgba(255, 255, 255, 0.16) 27px 28px,
+      transparent 29px 52px
+    );
+  mask-image: linear-gradient(90deg, transparent 20%, #000 100%);
+}
+
+.hero__inner {
+  position: relative;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 58px 32px 64px;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.hero__summary {
+  max-width: 780px;
+  margin: 24px 0 0;
+  color: #dbe9ff;
+  font-size: clamp(1.06rem, 2.2vw, 1.35rem);
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 5px 12px;
+  color: #e8f4ff;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 999px;
+  font-size: 0.86rem;
+  backdrop-filter: blur(8px);
+}
+
+.atlas-shell {
+  display: grid;
+  grid-template-columns: minmax(210px, 260px) minmax(0, 1fr);
+  gap: 34px;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 42px 32px 80px;
+}
+
+.atlas-nav {
+  position: relative;
+}
+
+.atlas-nav__inner {
+  position: sticky;
+  top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(18, 52, 98, 0.07);
+  backdrop-filter: blur(10px);
+}
+
+.atlas-nav__title {
+  margin: 0 0 12px;
+  color: var(--blue);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.atlas-nav ol {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: nav;
+}
+
+.atlas-nav li {
+  counter-increment: nav;
+}
+
+.atlas-nav a {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  padding: 7px 8px;
+  color: var(--muted);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.atlas-nav a::before {
+  content: counter(nav, decimal-leading-zero);
+  color: var(--cyan);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.atlas-nav a:hover {
+  color: var(--ink);
+  background: var(--soft);
+}
+
+.atlas-main {
+  min-width: 0;
+}
+
+.atlas-section {
+  scroll-margin-top: 24px;
+  margin-bottom: 32px;
+  padding: clamp(22px, 4vw, 38px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.section-kicker {
+  margin: 0 0 8px;
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.atlas-section > h2 {
+  margin: 0 0 24px;
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.atlas-section h3 {
+  margin: 28px 0 10px;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.lead {
+  color: #344666;
+  font-size: 1.08rem;
+}
+
+.brief-grid,
+.map-grid,
+.decision-grid,
+.field-grid,
+.setup-grid,
+.track-grid,
+.guide-item-grid,
+.source-group-grid,
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.brief-item,
+.map-node,
+.decision-card,
+.field-card,
+.setup-card,
+.track-card,
+.guide-item,
+.source-group,
+.resource-card,
+.plan-block {
+  min-width: 0;
+  padding: 18px;
+  background: linear-gradient(145deg, #fff, #f7faff);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.brief-item dt,
+.fact-label {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brief-item dd {
+  margin: 0;
+  font-weight: 620;
+}
+
+.brief-item ul,
+.plan-block ul,
+.roadmap-stage ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.map-node {
+  position: relative;
+  overflow: hidden;
+}
+
+.map-node::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(var(--blue), var(--cyan));
+}
+
+.map-node h3,
+.decision-card h3,
+.field-card h3,
+.setup-card h3,
+.track-card h3,
+.guide-item h4,
+.source-group h3,
+.resource-card h3 {
+  margin-top: 0;
+}
+
+.answer-card {
+  padding: 22px;
+  background: linear-gradient(135deg, var(--success-bg), #f6fffb);
+  border: 1px solid #b9e7d8;
+  border-left: 5px solid var(--success);
+  border-radius: 16px;
+}
+
+.answer-card .lead {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.decision-card {
+  border-top: 4px solid var(--success);
+}
+
+.decision-card p,
+.field-card p,
+.setup-card p,
+.track-card p {
+  margin: 10px 0;
+}
+
+.guide-meta {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.35fr) minmax(0, 1.65fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.guide-meta > div {
+  padding: 12px 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+.guide-meta dt,
+.field-card__category {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.guide-meta dd {
+  margin: 0;
+}
+
+.field-card {
+  border-top: 4px solid var(--cyan);
+}
+
+.field-card ul,
+.track-card ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.setup-grid,
+.track-grid {
+  margin-bottom: 22px;
+}
+
+.setup-card {
+  border-left: 4px solid var(--indigo);
+}
+
+.track-card {
+  border-top: 4px solid var(--indigo);
+}
+
+.guide-section {
+  margin-top: 30px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.guide-section__purpose {
+  margin: -2px 0 16px;
+  color: var(--muted);
+}
+
+.guide-item-grid,
+.source-group-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.guide-item {
+  border-left: 4px solid var(--cyan);
+}
+
+.guide-item h4 {
+  font-size: 1.05rem;
+}
+
+.guide-item ul,
+.source-group ul,
+.linked-resource-list {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.linked-resource-list {
+  display: grid;
+  gap: 6px;
+}
+
+.linked-resource-list a {
+  font-weight: 750;
+}
+
+.source-selection {
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  background: var(--soft);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+}
+
+.source-selection p:last-child {
+  margin-bottom: 0;
+}
+
+.source-group {
+  border-top: 4px solid var(--blue);
+}
+
+.dependency-list,
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.chip {
+  display: inline-flex;
+  padding: 4px 9px;
+  color: #25416f;
+  background: #eaf2ff;
+  border: 1px solid #d4e4fb;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.plan-block--wide {
+  grid-column: 1 / -1;
+}
+
+.channel-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.channel-list li {
+  padding: 12px 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+.channel-priority {
+  display: inline-block;
+  margin-left: 6px;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.starting-card,
+.next-card {
+  position: relative;
+  overflow: hidden;
+  padding: 26px;
+  color: var(--paper);
+  background: linear-gradient(130deg, #143f91, #167b94);
+  border-radius: 18px;
+}
+
+.starting-card::after,
+.next-card::after {
+  content: "↗";
+  position: absolute;
+  right: 22px;
+  bottom: 8px;
+  color: rgba(255, 255, 255, 0.16);
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+.starting-card dl,
+.next-card dl {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.starting-card dt,
+.next-card dt {
+  margin-top: 14px;
+  color: #9ceef2;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.starting-card dt:first-child,
+.next-card dt:first-child {
+  margin-top: 0;
+}
+
+.starting-card dd,
+.next-card dd {
+  margin: 2px 0 0;
+  font-size: 1.04rem;
+}
+
+.resource-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--blue);
+}
+
+.resource-card__creator {
+  margin: -4px 0 14px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.resource-card__body {
+  flex: 1;
+}
+
+.resource-card__body p {
+  margin: 12px 0;
+}
+
+.resource-card__body strong {
+  color: #263d68;
+}
+
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  overflow-wrap: anywhere;
+  font-weight: 800;
+}
+
+.roadmap {
+  position: relative;
+  display: grid;
+  gap: 22px;
+}
+
+.roadmap::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 22px;
+  width: 2px;
+  background: linear-gradient(var(--blue), var(--cyan));
+}
+
+.roadmap-stage {
+  position: relative;
+  margin-left: 58px;
+  padding: 24px;
+  background: #fbfdff;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  break-inside: avoid;
+}
+
+.roadmap-stage__number {
+  position: absolute;
+  top: 22px;
+  left: -58px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--paper);
+  background: linear-gradient(145deg, var(--blue), var(--cyan));
+  border: 4px solid var(--paper);
+  border-radius: 50%;
+  box-shadow: 0 5px 14px rgba(23, 105, 224, 0.22);
+  font-weight: 900;
+}
+
+.roadmap-stage h3 {
+  margin: 0 0 5px;
+}
+
+.roadmap-stage__timing {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.roadmap-stage__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.roadmap-stage__block {
+  min-width: 0;
+}
+
+.roadmap-stage__block--wide {
+  grid-column: 1 / -1;
+}
+
+.deliverable {
+  padding: 14px 16px;
+  color: #174d42;
+  background: var(--success-bg);
+  border-left: 4px solid #2c9c7e;
+  border-radius: 0 12px 12px 0;
+}
+
+.source-notes {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.source-note {
+  padding: 14px 16px;
+  background: var(--soft);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+}
+
+.source-note--caution,
+.source-note--warning {
+  color: #68420a;
+  background: var(--warning-bg);
+  border-left-color: #e3a02e;
+}
+
+.source-note--critical,
+.source-note--danger {
+  color: #702131;
+  background: var(--danger-bg);
+  border-left-color: #d95870;
+}
+
+.atlas-footer {
+  padding: 28px 24px 42px;
+  color: #6d7c97;
+  text-align: center;
+  font-size: 0.88rem;
+}
+
+.atlas-footer strong {
+  color: var(--blue);
+}
+
+@media (max-width: 860px) {
+  .hero__inner {
+    padding: 38px 22px 46px;
+  }
+
+  .atlas-shell {
+    display: block;
+    padding: 24px 16px 54px;
+  }
+
+  .atlas-nav__inner {
+    position: static;
+    margin-bottom: 22px;
+  }
+
+  .atlas-nav ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .atlas-section {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 620px) {
+  .atlas-nav ol,
+  .brief-grid,
+  .map-grid,
+  .decision-grid,
+  .field-grid,
+  .setup-grid,
+  .track-grid,
+  .guide-item-grid,
+  .source-group-grid,
+  .plan-grid,
+  .resource-grid,
+  .roadmap-stage__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-block--wide,
+  .roadmap-stage__block--wide {
+    grid-column: auto;
+  }
+
+  .roadmap::before {
+    left: 16px;
+  }
+
+  .roadmap-stage {
+    margin-left: 44px;
+    padding: 19px;
+  }
+
+  .roadmap-stage__number {
+    left: -48px;
+    width: 36px;
+    height: 36px;
+    border-width: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  :root {
+    --shadow: none;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 10.5pt;
+  }
+
+  .skip-link,
+  .atlas-nav {
+    display: none;
+  }
+
+  .hero {
+    color: #111;
+    background: #fff;
+    border-bottom: 2px solid #1669df;
+  }
+
+  .hero__inner {
+    padding: 0 0 22px;
+  }
+
+  .hero__contours {
+    display: none;
+  }
+
+  .hero__summary,
+  .meta-pill {
+    color: #333;
+  }
+
+  .hero h1 {
+    font-size: 30pt;
+  }
+
+  .atlas-shell {
+    display: block;
+    max-width: none;
+    padding: 24px 0;
+  }
+
+  .atlas-section {
+    margin: 0 0 18px;
+    padding: 16px 0;
+    border: 0;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .resource-card,
+  .map-node,
+  .decision-card,
+  .field-card,
+  .setup-card,
+  .track-card,
+  .guide-item,
+  .source-group,
+  .roadmap-stage,
+  .starting-card,
+  .next-card {
+    break-inside: avoid;
+  }
+
+  .starting-card,
+  .next-card {
+    color: #111;
+    background: #eef5ff;
+    border: 1px solid #aac8ee;
+  }
+
+  a {
+    color: #111;
+    text-decoration: underline;
+  }
+
+  .resource-link::after {
+    content: " (" attr(href) ")";
+    overflow-wrap: anywhere;
+    font-size: 8pt;
+    font-weight: 400;
+  }
+}
+
+
+/* Archive — tactile dossier styling for history, people, and institutions. */
+
+.theme-archive {
+  color-scheme: light;
+  --ink: #332a20;
+  --muted: #756755;
+  --blue: #7e3e28;
+  --cyan: #9b6d36;
+  --indigo: #5d4738;
+  --line: #d0c1a7;
+  --soft: #eee5d3;
+  --paper: #fbf6e9;
+  --success-bg: #edf0dc;
+  --warning-bg: #f7e9c8;
+  --danger-bg: #f2ded6;
+  --shadow: 0 12px 28px rgba(63, 47, 30, 0.13);
+  --radius: 3px;
+  --content: 1160px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(95, 71, 40, 0.06), transparent 26%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(82, 61, 37, 0.022) 0 1px,
+      transparent 1px 5px
+    ),
+    #e9dfca;
+  font-family:
+    "Iowan Old Style", Baskerville, Georgia, "Songti SC", "Noto Serif CJK SC",
+    serif;
+}
+
+.theme-archive a {
+  color: #7e3e28;
+}
+
+.theme-archive .hero {
+  color: #f8eedb;
+  background:
+    linear-gradient(rgba(52, 38, 26, 0.18), rgba(52, 38, 26, 0.18)),
+    repeating-linear-gradient(
+      90deg,
+      #3a2a22 0 74px,
+      #433126 74px 75px
+    );
+  border-bottom: 8px solid #a2753f;
+}
+
+.theme-archive .hero__contours {
+  opacity: 0.42;
+  background:
+    linear-gradient(115deg, transparent 60%, rgba(245, 226, 188, 0.10)),
+    repeating-radial-gradient(
+      ellipse at 88% 18%,
+      transparent 0 28px,
+      rgba(245, 226, 188, 0.16) 29px 30px,
+      transparent 31px 56px
+    );
+}
+
+.theme-archive .hero__inner {
+  padding-top: 78px;
+  padding-bottom: 72px;
+}
+
+.theme-archive .hero h1 {
+  max-width: 860px;
+  font-size: clamp(2.55rem, 6.5vw, 5.2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.theme-archive .hero__summary {
+  color: #e8d8bd;
+}
+
+.theme-archive .meta-pill {
+  color: #f5e7ce;
+  background: rgba(251, 246, 233, 0.08);
+  border-color: rgba(245, 231, 206, 0.30);
+  border-radius: 2px;
+}
+
+.theme-archive .atlas-nav__inner {
+  background:
+    linear-gradient(90deg, rgba(126, 62, 40, 0.035) 1px, transparent 1px),
+    #fbf6e9;
+  background-size: 18px 100%;
+  border-color: #c8b89e;
+  border-radius: 3px;
+  box-shadow: 6px 8px 0 rgba(91, 67, 42, 0.08);
+}
+
+.theme-archive .atlas-nav__title {
+  color: #7e3e28;
+}
+
+.theme-archive .atlas-nav a::before,
+.theme-archive .section-kicker {
+  color: #9b6d36;
+}
+
+.theme-archive .atlas-section {
+  background:
+    linear-gradient(rgba(92, 66, 38, 0.018) 1px, transparent 1px),
+    #fbf6e9;
+  background-size: 100% 30px;
+  border-color: #c8b89e;
+  border-radius: 3px;
+  box-shadow:
+    0 1px 0 #fff inset,
+    7px 9px 0 rgba(91, 67, 42, 0.08);
+}
+
+.theme-archive .atlas-section > h2 {
+  padding-bottom: 12px;
+  border-bottom: 3px double #b29c7b;
+  font-weight: 650;
+}
+
+.theme-archive .brief-item,
+.theme-archive .map-node,
+.theme-archive .decision-card,
+.theme-archive .field-card,
+.theme-archive .setup-card,
+.theme-archive .track-card,
+.theme-archive .guide-item,
+.theme-archive .source-group,
+.theme-archive .resource-card,
+.theme-archive .plan-block {
+  background: rgba(255, 251, 241, 0.80);
+  border-color: #d1c2a8;
+  border-radius: 2px;
+}
+
+.theme-archive .map-node::before {
+  width: 5px;
+  background: #9b6d36;
+}
+
+.theme-archive .chip {
+  color: #60452f;
+  background: #eadbc0;
+  border-color: #d6c19e;
+  border-radius: 2px;
+}
+
+.theme-archive .channel-list li {
+  background: #eee3cf;
+  border-left: 3px solid #9b6d36;
+  border-radius: 0;
+}
+
+.theme-archive .starting-card,
+.theme-archive .next-card {
+  color: #fff7e8;
+  background:
+    linear-gradient(135deg, #6f3828, #8b5931);
+  border: 1px solid #4e2d22;
+  border-radius: 3px;
+}
+
+.theme-archive .starting-card dt,
+.theme-archive .next-card dt {
+  color: #efd3a2;
+}
+
+.theme-archive .resource-card {
+  border-top: 0;
+  border-left: 6px solid #7e3e28;
+}
+
+.theme-archive .roadmap::before {
+  width: 1px;
+  background: none;
+  border-left: 2px dashed #9b6d36;
+}
+
+.theme-archive .roadmap-stage {
+  background: #fdf8ec;
+  border-color: #c8b89e;
+  border-radius: 2px;
+}
+
+.theme-archive .roadmap-stage::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 22px;
+  width: 74px;
+  height: 8px;
+  background: #d7bd8f;
+}
+
+.theme-archive .roadmap-stage__number {
+  background: #7e3e28;
+  border-color: #fbf6e9;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 rgba(62, 41, 27, 0.16);
+}
+
+.theme-archive .atlas-section[data-section="roadmap"] {
+  margin-top: 56px;
+}
+
+.theme-archive .atlas-footer {
+  color: #756755;
+  border-top: 1px solid #c8b89e;
+}
+
+.theme-archive .atlas-footer strong {
+  color: #7e3e28;
+}
+
+
+/* Shared print normalization loaded after every visual theme. */
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body[class*="theme-"] {
+    color: #111 !important;
+    background: #fff !important;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 10.5pt;
+  }
+
+  body[class*="theme-"] .hero {
+    min-height: 0;
+    color: #111 !important;
+    background: #fff !important;
+    border: 0;
+    border-bottom: 2px solid #333;
+  }
+
+  body[class*="theme-"] .hero__inner {
+    padding: 0 0 22px;
+  }
+
+  body[class*="theme-"] .hero__summary,
+  body[class*="theme-"] .meta-pill {
+    color: #333 !important;
+    background: #fff !important;
+    border-color: #bbb !important;
+  }
+
+  body[class*="theme-"] .atlas-shell {
+    display: block;
+    max-width: none;
+    padding: 24px 0;
+  }
+
+  body[class*="theme-"] .atlas-section {
+    overflow: visible;
+    margin: 0 0 18px;
+    padding: 16px 0;
+    color: #111 !important;
+    background: #fff !important;
+    border: 0;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .atlas-section::after,
+  body[class*="theme-"] .roadmap-stage::before {
+    display: none;
+  }
+
+  body[class*="theme-"] .brief-item,
+  body[class*="theme-"] .answer-card,
+  body[class*="theme-"] .guide-meta > div,
+  body[class*="theme-"] .map-node,
+  body[class*="theme-"] .decision-card,
+  body[class*="theme-"] .field-card,
+  body[class*="theme-"] .setup-card,
+  body[class*="theme-"] .track-card,
+  body[class*="theme-"] .guide-item,
+  body[class*="theme-"] .source-group,
+  body[class*="theme-"] .source-selection,
+  body[class*="theme-"] .resource-card,
+  body[class*="theme-"] .plan-block,
+  body[class*="theme-"] .roadmap-stage,
+  body[class*="theme-"] .source-note {
+    color: #111 !important;
+    background: #fff !important;
+    border-color: #aaa !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .starting-card,
+  body[class*="theme-"] .next-card,
+  body[class*="theme-"] .deliverable {
+    color: #111 !important;
+    background: #f2f2f2 !important;
+    border: 1px solid #aaa;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .starting-card dt,
+  body[class*="theme-"] .next-card dt,
+  body[class*="theme-"] .answer-card .lead,
+  body[class*="theme-"] .fact-label,
+  body[class*="theme-"] .brief-item dt,
+  body[class*="theme-"] .roadmap-stage__timing,
+  body[class*="theme-"] .resource-card__creator {
+    color: #444 !important;
+  }
+
+  body[class*="theme-"] .chip,
+  body[class*="theme-"] .meta-pill {
+    color: #111 !important;
+    background: #fff !important;
+    border: 1px solid #aaa !important;
+  }
+
+  body[class*="theme-"] .roadmap::before {
+    background: #777 !important;
+    border: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .roadmap-stage__number {
+    color: #fff !important;
+    background: #333 !important;
+    border-color: #fff !important;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .atlas-footer {
+    color: #444 !important;
+    border-top: 1px solid #aaa;
+  }
+
+  body[class*="theme-"] .atlas-footer strong {
+    color: #111 !important;
+  }
+}
+
+  </style>
+</head>
+<body class="theme-archive" data-theme="archive">
+  <a class="skip-link" href="#atlas-main">跳转到知识图谱正文</a>
+  <header class="hero">
+    <div class="hero__contours" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <h1>印象派绘画：从“看不懂”到会看展</h1>
+      <p class="hero__summary">一套非专业、重观看的 8 周路径：理解印象派为何出现，认识核心艺术家，用色彩、光线、笔触、题材和构图读画，并厘清它与学院派、后印象派的关系。</p>
+      <div class="hero__meta"><span class="meta-pill">生成日期: 2026-07-23</span><span class="meta-pill">预计总投入: 8 周 · 每周约 3 小时；另含今天可完成的 45 分钟首课</span></div>
+    </div>
+  </header>
+  <div class="atlas-shell">
+    <aside class="atlas-nav" aria-label="知识图谱章节">
+      <div class="atlas-nav__inner">
+        <p class="atlas-nav__title">知识图谱章节</p>
+        <nav>
+          <ol>
+            <li><a href="#brief">已确认的用户需求简报</a></li>
+            <li><a href="#guide">核心指南</a></li>
+            <li><a href="#resources">精选资源</a></li>
+            <li><a href="#roadmap">详细学习或探索路线图</a></li>
+            <li><a href="#sources">资源出处</a></li>
+          </ol>
+        </nav>
+      </div>
+    </aside>
+    <main id="atlas-main" class="atlas-main">
+      <section id="brief" class="atlas-section" data-section="brief">
+        <p class="section-kicker">01</p>
+        <h2>已确认的用户需求简报</h2>
+        <dl class="brief-grid"><div class="brief-item"><dt>目标</dt><dd>建立足以支持未来美术馆参观的印象派基础：能讲清历史背景、辨认核心特征与主要艺术家，并能用可观察的画面证据说出一幅作品为何有效。</dd></div><div class="brief-item"><dt>当前起点</dt><dd>喜欢参观美术馆，但西方艺术史基础较少，不以专业研究或记忆大量年代为目标。</dd></div><div class="brief-item"><dt>可用时间</dt><dd>默认 8 周，每周约 3 小时；可压缩为 4 周或延长为 12 周</dd></div><div class="brief-item"><dt>语言</dt><dd>说明与阅读笔记用中文；可观看英文视频</dd></div><div class="brief-item"><dt>偏好形式</dt><dd><ul><li>中文核心指南与练习</li><li>英文馆方短视频</li><li>美术馆高清作品页</li><li>一本可选中文通史读物</li></ul></dd></div><div class="brief-item"><dt>期望深度</dt><dd>通识入门偏实践；掌握关键脉络和观画方法，不进入艺术史史料考证</dd></div><div class="brief-item"><dt>限制条件</dt><dd><ul><li>核心资源尽量免费、公开、无需账户</li><li>视频以 4–10 分钟的可拆分单元为主</li><li>重点放在法国印象派约 1860–1886 年及其前后关系</li><li>YouTube 与部分海外馆站的地区可访问性取决于本地网络环境</li></ul></dd></div><div class="brief-item"><dt>假设</dt><dd><ul><li>采用 30–60 分钟一次、每周 3–4 次的学习节奏</li><li>愿意每周写一至两张短观画卡，而不只被动阅读</li><li>未来参观地点未指定，因此练习使用可公开放大的馆藏页面</li><li>默认不要求购买图书；中文书仅作深入路线</li></ul></dd></div></dl>
+      </section>
+      <section id="guide" class="atlas-section" data-section="guide">
+        <p class="section-kicker">02</p>
+        <h2>核心指南</h2>
+<div class="answer-card"><p class="fact-label">直接结论</p><p class="lead">学习印象派最有效的顺序不是先背艺术家名单，而是先抓住一个矛盾：19 世纪的官方沙龙偏爱等级明确的题材、清晰素描和光滑完成面，一群艺术家却把现代城市、郊游、舞台、家庭与瞬息光线当作值得画的对象，并以可见笔触和独立展览改变了“完成”的定义。之后每看一幅画，都按色彩—光线—笔触—题材—构图五个维度找证据；八周后，你应能独立完成十分钟观画和两画比较，而不是只会说“色彩很美”。</p></div><h3>真正重要的点</h3><ul><li>印象派首先是一群在 1874–1886 年组织八次独立展览、彼此差异很大的艺术家，不是一套人人完全遵守的配方。</li><li>它的创新既来自视觉实验，也来自现代生活：巴黎改造、铁路与郊区休闲、消费娱乐、摄影、日本版画、便携颜料和新的展览市场共同改变了画什么、在哪里画、给谁看。</li><li>“第一印象”只是起点；可信的欣赏必须回到画面证据：哪个颜色、哪一束光、哪种笔触、怎样的裁切或视点支持你的解释。</li><li>学院派与印象派不是“坏传统对好创新”：许多印象派画家受过学院训练，也精心经营构图；冲突主要在题材等级、完成标准、展览权力与观看方式。</li><li>后印象派不是统一团体，而是后来的总称：塞尚追求结构，修拉把色彩系统化，高更转向象征与想象，梵高把色彩和笔触变成强烈表达。</li></ul><h3>具体建议</h3><div class="decision-grid"><article class="decision-card"><h3>8 周平衡路线（推荐）</h3><p><strong>适合:</strong> 希望系统建立框架，又不想把学习变成艺术史考试的人</p><p><strong>原因:</strong> 每两周交替安排背景、短视频、高清作品观看和比较练习，能把知识立即转化为看展能力。</p><p><strong>取舍与限制:</strong> 会略过复杂的展览政治、交易网络和学术争论；想继续深入时再读专门研究。</p></article><article class="decision-card"><h3>4 周快速路线</h3><p><strong>适合:</strong> 近期要看展、每周只能投入约 2 小时的人</p><p><strong>原因:</strong> 保留一段馆方总览、四件代表作和学院派—后印象派对照，最快形成可用的观画框架。</p><p><strong>取舍与限制:</strong> 艺术家覆盖较窄；西斯莱、毕沙罗、雷诺阿和德加主要通过对照表认识。</p></article><article class="decision-card"><h3>中文阅读加深路线</h3><p><strong>适合:</strong> 愿意用较长阅读建立整个 19 世纪西方艺术坐标的人</p><p><strong>原因:</strong> 贡布里希第 25–26 章能把马奈、印象派与后印象派放入更长的传统变化中。</p><p><strong>取舍与限制:</strong> 这是经典但带有作者时代与个人叙事框架的通史，不应替代女性艺术家、社会史和近年研究视角。</p></article></div><div class="guide-section"><h3>一条够用的历史主线</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 印象派为什么会在 19 世纪后半叶的巴黎出现？</p><div class="guide-item-grid"><article class="guide-item"><h4>制度：学院、沙龙与独立展</h4><p>官方沙龙控制重要的公开曝光，学院传统强调素描、题材等级和掩饰制作痕迹的完成面。1863 年“落选者沙龙”暴露制度矛盾；1874 年，莫奈、雷诺阿、德加、莫里索、毕沙罗等以匿名画家、雕塑家、版画家协会名义自行办展。那不是落选者沙龙，而是主动建立替代渠道。此后至 1886 年共举办八次。</p><p class="fact-label">具体例子</p><ul><li>1874 年纳达尔旧摄影棚的首展</li><li>路易·勒鲁瓦借《印象·日出》讥讽“印象主义者”</li><li>马奈是关键先驱与朋友，却没有参加八次独立展</li></ul></article><article class="guide-item"><h4>现代性：新的城市、新的闲暇与新的观看</h4><p>奥斯曼改造后的林荫大道、火车可达的郊区、咖啡馆、剧院、赛马和百货商店提供了新题材。画家像城市漫游者一样捕捉人群、速度、偶遇与疏离；女性艺术家因公共空间出入限制不同，常从家庭、花园、剧院包厢和亲密关系中呈现另一种现代生活。</p><p class="fact-label">具体例子</p><ul><li>卡耶博特《巴黎街道；雨天》的宽阔路口与彼此错开的行人</li><li>德加的排练厅、赛马和咖啡馆</li><li>莫里索与卡萨特笔下并不甜腻的家庭空间</li></ul></article><article class="guide-item"><h4>视觉与材料：光学、摄影、日本版画和颜料</h4><p>摄影不是简单“取代写实”，而是让不居中、被裁切、像瞬间抓拍的构图更可想象；日本浮世绘提供平面色块、斜角视点和非对称布局。金属颜料管、铁路和新颜料让户外与连续系列更可行，但许多作品仍在画室中修改或完成。</p><p class="fact-label">具体例子</p><ul><li>德加人物被画框切断的边缘</li><li>莫奈对同一对象在不同天气与时刻反复作画</li><li>互补色并置与带颜色的阴影</li></ul></article></div></div><div class="guide-section"><h3>十分钟五维观画法</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 在没有讲解员时，怎样从“我喜欢”走到有证据的理解？</p><div class="guide-item-grid"><article class="guide-item"><h4>第 1 分钟：先看，不读标签</h4><p>站远一些，记录眼睛先落在哪里、画面给你的温度与速度感，以及最突出的明暗或色彩关系。只写观察，不急着猜故事或作者意图。</p><p class="fact-label">具体例子</p><ul><li>“我先看到橙色太阳，而不是港口细节”</li><li>“人物很多，却没有谁真正与我对视”</li><li>“画面像刚刚经过的一瞬，而不是摆好的舞台”</li></ul></article><article class="guide-item"><h4>色彩与光线</h4><p>色彩看冷暖、饱和度、互补关系和阴影颜色；光线看来源、时刻、天气、反射和它如何让边缘清楚或消失。不要只列颜色，要说明关系和效果。</p><p class="fact-label">具体例子</p><ul><li>《印象·日出》中橙色太阳与蓝灰雾气形成冷暖对照</li><li>雷诺阿舞会画面中斑驳日光把人物与环境连成流动表面</li><li>莫奈系列画中对象不变，光与空气成为真正主题</li></ul></article><article class="guide-item"><h4>笔触</h4><p>观察笔触的长短、方向、厚薄、速度感与边缘处理，再问它是在描述物体、组织节奏，还是模拟水、雾、衣料和运动。可见笔触并不等于随便；它把观看的过程留在表面。</p><p class="fact-label">具体例子</p><ul><li>水面用横向短笔触形成闪动</li><li>德加在粉彩中叠擦线条表现身体动作</li><li>莫里索的轻快长笔触让衣料与背景彼此穿透</li></ul></article><article class="guide-item"><h4>题材与观看位置</h4><p>辨认这是劳动、消费、闲暇、家庭还是表演，再问谁能进入这个空间、谁在看谁、哪些阶级或性别经验被呈现。题材不是“内容标签”，而是理解现代社会的入口。</p><p class="fact-label">具体例子</p><ul><li>卡萨特让孩子以疲倦、无聊的姿态存在，而非扮演乖巧小成人</li><li>德加既观察舞者的劳动，也带着男性都市观看者的位置</li><li>毕沙罗的林荫大道把人群与交通当成城市系统</li></ul></article><article class="guide-item"><h4>构图与三条证据</h4><p>找视点高低、画框裁切、对角线、重复形、空白和视觉动线。最后用“我认为……因为 A、B、C”写一句解释；三个证据至少来自两个不同维度。</p><p class="fact-label">具体例子</p><ul><li>《巴黎街道；雨天》的雨伞圆形反复、右前景大人物和中央空地共同制造既拥挤又疏离的城市感</li><li>《摇篮》中母亲弯曲手臂与婴儿帷幔形成保护性的对角呼应</li><li>卡萨特蓝色扶手椅的重复曲线把女孩的松垮姿态放大</li></ul></article></div></div><div class="guide-section"><h3>主要艺术家：用“视觉问题”来记</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 少背生平，先记住每位艺术家反复解决什么问题。</p><div class="guide-item-grid"><article class="guide-item"><h4>莫奈、毕沙罗、西斯莱：空气、天气与连续观看</h4><p>莫奈把瞬息光线和系列作推到极致；毕沙罗兼顾乡村劳动与巴黎大道，并是唯一参加八次展览者；西斯莱最稳定地专注风景。三人都可比较天空、水面、道路和季节如何组织画面。</p><p class="fact-label">具体例子</p><ul><li>莫奈《印象·日出》《干草堆》《鲁昂大教堂》系列</li><li>毕沙罗《蒙马特大道》系列</li><li>西斯莱《马尔利港的洪水》</li></ul></article><article class="guide-item"><h4>雷诺阿：社交、肤色与斑驳光</h4><p>雷诺阿常把现代休闲、亲密交往和温暖色调结合起来；看他怎样用跳动笔触让人物融入光与空气，同时留意他后来转向更坚实、古典化的造型。</p><p class="fact-label">具体例子</p><ul><li>《煎饼磨坊的舞会》</li><li>《船上的午宴》</li><li>《包厢》</li></ul></article><article class="guide-item"><h4>德加：动作、裁切与表演背后</h4><p>德加更认同现实主义者而非“户外光画家”，常在画室工作。他借不对称视点、边缘裁切和反复素描研究舞者、赛马与洗浴动作，是理解“印象派并非同一风格”的最佳例子。</p><p class="fact-label">具体例子</p><ul><li>《舞蹈课》</li><li>《苦艾酒》</li><li>《十四岁的小舞者》</li></ul></article><article class="guide-item"><h4>莫里索与卡萨特：亲密空间中的现代性</h4><p>两位女性都是核心参与者，而非边缘补充。她们把社会出入限制转化为新的观看位置，研究照护、家庭关系、女性自我意识与观看者距离；笔触和构图往往比题材的“温柔”表象更复杂。</p><p class="fact-label">具体例子</p><ul><li>莫里索《摇篮》《夏日》</li><li>卡萨特《蓝色扶手椅中的小女孩》《歌剧院》</li><li>比较两人如何避免把儿童理想化</li></ul></article><article class="guide-item"><h4>马奈与卡耶博特：边界人物</h4><p>马奈以现代题材、平面化造型和对旧大师的改写为独立展艺术家开路，但坚持在官方沙龙竞争；卡耶博特既是画家也是重要资助者，其表面常比莫奈更清晰，却以大胆视点和现代城市题材参与印象派项目。</p><p class="fact-label">具体例子</p><ul><li>马奈《草地上的午餐》《奥林匹亚》《女神游乐厅的吧台》</li><li>卡耶博特《巴黎街道；雨天》</li><li>风格边界比教科书标签更有启发性</li></ul></article></div></div><div class="guide-section"><h3>把三种位置连起来</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 如何理解学院派、印象派与后印象派，而不把它们画成简单的进步阶梯？</p><div class="guide-item-grid"><article class="guide-item"><h4>学院派：可读故事、理想形体与无痕完成</h4><p>核心不是“画得像”，而是一整套训练、题材等级、评审与公共声望机制。历史、神话和宗教题材地位较高，素描统摄色彩，画面通常隐藏笔触。比较时应问：作品为谁而作、在哪里展出、何种完成标准被奖励？</p><p class="fact-label">具体例子</p><ul><li>亚历山大·卡巴内尔《维纳斯的诞生》与马奈《奥林匹亚》</li><li>沙龙评审与大尺幅历史画</li><li>印象派画家仍吸收透视、人物训练和旧大师构图</li></ul></article><article class="guide-item"><h4>印象派：感知当下与现代生活</h4><p>把转瞬感受、可见笔触、普通生活和新的展览方式置于中心，但内部从莫奈的户外光到德加的室内构图差异很大。它不是抛弃结构，而是让结构服务于暂时、偶然和观看本身。</p><p class="fact-label">具体例子</p><ul><li>色彩并置取代单纯明暗塑形</li><li>连续系列把“同一对象”变成不同感知事件</li><li>独立展挑战由沙龙单独决定价值</li></ul></article><article class="guide-item"><h4>后印象派：从印象出发，向四个方向分流</h4><p>“后印象派”由罗杰·弗莱在 1910 年推广，是回看约 1886 年后变化的总称，不是艺术家共同宣布的组织。塞尚加强结构，修拉系统化光色，高更强调象征与想象，梵高让色彩和笔触承载情感。</p><p class="fact-label">具体例子</p><ul><li>塞尚《圣维克多山》：自然中的秩序</li><li>修拉《大碗岛的星期天下午》：分色与控制</li><li>梵高《星夜》、高更《布道后的幻象》：表达与象征</li></ul></article></div></div><div class="guide-section"><h3>带进美术馆的最小流程</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 如何把学习真正转化为看展能力？</p><div class="guide-item-grid"><article class="guide-item"><h4>三种距离、两次标签、一次复述</h4><p>先在约 3 米处看整体，再靠近看笔触和颜料厚度，最后退回去看局部怎样合成。前两分钟不读标签；观察后读标签校正事实；离开展厅前不看笔记，用 30 秒复述你的三条证据。</p><p class="fact-label">具体例子</p><ul><li>远看光色，近看笔触，退后看视觉混合</li><li>先猜时刻与空间，再用标签验证</li><li>每次参观精看 5 幅，胜过匆忙拍 50 幅</li></ul></article><article class="guide-item"><h4>一张六句观画卡</h4><p>固定写六句：第一眼；主色关系；光线；笔触；题材与人物关系；构图及结论。最后加一个仍未解决的问题。每张卡控制在 150–250 字。</p><p class="fact-label">具体例子</p><ul><li>“我认为画面表现的不是港口本身，而是雾中刚形成的视觉印象，因为……”</li><li>“如果把右侧人物裁掉，城市的偶然感会怎样变化？”</li><li>“这幅画的现代性来自题材，还是来自观看方式？”</li></ul></article></div></div><h3>下一步行动</h3><div class="next-card"><dl><dt>行动</dt><dd>观看 9 分钟馆方视频《How Impressionism Began》，再打开莫奈《印象·日出》馆藏页：先不读说明看 5 分钟，再按五维法写一张六句观画卡，最后阅读馆方说明并用另一种颜色修正一处判断。</dd><dt>时间</dt><dd>今天，45 分钟</dd><dt>预期产出</dt><dd>一张 150–250 字的《印象·日出》观画卡，包含色彩、光线、笔触、题材、构图和至少三条画面证据。</dd></dl></div>
+      </section>
+      <section id="resources" class="atlas-section" data-section="resources">
+        <p class="section-kicker">03</p>
+        <h2>精选资源</h2>
+<h3>选择适合你的路线</h3><div class="track-grid"><article class="track-card"><h3>快速看展路线（4 周）</h3><p><strong>适合:</strong> 近期要看展，偏好 20–30 分钟短单元的人</p><p><strong>节奏:</strong> 每周 4 次，每次 20–30 分钟，约 2 小时</p><p><strong>指定资源:</strong></p><ul class="linked-resource-list"><li><a href="https://www.youtube.com/watch?v=FfehaHSdpD0">How Impressionism Began <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/i/impressionism">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.marmottan.fr/en/notice/4014/">Impression, Sunrise <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=na05-xCZR8s">Morisot, The Cradle <span aria-hidden="true">↗</span></a></li><li><a href="https://www.nga.gov/artworks/61368-little-girl-blue-armchair">Little Girl in a Blue Armchair <span aria-hidden="true">↗</span></a></li><li><a href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">Paris Street; Rainy Day <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/s/salon">Salon <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/p/post-impressionism">Post-impressionism <span aria-hidden="true">↗</span></a></li></ul><p class="fact-label">使用顺序</p><ul><li>第 1 周：先看《How Impressionism Began》全片，再读 Tate 的 Impressionism 条目；各用三句话复述“为什么是 1870 年代”。</li><li>第 2 周：精看《印象·日出》和《摇篮》短视频；每件作品只写色彩、光线、笔触三项。</li><li>第 3 周：精看《蓝色扶手椅中的小女孩》和《巴黎街道；雨天》；每件作品只写题材、观看位置、构图三项。</li><li>第 4 周：读 Tate 的 Salon 与 Post-impressionism 条目；用一张三栏表比较学院派、印象派、后印象派，并完成一次虚拟或实体五画参观。</li></ul></article><article class="track-card"><h3>系统平衡路线（8 周，推荐）</h3><p><strong>适合:</strong> 希望既有历史坐标，又能真正练会观画的人</p><p><strong>节奏:</strong> 每周 3–4 次，每次 30–60 分钟，约 3 小时</p><p><strong>指定资源:</strong></p><ul class="linked-resource-list"><li><a href="https://www.youtube.com/watch?v=FfehaHSdpD0">How Impressionism Began <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/i/impressionism">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://smarthistory.org/period-culture-style/impressionism/">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.gxcbcmjt.com/sxbg/jpts/gxmscbs/content_5242">《艺术的故事》（袖珍本第 2 版） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/s/salon">Salon <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/p/post-impressionism">Post-impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.marmottan.fr/en/notice/4014/">Impression, Sunrise <span aria-hidden="true">↗</span></a></li><li><a href="https://www.musee-orsay.fr/en/artworks/le-berceau-1132">Le Berceau（The Cradle /《摇篮》） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=na05-xCZR8s">Morisot, The Cradle <span aria-hidden="true">↗</span></a></li><li><a href="https://www.nga.gov/artworks/61368-little-girl-blue-armchair">Little Girl in a Blue Armchair <span aria-hidden="true">↗</span></a></li><li><a href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">Paris Street; Rainy Day <span aria-hidden="true">↗</span></a></li></ul><p class="fact-label">使用顺序</p><ul><li>按下方六阶段路线推进；每个学习单元先看作品，再看解释，最后关掉页面复述。</li><li>《艺术的故事》只读第 25 章中马奈、印象派相关部分，以及第 26 章中塞尚、修拉、梵高、高更相关部分，不要求通读全书。</li><li>Smarthistory 合集只选“Impressionism, an introduction”“Painting modern life”及莫奈、雷诺阿、德加、莫里索、卡萨特相关作品条目。</li><li>八周累计至少 8 张六句观画卡、2 张双画比较卡和 1 次五画美术馆路线。</li></ul></article></div><h3>资源详情</h3><div class="resource-grid"><article class="resource-card" data-resource-id="nga-how-impressionism-began"><h3>How Impressionism Began</h3><p class="resource-card__creator">National Gallery of Art</p><div class="card-meta"><span class="chip">来源渠道: YouTube · 美术馆官方频道</span><span class="chip">用途: Start here</span><span class="chip">级别: 零基础</span><span class="chip">形式: 英文视频，约 9 分 13 秒</span><span class="chip">所需时间: 观看与复述共 20 分钟</span><span class="chip">适合: 用一个短单元快速建立 1874 年首展与“叛逆者”群像</span><span class="chip">获取方式: 免费；YouTube；无需账户；地区网络可用性取决于本地环境</span><span class="chip">类型: 馆方短视频</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 由美国国家美术馆制作，信息密度高，能在进入术语前先得到清楚的问题意识。</p><p><strong>重点:</strong> 全片；观看后回答：谁在反抗什么？为什么首展比某一种画法更能定义这个群体？</p><p><strong>局限:</strong> 为普及叙事而压缩了成员差异与社会史；应配合 Tate 条目和具体作品观看。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=FfehaHSdpD0">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="tate-impressionism"><h3>Impressionism</h3><p class="resource-card__creator">Tate</p><div class="card-meta"><span class="chip">来源渠道: 美术馆官方艺术术语</span><span class="chip">用途: Core foundation</span><span class="chip">级别: 初学者</span><span class="chip">形式: 英文网页，约 8–12 分钟</span><span class="chip">所需时间: 阅读、查词与复述共 25 分钟</span><span class="chip">适合: 核对基本定义、首展年份、核心艺术家、户外绘画与断续笔触</span><span class="chip">获取方式: 免费网页；无需账户；可使用浏览器翻译</span><span class="chip">类型: 权威入门条目</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 条目短、馆方身份清楚，并直接链接 Salon、Plein air、Post-impressionism 等相邻概念。</p><p><strong>重点:</strong> 从定义读到“Other core artists”；重点标出 1874、1886、en plein air、broken brushwork。</p><p><strong>局限:</strong> 把户外与自发作画放得较突出，容易让初学者低估德加的画室实践和成员差异。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.tate.org.uk/art/art-terms/i/impressionism">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="smarthistory-impressionism"><h3>Impressionism</h3><p class="resource-card__creator">Smarthistory</p><div class="card-meta"><span class="chip">来源渠道: 开放艺术史课程</span><span class="chip">用途: Guided learning</span><span class="chip">级别: 初学者到大学通识</span><span class="chip">形式: 英文短文与作品视频合集</span><span class="chip">所需时间: 精选条目约 3–4 小时</span><span class="chip">适合: 希望听到教师站在作品前如何从画面证据推进解释的人</span><span class="chip">获取方式: 免费网页；部分页面或嵌入视频可能受 Cloudflare/地区网络影响</span><span class="chip">类型: 主题课程合集</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 以具体作品为中心，特别适合学习形式分析，而不是只记运动定义。</p><p><strong>重点:</strong> 依次使用“Impressionism, an introduction”“Painting modern life”，再选莫奈、雷诺阿、德加、莫里索、卡萨特作品条目。</p><p><strong>局限:</strong> 合集内容较多且英语为主；不要按页面顺序通刷，严格使用指定条目。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://smarthistory.org/period-culture-style/impressionism/">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="story-of-art-cn"><h3>《艺术的故事》（袖珍本第 2 版）</h3><p class="resource-card__creator">E. H. 贡布里希著；范景中译；杨成凯校译；广西美术出版社</p><div class="card-meta"><span class="chip">来源渠道: 中文图书 · 出版集团官方页面</span><span class="chip">用途: Deep dive</span><span class="chip">级别: 初学者</span><span class="chip">形式: 中文纸质书；2025 年 6 月版；ISBN 978-7-5494-3060-4</span><span class="chip">所需时间: 指定章节约 4–6 小时</span><span class="chip">适合: 希望把印象派放入 19 世纪传统变化和后印象派脉络的中文读者</span><span class="chip">获取方式: 付费纸质书；图书馆或书店可借购；官方页提供版本信息而非全文</span><span class="chip">类型: 艺术史通识书</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 叙事清楚、中文译本成熟，是建立长时段艺术史坐标的高效入口。</p><p><strong>重点:</strong> 第 25 章“持久的革命”中马奈与印象派相关段落；第 26 章“寻求新的标准”中塞尚、修拉、梵高、高更相关段落。</p><p><strong>局限:</strong> 经典通史带有 20 世纪中叶的作者视角，女性艺术家和社会史不足；不作为唯一来源。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.gxcbcmjt.com/sxbg/jpts/gxmscbs/content_5242">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="tate-salon"><h3>Salon</h3><p class="resource-card__creator">Tate</p><div class="card-meta"><span class="chip">来源渠道: 美术馆官方艺术术语</span><span class="chip">用途: Core foundation</span><span class="chip">级别: 初学者</span><span class="chip">形式: 英文网页，约 6–8 分钟</span><span class="chip">所需时间: 阅读与时间线整理共 20 分钟</span><span class="chip">适合: 理解学院、官方展览、1863 年落选者沙龙和独立展为何重要</span><span class="chip">获取方式: 免费网页；无需账户；可使用浏览器翻译</span><span class="chip">类型: 历史制度条目</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 把风格变化放回展览制度，能避免把印象派误解为单纯技法发明。</p><p><strong>重点:</strong> 从定义读到 Salon des Indépendants；画出 1863、1874、1884 三个节点。</p><p><strong>局限:</strong> 是术语摘要，不足以解释学院教育内部的多样性；比较时避免把学院派 caricature 成“只会守旧”。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.tate.org.uk/art/art-terms/s/salon">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="tate-post-impressionism"><h3>Post-impressionism</h3><p class="resource-card__creator">Tate</p><div class="card-meta"><span class="chip">来源渠道: 美术馆官方艺术术语</span><span class="chip">用途: Core foundation</span><span class="chip">级别: 初学者</span><span class="chip">形式: 英文网页，约 5 分钟</span><span class="chip">所需时间: 阅读与四向对照共 25 分钟</span><span class="chip">适合: 用最小篇幅区分塞尚、修拉、高更和梵高如何改造印象派遗产</span><span class="chip">获取方式: 免费网页；无需账户；可使用浏览器翻译</span><span class="chip">类型: 比较概念条目</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 明确指出约 1886 年的分水岭和罗杰·弗莱 1910 年命名，防止把后印象派当成统一社团。</p><p><strong>重点:</strong> 逐句提取四位艺术家的不同方向：结构、科学色彩、想象/象征、情感表达。</p><p><strong>局限:</strong> “四位核心人物”的简化框架适合入门，但不能覆盖这一时期所有地域与艺术家。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.tate.org.uk/art/art-terms/p/post-impressionism">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="monet-impression-sunrise"><h3>Impression, Sunrise</h3><p class="resource-card__creator">Musée Marmottan Monet</p><div class="card-meta"><span class="chip">来源渠道: 美术馆官方馆藏页</span><span class="chip">用途: Primary evidence</span><span class="chip">级别: 所有级别</span><span class="chip">形式: 英文馆藏网页与作品图像</span><span class="chip">所需时间: 盲看、记录、读说明共 30 分钟</span><span class="chip">适合: 练习冷暖色、雾中边缘、港口现代性、标题与运动命名</span><span class="chip">获取方式: 免费网页；无需账户</span><span class="chip">类型: 高清作品与馆方说明</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 作品本身与 1874 年命名事件相连，馆方页面还解释勒鲁瓦讽刺评论及随后正面采用名称的过程。</p><p><strong>重点:</strong> 先遮住说明观察太阳、倒影、船、烟囱与画面边缘；再阅读从创作地点到 1874 年展览的馆方文字。</p><p><strong>局限:</strong> 这幅画极具象征性，却不能代表德加、卡萨特或卡耶博特等人的全部实践。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.marmottan.fr/en/notice/4014/">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="morisot-cradle"><h3>Le Berceau（The Cradle /《摇篮》）</h3><p class="resource-card__creator">Musée d’Orsay</p><div class="card-meta"><span class="chip">来源渠道: 美术馆官方馆藏页</span><span class="chip">用途: Primary evidence</span><span class="chip">级别: 所有级别</span><span class="chip">形式: 英文/法文馆藏网页与作品图像</span><span class="chip">所需时间: 盲看与观画卡共 20 分钟</span><span class="chip">适合: 练习亲密题材、对角呼应、帷幔、观看关系与女性现代性</span><span class="chip">获取方式: 免费网页；无需账户；站点偶尔会触发 Cloudflare 检查</span><span class="chip">类型: 作品馆藏页</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 1874 年首展作品，能把莫里索从“女性题材画家”还原为构图和笔触都高度自觉的核心成员。</p><p><strong>重点:</strong> 比较母亲手臂、脸部朝向、帷幔和摇篮边缘的线条；问观看者处在什么距离。</p><p><strong>局限:</strong> 馆站访问有时不稳定；若受阻，可先使用配套 Smarthistory 视频中的图像。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.musee-orsay.fr/en/artworks/le-berceau-1132">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="morisot-cradle-video"><h3>Morisot, The Cradle</h3><p class="resource-card__creator">Smarthistory</p><div class="card-meta"><span class="chip">来源渠道: YouTube · 开放艺术史教育</span><span class="chip">用途: Guided learning</span><span class="chip">级别: 初学者</span><span class="chip">形式: 英文视频，约 4 分钟</span><span class="chip">所需时间: 先看画、再看视频、复述共 20 分钟</span><span class="chip">适合: 学习讲解者如何从构图、笔触和 1874 年展览证据推进解释</span><span class="chip">获取方式: 免费；YouTube；地区网络可用性取决于本地环境</span><span class="chip">类型: 作品短视频</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 足够短，且把女性艺术家、首展与具体画面分析连在一起，适合做“先看后听”的标准练习。</p><p><strong>重点:</strong> 先静音停在作品画面 5 分钟；再从 0:22 的首展背景和约 2:50 的笔触讨论开始核对笔记。</p><p><strong>局限:</strong> 四分钟无法展开女性进入公共空间的社会限制；需结合核心指南中的现代性问题。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=na05-xCZR8s">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="cassatt-blue-armchair"><h3>Little Girl in a Blue Armchair</h3><p class="resource-card__creator">National Gallery of Art</p><div class="card-meta"><span class="chip">来源渠道: 美术馆官方馆藏页</span><span class="chip">用途: Practice</span><span class="chip">级别: 所有级别</span><span class="chip">形式: 英文网页、高清缩放、视觉描述与五处细节导览</span><span class="chip">所需时间: 盲看与互动细看共 30–40 分钟</span><span class="chip">适合: 练习非理想化儿童、蓝绿色彩关系、家具重复和非正式姿态</span><span class="chip">获取方式: 免费网页；无需账户；图像为公共领域并可下载</span><span class="chip">类型: 高清作品、开放图像与互动细看</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 页面本身就有 Look Closer 五点互动，非常适合先独立观察、再与馆方解释对照。</p><p><strong>重点:</strong> 先不展开文字写六句卡；再依次查看 Help from Degas、dress、chairs、expression、dog 五个细节。</p><p><strong>局限:</strong> 互动语气面向广泛公众，社会阶级与性别分析较简；你的观画卡应补上这些问题。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.nga.gov/artworks/61368-little-girl-blue-armchair">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="caillebotte-paris-street"><h3>Paris Street; Rainy Day</h3><p class="resource-card__creator">The Art Institute of Chicago</p><div class="card-meta"><span class="chip">来源渠道: 美术馆官方馆藏页</span><span class="chip">用途: Practice</span><span class="chip">级别: 所有级别</span><span class="chip">形式: 英文馆藏网页与作品图像</span><span class="chip">所需时间: 构图描线与双画比较共 35 分钟</span><span class="chip">适合: 练习奥斯曼巴黎、摄影式裁切、空间透视、重复雨伞与都市疏离</span><span class="chip">获取方式: 免费网页；无需账户；站点偶尔会触发 Cloudflare 检查</span><span class="chip">类型: 高清作品与馆方说明</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 它的平滑表面不像典型莫奈，却在现代题材和大胆构图上极具印象派意义，能防止把运动缩成一种笔触。</p><p><strong>重点:</strong> 在纸上只画路口透视线、人物轮廓和雨伞圆形；再与《印象·日出》比较“现代性来自哪里”。</p><p><strong>局限:</strong> 单幅作品不能呈现卡耶博特作为资助者与收藏家的重要角色；本路线只把它用于视觉分析。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">打开资源 <span aria-hidden="true">↗</span></a></article></div>
+      </section>
+      <section id="roadmap" class="atlas-section" data-section="roadmap">
+        <p class="section-kicker">04</p>
+        <h2>详细学习或探索路线图</h2>
+        <div class="roadmap"><article class="roadmap-stage" data-stage="1"><div class="roadmap-stage__number" aria-hidden="true">1</div><h3>今天：完成第一张有证据的观画卡</h3><p class="roadmap-stage__timing">持续时间: 45 分钟 · 每周投入: 一次完成</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>知道 1874 年首展为何重要</li><li>第一次使用色彩、光线、笔触、题材、构图五维法</li><li>把个人感受改写成至少三条可指认的画面证据</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>无</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.youtube.com/watch?v=FfehaHSdpD0">How Impressionism Began <span aria-hidden="true">↗</span></a></li><li><a href="https://www.marmottan.fr/en/notice/4014/">Impression, Sunrise <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>看《How Impressionism Began》全片，不暂停记名词，只写下一个你认为最关键的冲突。</li><li>打开《印象·日出》，前 5 分钟不读标签；用一句话分别记录五个维度。</li><li>把五句压缩成“我认为……因为 A、B、C”的结论，再读馆方说明。</li><li>用另一种颜色标出一条得到支持的判断和一条需要修正的判断。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">一张 150–250 字《印象·日出》六句观画卡。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>观画卡至少点出三个具体位置、颜色、笔触或构图关系，而非只写感受。</li><li>不看资料能用 30 秒解释 1874 年独立展与作品名称的关系。</li><li>自测：如果把橙色太阳改成灰色，你能解释画面组织会失去什么。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>把作品缩成手机缩略图，再比较远看与放大时哪些特征最强。</li></ul></div></div></article><article class="roadmap-stage" data-stage="2"><div class="roadmap-stage__number" aria-hidden="true">2</div><h3>第 1–2 周：建立历史骨架，不背年表</h3><p class="roadmap-stage__timing">持续时间: 2 周 · 每周投入: 每周约 3 小时</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>用五个节点讲清 1863–1886 年制度变化</li><li>解释巴黎现代生活、摄影、日本版画和材料变化怎样影响绘画</li><li>区分落选者沙龙、1874 年独立展和马奈的位置</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>完成阶段 1</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.tate.org.uk/art/art-terms/i/impressionism">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/s/salon">Salon <span aria-hidden="true">↗</span></a></li><li><a href="https://www.gxcbcmjt.com/sxbg/jpts/gxmscbs/content_5242">《艺术的故事》（袖珍本第 2 版） <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>读 Tate 的 Impressionism 与 Salon 指定部分，制作只含 1863、1874、1886 三个必记年份的时间线。</li><li>从核心指南的制度、现代性、视觉与材料三组因素中各选一个，写出“条件—画面变化”的因果句。</li><li>阅读《艺术的故事》第 25 章中马奈与印象派相关段落；只摘录三句真正改变理解的内容。</li><li>做一次口头纠错：解释“1874 年首展就是落选者沙龙”“马奈是八次展核心成员”“印象派人人户外完成作品”为何不准确。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">一页 A4 历史骨架：三个年份、六个条件、三个常见误解及纠正。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>不看笔记能在两分钟内讲出从沙龙制度到独立展的因果链。</li><li>能给出至少一个技术条件和一个社会条件，并说明它们如何进入画面。</li><li>自测：别人问“为什么偏偏是 19 世纪巴黎”，你的回答不能只包含“颜料管发明了”。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>补充普法战争与巴黎公社如何改变艺术家流动和 1870 年代巴黎经验。</li></ul></div></div></article><article class="roadmap-stage" data-stage="3"><div class="roadmap-stage__number" aria-hidden="true">3</div><h3>第 3–4 周：训练眼睛的五个维度</h3><p class="roadmap-stage__timing">持续时间: 2 周 · 每周投入: 每周约 3 小时</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>在十分钟内完成一幅画的五维扫描</li><li>区分“列出元素”与“解释元素关系”</li><li>用两幅差异明显的作品证明印象派不是单一笔触</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>能讲清阶段 2 的历史骨架</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://smarthistory.org/period-culture-style/impressionism/">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.marmottan.fr/en/notice/4014/">Impression, Sunrise <span aria-hidden="true">↗</span></a></li><li><a href="https://www.musee-orsay.fr/en/artworks/le-berceau-1132">Le Berceau（The Cradle /《摇篮》） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=na05-xCZR8s">Morisot, The Cradle <span aria-hidden="true">↗</span></a></li><li><a href="https://www.nga.gov/artworks/61368-little-girl-blue-armchair">Little Girl in a Blue Armchair <span aria-hidden="true">↗</span></a></li><li><a href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">Paris Street; Rainy Day <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>看 Smarthistory 的“Impressionism, an introduction”和“Painting modern life”指定条目，每个只记一个可迁移的观画动作。</li><li>对《摇篮》先独立写卡，再看四分钟视频；把讲解中的每个判断对应到画面位置。</li><li>使用 NGA 的 Look Closer 功能精看《蓝色扶手椅中的小女孩》，先写后核对。</li><li>给《巴黎街道；雨天》画一张只含透视线、人物轮廓和雨伞的构图草图。</li><li>从四件作品中任选两件，写 300–500 字比较：至少覆盖三个维度。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">四张六句观画卡、一张构图草图和一张双画比较卡。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>每张卡至少写出一个关系词，如对照、重复、切断、呼应、压缩或模糊。</li><li>比较卡能说明两件作品的差异如何改变观看经验，而非只列不同颜色或题材。</li><li>自测：随机遮住作品标签后，仍能在三分钟内指出五个维度各一条证据。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>在 Smarthistory 合集中再选德加《舞蹈课》或雷诺阿《大林荫道》，检查五维法对室内与人群题材是否同样有效。</li></ul></div></div></article><article class="roadmap-stage" data-stage="4"><div class="roadmap-stage__number" aria-hidden="true">4</div><h3>第 5–6 周：用艺术家差异理解现代生活</h3><p class="roadmap-stage__timing">持续时间: 2 周 · 每周投入: 每周约 3 小时</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>用视觉问题而非生平轶事辨认八位核心艺术家</li><li>比较风景、城市、表演和家庭空间中的不同现代性</li><li>把性别、阶级和观看位置纳入形式分析</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>完成至少四张五维观画卡</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://smarthistory.org/period-culture-style/impressionism/">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.musee-orsay.fr/en/artworks/le-berceau-1132">Le Berceau（The Cradle /《摇篮》） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.nga.gov/artworks/61368-little-girl-blue-armchair">Little Girl in a Blue Armchair <span aria-hidden="true">↗</span></a></li><li><a href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">Paris Street; Rainy Day <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>制作八格艺术家卡：莫奈、雷诺阿、德加、毕沙罗、西斯莱、莫里索、卡萨特、卡耶博特；每格只写“核心视觉问题＋两件作品”。</li><li>在 Smarthistory 合集中选择一件德加或雷诺阿作品，与莫里索或卡萨特做 400 字比较。</li><li>对每幅人物画增加三个问题：谁能进入这个空间？谁在观看？画面让观众站在什么社会位置？</li><li>任选莫奈与卡耶博特作口头比较，说明为何“表面像不像”不足以判断印象派。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">八格艺术家识别卡和一篇 400 字“公共空间／亲密空间”比较。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>能为八位艺术家各说出一个不重复的视觉问题。</li><li>能说明莫里索和卡萨特为何是核心成员，而不是“女性补充章节”。</li><li>自测：解释德加为什么既属于印象派展览群体，又挑战“户外光画家”的刻板定义。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>增加马奈作为先驱／盟友，以及其从未参加独立展这一边界案例。</li></ul></div></div></article><article class="roadmap-stage" data-stage="5"><div class="roadmap-stage__number" aria-hidden="true">5</div><h3>第 7 周：比较学院派、印象派与后印象派</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 约 3 小时</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>从题材、空间、边缘、笔触、色彩和展览机制比较三种位置</li><li>理解后印象派是多个方向而非统一风格</li><li>避免把艺术史写成“旧的坏、新的好”的线性进步</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>能用画面证据说明印象派内部差异</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.tate.org.uk/art/art-terms/s/salon">Salon <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/i/impressionism">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/p/post-impressionism">Post-impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.gxcbcmjt.com/sxbg/jpts/gxmscbs/content_5242">《艺术的故事》（袖珍本第 2 版） <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>重读三个 Tate 条目，各提取一句定义、一条局限和一个代表作品。</li><li>读《艺术的故事》第 26 章中塞尚、修拉、梵高、高更相关部分。</li><li>制作三栏表：学院派的制度与完成标准；印象派的感知与现代生活；后印象派的结构、科学色彩、象征和表达分流。</li><li>选一幅印象派作品与一幅后印象派作品，写 300 字回答“后者保留了什么，又拒绝了什么”。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">一张三栏比较表和一张印象派／后印象派双画比较卡。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>比较表同时包含形式与制度，不能只写笔触差异。</li><li>能说出塞尚、修拉、高更、梵高四种不同回应。</li><li>自测：解释“后印象派比印象派更先进”为什么是一个糟糕问题，并提出更好的比较问题。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>把马奈《奥林匹亚》与卡巴内尔《维纳斯的诞生》加入学院／现代绘画对照。</li></ul></div></div></article><article class="roadmap-stage" data-stage="6"><div class="roadmap-stage__number" aria-hidden="true">6</div><h3>第 8 周：完成一次五画美术馆参观</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 约 3 小时，包括 60–90 分钟参观</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>在真实或虚拟展厅独立选择、观察和比较作品</li><li>控制标签依赖与拍照冲动</li><li>形成可重复用于未来任何展览的个人流程</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>完成阶段 1–5 的核心产出</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.marmottan.fr/en/notice/4014/">Impression, Sunrise <span aria-hidden="true">↗</span></a></li><li><a href="https://www.musee-orsay.fr/en/artworks/le-berceau-1132">Le Berceau（The Cradle /《摇篮》） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.nga.gov/artworks/61368-little-girl-blue-armchair">Little Girl in a Blue Armchair <span aria-hidden="true">↗</span></a></li><li><a href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">Paris Street; Rainy Day <span aria-hidden="true">↗</span></a></li><li><a href="https://smarthistory.org/period-culture-style/impressionism/">Impressionism <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>实体馆优先；若没有合适展览，就用四个馆藏页加 Smarthistory 中任选一件德加或雷诺阿作品组成虚拟展厅。</li><li>每件作品执行“三种距离、两次标签、一次复述”，总共精看五件，不追求数量。</li><li>现场只写关键词；参观后 24 小时内整理两张完整观画卡。</li><li>写 500–800 字总结：哪件作品最改变你对印象派的旧认识？用至少五条证据回答。</li><li>为下次看展保留一张空白六句模板，并列出三个想继续追踪的方向。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">一份五画参观记录、两张精修观画卡、一篇 500–800 字总结和一张可复用空白模板。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>能在不看标签时对任一作品连续讲两分钟，覆盖至少三个维度。</li><li>总结中事实、观察和解释分得开，并至少修正一个早期判断。</li><li>自测：让朋友随机选一幅你没学过的画，你仍能用五维法提出五个好问题。</li><li>达到以上标准即可结束核心路线；之后按兴趣进入女性艺术家、巴黎城市史、收藏与市场或后印象派分支。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>把观画卡带回同一作品前复看，记录现场尺度、表面和色彩与屏幕图像有何不同。</li></ul></div></div></article></div>
+      </section>
+      <section id="sources" class="atlas-section" data-section="sources">
+        <p class="section-kicker">05</p>
+        <h2>资源出处</h2>
+<div class="source-selection"><p class="fact-label">资源筛选说明</p><p>核心事实优先使用美术馆官方术语页、馆藏页与官方视频；观看训练使用以具体作品为中心的 Smarthistory；中文长读只保留一本官方可核对版本的经典通史。所有资源于 2026-07-23 核验标题、机构、URL 与访问条件。馆藏页用于原作图像和作品事实，教育条目用于解释；没有把搜索摘要、商业短视频或流行度当作权威证据。</p></div><div class="source-group-grid"><article class="source-group"><h3>美术馆官方背景</h3><p>用于核对运动、沙龙与后印象派的基本定义和历史节点。</p><ul class="linked-resource-list"><li><a href="https://www.tate.org.uk/art/art-terms/i/impressionism">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/s/salon">Salon <span aria-hidden="true">↗</span></a></li><li><a href="https://www.tate.org.uk/art/art-terms/p/post-impressionism">Post-impressionism <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>美术馆官方馆藏</h3><p>用于高清观察、馆藏事实、互动细看与观画卡实践。</p><ul class="linked-resource-list"><li><a href="https://www.marmottan.fr/en/notice/4014/">Impression, Sunrise <span aria-hidden="true">↗</span></a></li><li><a href="https://www.musee-orsay.fr/en/artworks/le-berceau-1132">Le Berceau（The Cradle /《摇篮》） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.nga.gov/artworks/61368-little-girl-blue-armchair">Little Girl in a Blue Armchair <span aria-hidden="true">↗</span></a></li><li><a href="https://www.artic.edu/artworks/20684/paris-street-rainy-day">Paris Street; Rainy Day <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>英文视频与开放课程</h3><p>短视频先建立问题，作品讲解示范如何从视觉证据推进解释。</p><ul class="linked-resource-list"><li><a href="https://www.youtube.com/watch?v=FfehaHSdpD0">How Impressionism Began <span aria-hidden="true">↗</span></a></li><li><a href="https://smarthistory.org/period-culture-style/impressionism/">Impressionism <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=na05-xCZR8s">Morisot, The Cradle <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>中文图书</h3><p>用于把印象派放回 19 世纪长时段艺术史；只安排指定章节。</p><ul class="linked-resource-list"><li><a href="https://www.gxcbcmjt.com/sxbg/jpts/gxmscbs/content_5242">《艺术的故事》（袖珍本第 2 版） <span aria-hidden="true">↗</span></a></li></ul></article></div>
+      </section>
+    </main>
+  </div>
+  <footer class="atlas-footer">
+    由 <strong>AnythingAtlas</strong> 生成 · 生成日期: 2026-07-23
+  </footer>
+</body>
+</html>

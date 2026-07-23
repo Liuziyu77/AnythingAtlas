@@ -1,0 +1,1302 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A listening-first, 24-week route through musical vocabulary, historical periods, representative composers and works, forms, and performance interpretation.">
+  <title>Learning to Hear Classical Music</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #0b1638;
+  --muted: #53627f;
+  --blue: #1769e0;
+  --cyan: #00aabd;
+  --indigo: #3f3ccf;
+  --line: #dce7f4;
+  --soft: #f4f8fd;
+  --paper: #ffffff;
+  --warning: #9a5b00;
+  --warning-bg: #fff7e8;
+  --danger: #9d2f43;
+  --danger-bg: #fff1f3;
+  --success: #176c57;
+  --success-bg: #eaf9f4;
+  --shadow: 0 18px 48px rgba(18, 52, 98, 0.10);
+  --radius: 22px;
+  --content: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(28, 90, 181, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 90, 181, 0.025) 1px, transparent 1px),
+    var(--soft);
+  background-size: 34px 34px;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: #075fc8;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--indigo);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(0, 170, 189, 0.42);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 10px 16px;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 10px;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--paper);
+  background:
+    radial-gradient(circle at 82% 20%, rgba(0, 210, 218, 0.32), transparent 28%),
+    radial-gradient(circle at 14% 0%, rgba(89, 126, 255, 0.38), transparent 34%),
+    linear-gradient(125deg, #071533 0%, #122864 52%, #0e6181 100%);
+}
+
+.hero__contours {
+  position: absolute;
+  inset: 0;
+  opacity: 0.26;
+  background:
+    repeating-radial-gradient(
+      ellipse at 90% 15%,
+      transparent 0 26px,
+      rgba(255, 255, 255, 0.16) 27px 28px,
+      transparent 29px 52px
+    );
+  mask-image: linear-gradient(90deg, transparent 20%, #000 100%);
+}
+
+.hero__inner {
+  position: relative;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 58px 32px 64px;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.hero__summary {
+  max-width: 780px;
+  margin: 24px 0 0;
+  color: #dbe9ff;
+  font-size: clamp(1.06rem, 2.2vw, 1.35rem);
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 5px 12px;
+  color: #e8f4ff;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 999px;
+  font-size: 0.86rem;
+  backdrop-filter: blur(8px);
+}
+
+.atlas-shell {
+  display: grid;
+  grid-template-columns: minmax(210px, 260px) minmax(0, 1fr);
+  gap: 34px;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 42px 32px 80px;
+}
+
+.atlas-nav {
+  position: relative;
+}
+
+.atlas-nav__inner {
+  position: sticky;
+  top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(18, 52, 98, 0.07);
+  backdrop-filter: blur(10px);
+}
+
+.atlas-nav__title {
+  margin: 0 0 12px;
+  color: var(--blue);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.atlas-nav ol {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: nav;
+}
+
+.atlas-nav li {
+  counter-increment: nav;
+}
+
+.atlas-nav a {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  padding: 7px 8px;
+  color: var(--muted);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.atlas-nav a::before {
+  content: counter(nav, decimal-leading-zero);
+  color: var(--cyan);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.atlas-nav a:hover {
+  color: var(--ink);
+  background: var(--soft);
+}
+
+.atlas-main {
+  min-width: 0;
+}
+
+.atlas-section {
+  scroll-margin-top: 24px;
+  margin-bottom: 32px;
+  padding: clamp(22px, 4vw, 38px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.section-kicker {
+  margin: 0 0 8px;
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.atlas-section > h2 {
+  margin: 0 0 24px;
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.atlas-section h3 {
+  margin: 28px 0 10px;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.lead {
+  color: #344666;
+  font-size: 1.08rem;
+}
+
+.brief-grid,
+.map-grid,
+.decision-grid,
+.field-grid,
+.setup-grid,
+.track-grid,
+.guide-item-grid,
+.source-group-grid,
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.brief-item,
+.map-node,
+.decision-card,
+.field-card,
+.setup-card,
+.track-card,
+.guide-item,
+.source-group,
+.resource-card,
+.plan-block {
+  min-width: 0;
+  padding: 18px;
+  background: linear-gradient(145deg, #fff, #f7faff);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.brief-item dt,
+.fact-label {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brief-item dd {
+  margin: 0;
+  font-weight: 620;
+}
+
+.brief-item ul,
+.plan-block ul,
+.roadmap-stage ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.map-node {
+  position: relative;
+  overflow: hidden;
+}
+
+.map-node::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(var(--blue), var(--cyan));
+}
+
+.map-node h3,
+.decision-card h3,
+.field-card h3,
+.setup-card h3,
+.track-card h3,
+.guide-item h4,
+.source-group h3,
+.resource-card h3 {
+  margin-top: 0;
+}
+
+.answer-card {
+  padding: 22px;
+  background: linear-gradient(135deg, var(--success-bg), #f6fffb);
+  border: 1px solid #b9e7d8;
+  border-left: 5px solid var(--success);
+  border-radius: 16px;
+}
+
+.answer-card .lead {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.decision-card {
+  border-top: 4px solid var(--success);
+}
+
+.decision-card p,
+.field-card p,
+.setup-card p,
+.track-card p {
+  margin: 10px 0;
+}
+
+.guide-meta {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.35fr) minmax(0, 1.65fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.guide-meta > div {
+  padding: 12px 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+.guide-meta dt,
+.field-card__category {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.guide-meta dd {
+  margin: 0;
+}
+
+.field-card {
+  border-top: 4px solid var(--cyan);
+}
+
+.field-card ul,
+.track-card ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.setup-grid,
+.track-grid {
+  margin-bottom: 22px;
+}
+
+.setup-card {
+  border-left: 4px solid var(--indigo);
+}
+
+.track-card {
+  border-top: 4px solid var(--indigo);
+}
+
+.guide-section {
+  margin-top: 30px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.guide-section__purpose {
+  margin: -2px 0 16px;
+  color: var(--muted);
+}
+
+.guide-item-grid,
+.source-group-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.guide-item {
+  border-left: 4px solid var(--cyan);
+}
+
+.guide-item h4 {
+  font-size: 1.05rem;
+}
+
+.guide-item ul,
+.source-group ul,
+.linked-resource-list {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.linked-resource-list {
+  display: grid;
+  gap: 6px;
+}
+
+.linked-resource-list a {
+  font-weight: 750;
+}
+
+.source-selection {
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  background: var(--soft);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+}
+
+.source-selection p:last-child {
+  margin-bottom: 0;
+}
+
+.source-group {
+  border-top: 4px solid var(--blue);
+}
+
+.dependency-list,
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.chip {
+  display: inline-flex;
+  padding: 4px 9px;
+  color: #25416f;
+  background: #eaf2ff;
+  border: 1px solid #d4e4fb;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.plan-block--wide {
+  grid-column: 1 / -1;
+}
+
+.channel-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.channel-list li {
+  padding: 12px 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+.channel-priority {
+  display: inline-block;
+  margin-left: 6px;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.starting-card,
+.next-card {
+  position: relative;
+  overflow: hidden;
+  padding: 26px;
+  color: var(--paper);
+  background: linear-gradient(130deg, #143f91, #167b94);
+  border-radius: 18px;
+}
+
+.starting-card::after,
+.next-card::after {
+  content: "↗";
+  position: absolute;
+  right: 22px;
+  bottom: 8px;
+  color: rgba(255, 255, 255, 0.16);
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+.starting-card dl,
+.next-card dl {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.starting-card dt,
+.next-card dt {
+  margin-top: 14px;
+  color: #9ceef2;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.starting-card dt:first-child,
+.next-card dt:first-child {
+  margin-top: 0;
+}
+
+.starting-card dd,
+.next-card dd {
+  margin: 2px 0 0;
+  font-size: 1.04rem;
+}
+
+.resource-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--blue);
+}
+
+.resource-card__creator {
+  margin: -4px 0 14px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.resource-card__body {
+  flex: 1;
+}
+
+.resource-card__body p {
+  margin: 12px 0;
+}
+
+.resource-card__body strong {
+  color: #263d68;
+}
+
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  overflow-wrap: anywhere;
+  font-weight: 800;
+}
+
+.roadmap {
+  position: relative;
+  display: grid;
+  gap: 22px;
+}
+
+.roadmap::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 22px;
+  width: 2px;
+  background: linear-gradient(var(--blue), var(--cyan));
+}
+
+.roadmap-stage {
+  position: relative;
+  margin-left: 58px;
+  padding: 24px;
+  background: #fbfdff;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  break-inside: avoid;
+}
+
+.roadmap-stage__number {
+  position: absolute;
+  top: 22px;
+  left: -58px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--paper);
+  background: linear-gradient(145deg, var(--blue), var(--cyan));
+  border: 4px solid var(--paper);
+  border-radius: 50%;
+  box-shadow: 0 5px 14px rgba(23, 105, 224, 0.22);
+  font-weight: 900;
+}
+
+.roadmap-stage h3 {
+  margin: 0 0 5px;
+}
+
+.roadmap-stage__timing {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.roadmap-stage__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.roadmap-stage__block {
+  min-width: 0;
+}
+
+.roadmap-stage__block--wide {
+  grid-column: 1 / -1;
+}
+
+.deliverable {
+  padding: 14px 16px;
+  color: #174d42;
+  background: var(--success-bg);
+  border-left: 4px solid #2c9c7e;
+  border-radius: 0 12px 12px 0;
+}
+
+.source-notes {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.source-note {
+  padding: 14px 16px;
+  background: var(--soft);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+}
+
+.source-note--caution,
+.source-note--warning {
+  color: #68420a;
+  background: var(--warning-bg);
+  border-left-color: #e3a02e;
+}
+
+.source-note--critical,
+.source-note--danger {
+  color: #702131;
+  background: var(--danger-bg);
+  border-left-color: #d95870;
+}
+
+.atlas-footer {
+  padding: 28px 24px 42px;
+  color: #6d7c97;
+  text-align: center;
+  font-size: 0.88rem;
+}
+
+.atlas-footer strong {
+  color: var(--blue);
+}
+
+@media (max-width: 860px) {
+  .hero__inner {
+    padding: 38px 22px 46px;
+  }
+
+  .atlas-shell {
+    display: block;
+    padding: 24px 16px 54px;
+  }
+
+  .atlas-nav__inner {
+    position: static;
+    margin-bottom: 22px;
+  }
+
+  .atlas-nav ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .atlas-section {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 620px) {
+  .atlas-nav ol,
+  .brief-grid,
+  .map-grid,
+  .decision-grid,
+  .field-grid,
+  .setup-grid,
+  .track-grid,
+  .guide-item-grid,
+  .source-group-grid,
+  .plan-grid,
+  .resource-grid,
+  .roadmap-stage__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-block--wide,
+  .roadmap-stage__block--wide {
+    grid-column: auto;
+  }
+
+  .roadmap::before {
+    left: 16px;
+  }
+
+  .roadmap-stage {
+    margin-left: 44px;
+    padding: 19px;
+  }
+
+  .roadmap-stage__number {
+    left: -48px;
+    width: 36px;
+    height: 36px;
+    border-width: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  :root {
+    --shadow: none;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 10.5pt;
+  }
+
+  .skip-link,
+  .atlas-nav {
+    display: none;
+  }
+
+  .hero {
+    color: #111;
+    background: #fff;
+    border-bottom: 2px solid #1669df;
+  }
+
+  .hero__inner {
+    padding: 0 0 22px;
+  }
+
+  .hero__contours {
+    display: none;
+  }
+
+  .hero__summary,
+  .meta-pill {
+    color: #333;
+  }
+
+  .hero h1 {
+    font-size: 30pt;
+  }
+
+  .atlas-shell {
+    display: block;
+    max-width: none;
+    padding: 24px 0;
+  }
+
+  .atlas-section {
+    margin: 0 0 18px;
+    padding: 16px 0;
+    border: 0;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .resource-card,
+  .map-node,
+  .decision-card,
+  .field-card,
+  .setup-card,
+  .track-card,
+  .guide-item,
+  .source-group,
+  .roadmap-stage,
+  .starting-card,
+  .next-card {
+    break-inside: avoid;
+  }
+
+  .starting-card,
+  .next-card {
+    color: #111;
+    background: #eef5ff;
+    border: 1px solid #aac8ee;
+  }
+
+  a {
+    color: #111;
+    text-decoration: underline;
+  }
+
+  .resource-link::after {
+    content: " (" attr(href) ")";
+    overflow-wrap: anywhere;
+    font-size: 8pt;
+    font-weight: 400;
+  }
+}
+
+
+/* Scholar — warm editorial layout for mature academic fields. */
+
+.theme-scholar {
+  color-scheme: light;
+  --ink: #251f1b;
+  --muted: #6e6259;
+  --blue: #7b2638;
+  --cyan: #a9663d;
+  --indigo: #56356d;
+  --line: #d8cec0;
+  --soft: #f3eee5;
+  --paper: #fffdf8;
+  --success-bg: #eef3e9;
+  --warning-bg: #fff4dc;
+  --danger-bg: #fae9e9;
+  --shadow: 0 16px 42px rgba(58, 43, 30, 0.08);
+  --radius: 8px;
+  --content: 1020px;
+  background:
+    linear-gradient(rgba(91, 70, 50, 0.025) 1px, transparent 1px),
+    #f2ede4;
+  background-size: 100% 28px;
+  font-family:
+    Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Songti SC", "Noto Serif CJK SC", serif;
+}
+
+.theme-scholar a {
+  color: #7b2638;
+}
+
+.theme-scholar .hero {
+  min-height: 390px;
+  color: #251f1b;
+  background:
+    linear-gradient(90deg, rgba(123, 38, 56, 0.06) 1px, transparent 1px),
+    linear-gradient(#fffdf8, #f5eee2);
+  background-size: 72px 100%;
+  border-top: 10px solid #7b2638;
+  border-bottom: 1px solid #bfae9d;
+}
+
+.theme-scholar .hero__contours {
+  opacity: 0.35;
+  background:
+    radial-gradient(circle at 83% 34%, rgba(123, 38, 56, 0.11), transparent 22%),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 31px,
+      rgba(77, 56, 39, 0.055) 32px 33px
+    );
+  mask-image: none;
+}
+
+.theme-scholar .hero__inner {
+  padding: 86px 38px 76px;
+}
+
+.theme-scholar .hero h1 {
+  max-width: 820px;
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC",
+    serif;
+  font-size: clamp(2.7rem, 7vw, 5.5rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.theme-scholar .hero__summary {
+  max-width: 710px;
+  color: #5f5147;
+  font-size: 1.16rem;
+}
+
+.theme-scholar .meta-pill {
+  color: #5b463d;
+  background: rgba(255, 253, 248, 0.72);
+  border-color: #cdbfae;
+  border-radius: 2px;
+  backdrop-filter: blur(6px);
+}
+
+.theme-scholar .atlas-shell {
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: var(--content);
+  padding-top: 26px;
+}
+
+.theme-scholar .atlas-nav {
+  z-index: 20;
+}
+
+.theme-scholar .atlas-nav__inner {
+  position: sticky;
+  top: 10px;
+  padding: 12px 14px;
+  background: rgba(255, 253, 248, 0.94);
+  border-color: #d8cec0;
+  border-radius: 5px;
+  box-shadow: 0 8px 24px rgba(58, 43, 30, 0.08);
+}
+
+.theme-scholar .atlas-nav__title {
+  display: none;
+}
+
+.theme-scholar .atlas-nav ol {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px 14px;
+}
+
+.theme-scholar .atlas-nav a {
+  font-family:
+    Inter, ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei",
+    sans-serif;
+  font-size: 0.78rem;
+}
+
+.theme-scholar .atlas-nav a::before,
+.theme-scholar .section-kicker {
+  color: #a9663d;
+}
+
+.theme-scholar .atlas-section {
+  padding: clamp(28px, 5vw, 50px);
+  border-color: #d8cec0;
+  border-radius: 8px;
+}
+
+.theme-scholar .atlas-section > h2 {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #d8cec0;
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC",
+    serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 650;
+}
+
+.theme-scholar .atlas-section h3 {
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC",
+    serif;
+}
+
+.theme-scholar .brief-item,
+.theme-scholar .map-node,
+.theme-scholar .decision-card,
+.theme-scholar .field-card,
+.theme-scholar .setup-card,
+.theme-scholar .track-card,
+.theme-scholar .guide-item,
+.theme-scholar .source-group,
+.theme-scholar .resource-card,
+.theme-scholar .plan-block {
+  background: #fffaf2;
+  border-color: #ddd0c0;
+  border-radius: 5px;
+}
+
+.theme-scholar .chip {
+  color: #663347;
+  background: #f8eaf0;
+  border-color: #e7cbd4;
+  border-radius: 3px;
+}
+
+.theme-scholar .starting-card,
+.theme-scholar .next-card {
+  color: #fffdf8;
+  background: #70273a;
+  border-radius: 6px;
+}
+
+.theme-scholar .starting-card dt,
+.theme-scholar .next-card dt {
+  color: #f3c9a8;
+}
+
+.theme-scholar .resource-card {
+  border-top-color: #7b2638;
+}
+
+.theme-scholar .roadmap::before {
+  background: #b58a6c;
+}
+
+.theme-scholar .roadmap-stage {
+  background: #fffaf2;
+  border-color: #d8cec0;
+  border-radius: 5px;
+}
+
+.theme-scholar .roadmap-stage__number {
+  background: #7b2638;
+  border-color: #fffdf8;
+  border-radius: 4px;
+}
+
+.theme-scholar .atlas-section[data-section="roadmap"] {
+  margin-top: 48px;
+  border-top: 6px solid #7b2638;
+}
+
+.theme-scholar .atlas-footer strong {
+  color: #7b2638;
+}
+
+@media (max-width: 860px) {
+  .theme-scholar .hero {
+    min-height: 0;
+  }
+
+  .theme-scholar .atlas-nav__inner {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .theme-scholar .atlas-nav ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* Shared print normalization loaded after every visual theme. */
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body[class*="theme-"] {
+    color: #111 !important;
+    background: #fff !important;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 10.5pt;
+  }
+
+  body[class*="theme-"] .hero {
+    min-height: 0;
+    color: #111 !important;
+    background: #fff !important;
+    border: 0;
+    border-bottom: 2px solid #333;
+  }
+
+  body[class*="theme-"] .hero__inner {
+    padding: 0 0 22px;
+  }
+
+  body[class*="theme-"] .hero__summary,
+  body[class*="theme-"] .meta-pill {
+    color: #333 !important;
+    background: #fff !important;
+    border-color: #bbb !important;
+  }
+
+  body[class*="theme-"] .atlas-shell {
+    display: block;
+    max-width: none;
+    padding: 24px 0;
+  }
+
+  body[class*="theme-"] .atlas-section {
+    overflow: visible;
+    margin: 0 0 18px;
+    padding: 16px 0;
+    color: #111 !important;
+    background: #fff !important;
+    border: 0;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .atlas-section::after,
+  body[class*="theme-"] .roadmap-stage::before {
+    display: none;
+  }
+
+  body[class*="theme-"] .brief-item,
+  body[class*="theme-"] .answer-card,
+  body[class*="theme-"] .guide-meta > div,
+  body[class*="theme-"] .map-node,
+  body[class*="theme-"] .decision-card,
+  body[class*="theme-"] .field-card,
+  body[class*="theme-"] .setup-card,
+  body[class*="theme-"] .track-card,
+  body[class*="theme-"] .guide-item,
+  body[class*="theme-"] .source-group,
+  body[class*="theme-"] .source-selection,
+  body[class*="theme-"] .resource-card,
+  body[class*="theme-"] .plan-block,
+  body[class*="theme-"] .roadmap-stage,
+  body[class*="theme-"] .source-note {
+    color: #111 !important;
+    background: #fff !important;
+    border-color: #aaa !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .starting-card,
+  body[class*="theme-"] .next-card,
+  body[class*="theme-"] .deliverable {
+    color: #111 !important;
+    background: #f2f2f2 !important;
+    border: 1px solid #aaa;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .starting-card dt,
+  body[class*="theme-"] .next-card dt,
+  body[class*="theme-"] .answer-card .lead,
+  body[class*="theme-"] .fact-label,
+  body[class*="theme-"] .brief-item dt,
+  body[class*="theme-"] .roadmap-stage__timing,
+  body[class*="theme-"] .resource-card__creator {
+    color: #444 !important;
+  }
+
+  body[class*="theme-"] .chip,
+  body[class*="theme-"] .meta-pill {
+    color: #111 !important;
+    background: #fff !important;
+    border: 1px solid #aaa !important;
+  }
+
+  body[class*="theme-"] .roadmap::before {
+    background: #777 !important;
+    border: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .roadmap-stage__number {
+    color: #fff !important;
+    background: #333 !important;
+    border-color: #fff !important;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .atlas-footer {
+    color: #444 !important;
+    border-top: 1px solid #aaa;
+  }
+
+  body[class*="theme-"] .atlas-footer strong {
+    color: #111 !important;
+  }
+}
+
+  </style>
+</head>
+<body class="theme-scholar" data-theme="scholar">
+  <a class="skip-link" href="#atlas-main">Skip to the atlas</a>
+  <header class="hero">
+    <div class="hero__contours" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <h1>Learning to Hear Classical Music</h1>
+      <p class="hero__summary">A listening-first, 24-week route through musical vocabulary, historical periods, representative composers and works, forms, and performance interpretation.</p>
+      <div class="hero__meta"><span class="meta-pill">Generated: 2026-07-23</span><span class="meta-pill">Estimated total time: 24 weeks · 3–4 hours per week</span></div>
+    </div>
+  </header>
+  <div class="atlas-shell">
+    <aside class="atlas-nav" aria-label="Atlas sections">
+      <div class="atlas-nav__inner">
+        <p class="atlas-nav__title">Atlas sections</p>
+        <nav>
+          <ol>
+            <li><a href="#brief">Confirmed User Brief</a></li>
+            <li><a href="#guide">Core Guide</a></li>
+            <li><a href="#resources">Curated Resource Atlas</a></li>
+            <li><a href="#roadmap">Detailed Learning or Exploration Roadmap</a></li>
+            <li><a href="#sources">Source Directory</a></li>
+          </ol>
+        </nav>
+      </div>
+    </aside>
+    <main id="atlas-main" class="atlas-main">
+      <section id="brief" class="atlas-section" data-section="brief">
+        <p class="section-kicker">01</p>
+        <h2>Confirmed User Brief</h2>
+        <dl class="brief-grid"><div class="brief-item"><dt>Goal</dt><dd>Understand the development of Western classical music; recognize broad differences among Baroque, Classical, Romantic, and modern music; know major composers and representative works; and compare performances with an informed ear.</dd></div><div class="brief-item"><dt>Starting point</dt><dd>Complete beginner with no formal music-theory training and difficulty distinguishing periods, composers, forms, and performance styles.</dd></div><div class="brief-item"><dt>Available time</dt><dd>24 weeks at 3–4 hours per week</dd></div><div class="brief-item"><dt>Language</dt><dd>English-first, with substantial Chinese-language alternatives</dd></div><div class="brief-item"><dt>Preferred formats</dt><dd><ul><li>Guided listening</li><li>University lectures</li><li>Short theory references</li><li>Selected book chapters</li><li>Podcasts and performance criticism</li></ul></dd></div><div class="brief-item"><dt>Desired depth</dt><dd>A durable general foundation rather than conservatory theory or exhaustive chronology</dd></div><div class="brief-item"><dt>Constraints</dt><dd><ul><li>Typical session length: 30–45 minutes</li><li>Keep the executable core mostly free</li><li>Allow a few worthwhile books and clearly marked subscription references</li><li>Do not require score reading or an instrument</li></ul></dd></div><div class="brief-item"><dt>Assumptions</dt><dd><ul><li>The learner can use YouTube and ordinary web audio; regional availability can change</li><li>English resources are acceptable, while Chinese courses are useful alternatives rather than mandatory duplicates</li><li>Dates for style periods are approximate and overlapping, not hard borders</li><li>The learner is willing to keep a compact listening journal and revisit the same work</li></ul></dd></div></dl>
+      </section>
+      <section id="guide" class="atlas-section" data-section="guide">
+        <p class="section-kicker">02</p>
+        <h2>Core Guide</h2>
+<div class="answer-card"><p class="fact-label">Bottom line</p><p class="lead">Learn classical music by attaching a small listening vocabulary to a chronological sequence of anchor works. Use period labels as bundles of evidence—texture, rhythm, harmony, instrumentation, form, and performance practice—not as a date-guessing game. The default route is Yale for aural concepts, Swafford for historical narrative, Copland for listening method, and official orchestra performances for repeated comparison.</p></div><h3>What matters</h3><ul><li>You need only eight listening dimensions at first: pulse and meter, melody and motive, harmony and tonal direction, texture, timbre, dynamics, articulation, and form.</li><li>A genre names what kind of work it is—symphony, concerto, quartet, opera—while a form describes how musical time is organized—binary, ternary, rondo, variations, fugue, or sonata form.</li><li>Beethoven is a bridge rather than a clean border: early works inhabit the Classical tradition, while the scale and rhetoric of works such as the Eroica helped open Romantic possibilities.</li><li>Twentieth- and twenty-first-century music is plural rather than one style: extended tonality, atonality, new rhythm and timbre, neoclassicism, serialism, minimalism, electronics, and revived older idioms coexist.</li><li>Recognition grows from repeated listening. One work heard four purposeful times teaches more than ten works heard once.</li></ul><h3>Recommendations</h3><div class="decision-grid"><article class="decision-card"><h3>Balanced listening-first route</h3><p><strong>Best for:</strong> The stated 30–45-minute sessions and a desire for history, theory, and recordings in proportion</p><p><strong>Why:</strong> It gives every new term an audible example and every historical period a small set of memorable anchor works.</p><p><strong>Trade-offs:</strong> It is selective: medieval and Renaissance music receive orientation rather than equal time, and opera is sampled rather than surveyed.</p></article><article class="decision-card"><h3>Chinese-first history route</h3><p><strong>Best for:</strong> Days when English lectures slow comprehension</p><p><strong>Why:</strong> The Central Conservatory of Music&#x27;s two-part MOOC provides a coherent Chinese chronology from antiquity to the early twentieth century.</p><p><strong>Trade-offs:</strong> The scheduled run has ended; it remains available for self-study, and the roadmap&#x27;s listening exercises must still be done separately.</p></article><article class="decision-card"><h3>Optional classical-focused streaming service</h3><p><strong>Best for:</strong> The capstone phase, when comparing conductors, orchestras, and recordings of the same work</p><p><strong>Why:</strong> IDAGIO organizes music by work, composer, performer, and recording, which is much clearer for classical repertoire than track-first metadata.</p><p><strong>Trade-offs:</strong> It is commercial, regional catalogues and plans can change, and the free official recordings in this atlas are sufficient for the core path.</p></article></div><div class="guide-section"><h3>Hear periods as bundles of choices</h3><p class="guide-section__purpose"><strong>What this section answers:</strong> Distinguish historical styles without treating approximate dates or a single instrument as proof.</p><div class="guide-item-grid"><article class="guide-item"><h4>Before 1600: medieval and Renaissance orientation</h4><p>Listen for the move from monophonic chant toward increasingly independent vocal lines, modal rather than later major–minor organization, and music shaped by liturgy, court, and text. This is prerequisite context, not a full survey in the core route.</p><p class="fact-label">Examples</p><ul><li>Gregorian chant</li><li>Hildegard of Bingen</li><li>Josquin des Prez</li><li>Palestrina</li></ul></article><article class="guide-item"><h4>Baroque, approximately 1600–1750</h4><p>Expect strong bass-driven motion, continuo, ornament, dramatic contrast, sequences, and polyphonic independence. Opera, cantata, oratorio, suite, fugue, and solo concerto become central. Historically informed performers may use gut strings, less continuous vibrato, smaller forces, and period pitch.</p><p class="fact-label">Examples</p><ul><li>Monteverdi — L&#x27;Orfeo</li><li>Vivaldi — The Four Seasons</li><li>J. S. Bach — Brandenburg Concerto No. 5</li><li>Handel — Messiah</li></ul></article><article class="guide-item"><h4>Classical, approximately 1750–1820</h4><p>Listen for balanced phrases, clearer melody-and-accompaniment textures, audible cadences, thematic contrast, and long-range argument through sonata form. The symphony, string quartet, concerto, and sonata flourish in public and courtly settings.</p><p class="fact-label">Examples</p><ul><li>Haydn — Symphony No. 104</li><li>Mozart — Symphony No. 40</li><li>Mozart — The Marriage of Figaro</li><li>Beethoven — Symphony No. 3 as a bridge</li></ul></article><article class="guide-item"><h4>Romantic, approximately 1815–1910</h4><p>Expect more elastic tempo, intensified chromatic harmony, expanded orchestral color, virtuoso display, intimate miniatures, programmatic narratives, and national or literary associations. Classical forms often remain, but their scale and expressive pressure change.</p><p class="fact-label">Examples</p><ul><li>Schubert — Erlkönig</li><li>Chopin — Nocturnes</li><li>Berlioz — Symphonie fantastique</li><li>Brahms — Symphony No. 4</li><li>Wagner — Tristan und Isolde</li><li>Mahler — Symphony No. 5</li></ul></article><article class="guide-item"><h4>Modern and contemporary, approximately 1890–present</h4><p>Do not expect one sound. Debussy reweights color and harmonic function; Stravinsky makes rhythm and block-like construction primary; Schoenberg abandons a single tonal center; later composers pursue serialism, chance, minimalism, electronics, spectral color, quotation, and renewed tonality.</p><p class="fact-label">Examples</p><ul><li>Debussy — La Mer</li><li>Stravinsky — The Rite of Spring</li><li>Schoenberg — Pierrot lunaire</li><li>Shostakovich — Symphony No. 5</li><li>Reich — Music for 18 Musicians</li><li>Caroline Shaw — Partita for 8 Voices</li></ul></article></div></div><div class="guide-section"><h3>Use a compact listening toolkit</h3><p class="guide-section__purpose"><strong>What this section answers:</strong> Supply the minimum theory vocabulary needed for attentive listening without requiring notation fluency.</p><div class="guide-item-grid"><article class="guide-item"><h4>Time</h4><p>Find the pulse, group it into meter, notice tempo, rhythmic patterns, syncopation, and whether motion is steady or elastic.</p><p class="fact-label">Examples</p><ul><li>Duple versus triple meter</li><li>The irregular accents in The Rite of Spring</li><li>Rubato in a Chopin nocturne</li></ul></article><article class="guide-item"><h4>Pitch and direction</h4><p>Follow motives, phrases, cadences, repetition, sequence, major or minor color, tension and release, and changes of tonal center. Perfect pitch is irrelevant.</p><p class="fact-label">Examples</p><ul><li>The four-note opening motive of Beethoven&#x27;s Fifth</li><li>A rising sequence</li><li>A cadence that sounds closed</li></ul></article><article class="guide-item"><h4>Texture and color</h4><p>Ask how many layers are active and who carries each role. Distinguish monophony, homophony, and polyphony, then name the instrumental or vocal colors that change.</p><p class="fact-label">Examples</p><ul><li>One-line chant</li><li>Melody with accompaniment in Mozart</li><li>Imitative entries in a Bach fugue</li><li>Muted brass versus open brass</li></ul></article><article class="guide-item"><h4>Form and genre</h4><p>Map returns and contrasts before memorizing labels. Hear A–B–A, refrain-and-episode rondo, theme and variations, fugal entries, and exposition–development–recapitulation; keep these organizational plans separate from genres such as symphony or concerto.</p><p class="fact-label">Examples</p><ul><li>Rondo: A–B–A–C–A</li><li>Sonata form: exposition–development–recapitulation</li><li>Concerto: soloist and ensemble relationship</li><li>Symphony: a multi-movement orchestral genre</li></ul></article></div></div><div class="guide-section"><h3>Listen in four passes</h3><p class="guide-section__purpose"><strong>What this section answers:</strong> Turn a recording into an active, repeatable exercise instead of background sound.</p><div class="guide-item-grid"><article class="guide-item"><h4>Pass 1 — orientation</h4><p>Hear one complete movement without reading a biography. Record only the emotional trajectory and two moments you noticed.</p><p class="fact-label">Examples</p><ul><li>Calm to turbulent</li><li>A sudden quiet section at 4:12</li><li>A returning opening idea</li></ul></article><article class="guide-item"><h4>Pass 2 — map</h4><p>Add timestamps for major returns, contrasts, solo entrances, cadences, and changes of texture. Use neutral labels such as A, B, transition, and return.</p><p class="fact-label">Examples</p><ul><li>0:00 A</li><li>1:24 contrasting idea</li><li>4:50 opening returns</li></ul></article><article class="guide-item"><h4>Pass 3 — isolate one dimension</h4><p>Track only rhythm, bass, melody, texture, orchestration, harmony, or dynamics. Limiting attention makes detail audible.</p><p class="fact-label">Examples</p><ul><li>Follow only the bass line</li><li>Mark every woodwind color change</li><li>Count imitative entrances</li></ul></article><article class="guide-item"><h4>Pass 4 — compare interpretations</h4><p>Compare the same passage in two recordings and describe observable choices before judging: duration, tempo flexibility, articulation, vibrato, balance, ensemble size, repeats, and recorded acoustic.</p><p class="fact-label">Examples</p><ul><li>Dry versus resonant acoustic</li><li>Detached versus sustained articulation</li><li>Narrow versus broad tempo</li><li>Period versus modern instruments</li></ul></article></div></div><div class="guide-section"><h3>Build taste without outsourcing judgment</h3><p class="guide-section__purpose"><strong>What this section answers:</strong> Use critics, performers, and institutions as guides while retaining an evidence-based personal response.</p><div class="guide-item-grid"><article class="guide-item"><h4>Read criticism after listening</h4><p>Write your own three-sentence account first, then compare it with an expert review. Critics are most useful for vocabulary, context, and recording comparison—not as a scorecard that replaces hearing.</p><p class="fact-label">Examples</p><ul><li>BBC Radio 3 Building a Library</li><li>Alex Ross</li><li>A performer interview on Sticky Notes</li></ul></article><article class="guide-item"><h4>Follow institutions for different reasons</h4><p>Use a period ensemble for historical-performance choices, a modern orchestra for present-day concert practice, a broadcaster for critical comparison, and a university course for conceptual structure.</p><p class="fact-label">Examples</p><ul><li>Netherlands Bach Society</li><li>San Francisco Symphony</li><li>Frankfurt Radio Symphony</li><li>BBC Radio 3</li><li>Yale University</li></ul></article><article class="guide-item"><h4>Keep period recognition probabilistic</h4><p>Make a case from at least three features and allow transitional or retrospective writing. A harpsichord does not automatically mean Baroque, and lush strings do not automatically mean Romantic.</p><p class="fact-label">Examples</p><ul><li>Stravinsky&#x27;s neoclassicism reuses older forms</li><li>Modern orchestras play Baroque repertory</li><li>Beethoven spans Classical and Romantic narratives</li></ul></article></div></div><h3>Next Action</h3><div class="next-card"><dl><dt>Action</dt><dd>Listen to the first movement of Mozart&#x27;s Symphony No. 40 once; watch Yale Lecture 1 from 03:23–12:14 and 33:56–49:41; then replay the movement and note its pulse, main motive, texture, strongest contrast, and one return with a timestamp.</dd><dt>When</dt><dd>Today, for 45 minutes</dd><dt>Expected output</dt><dd>One five-line listening card that distinguishes what you heard from what the title or biography told you.</dd></dl></div>
+      </section>
+      <section id="resources" class="atlas-section" data-section="resources">
+        <p class="section-kicker">03</p>
+        <h2>Curated Resource Atlas</h2>
+<h3>Choose a route</h3><div class="track-grid"><article class="track-card"><h3>Balanced listening-first track — recommended</h3><p><strong>Best for:</strong> The confirmed 3–4-hour weekly budget and 30–45-minute sessions</p><p><strong>Cadence:</strong> Four 35–45-minute sessions plus one optional concert or podcast session each week</p><p><strong>Assigned resources:</strong></p><ul class="linked-resource-list"><li><a href="https://online.yale.edu/courses/listening-music">Listening to Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.penguinrandomhouse.com/books/303445/what-to-listen-for-in-music-by-aaron-copland/">What to Listen for in Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.penguinrandomhouse.com/books/175585/the-vintage-guide-to-classical-music-by-jan-swafford/">The Vintage Guide to Classical Music <span aria-hidden="true">↗</span></a></li><li><a href="https://philharmonia.co.uk/resources/instruments/">Instruments <span aria-hidden="true">↗</span></a></li><li><a href="https://www.bachvereniging.nl/en/bwv/bwv-1050">Bach: Brandenburg Concerto No. 5 in D major, BWV 1050 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=QyQ-POuTNn8">Mozart: Symphony No. 40 in G minor, K. 550 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=J5zFitBASEw">Keeping Score: Beethoven&#x27;s Eroica <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=wWi3xslzeEY">Keeping Score: Berlioz&#x27;s Symphonie fantastique <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=y1hWp4pQpAs">Debussy: La Mer <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=nr_0ve2KFuk">Keeping Score: Stravinsky&#x27;s The Rite of Spring <span aria-hidden="true">↗</span></a></li><li><a href="https://www.bbc.co.uk/programmes/p02nrtty">Record Review Podcast: Building a Library <span aria-hidden="true">↗</span></a></li></ul><p class="fact-label">Sequence</p><ul><li>Session A: watch one assigned Yale lecture or half-lecture and write five terms in plain language.</li><li>Session B: hear the assigned anchor movement twice, using orientation and map passes.</li><li>Session C: read only the assigned Copland section or Swafford composer profile while replaying excerpts.</li><li>Session D: revisit the work with one focused parameter; every fourth week compare another performance or a critic&#x27;s account.</li><li>Optional: substitute one WETA or Sticky Notes episode for the reading session when energy is low.</li></ul></article><article class="track-card"><h3>Chinese-first chronology track</h3><p><strong>Best for:</strong> A learner who wants historical explanation primarily in Chinese while retaining the same listening checkpoints</p><p><strong>Cadence:</strong> Three 30–45-minute MOOC/listening sessions plus one comparison session each week</p><p><strong>Assigned resources:</strong></p><ul class="linked-resource-list"><li><a href="https://www.icourse163.org/course/1302CCOM001A-1002604008">西方音乐史（上） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.icourse163.org/course/1302CCOM001B-1002597009">西方音乐史（下） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.bachvereniging.nl/en/bwv/bwv-1050">Bach: Brandenburg Concerto No. 5 in D major, BWV 1050 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=QyQ-POuTNn8">Mozart: Symphony No. 40 in G minor, K. 550 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=J5zFitBASEw">Keeping Score: Beethoven&#x27;s Eroica <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=wWi3xslzeEY">Keeping Score: Berlioz&#x27;s Symphonie fantastique <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=y1hWp4pQpAs">Debussy: La Mer <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=nr_0ve2KFuk">Keeping Score: Stravinsky&#x27;s The Rite of Spring <span aria-hidden="true">↗</span></a></li><li><a href="https://viva.pressbooks.pub/openmusictheory/">Open Music Theory, Version 2 <span aria-hidden="true">↗</span></a></li></ul><p class="fact-label">Sequence</p><ul><li>Weeks 1–4: use 西方音乐史(上) Lectures 2–8 for medieval and Renaissance orientation; consult Open Music Theory only for texture and meter.</li><li>Weeks 5–8: complete Lectures 9–11 and pair them with Bach&#x27;s Brandenburg Concerto No. 5.</li><li>Weeks 9–12: use 西方音乐史(下) Lectures 12–14 with Mozart&#x27;s Symphony No. 40 and Beethoven&#x27;s Eroica.</li><li>Weeks 13–16: use Lectures 15–21 selectively, prioritizing 15–17 and 21, with Symphonie fantastique.</li><li>Weeks 17–20: use Lecture 22 with La Mer and The Rite of Spring; add the Yale route only if English listening vocabulary is desired.</li><li>Weeks 21–24: follow the same performance-comparison capstone as the balanced track.</li></ul></article><article class="track-card"><h3>Audio-led maintenance track</h3><p><strong>Best for:</strong> Busy weeks, commuting, or learners who sustain habits better through spoken guidance</p><p><strong>Cadence:</strong> Three 20–30-minute audio segments and one 45-minute focused listening session per week</p><p><strong>Assigned resources:</strong></p><ul class="linked-resource-list"><li><a href="https://weta.org/fm/features/classical-breakdown">Classical Breakdown <span aria-hidden="true">↗</span></a></li><li><a href="https://joshuaweilerstein.com/stickynotes">Sticky Notes: The Classical Music Podcast <span aria-hidden="true">↗</span></a></li><li><a href="https://www.bbc.co.uk/programmes/p02nrtty">Record Review Podcast: Building a Library <span aria-hidden="true">↗</span></a></li><li><a href="https://www.bachvereniging.nl/en/bwv/bwv-1050">Bach: Brandenburg Concerto No. 5 in D major, BWV 1050 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=QyQ-POuTNn8">Mozart: Symphony No. 40 in G minor, K. 550 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=wWi3xslzeEY">Keeping Score: Berlioz&#x27;s Symphonie fantastique <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=nr_0ve2KFuk">Keeping Score: Stravinsky&#x27;s The Rite of Spring <span aria-hidden="true">↗</span></a></li></ul><p class="fact-label">Sequence</p><ul><li>Start with one WETA Classical Breakdown episode on an assigned composer or genre.</li><li>Use Sticky Notes when ready for a work-level deep dive led by a conductor.</li><li>Hear the matching anchor movement and make a five-line listening card.</li><li>From Week 12 onward, use one BBC Building a Library episode monthly to hear how experts compare recordings.</li><li>Return to the balanced track after two maintenance weeks; podcasts alone do not replace repeated listening.</li></ul></article></div><h3>Resource details</h3><div class="resource-grid"><article class="resource-card" data-resource-id="yale-listening"><h3>Listening to Music</h3><p class="resource-card__creator">Craig Wright · Yale University</p><div class="card-meta"><span class="chip">Channel: University course and YouTube</span><span class="chip">Role: Core foundation</span><span class="chip">Level: Complete beginner</span><span class="chip">Format: 23 video lectures with English subtitles</span><span class="chip">Time: 22 hours complete; about 10 hours for the assigned lectures</span><span class="chip">Best for: Learning aural vocabulary through demonstrations rather than notation drills</span><span class="chip">Access: Free, open access; YouTube delivery</span><span class="chip">Type: Open university course</span></div><div class="resource-card__body"><p><strong>Why included:</strong> Yale explicitly designed the course for musical novices and verifies its current availability, duration, instructor, and open-access status.</p><p><strong>Focus:</strong> Lectures 1–7 for vocabulary; 9–14 for form; Lecture 12 for concert-review method; Lecture 15 for historical orientation.</p><p><strong>Limitations:</strong> Recorded in 2008 and strongly centered on the traditional Western canon; some classroom examples and references feel dated.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://online.yale.edu/courses/listening-music">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="copland-listen"><h3>What to Listen for in Music</h3><p class="resource-card__creator">Aaron Copland</p><div class="card-meta"><span class="chip">Channel: Book</span><span class="chip">Role: Core foundation</span><span class="chip">Level: Beginner to intermediate</span><span class="chip">Format: Paperback, ebook, or library book</span><span class="chip">Time: 6–8 hours for selected chapters</span><span class="chip">Best for: A learner who wants durable questions to ask of any piece</span><span class="chip">Access: Paid book or library loan; current PRH paperback ISBN 9780451226402</span><span class="chip">Type: Listening guide</span></div><div class="resource-card__body"><p><strong>Why included:</strong> A major composer explains rhythm, melody, harmony, color, texture, structure, forms, and the relationship among composer, performer, and listener.</p><p><strong>Focus:</strong> Read “How We Listen,” the four elements of music, “Musical Texture,” “Musical Structure,” the chapters on fundamental, variation, fugal, and sonata forms, and “From Composer to Interpreter to Listener.”</p><p><strong>Limitations:</strong> First published in the mid-twentieth century; its canon and language need supplementation for recent music and wider cultural perspectives.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.penguinrandomhouse.com/books/303445/what-to-listen-for-in-music-by-aaron-copland/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="swafford-guide"><h3>The Vintage Guide to Classical Music</h3><p class="resource-card__creator">Jan Swafford</p><div class="card-meta"><span class="chip">Channel: Book</span><span class="chip">Role: Guided learning</span><span class="chip">Level: Beginner</span><span class="chip">Format: Paperback, ebook, or library book</span><span class="chip">Time: 12–15 hours for assigned profiles</span><span class="chip">Best for: Readable chronological context attached to major composers and works</span><span class="chip">Access: Paid book or library loan; PRH paperback ISBN 9780679728054</span><span class="chip">Type: Historical and composer guide</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It offers a coherent narrative from the early Baroque through twentieth-century figures without assuming formal theory.</p><p><strong>Focus:</strong> Introduction, then the profiles named in each stage: Monteverdi/Bach/Handel; Haydn/Mozart/Beethoven; Schubert/Chopin/Schumann/Berlioz/Wagner/Brahms/Tchaikovsky/Mahler; Debussy/Stravinsky/Schoenberg/Shostakovich.</p><p><strong>Limitations:</strong> Published in 1992, selective, and weighted toward the established European canon; use the modern stage and current institutions to extend it.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.penguinrandomhouse.com/books/175585/the-vintage-guide-to-classical-music-by-jan-swafford/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="open-music-theory"><h3>Open Music Theory, Version 2</h3><p class="resource-card__creator">Mark Gotham, Kyle Gullings, Chelsey Hamm, Bryn Hughes, Brian Jarvis, Megan Lavengood, John Peterson; edited by Erin K. Maher</p><div class="card-meta"><span class="chip">Channel: Open textbook</span><span class="chip">Role: Practice</span><span class="chip">Level: College-level reference; beginner sections are usable selectively</span><span class="chip">Format: Free web book and downloadable PDF</span><span class="chip">Time: 3–5 hours for the selected fundamentals</span><span class="chip">Best for: Looking up one concept after hearing it demonstrated</span><span class="chip">Access: Free and openly licensed; no account required to read</span><span class="chip">Type: Online theory reference and workbook</span></div><div class="resource-card__body"><p><strong>Why included:</strong> Its current Version 2 supplies precise explanations, listening prompts, and exercises without requiring purchase.</p><p><strong>Focus:</strong> Read only “Other Aspects of Notation,” “Texture,” “Simple Meter,” “Compound Meter,” “Major Scales,” “Minor Scales,” and the listening portions of “Triads.”</p><p><strong>Limitations:</strong> Designed for a full undergraduate theory sequence; most notation, part-writing, and analysis chapters exceed this atlas&#x27;s needs.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://viva.pressbooks.pub/openmusictheory/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="philharmonia-instruments"><h3>Instruments</h3><p class="resource-card__creator">Philharmonia Orchestra</p><div class="card-meta"><span class="chip">Channel: Orchestra education site</span><span class="chip">Role: Start here</span><span class="chip">Level: Beginner</span><span class="chip">Format: Short articles, player explanations, and sound examples</span><span class="chip">Time: 2–3 hours in 10–15-minute visits</span><span class="chip">Best for: Learning to identify orchestral families and characteristic timbres</span><span class="chip">Access: Free web access</span><span class="chip">Type: Instrument guide with player demonstrations</span></div><div class="resource-card__body"><p><strong>Why included:</strong> Expert players from a major orchestra explain the instruments they actually perform.</p><p><strong>Focus:</strong> Survey strings, woodwinds, brass, percussion, harp, and keyboards; learn two representative instruments per family before exploring rarer variants.</p><p><strong>Limitations:</strong> It is an instrument reference, not a course in orchestration or historical instruments.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://philharmonia.co.uk/resources/instruments/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="ccom-history-up"><h3>西方音乐史（上）</h3><p class="resource-card__creator">潘澜、刘小龙、班丽霞 · 中央音乐学院</p><div class="card-meta"><span class="chip">Channel: 中国大学MOOC</span><span class="chip">Role: Guided learning</span><span class="chip">Level: Beginner survey at undergraduate pace</span><span class="chip">Format: Chinese video lectures, quizzes, and self-study archive</span><span class="chip">Time: 11 lectures; use selected units across 8 weeks</span><span class="chip">Best for: Chinese-first chronology from ancient Greece through the Baroque</span><span class="chip">Access: Current scheduled run has ended; “立即自学” remains available, generally requiring platform login</span><span class="chip">Type: Chinese-language university MOOC</span></div><div class="resource-card__body"><p><strong>Why included:</strong> A Central Conservatory of Music team compresses its undergraduate Western-music-history course into a coherent public MOOC.</p><p><strong>Focus:</strong> Lectures 2–8 for medieval/Renaissance orientation and Lectures 9–11 for Baroque style, genres, Vivaldi, Bach, and Handel.</p><p><strong>Limitations:</strong> Self-study archive rather than an active cohort; no current completion certificate from the ended run.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.icourse163.org/course/1302CCOM001A-1002604008">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="ccom-history-down"><h3>西方音乐史（下）</h3><p class="resource-card__creator">潘澜、刘小龙、班丽霞 · 中央音乐学院</p><div class="card-meta"><span class="chip">Channel: 中国大学MOOC</span><span class="chip">Role: Guided learning</span><span class="chip">Level: Beginner survey at undergraduate pace</span><span class="chip">Format: Chinese video lectures, quizzes, and self-study archive</span><span class="chip">Time: 11 lectures; use selected units across 12 weeks</span><span class="chip">Best for: Chinese-first chronology from Classical style through the turn of the twentieth century</span><span class="chip">Access: Current scheduled run has ended; “立即自学” remains available, generally requiring platform login</span><span class="chip">Type: Chinese-language university MOOC</span></div><div class="resource-card__body"><p><strong>Why included:</strong> Its published syllabus directly covers Classical style, Beethoven, Romanticism, piano music, opera, nationalism, and the transition to twentieth-century music.</p><p><strong>Focus:</strong> Lectures 12–14 for Classical/Beethoven; 15–17 and 21 for Romanticism; 22 for late Romanticism, Impressionism, and the turn of the century.</p><p><strong>Limitations:</strong> The sequence ends at the early twentieth century and does not replace a modern/contemporary extension.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.icourse163.org/course/1302CCOM001B-1002597009">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="nbs-brandenburg5"><h3>Bach: Brandenburg Concerto No. 5 in D major, BWV 1050</h3><p class="resource-card__creator">Netherlands Bach Society · Shunske Sato</p><div class="card-meta"><span class="chip">Channel: Official performer archive</span><span class="chip">Role: Primary listening</span><span class="chip">Level: Beginner</span><span class="chip">Format: Free video performance, movement navigation, essay, and credits</span><span class="chip">Time: 22 minutes per complete hearing</span><span class="chip">Best for: Hearing Baroque concerto contrast, continuo, counterpoint, and a spectacular harpsichord role</span><span class="chip">Access: Free web access</span><span class="chip">Type: Historically informed performance with notes</span></div><div class="resource-card__body"><p><strong>Why included:</strong> The ensemble&#x27;s All of Bach page pairs a complete period-performance video with a concise explanation of the concerto principle.</p><p><strong>Focus:</strong> Map solo-group versus ensemble exchanges in Movement I; follow the harpsichord cadenza; compare articulation and ensemble size with a modern-orchestra recording.</p><p><strong>Limitations:</strong> One historically informed interpretation is evidence of performance choices, not the single authentic way to play Bach.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.bachvereniging.nl/en/bwv/bwv-1050">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="hr-mozart40"><h3>Mozart: Symphony No. 40 in G minor, K. 550</h3><p class="resource-card__creator">Frankfurt Radio Symphony · Andrés Orozco-Estrada</p><div class="card-meta"><span class="chip">Channel: Official orchestra YouTube</span><span class="chip">Role: Primary listening</span><span class="chip">Level: Beginner</span><span class="chip">Format: 27-minute video with movement timestamps</span><span class="chip">Time: 8–27 minutes per hearing</span><span class="chip">Best for: Classical phrase structure, thematic contrast, orchestral texture, and sonata-form practice</span><span class="chip">Access: Free on the orchestra&#x27;s official YouTube channel; regional availability can change</span><span class="chip">Type: Complete concert performance</span></div><div class="resource-card__body"><p><strong>Why included:</strong> A clear modern-orchestra performance with exact movement timestamps makes repeated short sessions easy.</p><p><strong>Focus:</strong> Begin with Movement I at 00:26; map the first theme, contrasting material, development tension, and return before hearing the whole symphony.</p><p><strong>Limitations:</strong> Modern orchestral forces and conventions should later be compared with a period-instrument performance.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=QyQ-POuTNn8">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="sfs-eroica"><h3>Keeping Score: Beethoven&#x27;s Eroica</h3><p class="resource-card__creator">San Francisco Symphony · Michael Tilson Thomas</p><div class="card-meta"><span class="chip">Channel: Official orchestra YouTube</span><span class="chip">Role: Guided listening</span><span class="chip">Level: Beginner to intermediate</span><span class="chip">Format: 111-minute documentary and concert</span><span class="chip">Time: Three 35–40-minute sessions</span><span class="chip">Best for: Understanding Beethoven as a Classical-to-Romantic bridge through one work</span><span class="chip">Access: Free on the San Francisco Symphony&#x27;s official YouTube channel; regional availability can change</span><span class="chip">Type: Documentary and complete concert</span></div><div class="resource-card__body"><p><strong>Why included:</strong> The program integrates history, musical explanation, and a full performance rather than separating biography from sound.</p><p><strong>Focus:</strong> Watch the documentary in two sessions, then hear the concert without narration and map the first movement&#x27;s scale and disruptions.</p><p><strong>Limitations:</strong> The presenter&#x27;s historical narrative is interpretive; heroism should not become the only lens on the symphony.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=J5zFitBASEw">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="sfs-berlioz"><h3>Keeping Score: Berlioz&#x27;s Symphonie fantastique</h3><p class="resource-card__creator">San Francisco Symphony · Michael Tilson Thomas</p><div class="card-meta"><span class="chip">Channel: Official orchestra YouTube</span><span class="chip">Role: Guided listening</span><span class="chip">Level: Beginner to intermediate</span><span class="chip">Format: 110-minute documentary and concert</span><span class="chip">Time: Three 35–40-minute sessions</span><span class="chip">Best for: Romantic program music, recurring idée fixe, expanded orchestration, and autobiographical narrative</span><span class="chip">Access: Free on the San Francisco Symphony&#x27;s official YouTube channel; regional availability can change</span><span class="chip">Type: Documentary and complete concert</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It makes Romantic changes audible through a single work whose narrative, orchestration, and cyclic motive can all be tracked.</p><p><strong>Focus:</strong> Track every return and transformation of the idée fixe; compare the waltz, march, and finale as contrasting sound worlds.</p><p><strong>Limitations:</strong> Berlioz is a vivid Romantic example, not a template for the more restrained Romanticism of Schumann or Brahms.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=wWi3xslzeEY">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="hr-debussy-la-mer"><h3>Debussy: La Mer</h3><p class="resource-card__creator">Frankfurt Radio Symphony · Alain Altinoglu</p><div class="card-meta"><span class="chip">Channel: Official orchestra YouTube</span><span class="chip">Role: Primary listening</span><span class="chip">Level: Beginner to intermediate</span><span class="chip">Format: 28-minute video with movement timestamps</span><span class="chip">Time: 9–28 minutes per hearing</span><span class="chip">Best for: Hearing color, layered texture, fluid rhythm, and harmony that weakens conventional tonal goal-direction</span><span class="chip">Access: Free on the orchestra&#x27;s official YouTube channel; regional availability can change</span><span class="chip">Type: Complete concert performance</span></div><div class="resource-card__body"><p><strong>Why included:</strong> The three compact movements provide an accessible entry to turn-of-the-century modernism through orchestral color.</p><p><strong>Focus:</strong> Track instrumental color and density rather than searching for a singable tune; compare the three movement openings.</p><p><strong>Limitations:</strong> The label “Impressionism” is useful but contested and can obscure Debussy&#x27;s formal precision.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=y1hWp4pQpAs">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="sfs-rite"><h3>Keeping Score: Stravinsky&#x27;s The Rite of Spring</h3><p class="resource-card__creator">San Francisco Symphony · Michael Tilson Thomas</p><div class="card-meta"><span class="chip">Channel: Official orchestra YouTube</span><span class="chip">Role: Guided listening</span><span class="chip">Level: Beginner to intermediate</span><span class="chip">Format: 107-minute documentary and concert</span><span class="chip">Time: Three 35–40-minute sessions</span><span class="chip">Best for: Modern rhythm, layered ostinatos, orchestral extremes, folk-source transformation, and block construction</span><span class="chip">Access: Free on the San Francisco Symphony&#x27;s official YouTube channel; regional availability can change</span><span class="chip">Type: Documentary and complete concert</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It explains why the work sounds disruptive and then lets the learner test those claims against a full performance.</p><p><strong>Focus:</strong> Mark recurring ostinatos, accent shifts, instrumental extremes, and abrupt blocks; do not try to count every meter change.</p><p><strong>Limitations:</strong> The famous premiere story can overshadow the music; focus on audible construction and treat riot narratives critically.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=nr_0ve2KFuk">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="weta-breakdown"><h3>Classical Breakdown</h3><p class="resource-card__creator">John Banther · WETA Classical</p><div class="card-meta"><span class="chip">Channel: Public-radio podcast</span><span class="chip">Role: Start here</span><span class="chip">Level: Beginner</span><span class="chip">Format: Biweekly interviews, stories, listening guides, and analysis</span><span class="chip">Time: 20–55 minutes per episode</span><span class="chip">Best for: Approachable audio guidance during commutes or low-energy sessions</span><span class="chip">Access: Free web audio and major podcast platforms</span><span class="chip">Type: Podcast</span></div><div class="resource-card__body"><p><strong>Why included:</strong> WETA currently produces the series and describes it as behind-the-scenes interviews, deep dives, and analysis.</p><p><strong>Focus:</strong> Choose episodes that match the current stage&#x27;s composer, form, or instrument; write one listening prompt before playing the associated work.</p><p><strong>Limitations:</strong> Episode topics are nonlinear, so it is a supplement rather than the chronological spine.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://weta.org/fm/features/classical-breakdown">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="sticky-notes"><h3>Sticky Notes: The Classical Music Podcast</h3><p class="resource-card__creator">Joshua Weilerstein</p><div class="card-meta"><span class="chip">Channel: Conductor-led podcast</span><span class="chip">Role: Deep dive</span><span class="chip">Level: Beginner to intermediate</span><span class="chip">Format: Work-level analyses and artist interviews</span><span class="chip">Time: 45–70 minutes per episode</span><span class="chip">Best for: A listener ready to stay with one work and hear a conductor&#x27;s structural perspective</span><span class="chip">Access: Free recent episodes and archive links; optional Patreon support</span><span class="chip">Type: Podcast</span></div><div class="resource-card__body"><p><strong>Why included:</strong> Weilerstein explicitly frames the podcast for both beginners and experienced musicians and combines repertory deep dives with performer interviews.</p><p><strong>Focus:</strong> Search the archive for the composer currently being studied; listen in two 25–35-minute halves and test one claim against the score-free recording.</p><p><strong>Limitations:</strong> The archive is large and not sequenced as a course; the host&#x27;s interpretive emphasis is one informed viewpoint.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://joshuaweilerstein.com/stickynotes">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="bbc-record-review"><h3>Record Review Podcast: Building a Library</h3><p class="resource-card__creator">BBC Radio 3</p><div class="card-meta"><span class="chip">Channel: Broadcaster and criticism</span><span class="chip">Role: Practice</span><span class="chip">Level: Intermediate after basic vocabulary</span><span class="chip">Format: Expert comparisons of multiple recordings of one work</span><span class="chip">Time: 45–60 minutes per episode</span><span class="chip">Best for: Learning how critics discuss tempo, sound, phrasing, balance, and interpretive tradition</span><span class="chip">Access: Free BBC web audio where available; the verified page listed 474 episodes and an alphabetical composer archive</span><span class="chip">Type: Comparative-recording podcast</span></div><div class="resource-card__body"><p><strong>Why included:</strong> Its explicit format is a wide recording comparison that ends with a recommendation, exactly matching the atlas&#x27;s interpretation goal.</p><p><strong>Focus:</strong> Begin after Week 12; choose one episode for a work already heard, pause before the recommendation, and rank two excerpts using your own criteria.</p><p><strong>Limitations:</strong> Availability can vary by episode and region, and a critic&#x27;s final choice is not objective truth.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.bbc.co.uk/programmes/p02nrtty">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="early-music-sources"><h3>Early Music Sources</h3><p class="resource-card__creator">Elam Rotem</p><div class="card-meta"><span class="chip">Channel: Scholar-performer website and YouTube</span><span class="chip">Role: Deep dive</span><span class="chip">Level: Intermediate</span><span class="chip">Format: Databases, translated sources, and video essays</span><span class="chip">Time: 20–30 minutes per selected video</span><span class="chip">Best for: Understanding why historically informed performance debates exist</span><span class="chip">Access: Free web access</span><span class="chip">Type: Primary-source gateway and video essays</span></div><div class="resource-card__body"><p><strong>Why included:</strong> The project explicitly connects listeners to online early-music sources and performance-practice research rather than presenting unsourced rules.</p><p><strong>Focus:</strong> Use the Performance Practice material after hearing the Netherlands Bach Society; extract one claim and identify the historical source behind it.</p><p><strong>Limitations:</strong> Many topics concern specialists and pre-Baroque repertory; use selectively after the basic listening vocabulary is secure.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.earlymusicsources.com/home">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="rest-noise-guide"><h3>The Rest Is Noise Audio Guide</h3><p class="resource-card__creator">Alex Ross</p><div class="card-meta"><span class="chip">Channel: Critic and author guide</span><span class="chip">Role: Deep dive</span><span class="chip">Level: Beginner to intermediate</span><span class="chip">Format: Chapter-by-chapter web guide; optional companion book</span><span class="chip">Time: 4–6 hours for Part I selections</span><span class="chip">Best for: Connecting twentieth-century music to political and cultural history through a major critic&#x27;s narrative</span><span class="chip">Access: Guide is free; the companion book The Rest Is Noise is paid or available through libraries</span><span class="chip">Type: Book companion with licensed excerpts and archives</span></div><div class="resource-card__body"><p><strong>Why included:</strong> Ross supplies brief excerpts, images, videos, and archive links for the exact chapters of his twentieth-century history.</p><p><strong>Focus:</strong> Part I Chapters 1–3: “The Golden Age,” “Doctor Faust,” and “Dance of the Earth”; optionally Chapter 5 on Sibelius.</p><p><strong>Limitations:</strong> It is an authored narrative, not a neutral encyclopedia, and audio embeds may age or vary in availability.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://therestisnoise.com/the-rest-is-noise-audio-guide-for-ipad/">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="idagio"><h3>IDAGIO</h3><p class="resource-card__creator">IDAGIO</p><div class="card-meta"><span class="chip">Channel: Classical streaming platform</span><span class="chip">Role: Practice</span><span class="chip">Level: All levels</span><span class="chip">Format: Web and mobile streaming with work-level metadata</span><span class="chip">Time: Use as needed during comparison weeks</span><span class="chip">Best for: Finding and comparing many interpretations of the same work</span><span class="chip">Access: Commercial plans; availability, catalogue, and price depend on region and can change</span><span class="chip">Type: Commercial streaming service</span></div><div class="resource-card__body"><p><strong>Why included:</strong> The verified service page emphasizes classical-specific search, work and recording metadata, lossless audio, and side-by-side access to many interpretations.</p><p><strong>Focus:</strong> During Weeks 21–24, compare three recordings of one movement by duration, conductor, orchestra, date, and audible choices.</p><p><strong>Limitations:</strong> Commercial claims are self-described; the service is optional and not required for any core assignment.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.idagio.com/music-streaming">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="digital-concert-hall"><h3>Digital Concert Hall</h3><p class="resource-card__creator">Berliner Philharmoniker</p><div class="card-meta"><span class="chip">Channel: Orchestra video archive</span><span class="chip">Role: Deep dive</span><span class="chip">Level: All levels</span><span class="chip">Format: Live and archived concerts, interviews, and films</span><span class="chip">Time: One concert or documentary per month</span><span class="chip">Best for: Following a major orchestra across conductors, repertory, and decades</span><span class="chip">Access: Paid subscription or fixed-term access; institutional access may exist through libraries</span><span class="chip">Type: Commercial concert archive</span></div><div class="resource-card__body"><p><strong>Why included:</strong> It is the Berliner Philharmoniker&#x27;s own concert archive and offers performances with consistent production and detailed programme metadata.</p><p><strong>Focus:</strong> Use only as an optional concert replacement or to compare one anchor work with the free version in this atlas.</p><p><strong>Limitations:</strong> Paid, one-institution perspective, and unnecessary for completing the core route.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.digitalconcerthall.com/en/access">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="grove-music"><h3>Grove Music Online</h3><p class="resource-card__creator">Oxford University Press</p><div class="card-meta"><span class="chip">Channel: Scholarly reference</span><span class="chip">Role: Deep dive</span><span class="chip">Level: Intermediate to advanced</span><span class="chip">Format: More than 52,000 signed articles by nearly 9,000 scholars</span><span class="chip">Time: Reference use only</span><span class="chip">Best for: Checking a composer, genre, work, or contested historical claim through library access</span><span class="chip">Access: Subscription; many universities and public libraries provide access</span><span class="chip">Type: Continuously updated music encyclopedia</span></div><div class="resource-card__body"><p><strong>Why included:</strong> Oxford describes it as an authoritative, frequently updated music-research resource with signed scholarly articles.</p><p><strong>Focus:</strong> Read only the overview and works-list sections for an anchor composer, then follow one bibliography item if a question remains.</p><p><strong>Limitations:</strong> Dense, subscription-based, and unnecessary for the weekly core; it can encourage lookup instead of listening.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.oxfordmusiconline.com/grovemusic">Open resource <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="imslp"><h3>IMSLP / Petrucci Music Library</h3><p class="resource-card__creator">International Music Score Library Project</p><div class="card-meta"><span class="chip">Channel: Public-domain score library</span><span class="chip">Role: Primary evidence</span><span class="chip">Level: Optional for non-readers</span><span class="chip">Format: Scanned scores, parts, editions, manuscripts, and recordings</span><span class="chip">Time: 10–20 minutes per visual score-following exercise</span><span class="chip">Best for: Seeing formal returns, instrumentation, and source differences without buying scores</span><span class="chip">Access: Free public-domain materials; copyright availability differs by country and some downloads have waiting periods</span><span class="chip">Type: Digital score and recording archive</span></div><div class="resource-card__body"><p><strong>Why included:</strong> The current site provides a large, searchable corpus of public-domain musical sources and scores.</p><p><strong>Focus:</strong> In the capstone, open the first page of the chosen movement and follow only rehearsal marks, instrument entrances, and large section boundaries.</p><p><strong>Limitations:</strong> Edition quality varies, copyright rules are jurisdiction-specific, and notation reading is not required for this atlas.</p><p><strong>Verified:</strong> 2026-07-23</p></div><a class="resource-link" href="https://imslp.org/">Open resource <span aria-hidden="true">↗</span></a></article></div>
+      </section>
+      <section id="roadmap" class="atlas-section" data-section="roadmap">
+        <p class="section-kicker">04</p>
+        <h2>Detailed Learning or Exploration Roadmap</h2>
+        <div class="roadmap"><article class="roadmap-stage" data-stage="1"><div class="roadmap-stage__number" aria-hidden="true">1</div><h3>Build an attentive ear and minimum vocabulary</h3><p class="roadmap-stage__timing">Duration: Weeks 1–4 · Weekly effort: 3–4 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Describe a movement using pulse, meter, motive, phrase, harmony, texture, timbre, dynamics, articulation, and form</li><li>Identify the four orchestral families and several characteristic instruments</li><li>Create timestamped listening notes without reading a score</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>None</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul class="linked-resource-list"><li><a href="https://online.yale.edu/courses/listening-music">Listening to Music <span aria-hidden="true">↗</span></a></li><li><a href="https://philharmonia.co.uk/resources/instruments/">Instruments <span aria-hidden="true">↗</span></a></li><li><a href="https://viva.pressbooks.pub/openmusictheory/">Open Music Theory, Version 2 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=QyQ-POuTNn8">Mozart: Symphony No. 40 in G minor, K. 550 <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Week 1: complete the 45-minute first session, then watch Yale Lecture 2, “Introduction to Instruments and Musical Genres.”</li><li>Week 2: watch Yale Lectures 3 and 4 in 30–45-minute halves; use Open Music Theory&#x27;s “Simple Meter,” “Compound Meter,” and “Texture” listening portions.</li><li>Week 3: watch Yale Lectures 5 and 6 on melody; make separate time, pitch, and texture notes for Mozart Symphony No. 40, Movement I.</li><li>Week 4: watch Yale Lecture 7 on harmony; survey two Philharmonia instruments from each family and take a five-clip self-quiz.</li><li>Keep every listening card to five fields: time, main idea, texture, color, and form map.</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">A 20-term plain-language glossary, four timestamped listening cards, and a one-page orchestral-family map.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>Explain ten core terms without notation or copied definitions</li><li>Distinguish monophonic, homophonic, and polyphonic textures in three new excerpts</li><li>Identify strings, woodwinds, brass, and percussion reliably in at least 8 of 10 short clips</li><li>Map the major sections of Mozart&#x27;s first movement using timestamps and neutral labels</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Use Open Music Theory&#x27;s “Major Scales,” “Minor Scales,” and “Triads” listening sections; skip spelling and notation drills.</li></ul></div></div></article><article class="roadmap-stage" data-stage="2"><div class="roadmap-stage__number" aria-hidden="true">2</div><h3>Hear form and enter the Baroque</h3><p class="roadmap-stage__timing">Duration: Weeks 5–8 · Weekly effort: 3–4 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Distinguish genre from form</li><li>Hear repetition, contrast, sequence, imitation, ostinato, variation, and fugal entry</li><li>Recognize a plausible Baroque feature bundle and describe historically informed performance choices</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>Complete Stage 1</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul class="linked-resource-list"><li><a href="https://online.yale.edu/courses/listening-music">Listening to Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.penguinrandomhouse.com/books/303445/what-to-listen-for-in-music-by-aaron-copland/">What to Listen for in Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.penguinrandomhouse.com/books/175585/the-vintage-guide-to-classical-music-by-jan-swafford/">The Vintage Guide to Classical Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.bachvereniging.nl/en/bwv/bwv-1050">Bach: Brandenburg Concerto No. 5 in D major, BWV 1050 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.earlymusicsources.com/home">Early Music Sources <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Read Copland&#x27;s “How We Listen,” “Musical Texture,” “Musical Structure,” “Fundamental Forms,” “Variation Form,” and “Fugal Form” across four short sessions.</li><li>Watch Yale Lectures 10, 11, 13, and 14; focus on variations, rondo, fugue, and ostinato rather than every analytical detail.</li><li>Read Swafford&#x27;s profiles of Monteverdi, Bach, and Handel; create a four-row Baroque genre table for opera, concerto, cantata/oratorio, and fugue.</li><li>Hear Bach&#x27;s Brandenburg Concerto No. 5 four times: overview, section map, harpsichord/continuo focus, and performance-practice focus.</li><li>Use one Early Music Sources performance-practice item to identify a historical source behind one choice you heard.</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">A Baroque sound profile, a timestamped map of Brandenburg No. 5 Movement I, and a 250-word note comparing historical-performance claims with audible evidence.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>Give at least three audible reasons—not a date alone—for classifying a new excerpt as plausibly Baroque</li><li>Distinguish concerto, fugue, variations, rondo, and ostinato in plain language</li><li>Name five performance variables, including instrumentation, articulation, vibrato, ensemble size, and pitch or tuning</li><li>Explain why historically informed performance is an evidence-based interpretation rather than a single recovered truth</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Chinese-first alternative: use 西方音乐史（上） Lectures 9–11 instead of the Swafford profiles.</li></ul></div></div></article><article class="roadmap-stage" data-stage="3"><div class="roadmap-stage__number" aria-hidden="true">3</div><h3>Hear Classical balance, sonata form, and Beethoven&#x27;s bridge</h3><p class="roadmap-stage__timing">Duration: Weeks 9–12 · Weekly effort: 3–4 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Recognize balanced phrase structure, clearer homophony, cadential closure, and thematic development</li><li>Map a sonata-form movement without a score</li><li>Explain how Beethoven extends Classical conventions toward Romantic scale and rhetoric</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>Complete Stages 1–2</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul class="linked-resource-list"><li><a href="https://online.yale.edu/courses/listening-music">Listening to Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.penguinrandomhouse.com/books/303445/what-to-listen-for-in-music-by-aaron-copland/">What to Listen for in Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.penguinrandomhouse.com/books/175585/the-vintage-guide-to-classical-music-by-jan-swafford/">The Vintage Guide to Classical Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=QyQ-POuTNn8">Mozart: Symphony No. 40 in G minor, K. 550 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=J5zFitBASEw">Keeping Score: Beethoven&#x27;s Eroica <span aria-hidden="true">↗</span></a></li><li><a href="https://www.icourse163.org/course/1302CCOM001B-1002597009">西方音乐史（下） <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Watch Yale Lecture 9, “Sonata-Allegro Form: Mozart and Beethoven,” and review Lectures 10–11 only where form remains unclear.</li><li>Read Copland&#x27;s “Sonata Form” and Swafford&#x27;s Haydn, Mozart, and Beethoven profiles.</li><li>Map Mozart Symphony No. 40 Movement I as exposition, development, and recapitulation; mark two cadential arrivals and one texture change.</li><li>Watch Keeping Score: Eroica in three sessions, then hear the concert portion without narration and list what exceeds Mozart&#x27;s scale or rhetoric.</li><li>Chinese-first alternative: use 西方音乐史（下） Lectures 12–14 alongside the same recordings.</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">Two one-page movement maps and a 500-word Mozart–Beethoven comparison grounded in at least six timestamps.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>Identify exposition, development, and recapitulation in a familiar movement without notes</li><li>Explain the difference between a symphony as genre and sonata form as organization</li><li>Name three shared Classical conventions and three Beethovenian expansions</li><li>Score at least 7 of 10 on a self-made Baroque-versus-Classical excerpt quiz and justify each answer with features</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Compare the first movement of Mozart 40 with a period-instrument recording and record only observable performance differences.</li></ul></div></div></article><article class="roadmap-stage" data-stage="4"><div class="roadmap-stage__number" aria-hidden="true">4</div><h3>Recognize Romantic expansion and competing ideals</h3><p class="roadmap-stage__timing">Duration: Weeks 13–16 · Weekly effort: 3–4 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Hear chromatic tension, flexible pacing, expanded color, cyclic motives, virtuosity, and programmatic narrative</li><li>Distinguish intimate Romantic genres from large orchestral and operatic ones</li><li>Avoid reducing Romanticism to emotional volume or a single lush sound</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>Complete Stage 3</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul class="linked-resource-list"><li><a href="https://www.penguinrandomhouse.com/books/175585/the-vintage-guide-to-classical-music-by-jan-swafford/">The Vintage Guide to Classical Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=wWi3xslzeEY">Keeping Score: Berlioz&#x27;s Symphonie fantastique <span aria-hidden="true">↗</span></a></li><li><a href="https://joshuaweilerstein.com/stickynotes">Sticky Notes: The Classical Music Podcast <span aria-hidden="true">↗</span></a></li><li><a href="https://www.icourse163.org/course/1302CCOM001B-1002597009">西方音乐史（下） <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Read Swafford&#x27;s profiles of Schubert, Chopin, Schumann, Berlioz, Wagner, Brahms, Tchaikovsky, and Mahler in two-profile weekly pairs.</li><li>Watch Keeping Score: Symphonie fantastique in three sessions; on the fourth hearing, track the idée fixe across all five movements.</li><li>Create four short contrast cards: art song versus symphony, piano miniature versus concerto, absolute versus program music, Brahms versus Wagner.</li><li>Choose one Sticky Notes episode on a Romantic composer already studied; pause twice to test the conductor&#x27;s claim against the recording.</li><li>Chinese-first alternative: prioritize 西方音乐史（下） Lectures 15–17 and 21, using Lectures 18–20 only if opera is a special interest.</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">A Romanticism comparison grid, a complete idée-fixe trace with timestamps, and a 600-word account of two different Romantic ideals.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>Classify three Romantic excerpts by more than “expressive” or “large”</li><li>Explain program music, cyclic motive, rubato, chromaticism, nationalism, and virtuosity</li><li>Contrast Berlioz&#x27;s programmatic Romanticism with one composer whose approach is less theatrical</li><li>Recognize that genre, nation, generation, and performance tradition complicate one-period labels</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Attend or stream one Romantic concert and write a 300-word review using Yale Lecture 12&#x27;s method.</li></ul></div></div></article><article class="roadmap-stage" data-stage="5"><div class="roadmap-stage__number" aria-hidden="true">5</div><h3>Navigate modernism and twentieth-century plurality</h3><p class="roadmap-stage__timing">Duration: Weeks 17–20 · Weekly effort: 3–4 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Hear color-centered harmony, rhythmic disruption, atonality, ostinato, block form, and altered tonal function</li><li>Explain why “modern music” does not name one technique or aesthetic</li><li>Place Debussy and Stravinsky within a wider twentieth-century map</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>Complete Stages 1–4</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul class="linked-resource-list"><li><a href="https://www.youtube.com/watch?v=y1hWp4pQpAs">Debussy: La Mer <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=nr_0ve2KFuk">Keeping Score: Stravinsky&#x27;s The Rite of Spring <span aria-hidden="true">↗</span></a></li><li><a href="https://therestisnoise.com/the-rest-is-noise-audio-guide-for-ipad/">The Rest Is Noise Audio Guide <span aria-hidden="true">↗</span></a></li><li><a href="https://www.penguinrandomhouse.com/books/175585/the-vintage-guide-to-classical-music-by-jan-swafford/">The Vintage Guide to Classical Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.icourse163.org/course/1302CCOM001B-1002597009">西方音乐史（下） <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Week 17: hear La Mer&#x27;s three movements in separate sessions, tracking only color, density, and harmonic arrival; read Swafford&#x27;s Debussy profile.</li><li>Weeks 18–19: watch Keeping Score: The Rite of Spring in three sessions; map recurring blocks and ostinatos, then read Swafford&#x27;s Stravinsky and Schoenberg profiles.</li><li>Use The Rest Is Noise Audio Guide Chapters 1–3—“The Golden Age,” “Doctor Faust,” and “Dance of the Earth”—as a contextual companion, not as background listening.</li><li>Build a six-branch modern map: extended tonality/color, atonality and serialism, rhythm and primitivism, neoclassicism, nationalism/political modernism, and post-1945 minimalism/experimentation.</li><li>Chinese-first alternative: use 西方音乐史（下） Lecture 22 for the turn of the century, then retain Ross and the recordings for post-1900 extension.</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">A six-branch modernism map and an 800-word Debussy–Stravinsky comparison using at least eight timestamps.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>Describe La Mer and The Rite of Spring using different feature bundles</li><li>Explain tonality, atonality, ostinato, block form, timbre, and dissonance without treating any as value judgments</li><li>Place Schoenberg, Shostakovich, Reich, and one living composer on distinct branches of the map</li><li>Reject the statement “modern classical music is atonal” with at least four counterexamples or qualifications</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Use Ross&#x27;s Chapter 5 audio guide for Sibelius or add a Shostakovich symphony to the political-modernism branch.</li></ul></div></div></article><article class="roadmap-stage" data-stage="6"><div class="roadmap-stage__number" aria-hidden="true">6</div><h3>Compare performances and synthesize a personal map</h3><p class="roadmap-stage__timing">Duration: Weeks 21–24 · Weekly effort: 3–4 hours</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">Objectives</p><ul><li>Describe interpretation using observable performance variables</li><li>Use criticism after forming an independent view</li><li>Recognize broad period and genre differences in unfamiliar excerpts</li><li>Create a defensible personal listening path beyond the atlas</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Prerequisites</p><ul><li>Complete Stages 1–5</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Assigned resources</p><ul class="linked-resource-list"><li><a href="https://www.bbc.co.uk/programmes/p02nrtty">Record Review Podcast: Building a Library <span aria-hidden="true">↗</span></a></li><li><a href="https://www.idagio.com/music-streaming">IDAGIO <span aria-hidden="true">↗</span></a></li><li><a href="https://www.digitalconcerthall.com/en/access">Digital Concert Hall <span aria-hidden="true">↗</span></a></li><li><a href="https://imslp.org/">IMSLP / Petrucci Music Library <span aria-hidden="true">↗</span></a></li><li><a href="https://www.oxfordmusiconline.com/grovemusic">Grove Music Online <span aria-hidden="true">↗</span></a></li><li><a href="https://online.yale.edu/courses/listening-music">Listening to Music <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">Tasks</p><ul><li>Choose one anchor movement from Bach, Mozart, Beethoven, Berlioz, Debussy, or Stravinsky and hear three interpretations; free web recordings are acceptable, while IDAGIO is an optional convenience.</li><li>Measure movement duration and annotate tempo flexibility, articulation, vibrato, balance, ensemble size, repeats, and acoustic at the same three passages.</li><li>Listen to one BBC Building a Library episode for a work you already know; pause before the recommendation and rank the excerpts using a written rubric.</li><li>Review Yale Lecture 12&#x27;s section on writing a concert review and write your own review before consulting another critic.</li><li>Optionally open the first pages in IMSLP and use Grove or a library reference only to resolve one precise question.</li><li>Create a 20-excerpt blind quiz balanced across Baroque, Classical, Romantic, and modern music; require three-feature justifications rather than composer guesses.</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Deliverable</p><div class="deliverable">A 1,200–1,500-word three-recording comparison, a 20-excerpt period quiz with answer rationales, and a one-page next-six-month listening plan.</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Completion criteria</p><ul><li>Every evaluative claim in the comparison points to an audible feature or timestamp</li><li>Achieve at least 15 of 20 broad-period classifications with three-feature justifications</li><li>Distinguish form, genre, period, and performance style in a five-minute oral explanation</li><li>Choose three future branches—such as opera, chamber music, early music, piano repertory, or post-1945 music—and name one institution, performer, and core work for each</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">Optional branches</p><ul><li>Use a Digital Concert Hall trial or library subscription for the comparison</li><li>Read a Grove overview and one bibliography item for the capstone composer</li></ul></div></div></article></div>
+      </section>
+      <section id="sources" class="atlas-section" data-section="sources">
+        <p class="section-kicker">05</p>
+        <h2>Source Directory</h2>
+<div class="source-selection"><p class="fact-label">How these sources were selected</p><p>Verified on 2026-07-23. The core combines novice instruction, readable historical narrative, official performances, and expert comparison. Commercial and subscription sources are optional; archival and regional-access limits are stated on each card.</p></div><div class="source-group-grid"><article class="source-group"><h3>University courses and open learning</h3><p>Use these for the conceptual and chronological spine; choose Yale or the Chinese MOOC rather than duplicating both in full.</p><ul class="linked-resource-list"><li><a href="https://online.yale.edu/courses/listening-music">Listening to Music <span aria-hidden="true">↗</span></a></li><li><a href="https://viva.pressbooks.pub/openmusictheory/">Open Music Theory, Version 2 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.icourse163.org/course/1302CCOM001A-1002604008">西方音乐史（上） <span aria-hidden="true">↗</span></a></li><li><a href="https://www.icourse163.org/course/1302CCOM001B-1002597009">西方音乐史（下） <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>Books and critic-led guides</h3><p>Use selected chapters for listening method, composer context, and twentieth-century cultural history.</p><ul class="linked-resource-list"><li><a href="https://www.penguinrandomhouse.com/books/303445/what-to-listen-for-in-music-by-aaron-copland/">What to Listen for in Music <span aria-hidden="true">↗</span></a></li><li><a href="https://www.penguinrandomhouse.com/books/175585/the-vintage-guide-to-classical-music-by-jan-swafford/">The Vintage Guide to Classical Music <span aria-hidden="true">↗</span></a></li><li><a href="https://therestisnoise.com/the-rest-is-noise-audio-guide-for-ipad/">The Rest Is Noise Audio Guide <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>Orchestras, performers, and official recordings</h3><p>These are the atlas&#x27;s primary listening evidence and demonstrate period practice, modern orchestral playing, and interpretive choice.</p><ul class="linked-resource-list"><li><a href="https://philharmonia.co.uk/resources/instruments/">Instruments <span aria-hidden="true">↗</span></a></li><li><a href="https://www.bachvereniging.nl/en/bwv/bwv-1050">Bach: Brandenburg Concerto No. 5 in D major, BWV 1050 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=QyQ-POuTNn8">Mozart: Symphony No. 40 in G minor, K. 550 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=J5zFitBASEw">Keeping Score: Beethoven&#x27;s Eroica <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=wWi3xslzeEY">Keeping Score: Berlioz&#x27;s Symphonie fantastique <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=y1hWp4pQpAs">Debussy: La Mer <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=nr_0ve2KFuk">Keeping Score: Stravinsky&#x27;s The Rite of Spring <span aria-hidden="true">↗</span></a></li><li><a href="https://www.digitalconcerthall.com/en/access">Digital Concert Hall <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>Podcasts and performance criticism</h3><p>Use WETA for approachable orientation, Sticky Notes for conductor-led deep dives, and BBC Building a Library for comparative criticism.</p><ul class="linked-resource-list"><li><a href="https://weta.org/fm/features/classical-breakdown">Classical Breakdown <span aria-hidden="true">↗</span></a></li><li><a href="https://joshuaweilerstein.com/stickynotes">Sticky Notes: The Classical Music Podcast <span aria-hidden="true">↗</span></a></li><li><a href="https://www.bbc.co.uk/programmes/p02nrtty">Record Review Podcast: Building a Library <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>Research, scores, and comparison tools</h3><p>Use these only when a listening question becomes specific enough to justify deeper research or a larger recording comparison.</p><ul class="linked-resource-list"><li><a href="https://www.earlymusicsources.com/home">Early Music Sources <span aria-hidden="true">↗</span></a></li><li><a href="https://www.idagio.com/music-streaming">IDAGIO <span aria-hidden="true">↗</span></a></li><li><a href="https://www.oxfordmusiconline.com/grovemusic">Grove Music Online <span aria-hidden="true">↗</span></a></li><li><a href="https://imslp.org/">IMSLP / Petrucci Music Library <span aria-hidden="true">↗</span></a></li></ul></article></div>
+      </section>
+    </main>
+  </div>
+  <footer class="atlas-footer">
+    Built with <strong>AnythingAtlas</strong> · Generated: 2026-07-23
+  </footer>
+</body>
+</html>

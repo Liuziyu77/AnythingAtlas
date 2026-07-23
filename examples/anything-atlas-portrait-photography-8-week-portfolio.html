@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一条以成片为导向、每周 6 小时、前四周零强制消费的入门路径：先稳定曝光、对焦和自然光，再练人物引导、单灯与免费后期，最后完成一组统一的 8–12 张人像。">
+  <title>两个月人像摄影作品集行动图谱</title>
+  <style>
+:root {
+  color-scheme: light;
+  --ink: #0b1638;
+  --muted: #53627f;
+  --blue: #1769e0;
+  --cyan: #00aabd;
+  --indigo: #3f3ccf;
+  --line: #dce7f4;
+  --soft: #f4f8fd;
+  --paper: #ffffff;
+  --warning: #9a5b00;
+  --warning-bg: #fff7e8;
+  --danger: #9d2f43;
+  --danger-bg: #fff1f3;
+  --success: #176c57;
+  --success-bg: #eaf9f4;
+  --shadow: 0 18px 48px rgba(18, 52, 98, 0.10);
+  --radius: 22px;
+  --content: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(28, 90, 181, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 90, 181, 0.025) 1px, transparent 1px),
+    var(--soft);
+  background-size: 34px 34px;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: #075fc8;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--indigo);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(0, 170, 189, 0.42);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 10px 16px;
+  color: var(--paper);
+  background: var(--ink);
+  border-radius: 10px;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--paper);
+  background:
+    radial-gradient(circle at 82% 20%, rgba(0, 210, 218, 0.32), transparent 28%),
+    radial-gradient(circle at 14% 0%, rgba(89, 126, 255, 0.38), transparent 34%),
+    linear-gradient(125deg, #071533 0%, #122864 52%, #0e6181 100%);
+}
+
+.hero__contours {
+  position: absolute;
+  inset: 0;
+  opacity: 0.26;
+  background:
+    repeating-radial-gradient(
+      ellipse at 90% 15%,
+      transparent 0 26px,
+      rgba(255, 255, 255, 0.16) 27px 28px,
+      transparent 29px 52px
+    );
+  mask-image: linear-gradient(90deg, transparent 20%, #000 100%);
+}
+
+.hero__inner {
+  position: relative;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 58px 32px 64px;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.hero__summary {
+  max-width: 780px;
+  margin: 24px 0 0;
+  color: #dbe9ff;
+  font-size: clamp(1.06rem, 2.2vw, 1.35rem);
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 5px 12px;
+  color: #e8f4ff;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 999px;
+  font-size: 0.86rem;
+  backdrop-filter: blur(8px);
+}
+
+.atlas-shell {
+  display: grid;
+  grid-template-columns: minmax(210px, 260px) minmax(0, 1fr);
+  gap: 34px;
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 42px 32px 80px;
+}
+
+.atlas-nav {
+  position: relative;
+}
+
+.atlas-nav__inner {
+  position: sticky;
+  top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.90);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(18, 52, 98, 0.07);
+  backdrop-filter: blur(10px);
+}
+
+.atlas-nav__title {
+  margin: 0 0 12px;
+  color: var(--blue);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.atlas-nav ol {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: nav;
+}
+
+.atlas-nav li {
+  counter-increment: nav;
+}
+
+.atlas-nav a {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  padding: 7px 8px;
+  color: var(--muted);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.atlas-nav a::before {
+  content: counter(nav, decimal-leading-zero);
+  color: var(--cyan);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.atlas-nav a:hover {
+  color: var(--ink);
+  background: var(--soft);
+}
+
+.atlas-main {
+  min-width: 0;
+}
+
+.atlas-section {
+  scroll-margin-top: 24px;
+  margin-bottom: 32px;
+  padding: clamp(22px, 4vw, 38px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.section-kicker {
+  margin: 0 0 8px;
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.atlas-section > h2 {
+  margin: 0 0 24px;
+  font-size: clamp(1.6rem, 4vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.atlas-section h3 {
+  margin: 28px 0 10px;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.lead {
+  color: #344666;
+  font-size: 1.08rem;
+}
+
+.brief-grid,
+.map-grid,
+.decision-grid,
+.field-grid,
+.setup-grid,
+.track-grid,
+.guide-item-grid,
+.source-group-grid,
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.brief-item,
+.map-node,
+.decision-card,
+.field-card,
+.setup-card,
+.track-card,
+.guide-item,
+.source-group,
+.resource-card,
+.plan-block {
+  min-width: 0;
+  padding: 18px;
+  background: linear-gradient(145deg, #fff, #f7faff);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.brief-item dt,
+.fact-label {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brief-item dd {
+  margin: 0;
+  font-weight: 620;
+}
+
+.brief-item ul,
+.plan-block ul,
+.roadmap-stage ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.map-node {
+  position: relative;
+  overflow: hidden;
+}
+
+.map-node::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(var(--blue), var(--cyan));
+}
+
+.map-node h3,
+.decision-card h3,
+.field-card h3,
+.setup-card h3,
+.track-card h3,
+.guide-item h4,
+.source-group h3,
+.resource-card h3 {
+  margin-top: 0;
+}
+
+.answer-card {
+  padding: 22px;
+  background: linear-gradient(135deg, var(--success-bg), #f6fffb);
+  border: 1px solid #b9e7d8;
+  border-left: 5px solid var(--success);
+  border-radius: 16px;
+}
+
+.answer-card .lead {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.decision-card {
+  border-top: 4px solid var(--success);
+}
+
+.decision-card p,
+.field-card p,
+.setup-card p,
+.track-card p {
+  margin: 10px 0;
+}
+
+.guide-meta {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.35fr) minmax(0, 1.65fr);
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.guide-meta > div {
+  padding: 12px 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+.guide-meta dt,
+.field-card__category {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.guide-meta dd {
+  margin: 0;
+}
+
+.field-card {
+  border-top: 4px solid var(--cyan);
+}
+
+.field-card ul,
+.track-card ul {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.setup-grid,
+.track-grid {
+  margin-bottom: 22px;
+}
+
+.setup-card {
+  border-left: 4px solid var(--indigo);
+}
+
+.track-card {
+  border-top: 4px solid var(--indigo);
+}
+
+.guide-section {
+  margin-top: 30px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.guide-section__purpose {
+  margin: -2px 0 16px;
+  color: var(--muted);
+}
+
+.guide-item-grid,
+.source-group-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.guide-item {
+  border-left: 4px solid var(--cyan);
+}
+
+.guide-item h4 {
+  font-size: 1.05rem;
+}
+
+.guide-item ul,
+.source-group ul,
+.linked-resource-list {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.linked-resource-list {
+  display: grid;
+  gap: 6px;
+}
+
+.linked-resource-list a {
+  font-weight: 750;
+}
+
+.source-selection {
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  background: var(--soft);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+}
+
+.source-selection p:last-child {
+  margin-bottom: 0;
+}
+
+.source-group {
+  border-top: 4px solid var(--blue);
+}
+
+.dependency-list,
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.chip {
+  display: inline-flex;
+  padding: 4px 9px;
+  color: #25416f;
+  background: #eaf2ff;
+  border: 1px solid #d4e4fb;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.plan-block--wide {
+  grid-column: 1 / -1;
+}
+
+.channel-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.channel-list li {
+  padding: 12px 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+.channel-priority {
+  display: inline-block;
+  margin-left: 6px;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.starting-card,
+.next-card {
+  position: relative;
+  overflow: hidden;
+  padding: 26px;
+  color: var(--paper);
+  background: linear-gradient(130deg, #143f91, #167b94);
+  border-radius: 18px;
+}
+
+.starting-card::after,
+.next-card::after {
+  content: "↗";
+  position: absolute;
+  right: 22px;
+  bottom: 8px;
+  color: rgba(255, 255, 255, 0.16);
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+.starting-card dl,
+.next-card dl {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+.starting-card dt,
+.next-card dt {
+  margin-top: 14px;
+  color: #9ceef2;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.starting-card dt:first-child,
+.next-card dt:first-child {
+  margin-top: 0;
+}
+
+.starting-card dd,
+.next-card dd {
+  margin: 2px 0 0;
+  font-size: 1.04rem;
+}
+
+.resource-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--blue);
+}
+
+.resource-card__creator {
+  margin: -4px 0 14px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.resource-card__body {
+  flex: 1;
+}
+
+.resource-card__body p {
+  margin: 12px 0;
+}
+
+.resource-card__body strong {
+  color: #263d68;
+}
+
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  overflow-wrap: anywhere;
+  font-weight: 800;
+}
+
+.roadmap {
+  position: relative;
+  display: grid;
+  gap: 22px;
+}
+
+.roadmap::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 22px;
+  width: 2px;
+  background: linear-gradient(var(--blue), var(--cyan));
+}
+
+.roadmap-stage {
+  position: relative;
+  margin-left: 58px;
+  padding: 24px;
+  background: #fbfdff;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  break-inside: avoid;
+}
+
+.roadmap-stage__number {
+  position: absolute;
+  top: 22px;
+  left: -58px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--paper);
+  background: linear-gradient(145deg, var(--blue), var(--cyan));
+  border: 4px solid var(--paper);
+  border-radius: 50%;
+  box-shadow: 0 5px 14px rgba(23, 105, 224, 0.22);
+  font-weight: 900;
+}
+
+.roadmap-stage h3 {
+  margin: 0 0 5px;
+}
+
+.roadmap-stage__timing {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.roadmap-stage__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.roadmap-stage__block {
+  min-width: 0;
+}
+
+.roadmap-stage__block--wide {
+  grid-column: 1 / -1;
+}
+
+.deliverable {
+  padding: 14px 16px;
+  color: #174d42;
+  background: var(--success-bg);
+  border-left: 4px solid #2c9c7e;
+  border-radius: 0 12px 12px 0;
+}
+
+.source-notes {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.source-note {
+  padding: 14px 16px;
+  background: var(--soft);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+}
+
+.source-note--caution,
+.source-note--warning {
+  color: #68420a;
+  background: var(--warning-bg);
+  border-left-color: #e3a02e;
+}
+
+.source-note--critical,
+.source-note--danger {
+  color: #702131;
+  background: var(--danger-bg);
+  border-left-color: #d95870;
+}
+
+.atlas-footer {
+  padding: 28px 24px 42px;
+  color: #6d7c97;
+  text-align: center;
+  font-size: 0.88rem;
+}
+
+.atlas-footer strong {
+  color: var(--blue);
+}
+
+@media (max-width: 860px) {
+  .hero__inner {
+    padding: 38px 22px 46px;
+  }
+
+  .atlas-shell {
+    display: block;
+    padding: 24px 16px 54px;
+  }
+
+  .atlas-nav__inner {
+    position: static;
+    margin-bottom: 22px;
+  }
+
+  .atlas-nav ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .atlas-section {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 620px) {
+  .atlas-nav ol,
+  .brief-grid,
+  .map-grid,
+  .decision-grid,
+  .field-grid,
+  .setup-grid,
+  .track-grid,
+  .guide-item-grid,
+  .source-group-grid,
+  .plan-grid,
+  .resource-grid,
+  .roadmap-stage__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-block--wide,
+  .roadmap-stage__block--wide {
+    grid-column: auto;
+  }
+
+  .roadmap::before {
+    left: 16px;
+  }
+
+  .roadmap-stage {
+    margin-left: 44px;
+    padding: 19px;
+  }
+
+  .roadmap-stage__number {
+    left: -48px;
+    width: 36px;
+    height: 36px;
+    border-width: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  :root {
+    --shadow: none;
+  }
+
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 10.5pt;
+  }
+
+  .skip-link,
+  .atlas-nav {
+    display: none;
+  }
+
+  .hero {
+    color: #111;
+    background: #fff;
+    border-bottom: 2px solid #1669df;
+  }
+
+  .hero__inner {
+    padding: 0 0 22px;
+  }
+
+  .hero__contours {
+    display: none;
+  }
+
+  .hero__summary,
+  .meta-pill {
+    color: #333;
+  }
+
+  .hero h1 {
+    font-size: 30pt;
+  }
+
+  .atlas-shell {
+    display: block;
+    max-width: none;
+    padding: 24px 0;
+  }
+
+  .atlas-section {
+    margin: 0 0 18px;
+    padding: 16px 0;
+    border: 0;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .resource-card,
+  .map-node,
+  .decision-card,
+  .field-card,
+  .setup-card,
+  .track-card,
+  .guide-item,
+  .source-group,
+  .roadmap-stage,
+  .starting-card,
+  .next-card {
+    break-inside: avoid;
+  }
+
+  .starting-card,
+  .next-card {
+    color: #111;
+    background: #eef5ff;
+    border: 1px solid #aac8ee;
+  }
+
+  a {
+    color: #111;
+    text-decoration: underline;
+  }
+
+  .resource-link::after {
+    content: " (" attr(href) ")";
+    overflow-wrap: anywhere;
+    font-size: 8pt;
+    font-weight: 400;
+  }
+}
+
+
+/* Workshop — energetic, modular styling for practical skills and projects. */
+
+.theme-workshop {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #5c6676;
+  --blue: #2657d6;
+  --cyan: #009c8c;
+  --indigo: #7047c8;
+  --line: #d9deea;
+  --soft: #f3f1ea;
+  --paper: #ffffff;
+  --warning-bg: #fff2cd;
+  --danger-bg: #ffe8e5;
+  --success-bg: #e4f7ec;
+  --shadow: 0 16px 0 rgba(30, 42, 72, 0.08);
+  --radius: 18px;
+  --content: 1160px;
+  background:
+    radial-gradient(circle at 8px 8px, rgba(38, 87, 214, 0.08) 1.5px, transparent 1.5px),
+    #f3f1ea;
+  background-size: 22px 22px;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.theme-workshop a {
+  color: #244fc4;
+}
+
+.theme-workshop .hero {
+  min-height: 390px;
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, transparent 82%, rgba(255, 204, 74, 0.92) 82%),
+    linear-gradient(120deg, #1d46bd, #2d59c4 62%, #00796f);
+  border-bottom: 8px solid #172033;
+}
+
+.theme-workshop .hero__contours {
+  opacity: 0.54;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.13) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.13) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(90deg, #000, transparent 76%);
+}
+
+.theme-workshop .hero__inner {
+  padding-top: 82px;
+  padding-bottom: 72px;
+}
+
+.theme-workshop .hero h1 {
+  max-width: 870px;
+  font-size: clamp(2.7rem, 7vw, 5.5rem);
+  font-weight: 850;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.theme-workshop .hero__summary {
+  color: #e9f1ff;
+  font-weight: 560;
+}
+
+.theme-workshop .meta-pill {
+  color: #ffffff;
+  background: rgba(18, 40, 94, 0.28);
+  border-color: rgba(255, 255, 255, 0.34);
+  border-radius: 8px;
+}
+
+.theme-workshop .atlas-nav__inner {
+  background: #172033;
+  border: 0;
+  box-shadow: 8px 8px 0 rgba(38, 87, 214, 0.18);
+}
+
+.theme-workshop .atlas-nav__title {
+  color: #ffcc4a;
+}
+
+.theme-workshop .atlas-nav a {
+  color: #dfe7f8;
+}
+
+.theme-workshop .atlas-nav a::before {
+  color: #5ce0d1;
+}
+
+.theme-workshop .atlas-nav a:hover {
+  color: #ffffff;
+  background: #2a3650;
+}
+
+.theme-workshop .atlas-section {
+  border: 2px solid #172033;
+  box-shadow: var(--shadow);
+}
+
+.theme-workshop .section-kicker {
+  display: inline-block;
+  padding: 3px 8px;
+  color: #ffffff;
+  background: #2657d6;
+  border-radius: 5px;
+}
+
+.theme-workshop .atlas-section > h2 {
+  max-width: 800px;
+  font-weight: 820;
+}
+
+.theme-workshop .brief-item,
+.theme-workshop .map-node,
+.theme-workshop .decision-card,
+.theme-workshop .field-card,
+.theme-workshop .setup-card,
+.theme-workshop .track-card,
+.theme-workshop .guide-item,
+.theme-workshop .source-group,
+.theme-workshop .resource-card,
+.theme-workshop .plan-block {
+  background: #fafbfe;
+  border: 2px solid #d4dae7;
+  border-radius: 12px;
+}
+
+.theme-workshop .map-node::before {
+  width: 7px;
+  background: #ffb23f;
+}
+
+.theme-workshop .chip {
+  color: #1e4178;
+  background: #e4edff;
+  border-color: #bed0fa;
+  border-radius: 6px;
+}
+
+.theme-workshop .channel-list li {
+  background: #eef2fb;
+  border-left: 5px solid #2657d6;
+  border-radius: 7px;
+}
+
+.theme-workshop .starting-card,
+.theme-workshop .next-card {
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, #172033 0 68%, #00796f 68%);
+  border: 2px solid #172033;
+  border-radius: 12px;
+  box-shadow: 8px 8px 0 rgba(38, 87, 214, 0.18);
+}
+
+.theme-workshop .starting-card dt,
+.theme-workshop .next-card dt {
+  color: #ffda74;
+}
+
+.theme-workshop .resource-grid {
+  gap: 20px;
+}
+
+.theme-workshop .resource-card {
+  border-top: 8px solid #2657d6;
+  box-shadow: 6px 6px 0 rgba(23, 32, 51, 0.07);
+}
+
+.theme-workshop .resource-card:nth-child(3n + 2) {
+  border-top-color: #009c8c;
+}
+
+.theme-workshop .resource-card:nth-child(3n + 3) {
+  border-top-color: #f0a72e;
+}
+
+.theme-workshop .roadmap::before {
+  width: 6px;
+  background: #172033;
+  border-radius: 99px;
+}
+
+.theme-workshop .roadmap-stage {
+  background: #ffffff;
+  border: 2px solid #172033;
+  border-radius: 12px;
+  box-shadow: 7px 7px 0 rgba(23, 32, 51, 0.08);
+}
+
+.theme-workshop .roadmap-stage__number {
+  color: #172033;
+  background: #ffcc4a;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px #172033;
+}
+
+.theme-workshop .deliverable {
+  color: #144b3f;
+  background: #e4f7ec;
+  border-left: 6px solid #009c8c;
+}
+
+.theme-workshop .atlas-section[data-section="roadmap"] {
+  margin-top: 60px;
+  border-color: #2657d6;
+  box-shadow: 10px 10px 0 rgba(38, 87, 214, 0.14);
+}
+
+.theme-workshop .atlas-footer strong {
+  color: #2657d6;
+}
+
+@media (max-width: 860px) {
+  .theme-workshop .hero {
+    min-height: 0;
+  }
+}
+
+
+/* Shared print normalization loaded after every visual theme. */
+
+@media print {
+  @page {
+    margin: 16mm;
+  }
+
+  body[class*="theme-"] {
+    color: #111 !important;
+    background: #fff !important;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 10.5pt;
+  }
+
+  body[class*="theme-"] .hero {
+    min-height: 0;
+    color: #111 !important;
+    background: #fff !important;
+    border: 0;
+    border-bottom: 2px solid #333;
+  }
+
+  body[class*="theme-"] .hero__inner {
+    padding: 0 0 22px;
+  }
+
+  body[class*="theme-"] .hero__summary,
+  body[class*="theme-"] .meta-pill {
+    color: #333 !important;
+    background: #fff !important;
+    border-color: #bbb !important;
+  }
+
+  body[class*="theme-"] .atlas-shell {
+    display: block;
+    max-width: none;
+    padding: 24px 0;
+  }
+
+  body[class*="theme-"] .atlas-section {
+    overflow: visible;
+    margin: 0 0 18px;
+    padding: 16px 0;
+    color: #111 !important;
+    background: #fff !important;
+    border: 0;
+    border-bottom: 1px solid #bbb;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .atlas-section::after,
+  body[class*="theme-"] .roadmap-stage::before {
+    display: none;
+  }
+
+  body[class*="theme-"] .brief-item,
+  body[class*="theme-"] .answer-card,
+  body[class*="theme-"] .guide-meta > div,
+  body[class*="theme-"] .map-node,
+  body[class*="theme-"] .decision-card,
+  body[class*="theme-"] .field-card,
+  body[class*="theme-"] .setup-card,
+  body[class*="theme-"] .track-card,
+  body[class*="theme-"] .guide-item,
+  body[class*="theme-"] .source-group,
+  body[class*="theme-"] .source-selection,
+  body[class*="theme-"] .resource-card,
+  body[class*="theme-"] .plan-block,
+  body[class*="theme-"] .roadmap-stage,
+  body[class*="theme-"] .source-note {
+    color: #111 !important;
+    background: #fff !important;
+    border-color: #aaa !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .starting-card,
+  body[class*="theme-"] .next-card,
+  body[class*="theme-"] .deliverable {
+    color: #111 !important;
+    background: #f2f2f2 !important;
+    border: 1px solid #aaa;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .starting-card dt,
+  body[class*="theme-"] .next-card dt,
+  body[class*="theme-"] .answer-card .lead,
+  body[class*="theme-"] .fact-label,
+  body[class*="theme-"] .brief-item dt,
+  body[class*="theme-"] .roadmap-stage__timing,
+  body[class*="theme-"] .resource-card__creator {
+    color: #444 !important;
+  }
+
+  body[class*="theme-"] .chip,
+  body[class*="theme-"] .meta-pill {
+    color: #111 !important;
+    background: #fff !important;
+    border: 1px solid #aaa !important;
+  }
+
+  body[class*="theme-"] .roadmap::before {
+    background: #777 !important;
+    border: 0;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .roadmap-stage__number {
+    color: #fff !important;
+    background: #333 !important;
+    border-color: #fff !important;
+    border-radius: 50%;
+    box-shadow: none;
+  }
+
+  body[class*="theme-"] .atlas-footer {
+    color: #444 !important;
+    border-top: 1px solid #aaa;
+  }
+
+  body[class*="theme-"] .atlas-footer strong {
+    color: #111 !important;
+  }
+}
+
+  </style>
+</head>
+<body class="theme-workshop" data-theme="workshop">
+  <a class="skip-link" href="#atlas-main">跳转到知识图谱正文</a>
+  <header class="hero">
+    <div class="hero__contours" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <h1>两个月人像摄影作品集行动图谱</h1>
+      <p class="hero__summary">一条以成片为导向、每周 6 小时、前四周零强制消费的入门路径：先稳定曝光、对焦和自然光，再练人物引导、单灯与免费后期，最后完成一组统一的 8–12 张人像。</p>
+      <div class="hero__meta"><span class="meta-pill">生成日期: 2026-07-23</span><span class="meta-pill">预计总投入: 8 周 · 每周 6 小时 · 共约 48 小时</span></div>
+    </div>
+  </header>
+  <div class="atlas-shell">
+    <aside class="atlas-nav" aria-label="知识图谱章节">
+      <div class="atlas-nav__inner">
+        <p class="atlas-nav__title">知识图谱章节</p>
+        <nav>
+          <ol>
+            <li><a href="#brief">已确认的用户需求简报</a></li>
+            <li><a href="#guide">核心指南</a></li>
+            <li><a href="#resources">精选资源</a></li>
+            <li><a href="#roadmap">详细学习或探索路线图</a></li>
+            <li><a href="#sources">资源出处</a></li>
+          </ol>
+        </nav>
+      </div>
+    </aside>
+    <main id="atlas-main" class="atlas-main">
+      <section id="brief" class="atlas-section" data-section="brief">
+        <p class="section-kicker">01</p>
+        <h2>已确认的用户需求简报</h2>
+        <dl class="brief-grid"><div class="brief-item"><dt>目标</dt><dd>在两个月内掌握足以独立完成小型人像拍摄的相机操作、自然光、基础人工布光、人物姿势指导、场景选择和基础修图，并产出一组 8–12 张可公开展示的统一作品。</dd></div><div class="brief-item"><dt>当前起点</dt><dd>已有一台入门微单，但尚不熟悉曝光、构图、布光和后期。</dd></div><div class="brief-item"><dt>可用时间</dt><dd>8 周，每周 6 小时；默认拆成每周两次、每次约 3 小时</dd></div><div class="brief-item"><dt>语言</dt><dd>中文讲解优先；少量高质量英文资源配合浏览器翻译或字幕</dd></div><div class="brief-item"><dt>偏好形式</dt><dd><ul><li>短篇官方教程</li><li>少量视频示范</li><li>每周实拍任务</li><li>可检查的选片与复盘</li></ul></dd></div><div class="brief-item"><dt>期望深度</dt><dd>零基础到能完成一组小型人像作品，不追求商业棚拍或高级精修</dd></div><div class="brief-item"><dt>限制条件</dt><dd><ul><li>预算有限，前四周不要求购买任何镜头或灯具</li><li>优先免费且无需账号的资源</li><li>优先使用现有微单和套机镜头</li><li>新增器材建议控制在约 ¥0–300，且只在第五周后按缺口购买</li><li>最终作品需获得被摄者公开展示许可</li></ul></dd></div><div class="brief-item"><dt>假设</dt><dd><ul><li>相机支持 P/A(Sony/Nikon)/Av(Canon)/S/Tv/M 中至少部分曝光模式，并可手动选择对焦区域</li><li>若相机支持 RAW 和眼部自动对焦则启用；不支持时使用最高质量 JPEG 与单点/人脸对焦完成同样练习</li><li>能邀请至少一位愿意配合的成年被摄者；涉及未成年人时由监护人书面同意</li><li>可使用一台能运行 darktable 的电脑；若无法安装，则沿用已有免费编辑器并照搬同一后期顺序</li><li>作品集以一至两位被摄者、一个明确主题和最多两种光线语言完成，以保证八周内的统一性</li></ul></dd></div></dl>
+      </section>
+      <section id="guide" class="atlas-section" data-section="guide">
+        <p class="section-kicker">02</p>
+        <h2>核心指南</h2>
+<div class="answer-card"><p class="fact-label">直接结论</p><p class="lead">八周足以做出一组可展示的人像，但前提是把目标从“学完摄影”改成“稳定完成一套简单流程”。前四周只用套机镜头、光圈优先和窗光，练到每次都能保证眼睛清晰、肤色不过曝、背景干净；第五周再加入一块反光板或一盏高显色常亮灯；第六周固定一条克制的后期流程；最后两周只围绕一个主题拍摄、筛选和排序。不要用换镜头、全手动或重度磨皮来替代基本功。</p></div><h3>真正重要的点</h3><ul><li>入门阶段优先用 A/Av + 自动 ISO：你控制景深，相机负责跟随光线；静态人像把快门守在约 1/160 秒以上，有动作时守在约 1/250 秒以上。</li><li>单人半身先用套机镜头的中长焦端；APS-C 常见套头可先试 35–55mm，避免用 16–24mm 贴近面部拍大头照。</li><li>自然光先学“位置”而不是“参数”：让人物靠近窗户或阴影边缘，脸与光线约 45°，再用白色泡沫板补暗侧。</li><li>摆姿的核心不是背姿势库，而是给动作提示、保持交流、每次只改一个变量，并让手、肩、下巴和视线都有明确去处。</li><li>最终作品宁可统一而简单：一个主题、一个主色调、一至两位人物、两处以内场景、8–12 张不重复的照片。</li></ul><h3>具体建议</h3><div class="decision-grid"><article class="decision-card"><h3>前四周：现有微单 + 套机镜头 + 窗光 + 白色泡沫板</h3><p><strong>适合:</strong> 预算最紧、需要先判断自己真正缺什么的学习者</p><p><strong>原因:</strong> 曝光、对焦、光向、背景和沟通几乎都能在零新增成本下训练，且窗光足够做出完整作品。</p><p><strong>取舍与限制:</strong> 受天气和拍摄时间影响，室内空间太小时不易获得干净背景。</p></article><article class="decision-card"><h3>第五周可选：60–80cm 五合一反光板，或一盏 Ra/CRI≥95、约 5000–5600K、可调亮度的常亮 LED</h3><p><strong>适合:</strong> 需要在晚间练习，或窗光方向不理想的人</p><p><strong>原因:</strong> 反光板约 ¥30–80 即可明显改善暗侧；常亮灯能直接看到阴影，学习成本低于离机闪光。</p><p><strong>取舍与限制:</strong> 低价常亮灯功率有限，可能需要提高 ISO；不要混用不同色温灯，也不要把布料或纸张覆盖在发热灯具上。</p></article><article class="decision-card"><h3>离机闪光路径只作为可选升级</h3><p><strong>适合:</strong> 第五周后已能稳定曝光、相机有兼容热靴，并愿意额外学习同步和功率控制的人</p><p><strong>原因:</strong> 手动闪光灯加触发器和伞能用较低成本获得更高输出与可重复性。</p><p><strong>取舍与限制:</strong> 兼容性、触发器、灯架和柔光附件会推高总成本；未确认相机热靴型号前不要购买。</p></article><article class="decision-card"><h3>作品集采用“一个人物故事 + 三种景别”的最小方案</h3><p><strong>适合:</strong> 第一次做公开作品集、拍摄机会有限的人</p><p><strong>原因:</strong> 环境全景、半身互动和近景表情可以形成视觉节奏，同时比多主题拼盘更容易统一。</p><p><strong>取舍与限制:</strong> 题材范围较窄，需要靠表情、动作、光线和场景细节避免重复。</p></article></div><div class="guide-section"><h3>相机起始设置与判断规则</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 把每次拍摄都要做的技术决定压缩成一张可重复清单。</p><div class="guide-item-grid"><article class="guide-item"><h4>安全起始档</h4><p>先用 A/Av 模式、自动 ISO、连续自动对焦和眼部/人脸识别；单人先试最大光圈收一档到 f/2.8–f/4，快门低于约 1/160 秒就提高 ISO 或增加光线。若相机可设置自动 ISO 最低快门，设为 1/160 秒；没有该功能就边拍边看快门。</p><p class="fact-label">具体例子</p><ul><li>静止半身：A/Av、f/3.5、Auto ISO、快门不低于 1/160 秒</li><li>走动或转身：快门优先 1/250–1/500 秒，或在 M 模式固定快门与光圈、Auto ISO</li><li>两人不在同一焦平面：收至 f/4–f/5.6</li></ul></article><article class="guide-item"><h4>曝光优先级</h4><p>先保眼睛清晰，再保护皮肤高光，最后才追求低 ISO。用曝光补偿微调亮度，并查看高光警告或直方图；不要仅凭相机屏幕亮暗判断。</p><p class="fact-label">具体例子</p><ul><li>白衣或逆光导致脸暗：先加反光板，再尝试 +0.3 至 +1 EV</li><li>额头、鼻梁出现无细节亮斑：降低曝光补偿约 0.3–0.7 EV</li><li>ISO 1600 的清晰照片通常优于 ISO 200 的运动模糊</li></ul></article><article class="guide-item"><h4>构图检查</h4><p>按“眼睛—边缘—背景—手脚”顺序扫一遍画面；套机镜头优先中长焦端，人物与背景尽量拉开 1–2 米。</p><p class="fact-label">具体例子</p><ul><li>眼睛放在上三分线附近</li><li>避免树干、电线或门框从头顶长出</li><li>裁切关节时避开手腕、肘、膝和脚踝正中</li></ul></article></div></div><div class="guide-section"><h3>从窗光到一盏人工光</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 用同一套观察方法理解自然光、常亮灯与闪光灯。</p><div class="guide-item-grid"><article class="guide-item"><h4>四个光线变量</h4><p>每次只观察方向、大小、距离和明暗比。光源越靠近、相对人物越大，阴影越软；角度越侧，面部立体感越强。</p><p class="fact-label">具体例子</p><ul><li>窗户在人物正前方：平、干净</li><li>窗户位于脸侧约 45°：立体且适合大多数人</li><li>人物背向窗户：轮廓漂亮，但需要反光板补脸</li></ul></article><article class="guide-item"><h4>零成本窗光配置</h4><p>人物距窗约 0.5–1.5 米，摄影师站在窗户同侧；暗侧放 60×90cm 左右白色泡沫板或白纸板，并通过移动反光板而不是后期提亮来控制阴影。</p><p class="fact-label">具体例子</p><ul><li>泡沫板贴近脸：暗侧更亮</li><li>泡沫板移远：保留更强反差</li><li>白墙也可作为大面积反光面</li></ul></article><article class="guide-item"><h4>单灯配置</h4><p>一盏常亮灯或离机闪光放在人物侧前方约 45°、略高于眼睛，人物离背景至少 1 米，白反光板置于另一侧。先只开主灯，确认阴影方向后再加反光板。</p><p class="fact-label">具体例子</p><ul><li>灯靠近并加伞/柔光：柔和头像</li><li>灯移到 70–90°侧面：更戏剧化</li><li>灯离背景更近、人物离背景更远：背景更暗</li></ul></article></div></div><div class="guide-section"><h3>人物姿势与现场沟通</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 让没有模特经验的朋友也能自然地进入状态。</p><div class="guide-item-grid"><article class="guide-item"><h4>五点姿势检查</h4><p>从脚开始：重心落一条腿，胯和肩不要完全平行镜头，下巴轻微前伸再略向下，手必须触碰具体物体或完成动作，眼神有明确落点。</p><p class="fact-label">具体例子</p><ul><li>重心放后腿，前脚朝镜头外侧</li><li>肩转离镜头约 20–45°，脸转回镜头</li><li>手扶衣领、整理袖口、触碰椅背，而不是悬空</li></ul></article><article class="guide-item"><h4>用动作提示代替“摆自然一点”</h4><p>给可执行、短而具体的动作，让人物持续微动；每组动作拍 3–5 张后及时肯定一个有效细节。</p><p class="fact-label">具体例子</p><ul><li>慢慢走向我，第三步看镜头</li><li>先看窗外，听到我说“现在”再转回来</li><li>深呼吸，吐气时肩膀放松</li><li>把袖口整理两次，第二次抬眼</li></ul></article><article class="guide-item"><h4>尊重与许可</h4><p>拍前说明主题、服装、用途和公开平台；现场先口头询问再触碰衣物或调整姿态；发布前让被摄者确认最终选片与署名方式。</p><p class="fact-label">具体例子</p><ul><li>书面记录可公开展示、可撤回范围和是否实名</li><li>未成年人由监护人同意</li><li>不把未经同意的尴尬表情或试光照公开</li></ul></article></div></div><div class="guide-section"><h3>场景选择与作品集结构</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 让每次踩点和拍摄都服务于最后的 8–12 张。</p><div class="guide-item-grid"><article class="guide-item"><h4>场景五项筛选</h4><p>优先检查光线方向、背景干扰、人物与背景距离、拍摄许可/隐私和天气备选；地点“好看”但没有可控光线并不适合第一次作品集。</p><p class="fact-label">具体例子</p><ul><li>大窗边、屋檐阴影、浅色墙、树荫边缘</li><li>避开正午斑驳树影、拥挤景点和强烈混合色温</li><li>提前拍手机测试照并记录上午/下午光向</li></ul></article><article class="guide-item"><h4>8–12 张最小叙事</h4><p>准备 12 格拍摄清单：2 张环境开场、4 张半身互动、3 张近景表情、1–2 张动作或手部细节、1 张收尾。最终删除近似表情和重复构图。</p><p class="fact-label">具体例子</p><ul><li>开场：人物与场景关系</li><li>中段：动作、交流和表情变化</li><li>收尾：安静近景或背影</li></ul></article><article class="guide-item"><h4>统一规则</h4><p>拍摄前写一句 20–40 字主题句，并固定最多两个场景、一个主色调和一种主要画幅。每张照片都应回答同一个主题。</p><p class="fact-label">具体例子</p><ul><li>“下班后独处的半小时”</li><li>“雨季窗边的安静肖像”</li><li>“旧街区里的一次散步”</li></ul></article></div></div><div class="guide-section"><h3>免费后期与交付流程</h3><p class="guide-section__purpose"><strong>本节回答:</strong> 用可重复、不过度的修图顺序获得统一作品。</p><div class="guide-item-grid"><article class="guide-item"><h4>固定八步</h4><p>备份原片 → 星标筛选 → 镜头校正 → 裁切拉直 → 白平衡与曝光 → 高光/阴影与对比 → 轻微肤色和局部调整 → 锐化、降噪与导出。先做全局，再做局部。</p><p class="fact-label">具体例子</p><ul><li>同一光线下先调一张基准，再复制设置到整组</li><li>用前后对比检查是否让肤色过橙或背景过饱和</li><li>保留皮肤纹理，只处理临时痘痘、明显灰尘和分散注意力的瑕疵</li></ul></article><article class="guide-item"><h4>两轮选片</h4><p>第一轮只看技术合格与表情，第二轮才看叙事和重复；不要边修边选，以免被已投入的时间绑架。</p><p class="fact-label">具体例子</p><ul><li>100 张原片 → 25 张技术合格 → 15 张候选 → 8–12 张终稿</li><li>同一动作只留一张</li><li>在缩略图尺寸检查整组明暗和色彩是否跳变</li></ul></article><article class="guide-item"><h4>公开展示文件</h4><p>保留一份高分辨率 sRGB 归档；另导出长边约 2500–3000px、JPEG 品质约 85–90 的网页版本，并保留元数据或单独记录作者与被摄者署名。</p><p class="fact-label">具体例子</p><ul><li>portfolio-hires 文件夹保存高分辨率</li><li>portfolio-web 文件夹保存统一尺寸和命名</li><li>附 80–120 字作品说明与拍摄日期</li></ul></article></div></div><h3>下一步行动</h3><div class="next-card"><dl><dt>行动</dt><dd>完成一次 90 分钟窗边测试：相机设为 A/Av、Auto ISO、眼部/人脸对焦，在同一位置拍 f/最大光圈、f/4、f/8 与曝光补偿 -1/0/+1 的组合；随后选出 6 张并写下每张的快门、ISO、眼睛清晰度和肤色高光情况。</dd><dt>时间</dt><dd>今天或下一次有自然光时，90 分钟；没有真人时可先用玩偶完成机械练习，但本周内必须换成真人复拍</dd><dt>预期产出</dt><dd>一张 6 图对比联系表，以及三条参数—画面关系的观察记录</dd></dl></div>
+      </section>
+      <section id="resources" class="atlas-section" data-section="resources">
+        <p class="section-kicker">03</p>
+        <h2>精选资源</h2>
+<h3>选择适合你的路线</h3><div class="track-grid"><article class="track-card"><h3>中文优先、实拍为主</h3><p><strong>适合:</strong> 希望把每次阅读控制在 15–30 分钟，并把多数时间留给拍摄的人</p><p><strong>节奏:</strong> 每周两次 3 小时；每次先学 20–30 分钟，再实拍 90–120 分钟，最后选片复盘 30–40 分钟</p><p><strong>指定资源:</strong></p><ul class="linked-resource-list"><li><a href="https://www.canon.com.cn/special/canon_portrait/index.html">人像摄影专业技巧 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=PpS91iyAoHE">Canon Tips – How to shoot portraits outdoors <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon-europe.com/pro/stories/posing-for-portraits/">What makes a pose powerful? Five tips for modern-day portraits <span aria-hidden="true">↗</span></a></li><li><a href="https://www.darktable.org/2025/12/darktable-5.4-beginner-workflow/">darktable 5.4 – A Simple Beginner Workflow and Interactive Walkthrough <span aria-hidden="true">↗</span></a></li></ul><p class="fact-label">使用顺序</p><ul><li>第 1–2 周依次看佳能中国系列的场景 1、2、对焦 7–8、曝光 12–13、镜头 15–17；每看一页立刻做对应的 20 张练习。</li><li>第 2 周观看 Canon Europe 户外人像视频全片 3:07，只记录地点、背景、焦段、光线和反光板五个检查点。</li><li>第 3 周阅读 Canon Europe 摆姿文章的“Be an observer”和“Make your subject comfortable”，把原则改写成 10 条中文动作提示。</li><li>第 6 周跟随 darktable 5.4 文章，只做裁切、曝光、白平衡、色调、色彩和导出，不追逐全部模块。</li></ul></article><article class="track-card"><h3>原理优先、可离线替代视频</h3><p><strong>适合:</strong> 偏好文字、能接受英文浏览器翻译，或所在网络不方便访问 YouTube 的人</p><p><strong>节奏:</strong> 每周两次 3 小时；一次原理与静物/自画像测试，一次真人拍摄与复盘</p><p><strong>指定资源:</strong></p><ul class="linked-resource-list"><li><a href="https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/a-basic-look-at-the-basics-of-exposure">A Basic Look at the Basics of Exposure <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon.com.cn/special/canon_portrait/index.html">人像摄影专业技巧 <span aria-hidden="true">↗</span></a></li><li><a href="https://strobist.blogspot.com/2006/03/lighting-101.html">Lighting 101 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.darktable.org/2025/12/darktable-5.4-beginner-workflow/">darktable 5.4 – A Simple Beginner Workflow and Interactive Walkthrough <span aria-hidden="true">↗</span></a></li></ul><p class="fact-label">使用顺序</p><ul><li>先用 Nikon 的曝光文章建立光圈、快门和 ISO 的关系，再用佳能中国的中文人像页面把原理落实到眼部对焦、焦段和曝光补偿。</li><li>第 2–4 周只用自然光完成场景 1、2、7、12、15–17 的对应练习，不需要任何灯具。</li><li>第 5 周阅读 Strobist Lighting 101 的 Introduction、Using Umbrellas、Test Driving Your New Lighting Kit、Soft Light—Bouncing 与 It&#x27;s Not (All) About Flash；没有闪光灯时用窗户或常亮灯复现方向、距离和软硬变化。</li><li>第 6 周用 darktable 官方文章的 RAW 样片先走一遍，再把同一顺序应用到自己的 6 张人像。</li></ul></article><article class="track-card"><h3>视觉示范加深路径（可选）</h3><p><strong>适合:</strong> 能访问 YouTube、喜欢先看完整现场示范再动手的人</p><p><strong>节奏:</strong> 第 2 周和第 5 周各增加 30–40 分钟观看，不挤占真人实拍</p><p><strong>指定资源:</strong></p><ul class="linked-resource-list"><li><a href="https://www.youtube.com/watch?v=PpS91iyAoHE">Canon Tips – How to shoot portraits outdoors <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=jZzBZl1tnJo">Mastering One Light Portraits | B&amp;H Event Space <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon-europe.com/get-inspired/tips-and-techniques/portrait-photography-tips/">Top tips for portrait photography <span aria-hidden="true">↗</span></a></li></ul><p class="fact-label">使用顺序</p><ul><li>先看 Canon Europe 户外人像视频全片 3:07，暂停并截图记录五个现场检查点。</li><li>再读 Canon Europe 人像技巧中的 challenging lighting、candid portraits 与 environmental portrait 三节。</li><li>第 5 周观看 B&amp;H 单灯课 09:05–31:22 与 49:03–58:19，只学曝光、灯位和效果判断；忽略具体高价灯具推荐。</li></ul></article></div><h3>资源详情</h3><div class="resource-grid"><article class="resource-card" data-resource-id="canon-cn-portrait"><h3>人像摄影专业技巧</h3><p class="resource-card__creator">佳能（中国）</p><div class="card-meta"><span class="chip">来源渠道: 官方中文教程</span><span class="chip">用途: 核心基础</span><span class="chip">级别: 初学者</span><span class="chip">形式: 中文网页、示例图与参数</span><span class="chip">所需时间: 精选页面约 2–3 小时，配合练习约 10 小时</span><span class="chip">适合: 需要中文解释，并希望把焦段、眼部对焦、曝光补偿和场景练习连起来的人</span><span class="chip">获取方式: 免费网页；无需账号；在中国大陆有官方站点</span><span class="chip">类型: 结构化图文教程</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 这是本路线最贴合中文入门者的单一核心资源，覆盖实践、对焦、曝光和镜头四条主线。</p><p><strong>重点:</strong> 场景 1–2、对焦 7–8、曝光 12–13、镜头 15–17；先跳过超远摄、暗调、无线闪光和手动精细对焦。</p><p><strong>局限:</strong> 示例相机与菜单较旧且带有 Canon 品牌语境；参数不可照抄，但焦段、光向、背景和对焦原则仍适用。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.canon.com.cn/special/canon_portrait/index.html">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="nikon-exposure"><h3>A Basic Look at the Basics of Exposure</h3><p class="resource-card__creator">Reed Hoffmann / Nikon USA</p><div class="card-meta"><span class="chip">来源渠道: 相机厂商官方教程</span><span class="chip">用途: 快速起点</span><span class="chip">级别: 初学者</span><span class="chip">形式: 英文网页；可用浏览器翻译</span><span class="chip">所需时间: 15–20 分钟</span><span class="chip">适合: 需要一次性理清光圈、快门和 ISO 如何共同决定曝光的人</span><span class="chip">获取方式: 免费网页；无需账号</span><span class="chip">类型: 短篇图文</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 篇幅短、解释直接，作者为长期摄影教育者，适合在第一次参数练习前建立共同语言。</p><p><strong>重点:</strong> Light, More or Less 与 Timing the Light 两节；读完立刻做同场景多组参数练习。</p><p><strong>局限:</strong> 英文且只解释曝光，不覆盖人像构图、对焦和实践反馈。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/a-basic-look-at-the-basics-of-exposure">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="canon-eu-portrait"><h3>Top tips for portrait photography</h3><p class="resource-card__creator">Canon Europe</p><div class="card-meta"><span class="chip">来源渠道: 相机厂商官方教程</span><span class="chip">用途: 自然光与现场参考</span><span class="chip">级别: 初学者到中级</span><span class="chip">形式: 英文图文与示例；可用浏览器翻译</span><span class="chip">所需时间: 25–35 分钟</span><span class="chip">适合: 需要把焦段、困难光线、抓拍和环境人像放到同一个现场流程中的人</span><span class="chip">获取方式: 免费网页；无需账号</span><span class="chip">类型: 综合人像指南</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 覆盖从镜头视角到环境人像的完整现场决策，且明确说明任何相机都可应用。</p><p><strong>重点:</strong> Choose the best portrait lens、Embrace challenging portrait lighting、Practise shooting candid portraits、environmental portrait 相关内容。</p><p><strong>局限:</strong> 产品推荐较多且以 Canon 系统为例；跳过购买链接，只使用光线和拍摄方法。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.canon-europe.com/get-inspired/tips-and-techniques/portrait-photography-tips/">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="canon-outdoor-video"><h3>Canon Tips – How to shoot portraits outdoors</h3><p class="resource-card__creator">Canon Europe</p><div class="card-meta"><span class="chip">来源渠道: YouTube 官方视频</span><span class="chip">用途: 视觉示范</span><span class="chip">级别: 初学者</span><span class="chip">形式: 3 分 07 秒英文视频；可开启字幕</span><span class="chip">所需时间: 观看与做笔记 10 分钟</span><span class="chip">适合: 想快速看到地点、背景、焦段、自然光、反光板和补光如何串起来的人</span><span class="chip">获取方式: 免费；无需登录即可观看；YouTube 在部分地区网络可用性受限</span><span class="chip">类型: 短视频教程</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 极短但涵盖一次户外人像的主要现场检查点，适合拍摄前复看。</p><p><strong>重点:</strong> 00:16 地点、00:30 背景、00:58 背景虚化、01:44 光线、01:56 反光板；闪光段先作为可选。</p><p><strong>局限:</strong> 信息密度高、解释较浅；所在网络无法访问 YouTube 时用中文佳能教程替代。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=PpS91iyAoHE">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="canon-posing"><h3>What makes a pose powerful? Five tips for modern-day portraits</h3><p class="resource-card__creator">Wanda Martin、Tarik Carroll / Canon Europe</p><div class="card-meta"><span class="chip">来源渠道: 摄影师访谈与官方文章</span><span class="chip">用途: 人物沟通</span><span class="chip">级别: 初学者到中级</span><span class="chip">形式: 英文图文；可用浏览器翻译</span><span class="chip">所需时间: 20–30 分钟</span><span class="chip">适合: 想避免僵硬模板姿势，并学习如何观察、合作和让被摄者放松的人</span><span class="chip">获取方式: 免费网页；无需账号</span><span class="chip">类型: 人物引导与摆姿文章</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 它把姿势视为摄影师与人物的合作，而不是机械复制动作，能直接改善第一次拍朋友时的现场体验。</p><p><strong>重点:</strong> Focus on individuality、Be an observer、Make your subject comfortable 三节，并将原则改写成动作提示。</p><p><strong>局限:</strong> 语境偏专业与时尚，不是具体姿势图鉴；需要结合本图谱的五点姿势检查练习。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.canon-europe.com/pro/stories/posing-for-portraits/">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="strobist-lighting"><h3>Lighting 101</h3><p class="resource-card__creator">David Hobby / Strobist</p><div class="card-meta"><span class="chip">来源渠道: 原作者免费课程</span><span class="chip">用途: 基础人工布光</span><span class="chip">级别: 已理解基础曝光的初学者</span><span class="chip">形式: 英文图文系列；可用浏览器翻译</span><span class="chip">所需时间: 本路线精选内容约 1.5–2 小时，练习约 4 小时</span><span class="chip">适合: 第五周后希望理解光源位置、大小、距离、柔光和环境光平衡的人</span><span class="chip">获取方式: 完全免费网页；无需账号</span><span class="chip">类型: 离机灯光课程</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 由职业摄影记者 David Hobby 编写并持续修订，强调用小型、低成本灯具通过即时反馈学习。</p><p><strong>重点:</strong> Introduction、Using Umbrellas、Test Driving Your New Lighting Kit、Soft Light—Bouncing、It&#x27;s Not (All) About Flash；没有闪光灯时用窗光或常亮灯复现同一原理。</p><p><strong>局限:</strong> 课程以离机闪光为主，部分器材与同步说明较旧；先学稳定的光线原理，不照抄购买清单。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://strobist.blogspot.com/2006/03/lighting-101.html">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="darktable-workflow"><h3>darktable 5.4 – A Simple Beginner Workflow and Interactive Walkthrough</h3><p class="resource-card__creator">Andrew Raub / darktable</p><div class="card-meta"><span class="chip">来源渠道: 开源软件官方站</span><span class="chip">用途: 基础后期</span><span class="chip">级别: 初学者</span><span class="chip">形式: 英文图文、可下载 RAW 样片与模块链接</span><span class="chip">所需时间: 首次跟练 75–120 分钟；之后每组约 60–90 分钟</span><span class="chip">适合: 不想支付订阅费用、愿意在电脑上建立固定 RAW 工作流的人</span><span class="chip">获取方式: 文章与 darktable 软件均免费开源；无需账号</span><span class="chip">类型: 免费 RAW 后期跟练</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 发布于官方站且针对 5.4 版本，明确把复杂软件压缩为少量模块和可重复顺序。</p><p><strong>重点:</strong> The workflow、Cropping, exposure, and white balance、Tone mapping、Sharpening and local contrast、Color and contrast、The final image；首次用作者 RAW 跟练。</p><p><strong>局限:</strong> 示例是昆虫微距而非人像，作者也说明自己为自学者；模块原理适用，但肤色和人像局部调整需保持克制，界面随版本可能变化。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.darktable.org/2025/12/darktable-5.4-beginner-workflow/">打开资源 <span aria-hidden="true">↗</span></a></article><article class="resource-card" data-resource-id="bh-one-light"><h3>Mastering One Light Portraits | B&amp;H Event Space</h3><p class="resource-card__creator">Scott Robert Lim / B&amp;H Photo Video Pro Audio</p><div class="card-meta"><span class="chip">来源渠道: YouTube 长视频课程</span><span class="chip">用途: 可选深入</span><span class="chip">级别: 初学者到中级</span><span class="chip">形式: 59 分 35 秒英文视频；可开启字幕</span><span class="chip">所需时间: 本路线精选片段约 32 分钟</span><span class="chip">适合: 通过观看现场灯位和效果变化学习，并能访问 YouTube 的人</span><span class="chip">获取方式: 免费；无需登录即可观看；YouTube 在部分地区网络可用性受限</span><span class="chip">类型: 单灯现场示范</span></div><div class="resource-card__body"><p><strong>推荐理由:</strong> 完整展示棚内、外景与创意单灯的思考过程，能补足文字课程缺少的现场空间感。</p><p><strong>重点:</strong> 09:05–31:22 曝光与棚内灯光，49:03–58:19 创意灯光；只记录灯位、距离和效果。</p><p><strong>局限:</strong> 使用昂贵的 StellaPro 灯具并由器材零售商发布，存在明显商业语境；概念可迁移，产品不纳入本预算。</p><p><strong>验证日期:</strong> 2026-07-23</p></div><a class="resource-link" href="https://www.youtube.com/watch?v=jZzBZl1tnJo">打开资源 <span aria-hidden="true">↗</span></a></article></div>
+      </section>
+      <section id="roadmap" class="atlas-section" data-section="roadmap">
+        <p class="section-kicker">04</p>
+        <h2>详细学习或探索路线图</h2>
+        <div class="roadmap"><article class="roadmap-stage" data-stage="1"><div class="roadmap-stage__number" aria-hidden="true">1</div><h3>第 1 周：把曝光和眼部对焦练成可重复动作</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 6 小时（学习 1 小时、练习 3.5 小时、选片复盘 1.5 小时）</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>能解释光圈、快门和 ISO 分别改变什么</li><li>能在 A/Av 模式下保证静态人物眼睛清晰</li><li>能用曝光补偿和高光警告避免肤色过曝</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>无</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/a-basic-look-at-the-basics-of-exposure">A Basic Look at the Basics of Exposure <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon.com.cn/special/canon_portrait/index.html">人像摄影专业技巧 <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>阅读 Nikon 曝光文章两节，以及佳能中国系列的对焦 7–8、曝光 12。</li><li>在同一窗边位置完成最大光圈、f/4、f/8 与 -1/0/+1 EV 的 18–27 张测试。</li><li>分别拍 10 张单次对焦与 10 张连续/眼部对焦，100% 放大检查近眼睫毛。</li><li>做一张 9 图联系表，记录每张的光圈、快门、ISO、曝光补偿和失败原因。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">9 图曝光—景深联系表与一页相机起始设置卡。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>不看笔记说明光圈、快门、ISO 与曝光补偿的作用</li><li>连续 10 张静态半身中至少 8 张近眼清晰</li><li>能指出至少两张失败照片是对焦、运动模糊还是曝光问题</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>找到并保存相机厂商的具体型号说明书，标记曝光补偿、对焦模式、直方图和 RAW 设置所在页</li></ul></div></div></article><article class="roadmap-stage" data-stage="2"><div class="roadmap-stage__number" aria-hidden="true">2</div><h3>第 2 周：用自然光和背景控制画面</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 6 小时（教程 45 分钟、踩点 45 分钟、实拍 3.5 小时、复盘 1 小时）</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>能识别前光、45°侧光、逆光与软硬差异</li><li>能用焦段、距离和画面边缘清理背景</li><li>能用白色反光面控制暗侧</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>完成第 1 周曝光与眼部对焦检查</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.canon.com.cn/special/canon_portrait/index.html">人像摄影专业技巧 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=PpS91iyAoHE">Canon Tips – How to shoot portraits outdoors <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>阅读佳能中国场景 1–2、镜头 15–17，并观看 Canon 户外视频全片。</li><li>同一人物完成窗前正光、45°侧光、90°侧光和逆光各 8 张；每组拍有/无白板对比。</li><li>用套机镜头广角端与中长焦端在保持人物同样大小时各拍一张，比较面部透视和背景范围。</li><li>选出 8 张并在缩略图上圈出所有背景干扰与不理想裁切。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">一张 8 图自然光对比板，包含光位示意、焦段和有/无反光板标注。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>看到成片能判断主要光线方向</li><li>四组照片中均没有明显失焦或皮肤高光溢出</li><li>能用移动人物、摄影师或背景而不是只靠裁切解决至少三处干扰</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>在阴天户外屋檐或树荫边缘复现 45°软光</li></ul></div></div></article><article class="roadmap-stage" data-stage="3"><div class="roadmap-stage__number" aria-hidden="true">3</div><h3>第 3 周：让普通人自然地进入姿势</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 6 小时（阅读 45 分钟、编提示卡 45 分钟、实拍 3.5 小时、复盘 1 小时）</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>能用动作提示连续引导人物</li><li>能检查重心、肩、下巴、手和视线</li><li>能在拍摄前说明用途并取得公开展示许可</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>能稳定完成自然光半身人像</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.canon-europe.com/pro/stories/posing-for-portraits/">What makes a pose powerful? Five tips for modern-day portraits <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon-europe.com/get-inspired/tips-and-techniques/portrait-photography-tips/">Top tips for portrait photography <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>阅读摆姿文章的 Focus on individuality、Be an observer、Make your subject comfortable，以及综合人像指南的 candid portraits 部分。</li><li>写 12 条动作提示，分为站姿、坐姿、行走、手部和表情五类。</li><li>与同一位被摄者完成 60–80 张练习；每次只改变一个变量，并在有效画面后说明具体优点。</li><li>让被摄者从候选中选 3 张，比较其偏好与你的选择，并记录公开展示与署名同意。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">一张可带到现场的 12 条人物引导卡，以及 9 张不同动作/表情的联系表。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>不用说“自然一点”也能连续给出 6 条明确指令</li><li>最终 9 张中没有悬空手、紧耸肩或明显双眼失焦</li><li>被摄者明确知道照片将在哪里展示，并已确认署名方式</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>加入音乐或简单道具，观察它们是否真正帮助动作而不是制造干扰</li></ul></div></div></article><article class="roadmap-stage" data-stage="4"><div class="roadmap-stage__number" aria-hidden="true">4</div><h3>第 4 周：踩点并完成第一次小型拍摄</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 6 小时（主题与踩点 1.5 小时、拍摄 3 小时、选片复盘 1.5 小时）</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>能按光线、背景、距离、许可和天气筛选场景</li><li>能把技术练习组织成 30–45 分钟的小型拍摄</li><li>能从 80–120 张中选出不重复的 12 张</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>完成曝光、自然光和人物引导练习</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.canon-europe.com/get-inspired/tips-and-techniques/portrait-photography-tips/">Top tips for portrait photography <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon.com.cn/special/canon_portrait/index.html">人像摄影专业技巧 <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>写一句 20–40 字主题句，建立 12 格清单：2 环境、4 半身、3 近景、2 动作/细节、1 收尾。</li><li>用手机在两个候选地点记录上午/下午光向、背景、人物站位、拍摄许可和雨天备选，选出一个。</li><li>按清单完成一次 30–45 分钟实拍，不超过两个焦段和一种主要光线。</li><li>第一轮只删技术失败，第二轮删重复，保留 12 张并写 150 字复盘。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">12 张第一次迷你组照、场景草图和复盘。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>12 张包含至少三种景别且没有三张以上近似构图</li><li>每张都能说明它在主题中的作用</li><li>列出最终拍摄必须修正的三个最高优先级问题</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>把迷你组照发给一位可信朋友，只问三个问题：第一眼看哪里、哪张重复、整组像在讲什么</li></ul></div></div></article><article class="roadmap-stage" data-stage="5"><div class="roadmap-stage__number" aria-hidden="true">5</div><h3>第 5 周：掌握一盏灯和一块反光板</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 6 小时（原理 1 小时、搭建与安全 1 小时、练习 3 小时、复盘 1 小时）</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>能说明光源方向、大小、距离如何改变脸部阴影</li><li>能在 10 分钟内复现两种单灯效果</li><li>能避免混合色温和不稳定灯架</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>理解基础曝光并能判断自然光方向</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://strobist.blogspot.com/2006/03/lighting-101.html">Lighting 101 <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=jZzBZl1tnJo">Mastering One Light Portraits | B&amp;H Event Space <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>阅读 Strobist 指定五节；能访问 YouTube 时选看 B&amp;H 09:05–31:22，忽略具体器材推荐。</li><li>先用窗光或一盏已有常亮灯完成正面、45°、90°和逆向四个灯位；每个灯位拍无反光板/有反光板两张。</li><li>改变光源到人物的距离，分别记录近、大、软与远、小、硬的阴影变化。</li><li>若确实缺少晚间练习能力，再购买一块 60–80cm 反光板或一盏 Ra/CRI≥95 的稳定常亮灯；不确认热靴兼容性则不买闪光灯。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">8 图单灯对比板、俯视灯位图和器材是否购买的理由。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>能在 10 分钟内搭出柔和 45°光与高反差侧光</li><li>每张眼睛清晰、肤色没有明显绿/橙色偏，灯架和线缆安全</li><li>购买决定由具体缺口驱动，而不是为了模仿教程器材</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>已有兼容闪光灯时，用最低可行功率与白墙/伞做一次反射或透射柔光测试</li></ul></div></div></article><article class="roadmap-stage" data-stage="6"><div class="roadmap-stage__number" aria-hidden="true">6</div><h3>第 6 周：固定免费后期与统一肤色</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 6 小时（跟练 2 小时、编辑 2.5 小时、前后对比与导出 1.5 小时）</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>能按固定顺序完成 RAW 基础调整</li><li>能批量统一同一光线下的 6 张照片</li><li>能在改善画面的同时保留真实皮肤纹理</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>已有第 4–5 周的 RAW 或最高质量 JPEG 照片</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.darktable.org/2025/12/darktable-5.4-beginner-workflow/">darktable 5.4 – A Simple Beginner Workflow and Interactive Walkthrough <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>安装当前可用的 darktable，下载文章 RAW 样片，跟随指定六个部分完成一次全流程。</li><li>从自己的照片中选 6 张，按备份、校正、裁切、白平衡/曝光、色调、色彩、锐化/降噪、导出顺序处理。</li><li>先完成一张基准图，再复制设置到同光线照片并逐张微调；在缩略图与 100% 放大两种视图检查。</li><li>导出一组 sRGB 网页 JPEG，并保留原片、编辑记录和高分辨率版本。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">6 张前后对比图、一张后期步骤卡和一套可复用的基准设置。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>不看教程也能说出八步后期顺序</li><li>6 张并排观看时白平衡和明暗没有明显跳变</li><li>皮肤仍有纹理，没有过度橙色、锐化光边或明显降噪蜡感</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>为自然光与单灯各建立一个非破坏性的起始预设</li></ul></div></div></article><article class="roadmap-stage" data-stage="7"><div class="roadmap-stage__number" aria-hidden="true">7</div><h3>第 7 周：执行最终作品集拍摄</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 6 小时（策划 1 小时、两次拍摄或一次长拍 4 小时、备份初选 1 小时）</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>按统一主题和 12 格清单完成最终素材</li><li>在现场同时管理曝光、光线、背景和人物状态</li><li>得到 20–30 张技术与叙事均合格的候选片</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>完成第一次迷你组照、单灯练习和后期基准</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.canon-europe.com/get-inspired/tips-and-techniques/portrait-photography-tips/">Top tips for portrait photography <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon-europe.com/pro/stories/posing-for-portraits/">What makes a pose powerful? Five tips for modern-day portraits <span aria-hidden="true">↗</span></a></li><li><a href="https://strobist.blogspot.com/2006/03/lighting-101.html">Lighting 101 <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>锁定主题句、服装色彩、一个主场景和一个备选场景，并把 12 格清单打印或存在手机。</li><li>拍前确认天气、光向、交通、电池、存储卡、反光板/灯具与公开展示许可。</li><li>优先完成必拍 12 格，再做变化；每完成一组就放大检查近眼与肤色高光。</li><li>拍后立刻双份备份，只做技术初筛，留下 20–30 张候选。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">20–30 张最终候选、已勾选的拍摄清单和双份备份。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>所有 12 个必拍格至少有一张技术合格照片</li><li>候选片覆盖环境、半身、近景、动作/细节和收尾</li><li>没有因背景干扰、严重失焦或高光溢出而必须依赖重修的关键画面</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>如果第一场拍摄缺一类景别，只安排一次 30 分钟定向补拍，不重拍全部</li></ul></div></div></article><article class="roadmap-stage" data-stage="8"><div class="roadmap-stage__number" aria-hidden="true">8</div><h3>第 8 周：编辑、排序并公开展示</h3><p class="roadmap-stage__timing">持续时间: 1 周 · 每周投入: 6 小时（两轮选片 1.5 小时、统一后期 2.5 小时、排序导出与检查 2 小时）</p><div class="roadmap-stage__grid"><div class="roadmap-stage__block"><p class="fact-label">目标</p><ul><li>从候选中选出 8–12 张不重复的终稿</li><li>建立清晰的开场、中段和收尾顺序</li><li>导出可公开展示与高分辨率归档两套文件</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">前置要求</p><ul><li>完成最终拍摄并有双份备份</li></ul></div><div class="roadmap-stage__block"><p class="fact-label">指定资源</p><ul class="linked-resource-list"><li><a href="https://www.darktable.org/2025/12/darktable-5.4-beginner-workflow/">darktable 5.4 – A Simple Beginner Workflow and Interactive Walkthrough <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon-europe.com/get-inspired/tips-and-techniques/portrait-photography-tips/">Top tips for portrait photography <span aria-hidden="true">↗</span></a></li></ul></div><div class="roadmap-stage__block"><p class="fact-label">任务</p><ul><li>第一轮只看技术与表情，第二轮按主题、景别和重复度缩到 8–12 张；同一动作只保留一张。</li><li>先调一张基准图，批量同步同光线照片，再逐张微调；在缩略图尺寸检查整体节奏和色彩。</li><li>按环境开场—互动/动作—近景情绪—安静收尾排序，并请一位观察者指出最弱和最重复的一张。</li><li>让被摄者确认最终公开选片与署名；导出 sRGB 网页版和高分辨率归档，写 80–120 字作品说明。</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">阶段产出</p><div class="deliverable">一组 8–12 张公开展示人像、两套导出文件、作品说明和许可记录。</div></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">完成标准</p><ul><li>每张近眼清晰、肤色自然、无明显背景疏漏或处理痕迹</li><li>整组只有一个清楚主题、最多两种光线语言，并包含至少三种景别</li><li>去掉任意一张都会损失信息，而加入被淘汰照片不会明显增强叙事</li><li>被摄者已确认公开范围与署名，网页文件为 sRGB 且尺寸一致</li></ul></div><div class="roadmap-stage__block roadmap-stage__block--wide"><p class="fact-label">可选分支</p><ul><li>把最终联系表与第 4 周迷你组照并排，写 200 字复盘：最明显的三项进步和下一阶段唯一重点</li></ul></div></div></article></div>
+      </section>
+      <section id="sources" class="atlas-section" data-section="sources">
+        <p class="section-kicker">05</p>
+        <h2>资源出处</h2>
+<div class="source-selection"><p class="fact-label">资源筛选说明</p><p>资源于 2026-07-23 逐页核验。核心组合优先选择无需账号的官方中文教程、相机厂商原始教学页、原作者维护的免费灯光课程和 darktable 官方站当前版本流程；视频仅作视觉补充。YouTube 在部分地区可能不可访问，因此所有关键能力都有纯网页替代。商业站点或厂商页面中的产品推荐未作为购买依据。</p></div><div class="source-group-grid"><article class="source-group"><h3>官方中文教程</h3><p>用作八周路线的主要中文基础，覆盖人像实践、对焦、曝光与焦段。</p><ul class="linked-resource-list"><li><a href="https://www.canon.com.cn/special/canon_portrait/index.html">人像摄影专业技巧 <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>相机厂商官方指南</h3><p>用作曝光、自然光、环境人像与人物引导的原始教学材料；跳过产品购买导向。</p><ul class="linked-resource-list"><li><a href="https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/a-basic-look-at-the-basics-of-exposure">A Basic Look at the Basics of Exposure <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon-europe.com/get-inspired/tips-and-techniques/portrait-photography-tips/">Top tips for portrait photography <span aria-hidden="true">↗</span></a></li><li><a href="https://www.canon-europe.com/pro/stories/posing-for-portraits/">What makes a pose powerful? Five tips for modern-day portraits <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>原作者免费灯光课程</h3><p>用稳定的光线原理理解一盏灯的方向、大小、距离和柔光，不照抄旧器材清单。</p><ul class="linked-resource-list"><li><a href="https://strobist.blogspot.com/2006/03/lighting-101.html">Lighting 101 <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>开源软件官方站</h3><p>用于建立不依赖订阅的 RAW 基础后期流程，并使用官方站提供的样片跟练。</p><ul class="linked-resource-list"><li><a href="https://www.darktable.org/2025/12/darktable-5.4-beginner-workflow/">darktable 5.4 – A Simple Beginner Workflow and Interactive Walkthrough <span aria-hidden="true">↗</span></a></li></ul></article><article class="source-group"><h3>YouTube 视频示范</h3><p>适合能访问 YouTube、偏好现场视觉示范的人；关键知识均有网页替代。</p><ul class="linked-resource-list"><li><a href="https://www.youtube.com/watch?v=PpS91iyAoHE">Canon Tips – How to shoot portraits outdoors <span aria-hidden="true">↗</span></a></li><li><a href="https://www.youtube.com/watch?v=jZzBZl1tnJo">Mastering One Light Portraits | B&amp;H Event Space <span aria-hidden="true">↗</span></a></li></ul></article></div>
+      </section>
+    </main>
+  </div>
+  <footer class="atlas-footer">
+    由 <strong>AnythingAtlas</strong> 生成 · 生成日期: 2026-07-23
+  </footer>
+</body>
+</html>

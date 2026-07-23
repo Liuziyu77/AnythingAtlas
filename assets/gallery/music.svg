@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Learning to Hear Classical Music</title>
+  <desc id="desc">A warm editorial cover with a musical staff and abstract notes.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#eadfce"/>
+    </linearGradient>
+    <pattern id="rules" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0V72" fill="none" stroke="#7b2638" stroke-opacity=".055"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="540" rx="28" fill="url(#paper)"/>
+  <rect width="960" height="540" rx="28" fill="url(#rules)"/>
+  <rect x="0" y="0" width="18" height="540" rx="9" fill="#7b2638"/>
+  <circle cx="815" cy="92" r="118" fill="#a9663d" opacity=".11"/>
+  <circle cx="852" cy="122" r="68" fill="none" stroke="#7b2638" stroke-opacity=".18" stroke-width="2"/>
+  <text x="72" y="82" fill="#7b2638" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="800" letter-spacing="5">CASE 01 · SCHOLAR</text>
+  <text x="72" y="182" fill="#251f1b" font-family="Georgia, serif" font-size="62" font-weight="600">Learning to Hear</text>
+  <text x="72" y="252" fill="#251f1b" font-family="Georgia, serif" font-size="62" font-weight="600">Classical Music</text>
+  <text x="74" y="302" fill="#6e6259" font-family="Inter, system-ui, sans-serif" font-size="23" letter-spacing="1">LISTENING FIRST · 24 WEEKS</text>
+  <g transform="translate(72 360)" fill="none" stroke="#8f7c6b" stroke-width="2">
+    <path d="M0 0H810M0 24H810M0 48H810M0 72H810M0 96H810" opacity=".5"/>
+    <path d="M90 72V-8M280 48V-28M474 72V-2M666 24V-48" stroke="#7b2638" stroke-width="5"/>
+  </g>
+  <g fill="#7b2638">
+    <ellipse cx="139" cy="440" rx="27" ry="19" transform="rotate(-16 139 440)"/>
+    <ellipse cx="329" cy="416" rx="27" ry="19" transform="rotate(-16 329 416)"/>
+    <ellipse cx="523" cy="440" rx="27" ry="19" transform="rotate(-16 523 440)"/>
+    <ellipse cx="715" cy="392" rx="27" ry="19" transform="rotate(-16 715 392)"/>
+  </g>
+  <path d="M139 360C208 314 272 318 329 340S451 388 523 360s126-80 192-62" fill="none" stroke="#a9663d" stroke-width="8" stroke-linecap="round" opacity=".72"/>
+</svg>

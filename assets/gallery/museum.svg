@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Impressionism for Museum Visitors</title>
+  <desc id="desc">An archival cover with layered impressionist color and brushwork.</desc>
+  <defs>
+    <linearGradient id="archive-paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf6e9"/>
+      <stop offset="1" stop-color="#ddc9a6"/>
+    </linearGradient>
+    <filter id="soft">
+      <feGaussianBlur stdDeviation="13"/>
+    </filter>
+    <pattern id="grain" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="1" fill="#4f3828" opacity=".05"/>
+      <circle cx="7" cy="7" r=".7" fill="#4f3828" opacity=".04"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="540" rx="28" fill="url(#archive-paper)"/>
+  <rect width="960" height="540" rx="28" fill="url(#grain)"/>
+  <rect x="38" y="38" width="884" height="464" rx="8" fill="none" stroke="#7e3e28" stroke-opacity=".4" stroke-width="2"/>
+  <g filter="url(#soft)" opacity=".58">
+    <ellipse cx="770" cy="172" rx="150" ry="110" fill="#5d89a6"/>
+    <ellipse cx="846" cy="254" rx="132" ry="112" fill="#d1a14c"/>
+    <ellipse cx="684" cy="292" rx="160" ry="116" fill="#75936d"/>
+    <ellipse cx="806" cy="392" rx="146" ry="80" fill="#9e6061"/>
+  </g>
+  <g fill="none" stroke-linecap="round" opacity=".72">
+    <path d="M600 108l210 70" stroke="#7e3e28" stroke-width="16"/>
+    <path d="M650 147l223 73" stroke="#f3dfb1" stroke-width="11"/>
+    <path d="M592 254l263-59" stroke="#456e83" stroke-width="18"/>
+    <path d="M632 316l230 52" stroke="#6f7d55" stroke-width="20"/>
+    <path d="M618 407l220-40" stroke="#a45445" stroke-width="14"/>
+  </g>
+  <rect x="66" y="64" width="488" height="412" rx="4" fill="#fbf6e9" fill-opacity=".93" stroke="#c8b89e"/>
+  <text x="96" y="112" fill="#7e3e28" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="800" letter-spacing="5">CASE 02 · ARCHIVE</text>
+  <text x="96" y="220" fill="#332a20" font-family="Georgia, serif" font-size="67" font-weight="600">Looking at</text>
+  <text x="96" y="292" fill="#332a20" font-family="Georgia, serif" font-size="67" font-weight="600">Impressionism</text>
+  <path d="M98 326H430" stroke="#9b6d36" stroke-width="5"/>
+  <text x="98" y="374" fill="#756755" font-family="Inter, system-ui, sans-serif" font-size="23" letter-spacing="1">MUSEUM-READY · 8 WEEKS</text>
+  <text x="98" y="421" fill="#7e3e28" font-family="Georgia, serif" font-size="24" font-style="italic">light · color · brushwork</text>
+</svg>
