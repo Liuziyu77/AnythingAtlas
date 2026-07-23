@@ -10,7 +10,7 @@
   English · <a href="README.zh-CN.md">简体中文</a>
 </p>
 
-## What is AnythingAtlas?
+## 🧭 What is AnythingAtlas?
 
 AnythingAtlas is an Agent Skill built for the first step into unfamiliar territory. You can use it with Claude Code, Codex, and other Agent Skills-compatible frameworks.
 
@@ -18,7 +18,7 @@ When you begin learning a new field or confronting an unfamiliar subject, the ha
 
 All you need to do is tell AnythingAtlas what you want to learn and how much time you have. It will guide you through a focused set of questions, search broadly for carefully selected learning resources, and build a personalized study plan around your needs.
 
-## Features
+## ✨ Features
 
 - **Proactive clarification:** AnythingAtlas asks about the details that shape what and how you want to learn, including scope, goals, background, time, language, content format, and desired depth.
 - **Topic-aware discovery:** It distinguishes between knowledge domains, academic questions, new skills, events, and other topic types, then applies a suitable discovery strategy and chooses sources accordingly.
@@ -27,7 +27,7 @@ All you need to do is tell AnythingAtlas what you want to learn and how much tim
 - **Learning design:** It builds a roadmap with explicit resource assignments, tasks, time estimates, milestones, stage deliverables, and completion criteria.
 - **Easy reading:** It produces synchronized Markdown alongside responsive, accessible, print-friendly HTML.
 
-## How it works
+## 🗺️ How it works
 
 ```text
 Initial request: the topic and the time available
@@ -58,14 +58,14 @@ AnythingAtlas changes its resource selection, information channels, and verifica
 | Social issue | Official data, systematic research, policy documents, multiple perspectives | Public institutions, review databases, research centers, methodologically transparent civil-society organizations | Research methods, sample representativeness, separation of evidence from opinion |
 | Current event | First-party statements, public records, timelines, credible reporting | Government and institutional websites, judicial or legislative records, news agencies, real-time data sources | Chronology, cross-source verification, update status |
 
-## Output contract
+## 📦 Output contract
 
 Every completed run creates:
 
 1. `anything-atlas-<topic-slug>.md` — a structured, portable, editable atlas.
 2. `anything-atlas-<topic-slug>.html` — a thoughtfully designed standalone presentation.
 
-## Quick start
+## 🚀 Quick start
 
 AnythingAtlas follows the open [Agent Skills](https://agentskills.io/) format. The same `SKILL.md` works with Codex, Claude Code, and other Agent Skills-compatible clients; the core workflow does not need to be rewritten for each platform.
 
@@ -105,13 +105,7 @@ Chinese.
 
 If important information is missing, AnythingAtlas asks a compact set of follow-up questions before researching.
 
-### About `agents/openai.yaml`
-
-AnythingAtlas’s cross-agent behavior lives in the root `SKILL.md`. `agents/openai.yaml` is optional, OpenAI/Codex-specific metadata for presentation, invocation policy, and tool dependencies; it is not a universal registry for every agent.
-
-Claude Code reads `SKILL.md` directly from `.claude/skills/`, so a plain skill installation does not need an invented `agents/claude.yaml`. If another host later defines an official metadata format, it should be added as a separate platform adapter instead of being mixed into `openai.yaml`.
-
-## Repository structure
+## 🗂️ Repository structure
 
 ```text
 AnythingAtlas/
@@ -132,7 +126,7 @@ AnythingAtlas/
 └── LICENSE                          Apache-2.0
 ```
 
-## Design principles
+## 🎯 Design principles
 
 - Clarify before research.
 - Trust before volume.
@@ -145,7 +139,7 @@ AnythingAtlas/
 - Make the roadmap executable.
 - Use one content model for both deliverables.
 
-## Documentation
+## 📚 Documentation
 
 - [Skill instructions](SKILL.md)
 - [Product design](Design.md)
@@ -157,12 +151,12 @@ AnythingAtlas/
 - [Output schema](references/output-schema.md)
 - [HTML design guidelines](references/html-design-guidelines.md)
 
-## Status
+## 🚧 Status
 
 AnythingAtlas is an early functional prototype. The core skill workflow, topic-aware policies, canonical content model, dual renderers, standalone HTML design, and parity validator are implemented. Resource research still depends on the tools available to the agent running the skill.
 
 If you have ideas for **feature improvements** or a better **user experience**, please open an issue or PR. We will work on improvements within 24 hours. If you find AnythingAtlas useful, please consider giving the project a Star—thank you for your support.
 
-## License
+## ⚖️ License
 
 Licensed under the [Apache License 2.0](LICENSE).

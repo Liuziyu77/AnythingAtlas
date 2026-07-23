@@ -10,7 +10,7 @@
   <a href="README.md">English</a> · 简体中文
 </p>
 
-## AnythingAtlas 是什么？
+## 🧭 AnythingAtlas 是什么？
 
 AnythingAtlas 是一项为“踏入陌生领域的第一步”而生的 Agent skill，你可以将其用于 Claude Code、Codex，以及其他兼容 Agent Skills 的 Agent 框架中。
 
@@ -19,7 +19,7 @@ AnythingAtlas 是一项为“踏入陌生领域的第一步”而生的 Agent sk
 
 你只需要做：告诉 AnythingAtlas 想学的主题是什么？想花多少时间学习？之后，AnythingAtlas 将主动引导提问，全网为你寻找精心筛选的学习资料，制定定制化的个人学习计划。
 
-## 功能
+## ✨ 功能
 
 - **主动问询：**AnythingAtlas 主动与用户交流想要学习和了解的细节：范围、目标、背景、时间、语言、内容形式与期望深度等等。
 - **分类发现：**知识领域、学术问题、全新技能、事件信息等等。针对不同课题类型采用不同的信息发现策略，再针对性选择资料来源。
@@ -28,7 +28,7 @@ AnythingAtlas 是一项为“踏入陌生领域的第一步”而生的 Agent sk
 - **学习规划：**构建包含明确学习资源安排、任务、时间估算、里程碑、阶段产出与完成标准的路线图。
 - **简单阅读：**同时生成内容同步的 Markdown，以及响应式、无障碍、适合打印的 HTML。
 
-## 工作流程
+## 🗺️ 工作流程
 
 ```text
 用户的初步请求：想学习的主题和规划的时间
@@ -59,14 +59,14 @@ AnythingAtlas 会根据课题类型，切换资料选择、信息渠道与验证
 | 社会议题 | 官方数据、系统性研究、政策文件、多方观点 | 公共机构、综述数据库、研究中心、方法透明的社会组织 | 研究方法、样本代表性、观点与证据的区分 |
 | 时事事件 | 第一方声明、公开记录、时间线、可信报道 | 政府与机构网站、司法或立法记录、通讯社、实时数据源 | 时间顺序、多源交叉验证、信息更新状态 |
 
-## 输出约定
+## 📦 输出约定
 
 每次完整运行都会创建：
 
 1. `anything-atlas-<主题标识>.md`——规范、便于携带和编辑的图谱。
 2. `anything-atlas-<主题标识>.html`——使用精心设计的独立页面呈现。
 
-## 快速开始
+## 🚀 快速开始
 
 AnythingAtlas 采用开放的 [Agent Skills](https://agentskills.io/) 结构。同一份 `SKILL.md` 可以在 Codex、Claude Code 以及其他兼容 Agent Skills 的客户端中使用，无需为每个平台重写工作流程。
 
@@ -105,13 +105,7 @@ Python 和大语言模型知识，每周可以学习八小时，持续十二周�
 
 如果缺少会影响结果的重要信息，AnythingAtlas 会先集中提出一组后续问题，再开始研究。
 
-### 关于 `agents/openai.yaml`
-
-AnythingAtlas 的跨 Agent 能力来自根目录的 `SKILL.md`。`agents/openai.yaml` 是 OpenAI/Codex 专属的可选元数据，用于界面展示、调用策略和工具依赖；它不是所有 Agent 的统一配置文件。
-
-Claude Code 直接从 `.claude/skills/` 读取 `SKILL.md`，因此以普通 skill 方式安装时不需要再创建一份 `agents/claude.yaml`。未来如果其他 Agent 提供正式的平台元数据规范，应将其作为独立适配层加入，而不是混写进 `openai.yaml`。
-
-## 仓库结构
+## 🗂️ 仓库结构
 
 ```text
 AnythingAtlas/
@@ -132,7 +126,7 @@ AnythingAtlas/
 └── LICENSE                          Apache-2.0
 ```
 
-## 设计原则
+## 🎯 设计原则
 
 - 先澄清，再研究。
 - 可信优先于数量。
@@ -145,7 +139,7 @@ AnythingAtlas/
 - 让路线图可以直接执行。
 - 两份交付文件共用一份内容模型。
 
-## 文档
+## 📚 文档
 
 - [Skill 指令](SKILL.md)
 - [产品设计](Design.md)
@@ -157,12 +151,12 @@ AnythingAtlas/
 - [输出模式](references/output-schema.md)
 - [HTML 设计规范](references/html-design-guidelines.md)
 
-## 当前状态
+## 🚧 当前状态
 
 AnythingAtlas 目前是一个早期功能原型。核心 skill 工作流程、主题感知型策略、规范内容模型、双格式渲染器、独立 HTML 设计和内容一致性验证器均已实现。资源研究能力仍取决于运行该 skill 的智能体可以使用哪些工具。
 
 如果您对于 AnythingAtlas 有任何**功能改进**或**体验改善**的建议，欢迎提出 issue 和 PR，我们将在24小时之内进行改善。也欢迎给本项目点一个Star，感谢支持。
 
-## 许可证
+## ⚖️ 许可证
 
 本项目使用 [Apache License 2.0](LICENSE)。
