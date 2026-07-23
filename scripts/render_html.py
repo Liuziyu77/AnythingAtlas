@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import argparse
-import re
 from html import escape
 from pathlib import Path
 from typing import Any
@@ -21,16 +20,10 @@ from atlas_common import (
 
 SECTION_KEYS = (
     ("brief", "confirmed_brief"),
-    ("orientation", "orientation"),
-    ("field", "field_guide"),
-    ("action", "action_kit"),
-    ("knowledge", "knowledge_map"),
-    ("tracks", "resource_tracks"),
+    ("guide", "guide"),
     ("resources", "resources"),
     ("roadmap", "roadmap"),
-    ("sources", "source_plan"),
-    ("notes", "source_notes"),
-    ("next", "next_action"),
+    ("sources", "source_directory"),
 )
 
 
@@ -105,10 +98,28 @@ def render_brief(data: dict[str, Any], labels: dict[str, str]) -> str:
     return f'        <dl class="brief-grid">{items}</dl>'
 
 
-def render_orientation(data: dict[str, Any], labels: dict[str, str]) -> str:
-    orientation = data["orientation"]
+def resource_anchor(resource: dict[str, Any], css_class: str = "") -> str:
+    """Render a safe link to a verified resource."""
+    class_attr = f' class="{h(css_class)}"' if css_class else ""
+    return (
+        f'<a{class_attr} href="{h(resource["url"])}">'
+        f'{h(resource["title"])} <span aria-hidden="true">↗</span></a>'
+    )
+
+
+def linked_resource_list(resources: list[dict[str, Any]]) -> str:
+    """Render resource titles as a linked HTML list."""
+    return (
+        '<ul class="linked-resource-list">'
+        + "".join(f"<li>{resource_anchor(resource)}</li>" for resource in resources)
+        + "</ul>"
+    )
+
+
+def render_guide(data: dict[str, Any], labels: dict[str, str]) -> str:
+    guide = data["guide"]
     recommendation_cards: list[str] = []
-    for recommendation in orientation["recommendations"]:
+    for recommendation in guide["recommendations"]:
         recommendation_cards.append(
             '<article class="decision-card">'
             f"<h3>{h(recommendation['choice'])}</h3>"
@@ -120,132 +131,46 @@ def render_orientation(data: dict[str, Any], labels: dict[str, str]) -> str:
             f'{h(recommendation["tradeoffs"])}</p>'
             "</article>"
         )
-    return (
+    parts = [
         f'<div class="answer-card"><p class="fact-label">'
         f'{h(labels["bottom_line"])}</p>'
-        f'{paragraphs(orientation["bottom_line"], "lead")}</div>'
-        f'<h3>{h(labels["key_points"])}</h3>{html_list(orientation["key_points"])}'
+        f'{paragraphs(guide["bottom_line"], "lead")}</div>',
+        f'<h3>{h(labels["key_points"])}</h3>{html_list(guide["key_points"])}',
         f'<h3>{h(labels["recommendations"])}</h3>'
-        f'<div class="decision-grid">{"".join(recommendation_cards)}</div>'
-        f'<h3>{h(labels["tradeoffs"])}</h3>{html_list(orientation["tradeoffs"])}'
-    )
-
-
-def render_field_guide(data: dict[str, Any], labels: dict[str, str]) -> str:
-    guide = data["field_guide"]
-    cards: list[str] = []
-    for entry in guide["entries"]:
-        cards.append(
-            '<article class="field-card">'
-            f"<h3>{h(entry['name'])}</h3>"
-            f'<p class="field-card__category">{h(entry["category"])}</p>'
-            f'<p><strong>{h(labels["why_it_matters"])}:</strong> '
-            f'{h(entry["why_it_matters"])}</p>'
-            f'<p><strong>{h(labels["representative_examples"])}:</strong></p>'
-            f'{html_list(entry["representative_examples"])}'
-            f'<p><strong>{h(labels["selection_note"])}:</strong> '
-            f'{h(entry["selection_note"])}</p>'
-            "</article>"
-        )
-    return (
-        '<dl class="guide-meta">'
-        f'<div><dt>{h(labels["as_of"])}</dt><dd>{h(guide["as_of"])}</dd></div>'
-        f'<div><dt>{h(labels["scope"])}</dt><dd>{h(guide["scope"])}</dd></div>'
-        "</dl>"
-        f'<div class="field-grid">{"".join(cards)}</div>'
-    )
-
-
-def render_action_kit(data: dict[str, Any], labels: dict[str, str]) -> str:
-    kit = data["action_kit"]
-    setup_cards: list[str] = []
-    for item in listify(kit.get("setup")):
-        setup_cards.append(
-            '<article class="setup-card">'
-            f"<h3>{h(item['item'])}</h3>"
-            f'<p><strong>{h(labels["recommendation"])}:</strong> '
-            f'{h(item["recommendation"])}</p>'
-            f'<p><strong>{h(labels["rationale"])}:</strong> {h(item["why"])}</p>'
-            "</article>"
-        )
-    parts: list[str] = []
-    if setup_cards:
-        parts.append(
-            f'<h3>{h(labels["setup"])}</h3>'
-            f'<div class="setup-grid">{"".join(setup_cards)}</div>'
-        )
-    for key in ("first_session", "decision_rules", "safety_checks", "failure_modes"):
-        values = listify(kit.get(key))
-        if values:
-            parts.append(f'<h3>{h(labels[key])}</h3>{html_list(values)}')
-    return "".join(parts)
-
-
-def render_knowledge(data: dict[str, Any], labels: dict[str, str]) -> str:
-    cards: list[str] = []
-    for node in data["knowledge_map"]:
-        dependencies = listify(node.get("depends_on"))
-        chips = "".join(f'<span class="chip">{h(item)}</span>' for item in dependencies)
-        dependency_markup = ""
-        if chips:
-            dependency_markup = (
-                f'<div class="dependency-list" aria-label="{h(labels["depends_on"])}">'
-                f'<span class="fact-label">{h(labels["depends_on"])}</span>{chips}</div>'
-            )
-        cards.append(
-            '<article class="map-node">'
-            f"<h3>{h(node['name'])}</h3>"
-            f"{paragraphs(node['description'])}"
-            f"{dependency_markup}"
-            "</article>"
-        )
-    return f'        <div class="map-grid">{"".join(cards)}</div>'
-
-
-def plan_block(title: str, value: Any, wide: bool = False) -> str:
-    values = listify(value)
-    if not values:
-        return ""
-    modifier = " plan-block--wide" if wide else ""
-    content = h(values[0]) if len(values) == 1 else html_list(values)
-    return (
-        f'<div class="plan-block{modifier}"><p class="fact-label">{h(title)}</p>'
-        f"{content}</div>"
-    )
-
-
-def render_source_plan(data: dict[str, Any], labels: dict[str, str]) -> str:
-    plan = data["source_plan"]
-    blocks = [
-        plan_block(labels["topic_type"], plan.get("topic_type")),
-        plan_block(labels["materials"], plan.get("materials")),
-        plan_block(labels["credibility_policy"], plan.get("credibility_policy")),
-        plan_block(labels["recency"], plan.get("recency")),
-        plan_block(labels["format_fit"], plan.get("format_fit")),
-        plan_block(labels["cautions"], plan.get("cautions"), wide=True),
+        f'<div class="decision-grid">{"".join(recommendation_cards)}</div>',
     ]
-    channels: list[str] = []
-    for channel in listify(plan.get("channels")):
-        if isinstance(channel, dict):
-            priority = channel.get("priority")
-            priority_markup = (
-                f'<span class="channel-priority">{h(priority)}</span>'
-                if priority
-                else ""
+
+    for guide_section in guide["sections"]:
+        item_cards: list[str] = []
+        for item in guide_section["items"]:
+            item_cards.append(
+                '<article class="guide-item">'
+                f"<h4>{h(item['name'])}</h4>"
+                f"{paragraphs(item['explanation'])}"
+                f'<p class="fact-label">{h(labels["guide_examples"])}</p>'
+                f"{html_list(item['examples'])}"
+                "</article>"
             )
-            channels.append(
-                f"<li><strong>{h(channel.get('name', ''))}</strong>{priority_markup}"
-                f"<br>{h(channel.get('reason', ''))}</li>"
-            )
-        else:
-            channels.append(f"<li>{h(channel)}</li>")
-    if channels:
-        blocks.append(
-            '<div class="plan-block plan-block--wide">'
-            f'<p class="fact-label">{h(labels["channels"])}</p>'
-            f'<ul class="channel-list">{"".join(channels)}</ul></div>'
+        parts.append(
+            '<div class="guide-section">'
+            f"<h3>{h(guide_section['title'])}</h3>"
+            f'<p class="guide-section__purpose"><strong>'
+            f'{h(labels["guide_purpose"])}:</strong> '
+            f'{h(guide_section["purpose"])}</p>'
+            f'<div class="guide-item-grid">{"".join(item_cards)}</div>'
+            "</div>"
         )
-    return f'        <div class="plan-grid">{"".join(blocks)}</div>'
+
+    next_action = guide["next_action"]
+    next_items = "".join(
+        f"<dt>{h(labels[key])}</dt><dd>{h(next_action[key])}</dd>"
+        for key in ("action", "when", "output")
+    )
+    parts.append(
+        f'<h3>{h(labels["next_action"])}</h3>'
+        f'<div class="next-card"><dl>{next_items}</dl></div>'
+    )
+    return "".join(parts)
 
 
 def render_resource_tracks(data: dict[str, Any], labels: dict[str, str]) -> str:
@@ -253,7 +178,7 @@ def render_resource_tracks(data: dict[str, Any], labels: dict[str, str]) -> str:
     cards: list[str] = []
     for track in data["resource_tracks"]:
         assigned = [
-            resources[resource_id]["title"]
+            resources[resource_id]
             for resource_id in track["resource_ids"]
             if resource_id in resources
         ]
@@ -264,8 +189,8 @@ def render_resource_tracks(data: dict[str, Any], labels: dict[str, str]) -> str:
             f'{h(track["best_for"])}</p>'
             f'<p><strong>{h(labels["cadence"])}:</strong> '
             f'{h(track["cadence"])}</p>'
-            f'<p><strong>{h(labels["assigned_resources"])}:</strong> '
-            f'{h(", ".join(assigned))}</p>'
+            f'<p><strong>{h(labels["assigned_resources"])}:</strong></p>'
+            f"{linked_resource_list(assigned)}"
             f'<p class="fact-label">{h(labels["sequence"])}</p>'
             f'{html_list(track["sequence"])}'
             "</article>"
@@ -277,6 +202,7 @@ def render_resources(data: dict[str, Any], labels: dict[str, str]) -> str:
     cards: list[str] = []
     for resource in data["resources"]:
         meta_values = (
+            ("channel", "channel"),
             ("role", "role"),
             ("level", "level"),
             ("format", "format"),
@@ -306,7 +232,12 @@ def render_resources(data: dict[str, Any], labels: dict[str, str]) -> str:
             f'{h(labels["open_resource"])} <span aria-hidden="true">↗</span></a>'
             "</article>"
         )
-    return f'        <div class="resource-grid">{"".join(cards)}</div>'
+    return (
+        f'<h3>{h(labels["choose_a_route"])}</h3>'
+        f"{render_resource_tracks(data, labels)}"
+        f'<h3>{h(labels["resource_cards"])}</h3>'
+        f'<div class="resource-grid">{"".join(cards)}</div>'
+    )
 
 
 def stage_block(title: str, content: str, wide: bool = False) -> str:
@@ -322,14 +253,17 @@ def render_roadmap(data: dict[str, Any], labels: dict[str, str]) -> str:
     stages: list[str] = []
     for stage in sorted(data["roadmap"], key=lambda item: item["stage"]):
         assigned = [
-            resources[resource_id]["title"]
+            resources[resource_id]
             for resource_id in stage["resource_ids"]
             if resource_id in resources
         ]
         blocks = [
             stage_block(labels["objectives"], html_list(stage["objectives"])),
             stage_block(labels["prerequisites"], html_list(stage["prerequisites"])),
-            stage_block(labels["assigned_resources"], html_list(assigned)),
+            stage_block(
+                labels["assigned_resources"],
+                linked_resource_list(assigned),
+            ),
             stage_block(labels["tasks"], html_list(stage["tasks"])),
             stage_block(
                 labels["deliverable"],
@@ -360,29 +294,25 @@ def render_roadmap(data: dict[str, Any], labels: dict[str, str]) -> str:
     return f'        <div class="roadmap">{"".join(stages)}</div>'
 
 
-def render_source_notes(data: dict[str, Any]) -> str:
-    notes: list[str] = []
-    for note in data["source_notes"]:
-        if isinstance(note, dict):
-            severity = re.sub(r"[^a-z0-9-]", "", str(note.get("severity", "note")).lower())
-            notes.append(
-                f'<li class="source-note source-note--{h(severity or "note")}">'
-                f'<strong>{h(note.get("topic", "Note"))}:</strong> '
-                f'{h(note.get("note", ""))}</li>'
-            )
-        else:
-            notes.append(f'<li class="source-note">{h(note)}</li>')
-    return f'        <ul class="source-notes">{"".join(notes)}</ul>'
-
-
-def render_next_action(data: dict[str, Any], labels: dict[str, str]) -> str:
-    next_action = data["next_action"]
-    items = "".join(
-        f"<dt>{h(labels[key])}</dt><dd>{h(next_action[key])}</dd>"
-        for key in ("action", "when", "output")
-        if next_action.get(key)
+def render_source_directory(data: dict[str, Any], labels: dict[str, str]) -> str:
+    resources = resource_index(data)
+    directory = data["source_directory"]
+    groups: list[str] = []
+    for group in directory["groups"]:
+        source_items = [resources[resource_id] for resource_id in group["resource_ids"]]
+        groups.append(
+            '<article class="source-group">'
+            f"<h3>{h(group['name'])}</h3>"
+            f"{paragraphs(group['description'])}"
+            f"{linked_resource_list(source_items)}"
+            "</article>"
+        )
+    return (
+        '<div class="source-selection">'
+        f'<p class="fact-label">{h(labels["source_selection"])}</p>'
+        f'{paragraphs(directory["selection_note"])}</div>'
+        f'<div class="source-group-grid">{"".join(groups)}</div>'
     )
-    return f'        <div class="next-card"><dl>{items}</dl></div>'
 
 
 def render_html(
@@ -403,36 +333,15 @@ def render_html(
 
     rendered_sections = (
         section(1, "brief", labels["confirmed_brief"], render_brief(data, labels)),
+        section(2, "guide", labels["guide"], render_guide(data, labels)),
+        section(3, "resources", labels["resources"], render_resources(data, labels)),
+        section(4, "roadmap", labels["roadmap"], render_roadmap(data, labels)),
         section(
-            2,
-            "orientation",
-            labels["orientation"],
-            render_orientation(data, labels),
+            5,
+            "sources",
+            labels["source_directory"],
+            render_source_directory(data, labels),
         ),
-        section(
-            3,
-            "field",
-            labels["field_guide"],
-            render_field_guide(data, labels),
-        ),
-        section(
-            4,
-            "action",
-            labels["action_kit"],
-            render_action_kit(data, labels),
-        ),
-        section(5, "knowledge", labels["knowledge_map"], render_knowledge(data, labels)),
-        section(
-            6,
-            "tracks",
-            labels["resource_tracks"],
-            render_resource_tracks(data, labels),
-        ),
-        section(7, "resources", labels["resources"], render_resources(data, labels)),
-        section(8, "roadmap", labels["roadmap"], render_roadmap(data, labels)),
-        section(9, "sources", labels["source_plan"], render_source_plan(data, labels)),
-        section(10, "notes", labels["source_notes"], render_source_notes(data)),
-        section(11, "next", labels["next_action"], render_next_action(data, labels)),
     )
 
     meta_pills = [

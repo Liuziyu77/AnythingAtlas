@@ -14,22 +14,17 @@ class AtlasValidationError(ValueError):
     """Raised when a canonical atlas model is invalid."""
 
 
-CURRENT_SCHEMA_VERSION = "0.2"
+CURRENT_SCHEMA_VERSION = "0.3"
 
 
 REQUIRED_TOP_LEVEL = (
     "meta",
     "brief",
-    "orientation",
-    "field_guide",
-    "action_kit",
-    "knowledge_map",
+    "guide",
     "resource_tracks",
     "resources",
     "roadmap",
-    "source_plan",
-    "source_notes",
-    "next_action",
+    "source_directory",
 )
 
 REQUIRED_BRIEF_FIELDS = (
@@ -50,18 +45,16 @@ REQUIRED_RECOMMENDATION_FIELDS = (
     "tradeoffs",
 )
 
-REQUIRED_FIELD_ENTRY_FIELDS = (
-    "name",
-    "category",
-    "why_it_matters",
-    "representative_examples",
-    "selection_note",
+REQUIRED_GUIDE_SECTION_FIELDS = (
+    "title",
+    "purpose",
+    "items",
 )
 
-REQUIRED_ACTION_SETUP_FIELDS = (
-    "item",
-    "recommendation",
-    "why",
+REQUIRED_GUIDE_ITEM_FIELDS = (
+    "name",
+    "explanation",
+    "examples",
 )
 
 REQUIRED_RESOURCE_TRACK_FIELDS = (
@@ -72,14 +65,10 @@ REQUIRED_RESOURCE_TRACK_FIELDS = (
     "sequence",
 )
 
-REQUIRED_SOURCE_PLAN_FIELDS = (
-    "topic_type",
-    "materials",
-    "channels",
-    "credibility_policy",
-    "recency",
-    "format_fit",
-    "cautions",
+REQUIRED_SOURCE_GROUP_FIELDS = (
+    "name",
+    "description",
+    "resource_ids",
 )
 
 REQUIRED_RESOURCE_FIELDS = (
@@ -87,6 +76,7 @@ REQUIRED_RESOURCE_FIELDS = (
     "title",
     "creator",
     "url",
+    "channel",
     "type",
     "role",
     "level",
@@ -133,15 +123,11 @@ LABELS = {
         "generated": "Generated",
         "total_time": "Estimated total time",
         "confirmed_brief": "Confirmed User Brief",
-        "orientation": "Direct Orientation",
-        "field_guide": "Field Guide",
-        "action_kit": "Practical Action Kit",
-        "knowledge_map": "Knowledge Map",
+        "guide": "Core Guide",
         "resource_tracks": "Resource Tracks",
-        "source_plan": "Source and Channel Plan",
         "resources": "Curated Resource Atlas",
         "roadmap": "Detailed Learning or Exploration Roadmap",
-        "source_notes": "Source Notes",
+        "source_directory": "Source Directory",
         "next_action": "Next Action",
         "goal": "Goal",
         "background": "Starting point",
@@ -158,28 +144,15 @@ LABELS = {
         "choice": "Choice",
         "best_for": "Best for",
         "tradeoffs": "Trade-offs",
-        "as_of": "As of",
-        "scope": "Scope",
-        "category": "Category",
-        "representative_examples": "Representative examples",
-        "selection_note": "Selection note",
-        "setup": "Setup",
-        "first_session": "First session",
-        "decision_rules": "Decision rules",
-        "safety_checks": "Safety or quality checks",
-        "failure_modes": "Failure modes",
+        "guide_examples": "Examples",
+        "guide_purpose": "What this section answers",
+        "choose_a_route": "Choose a route",
+        "resource_cards": "Resource details",
+        "channel": "Channel",
+        "source_selection": "How these sources were selected",
         "cadence": "Cadence",
         "sequence": "Sequence",
-        "why_it_matters": "Why it matters",
-        "depends_on": "Depends on",
         "none": "None",
-        "topic_type": "Topic type",
-        "materials": "Required materials",
-        "channels": "Priority channels",
-        "credibility_policy": "Credibility policy",
-        "recency": "Recency rule",
-        "format_fit": "Format and cadence fit",
-        "cautions": "Channel cautions",
         "action": "Action",
         "resource": "Resource",
         "reason": "Why this first",
@@ -218,15 +191,11 @@ LABELS = {
         "generated": "生成日期",
         "total_time": "预计总投入",
         "confirmed_brief": "已确认的用户需求简报",
-        "orientation": "先给结论",
-        "field_guide": "领域实战地图",
-        "action_kit": "实操工具箱",
-        "knowledge_map": "知识图谱",
+        "guide": "核心指南",
         "resource_tracks": "资源学习路线",
-        "source_plan": "来源与渠道方案",
-        "resources": "精选资源图谱",
+        "resources": "精选资源",
         "roadmap": "详细学习或探索路线图",
-        "source_notes": "来源说明",
+        "source_directory": "资源出处",
         "next_action": "下一步行动",
         "goal": "目标",
         "background": "当前起点",
@@ -243,28 +212,15 @@ LABELS = {
         "choice": "选择",
         "best_for": "适合",
         "tradeoffs": "取舍与限制",
-        "as_of": "截至",
-        "scope": "范围",
-        "category": "类别",
-        "representative_examples": "代表性例子",
-        "selection_note": "选择提示",
-        "setup": "准备与工具",
-        "first_session": "第一次实操",
-        "decision_rules": "决策规则",
-        "safety_checks": "安全或质量检查",
-        "failure_modes": "常见失败方式",
+        "guide_examples": "具体例子",
+        "guide_purpose": "本节回答",
+        "choose_a_route": "选择适合你的路线",
+        "resource_cards": "资源详情",
+        "channel": "来源渠道",
+        "source_selection": "资源筛选说明",
         "cadence": "节奏",
         "sequence": "使用顺序",
-        "why_it_matters": "为什么重要",
-        "depends_on": "依赖",
         "none": "无",
-        "topic_type": "主题类型",
-        "materials": "所需资料",
-        "channels": "优先渠道",
-        "credibility_policy": "可信度策略",
-        "recency": "时效性规则",
-        "format_fit": "形式与节奏适配",
-        "cautions": "渠道注意事项",
         "action": "行动",
         "resource": "资源",
         "reason": "为什么从这里开始",
@@ -368,24 +324,11 @@ def validate_model(data: dict[str, Any]) -> list[str]:
                 "meta.theme must be one of: " + ", ".join(AVAILABLE_THEMES)
             )
 
-    for object_name in (
-        "brief",
-        "orientation",
-        "field_guide",
-        "action_kit",
-        "source_plan",
-        "next_action",
-    ):
+    for object_name in ("brief", "guide", "source_directory"):
         if not isinstance(data.get(object_name), dict):
             errors.append(f"{object_name} must be an object.")
 
-    for array_name in (
-        "knowledge_map",
-        "resource_tracks",
-        "resources",
-        "roadmap",
-        "source_notes",
-    ):
+    for array_name in ("resource_tracks", "resources", "roadmap"):
         if not isinstance(data.get(array_name), list):
             errors.append(f"{array_name} must be an array.")
 
@@ -404,102 +347,82 @@ def validate_model(data: dict[str, Any]) -> list[str]:
         if field in brief and not isinstance(brief[field], list):
             errors.append(f"brief.{field} must be an array.")
 
-    orientation = data["orientation"]
-    for field in ("bottom_line", "key_points", "recommendations", "tradeoffs"):
-        if field not in orientation or orientation[field] in (None, ""):
-            errors.append(f"orientation.{field} is required.")
-    if not listify(orientation.get("key_points")):
-        errors.append("orientation.key_points must contain at least one item.")
-    recommendations = listify(orientation.get("recommendations"))
-    for field in ("key_points", "recommendations", "tradeoffs"):
-        if field in orientation and not isinstance(orientation[field], list):
-            errors.append(f"orientation.{field} must be an array.")
+    guide = data["guide"]
+    for field in (
+        "bottom_line",
+        "key_points",
+        "recommendations",
+        "sections",
+        "next_action",
+    ):
+        if field not in guide or guide[field] in (None, ""):
+            errors.append(f"guide.{field} is required.")
+    for field in ("key_points", "recommendations", "sections"):
+        if field in guide and not isinstance(guide[field], list):
+            errors.append(f"guide.{field} must be an array.")
+    if not listify(guide.get("key_points")):
+        errors.append("guide.key_points must contain at least one item.")
+    recommendations = listify(guide.get("recommendations"))
     if not recommendations:
-        errors.append("orientation.recommendations must contain at least one item.")
+        errors.append("guide.recommendations must contain at least one item.")
     for index, recommendation in enumerate(recommendations, start=1):
         if not isinstance(recommendation, dict):
-            errors.append(f"orientation.recommendations[{index}] must be an object.")
+            errors.append(f"guide.recommendations[{index}] must be an object.")
             continue
         for field in REQUIRED_RECOMMENDATION_FIELDS:
             if field not in recommendation or recommendation[field] in (None, ""):
                 errors.append(
-                    f"orientation.recommendations[{index}].{field} is required."
+                    f"guide.recommendations[{index}].{field} is required."
                 )
 
-    field_guide = data["field_guide"]
-    for field in ("as_of", "scope", "entries"):
-        if field not in field_guide or field_guide[field] in (None, ""):
-            errors.append(f"field_guide.{field} is required.")
-    entries = listify(field_guide.get("entries"))
-    if "entries" in field_guide and not isinstance(field_guide["entries"], list):
-        errors.append("field_guide.entries must be an array.")
-    if not entries:
-        errors.append("field_guide.entries must contain at least one entry.")
-    for index, entry in enumerate(entries, start=1):
-        if not isinstance(entry, dict):
-            errors.append(f"field_guide.entries[{index}] must be an object.")
+    sections = listify(guide.get("sections"))
+    if not sections:
+        errors.append("guide.sections must contain at least one useful subsection.")
+    for section_index, guide_section in enumerate(sections, start=1):
+        if not isinstance(guide_section, dict):
+            errors.append(f"guide.sections[{section_index}] must be an object.")
             continue
-        for field in REQUIRED_FIELD_ENTRY_FIELDS:
-            if field not in entry or entry[field] in (None, "", []):
-                errors.append(f"field_guide.entries[{index}].{field} is required.")
-        if "representative_examples" in entry and not isinstance(
-            entry["representative_examples"], list
-        ):
-            errors.append(
-                f"field_guide.entries[{index}].representative_examples "
-                "must be an array."
-            )
+        for field in REQUIRED_GUIDE_SECTION_FIELDS:
+            if field not in guide_section or guide_section[field] in (None, "", []):
+                errors.append(
+                    f"guide.sections[{section_index}].{field} is required."
+                )
+        items = listify(guide_section.get("items"))
+        if "items" in guide_section and not isinstance(guide_section["items"], list):
+            errors.append(f"guide.sections[{section_index}].items must be an array.")
+        for item_index, item in enumerate(items, start=1):
+            if not isinstance(item, dict):
+                errors.append(
+                    f"guide.sections[{section_index}].items[{item_index}] "
+                    "must be an object."
+                )
+                continue
+            for field in REQUIRED_GUIDE_ITEM_FIELDS:
+                if field not in item or item[field] in (None, "", []):
+                    errors.append(
+                        f"guide.sections[{section_index}].items[{item_index}]."
+                        f"{field} is required."
+                    )
+            if "examples" in item and not isinstance(item["examples"], list):
+                errors.append(
+                    f"guide.sections[{section_index}].items[{item_index}]."
+                    "examples must be an array."
+                )
 
-    action_kit = data["action_kit"]
-    for field in (
-        "setup",
-        "first_session",
-        "decision_rules",
-        "safety_checks",
-        "failure_modes",
-    ):
-        if field not in action_kit:
-            errors.append(f"action_kit.{field} is required.")
-        elif not isinstance(action_kit[field], list):
-            errors.append(f"action_kit.{field} must be an array.")
-    if not listify(action_kit.get("first_session")):
-        errors.append("action_kit.first_session must contain at least one action.")
-    if not listify(action_kit.get("decision_rules")):
-        errors.append("action_kit.decision_rules must contain at least one rule.")
-    for index, item in enumerate(listify(action_kit.get("setup")), start=1):
-        if not isinstance(item, dict):
-            errors.append(f"action_kit.setup[{index}] must be an object.")
-            continue
-        for field in REQUIRED_ACTION_SETUP_FIELDS:
-            if field not in item or item[field] in (None, ""):
-                errors.append(f"action_kit.setup[{index}].{field} is required.")
+    next_action = guide.get("next_action")
+    if not isinstance(next_action, dict):
+        errors.append("guide.next_action must be an object.")
+    else:
+        for field in ("action", "when", "output"):
+            if field not in next_action or next_action[field] in (None, ""):
+                errors.append(f"guide.next_action.{field} is required.")
 
-    source_plan = data["source_plan"]
-    for field in REQUIRED_SOURCE_PLAN_FIELDS:
-        if field not in source_plan or source_plan[field] in (None, "", []):
-            errors.append(f"source_plan.{field} is required.")
-    for field in ("materials", "channels", "credibility_policy", "cautions"):
-        if field in source_plan and not isinstance(source_plan[field], list):
-            errors.append(f"source_plan.{field} must be an array.")
-
-    if not data["knowledge_map"]:
-        errors.append("knowledge_map must contain at least one node.")
     if not data["resource_tracks"]:
         errors.append("resource_tracks must contain at least one track.")
     if not data["resources"]:
         errors.append("resources must contain at least one verified resource.")
     if not data["roadmap"]:
         errors.append("roadmap must contain at least one stage.")
-
-    for index, node in enumerate(data["knowledge_map"], start=1):
-        if not isinstance(node, dict):
-            errors.append(f"knowledge_map[{index}] must be an object.")
-            continue
-        for field in ("name", "description", "depends_on"):
-            if field not in node or node[field] in (None, ""):
-                errors.append(f"knowledge_map[{index}].{field} is required.")
-        if "depends_on" in node and not isinstance(node["depends_on"], list):
-            errors.append(f"knowledge_map[{index}].depends_on must be an array.")
 
     resource_ids: set[str] = set()
     for index, resource in enumerate(data["resources"], start=1):
@@ -566,10 +489,41 @@ def validate_model(data: dict[str, Any]) -> list[str]:
                     f"roadmap[{index}] references unknown resource id: {resource_id}"
                 )
 
-    next_action = data["next_action"]
-    for field in ("action", "when", "output"):
-        if field not in next_action or next_action[field] in (None, ""):
-            errors.append(f"next_action.{field} is required.")
+    source_directory = data["source_directory"]
+    for field in ("selection_note", "groups"):
+        if field not in source_directory or source_directory[field] in (None, "", []):
+            errors.append(f"source_directory.{field} is required.")
+    groups = listify(source_directory.get("groups"))
+    if "groups" in source_directory and not isinstance(
+        source_directory["groups"], list
+    ):
+        errors.append("source_directory.groups must be an array.")
+    covered_resource_ids: set[str] = set()
+    for index, group in enumerate(groups, start=1):
+        if not isinstance(group, dict):
+            errors.append(f"source_directory.groups[{index}] must be an object.")
+            continue
+        for field in REQUIRED_SOURCE_GROUP_FIELDS:
+            if field not in group or group[field] in (None, "", []):
+                errors.append(f"source_directory.groups[{index}].{field} is required.")
+        if "resource_ids" in group and not isinstance(group["resource_ids"], list):
+            errors.append(
+                f"source_directory.groups[{index}].resource_ids must be an array."
+            )
+        for resource_id in listify(group.get("resource_ids")):
+            if resource_id not in resource_ids:
+                errors.append(
+                    f"source_directory.groups[{index}] references unknown resource "
+                    f"id: {resource_id}"
+                )
+            else:
+                covered_resource_ids.add(resource_id)
+    missing_from_directory = sorted(resource_ids - covered_resource_ids)
+    if missing_from_directory:
+        errors.append(
+            "source_directory must include every curated resource; missing: "
+            + ", ".join(missing_from_directory)
+        )
 
     return errors
 

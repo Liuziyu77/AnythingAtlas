@@ -144,13 +144,10 @@ It then produces a structured knowledge atlas containing:
 
   直接且有助于决策的结论；
 
-* a concrete field guide and practical action kit;
+* a compact core guide that synthesizes concrete options, practical setup,
+  and the concepts needed for this goal;
 
-  具体的领域实战地图与实操工具箱；
-
-* a map of its major concepts and branches;
-
-  主要概念与分支的图谱；
+  一份紧凑的核心指南，综合呈现与当前目标相关的具体选项、实操准备和必要概念；
 
 * necessary prerequisite knowledge;
 
@@ -802,14 +799,15 @@ Evaluate resources using criteria such as:
 
 **8. 构建图谱**
 
-Write the direct orientation first, then build the dated field guide, practical
-action kit, knowledge map, and user-fit resource tracks. Every concrete
-recommendation should identify its audience or condition, rationale, and
-trade-off. Every field-guide entry should name representative examples.
+Write the direct answer first, then synthesize the useful parts of the field
+map, practical setup, and concept dependencies into a compact core guide.
+These remain internal research checks, not mandatory standalone chapters.
+Every recommendation should identify its audience or condition, rationale,
+trade-off, and representative examples.
 
-先写直接结论，再构建带日期的领域实战地图、实操工具箱、知识图谱与适合
-用户节奏的资源路线。每项具体建议都应说明适合人群或条件、推荐原因与取舍；
-每个领域地图条目都应命名代表性例子。
+先写直接结论，再把领域梳理、实操准备与概念依赖中真正有用的部分合并为
+紧凑的核心指南。这些内容仍是内部研究检查项，但不再强制各占一个章节。
+每项建议都应说明适合人群或条件、推荐原因、取舍与代表性例子。
 
 Organize the selected resources by role:
 
@@ -957,16 +955,16 @@ Generated HTML should not include the AnythingAtlas image logo or a separate bra
 
 生成的 HTML 不应包含 AnythingAtlas 图片 Logo 或单独的品牌区块，只需在页脚保留一处克制的 AnythingAtlas 文字署名。
 
-The information architecture should answer before it explains. Present the
-confirmed brief, direct orientation, concrete field guide, practical action
-kit, knowledge map, user-fit resource tracks, curated resources, and detailed
-roadmap first. Put the source and channel plan after the roadmap as an evidence
-appendix, followed by source notes and the next action.
+The information architecture should answer before it explains and use five
+top-level sections by default: confirmed brief, compact core guide, curated
+resources with user-fit tracks, detailed roadmap, and a final channel-grouped
+source directory. Put the immediate action inside the core guide. Every
+assigned resource must be clickable in its track and roadmap stage.
 
-信息架构应先回答，再解释。首先呈现已确认的需求简报、直接结论、具体的
-领域实战地图、实操工具箱、知识图谱、适合用户节奏的资源路线、精选资源
-与详细路线图；来源与渠道方案作为证据附录放在路线图之后，最后补充来源
-说明与下一步行动。
+信息架构应先回答，再解释，并默认只使用五个顶级章节：已确认的需求简报、
+紧凑核心指南、包含适配路线的精选资源、详细路线图，以及最后按渠道分组的
+资源出处。立即行动放在核心指南中；每个指定资源都必须能在资源路线和路线图
+阶段中点击。
 
 #### Built-in Theme System
 
@@ -1012,17 +1010,11 @@ The visual design should include, where appropriate:
 
   持久显示或易于访问的章节导航；
 
-* an answer-first recommendation panel and a concrete field guide;
+* an answer-first core guide with only the task-specific options, practical
+  setup, concepts, and examples that add distinct value;
 
-  先给答案的建议面板与具体的领域实战地图；
-
-* a practical setup and first-session action kit;
-
-  实际准备步骤与第一次实操工具箱；
-
-* a visual knowledge map or dependency overview;
-
-  可视化知识图谱或依赖关系概览；
+  一份先给答案的核心指南，只保留对当前任务有独立价值的具体选项、实操准备、
+  概念与例子；
 
 * readable resource tracks and cards with audience fit, cadence, role, level,
   time, format, access, and rationale;
@@ -1058,14 +1050,14 @@ anything-atlas-<主题标识>.html
 
 **3. 同步与验证**
 
-Both files must be generated from the same schema `0.2` structured content
-model and must agree on the confirmed brief, direct orientation, field guide,
-action kit, knowledge map, resource tracks, selected resources, roadmap, source
-and channel plan, evidence notes, and next action.
+Both files must be generated from the same schema `0.3` structured content
+model and must agree on the confirmed brief, compact guide, resource tracks,
+selected resources, roadmap, channel-grouped source directory, and immediate
+action. Resource links must remain clickable wherever a resource is assigned.
 
-两份文件必须基于同一份 `0.2` 版结构化内容模型生成，并且在已确认的
-需求简报、直接结论、领域实战地图、实操工具箱、知识图谱、资源路线、所选
-资源、路线图、来源与渠道方案、证据说明和下一步行动上保持一致。
+两份文件必须基于同一份 `0.3` 版结构化内容模型生成，并且在已确认的需求
+简报、紧凑指南、资源路线、所选资源、路线图、按渠道分组的资源出处与立即
+行动上保持一致。资源在任何被指定的位置都必须保留可点击链接。
 
 Before delivery, verify that:
 
@@ -1079,9 +1071,10 @@ Before delivery, verify that:
 
   在可检查的范围内，内部导航与外部链接均有效；
 
-* no section, source note, or roadmap stage is missing from either file;
+* no section, linked resource assignment, source-directory group, or roadmap
+  stage is missing from either file;
 
-  任一文件中都没有缺失章节、来源说明或路线图阶段；
+  任一文件中都没有缺失章节、带链接的资源安排、资源出处分组或路线图阶段；
 
 * the HTML remains readable on mobile, desktop, and printed pages;
 
@@ -1097,9 +1090,11 @@ Before delivery, verify that:
 
 **输出结构**
 
-A standard AnythingAtlas atlas should contain the following sections in both deliverables.
+A standard AnythingAtlas atlas should contain the following five sections in
+both deliverables. Do not expose internal research checks as extra chapters.
 
-一份标准的 AnythingAtlas 图谱应在两份交付文件中都包含以下部分。
+一份标准的 AnythingAtlas 图谱应在两份交付文件中都包含以下五个章节，
+不要把内部研究检查项暴露为额外章节。
 
 ### 1. Confirmed User Brief
 
@@ -1109,64 +1104,27 @@ A compact record of the topic scope, goal, current level, time, language and for
 
 简要记录课题范围、目标、当前水平、时间、语言与形式偏好、期望深度、限制条件，以及需求澄清过程中接受的所有假设。
 
-### 2. Direct Orientation
+### 2. Core Guide
 
-**2. 直接结论**
+**2. 核心指南**
 
-The bottom line, decision-relevant points, concrete recommendations, and their
-conditions or trade-offs. This section answers the user's real question before
-providing background.
+The bottom line, decision-relevant points, concrete recommendations, distinct
+task-specific subsections, and one immediate action. Synthesize field mapping,
+practical setup, and knowledge dependencies here only when they add value.
 
-直接给出结论、会改变决策的要点、具体建议及其适用条件或取舍。本节必须
-在补充背景之前回答用户真正的问题。
+直接给出结论、会改变决策的要点、具体建议、有独立价值的任务专属子节，
+以及一项立即行动。领域梳理、实操准备与知识依赖只在有用时合并到这里。
 
-### 3. Field Guide
+### 3. Curated Resources
 
-**3. 领域实战地图**
+**3. 精选资源**
 
-A dated map of the concrete segments, approaches, tools, products, works,
-people, organizations, or representative players the user will encounter,
-including examples and selection rules.
+Resources organized by category and role, preceded by one or more exact
+resource tracks matched to session length, preferred format, and desired depth.
+Every resource title in a track must be clickable.
 
-以日期标记用户会遇到的具体板块、方法、工具、产品、作品、人物、机构或
-代表性参与者，并给出具体例子与选择规则。
-
-### 4. Practical Action Kit
-
-**4. 实操工具箱**
-
-The actual setup, first-session workflow, decision rules, relevant safety or
-quality checks, and likely failure modes.
-
-实际所需的准备、第一次实操流程、决策规则、相关安全或质量检查，以及常见
-失败方式。
-
-### 5. Knowledge Map
-
-**5. 知识图谱**
-
-A structured view of the main concepts, branches, and dependencies.
-
-以结构化方式呈现主要概念、分支与依赖关系。
-
-### 6. Resource Tracks
-
-**6. 资源学习路线**
-
-One or more exact resource sequences matched to session length, preferred
-format, and desired depth, each with its audience, cadence, and consumption
-order.
-
-根据单次可用时间、内容形式偏好与期望深度组织一条或多条明确的资源路线；
-每条路线都说明适合谁、采用什么节奏、按什么顺序使用资料。
-
-### 7. Curated Resource Atlas
-
-**7. 精选资源图谱**
-
-Resources organized by category and role.
-
-按照类别与用途整理资源。
+按照类别与用途整理资源，并先给出一条或多条匹配单次时长、形式偏好与期望
+深度的明确资源路线。路线中的每个资源标题都必须可以点击。
 
 Each recommendation should explain:
 
@@ -1204,64 +1162,30 @@ Each recommendation should explain:
 
   相关局限。
 
-### 8. Detailed Learning or Exploration Roadmap
+### 4. Detailed Learning or Exploration Roadmap
 
-**8. 详细学习或探索路线图**
+**4. 详细学习或探索路线图**
 
-A staged plan based on the user’s goal and constraints. Each stage should include objectives, dependencies, exact resource assignments, tasks, estimated effort, milestones, deliverables, completion criteria, and optional branches.
+A staged plan based on the user’s goal and constraints. Each stage should
+include objectives, dependencies, clickable exact resource assignments, tasks,
+estimated effort, milestones, deliverables, completion criteria, and optional
+branches.
 
-一份根据用户目标与限制条件制定的分阶段计划。每个阶段都应包括目标、依赖关系、明确的资源安排、任务、预计投入、里程碑、产出、完成标准与可选分支。
+一份根据用户目标与限制条件制定的分阶段计划。每个阶段都应包括目标、依赖
+关系、可点击的明确资源安排、任务、预计投入、里程碑、产出、完成标准与
+可选分支。
 
-### 9. Source and Channel Plan
+### 5. Source Directory
 
-**9. 来源与渠道方案**
+**5. 资源出处**
 
-An evidence appendix covering required material types, preferred information
-channels, credibility policy, recency requirements, primary-versus-secondary
-source balance, and channels treated cautiously.
+A final directory containing every curated resource, grouped by recognizable
+channels such as official institutions, books, YouTube, Bilibili, podcasts,
+repositories, newsletters, or communities. Every entry must be clickable.
 
-作为证据附录，说明所需资料类型、首选信息渠道、可信度策略、时效性要求、
-一手与二手来源比例，以及应谨慎对待的渠道。
-
-### 10. Source Notes
-
-**10. 来源说明**
-
-Important information about:
-
-关于以下方面的重要信息：
-
-* credibility;
-
-  可信度；
-
-* recency;
-
-  时效性；
-
-* controversy;
-
-  争议；
-
-* bias;
-
-  偏见；
-
-* missing evidence;
-
-  缺失的证据；
-
-* disagreements between sources.
-
-  来源之间的分歧。
-
-### 11. Next Action
-
-**11. 下一步行动**
-
-One concrete action that the user can take immediately.
-
-一项用户可以立即采取的具体行动。
+最后用一个目录收录全部精选资源，并按官网、书籍、YouTube、B站、播客、
+代码仓库、Newsletter 或社区等用户能识别的渠道分组。每一项都必须可以
+点击。
 
 ---
 

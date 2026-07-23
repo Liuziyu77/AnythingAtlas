@@ -21,14 +21,14 @@ alone. Facts and recommendations must still be researched at test time.
 - A 30-minute daily cadence is treated as a strong short-form preference. The
   agent either confirms that preference compactly or supplies a short-session
   core track plus a deeper alternative.
-- The direct orientation answers what can realistically be done today and what
+- The core guide answers what can realistically be done today and what
   should wait. It is not a page of investing philosophy or disclaimers.
-- The dated field guide covers the relevant market segments and instruments,
+- The guide covers the relevant market segments and instruments,
   and names verified representative examples. If the user asks for current
   sectors, leading companies, securities, or fund codes, the response supplies
   current, sourced analysis or clearly states which requested item could not be
   verified.
-- The action kit names and compares the actual applications, broker or
+- A compact practical subsection names and compares the actual applications, broker or
   official portals, data or disclosure sources, and order workflow the user
   will encounter. Examples may include official exchange and disclosure sites
   and widely used market-data applications, but every named option must be
@@ -47,10 +47,10 @@ alone. Facts and recommendations must still be researched at test time.
 
 ### Automatic gates expected to catch weak output
 
-- no concrete recommendation → `orientation.recommendations` validation error;
-- no named segments or representative objects → `field_guide.entries`
+- no concrete recommendation → `guide.recommendations` validation error;
+- no named segments or representative objects → `guide.sections[].items`
   validation error;
-- no first-session workflow → `action_kit.first_session` validation error;
+- no immediate workflow → `guide.next_action` validation error;
 - no cadence-matched resource route → `resource_tracks` validation error.
 
 ## Case B: low-stakes physical skill with a weekend deadline
@@ -62,11 +62,11 @@ alone. Facts and recommendations must still be researched at test time.
 
 ### Acceptance checks
 
-- The direct orientation distinguishes hand-building from wheel throwing and
+- The core guide distinguishes hand-building from wheel throwing and
   recommends one based on the two-weekend outcome.
-- The field guide names representative clay bodies, forming methods, studio
+- Its task-specific subsections name representative clay bodies, forming methods, studio
   options, firing stages, and tool categories, with selection rules.
-- The action kit names the minimum tools or recommends a studio/class setup,
+- Its practical subsection names the minimum tools or recommends a studio/class setup,
   then gives an exact first-session sequence and dust, glaze, food-safety, and
   kiln checks that change behavior.
 - The core resource track is demonstration-first and broken into session-sized
@@ -74,6 +74,37 @@ alone. Facts and recommendations must still be researched at test time.
   default merely because it is authoritative.
 - The roadmap ends with an inspectable mug and completion criteria covering
   form, handle attachment, drying, firing, and usability.
+
+## Case C: museum-going introduction to Impressionism
+
+### Prompt
+
+> I want a systematic introduction to Impressionist painting for museum
+> visits, not professional art-history research. I know little Western art
+> history, can read Chinese and watch English video, and want to understand the
+> context, core traits, major artists and works, ways to look at color, light,
+> brushwork, subject, and composition, and the relationship to Academic art
+> and Post-Impressionism.
+
+### Acceptance checks
+
+- The visible atlas uses five top-level sections by default. It does not expose
+  separate field-map, action-kit, knowledge-map, source-plan, or source-note
+  chapters.
+- The core guide synthesizes historical context, looking skills, representative
+  artists and works, and movement relationships into only the distinct
+  subsections needed by this user.
+- Resource tracks distinguish a short video-led route from a more systematic
+  reading or museum-source route, or ask one compact preference question before
+  choosing.
+- Every assigned museum page, YouTube or Bilibili video, book page, course, or
+  other resource is a clickable link in both its resource track and roadmap
+  stage, not a plain-text title.
+- The final source directory groups the same clickable resources by
+  recognizable channels such as museum websites, YouTube, Bilibili, and books.
+- Generic sections about methodology, source credibility, or abstract learning
+  philosophy are omitted unless they change how this user studies or looks at
+  a painting.
 
 ## Pass condition
 
@@ -85,4 +116,3 @@ can answer these questions without hunting:
 3. What must the user set up and do first?
 4. Which exact resources fit the user's cadence and format preference?
 5. What evidence, assumptions, and limitations support the recommendations?
-

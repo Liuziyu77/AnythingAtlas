@@ -32,6 +32,14 @@ class AtlasHTMLCollector(HTMLParser):
         self.lang = ""
         self.body_classes: set[str] = set()
         self.section_order: list[str] = []
+        self.section_links: dict[str, set[str]] = {}
+        self.current_section = ""
+        self.context_links: dict[str, set[str]] = {
+            "track": set(),
+            "roadmap": set(),
+            "source": set(),
+        }
+        self.current_context = ""
         self.brand_image_count = 0
 
     def handle_starttag(
@@ -53,12 +61,27 @@ class AtlasHTMLCollector(HTMLParser):
         elif tag == "style":
             self.style_count += 1
         elif tag == "section" and attributes.get("id"):
-            self.section_order.append(str(attributes["id"]))
+            self.current_section = str(attributes["id"])
+            self.section_order.append(self.current_section)
+            self.section_links.setdefault(self.current_section, set())
+        elif tag == "article":
+            classes = set(str(attributes.get("class") or "").split())
+            if "track-card" in classes:
+                self.current_context = "track"
+            elif "roadmap-stage" in classes:
+                self.current_context = "roadmap"
+            elif "source-group" in classes:
+                self.current_context = "source"
         elif tag == "footer":
             self.footer_count += 1
             self.in_footer = True
         elif tag == "a" and attributes.get("href"):
-            self.links.add(str(attributes["href"]))
+            href = str(attributes["href"])
+            self.links.add(href)
+            if self.current_section:
+                self.section_links.setdefault(self.current_section, set()).add(href)
+            if self.current_context:
+                self.context_links[self.current_context].add(href)
         elif tag == "img" and attributes.get("src"):
             self.image_sources.append(str(attributes["src"]))
             image_fingerprint = " ".join(
@@ -82,6 +105,10 @@ class AtlasHTMLCollector(HTMLParser):
     def handle_endtag(self, tag: str) -> None:
         if tag == "footer":
             self.in_footer = False
+        elif tag == "section":
+            self.current_section = ""
+        elif tag == "article" and self.current_context:
+            self.current_context = ""
 
 
 def normalized(value: Any) -> str:
@@ -118,42 +145,18 @@ def validate_deliverables(
     labels = labels_for(data["meta"].get("language"))
     section_labels = (
         labels["confirmed_brief"],
-        labels["orientation"],
-        labels["field_guide"],
-        labels["action_kit"],
-        labels["knowledge_map"],
-        labels["resource_tracks"],
+        labels["guide"],
         labels["resources"],
         labels["roadmap"],
-        labels["source_plan"],
-        labels["source_notes"],
-        labels["next_action"],
+        labels["source_directory"],
     )
-    section_ids = {
-        "brief",
-        "orientation",
-        "field",
-        "action",
-        "knowledge",
-        "tracks",
-        "resources",
-        "roadmap",
-        "sources",
-        "notes",
-        "next",
-    }
+    section_ids = {"brief", "guide", "resources", "roadmap", "sources"}
     expected_section_order = [
         "brief",
-        "orientation",
-        "field",
-        "action",
-        "knowledge",
-        "tracks",
+        "guide",
         "resources",
         "roadmap",
         "sources",
-        "notes",
-        "next",
     ]
 
     for section_label in section_labels:
@@ -170,19 +173,37 @@ def validate_deliverables(
         or markdown_section_positions != sorted(markdown_section_positions)
     ):
         errors.append(
-            "Markdown sections must present the direct answer and practical "
-            "guidance before the roadmap, with source methodology afterward."
+            "Markdown must use the compact five-section order: brief, guide, "
+            "resources, roadmap, source directory."
         )
     missing_ids = sorted(section_ids - collector.ids)
     if missing_ids:
         errors.append(f"HTML is missing section IDs: {', '.join(missing_ids)}")
     if collector.section_order != expected_section_order:
         errors.append(
-            "HTML sections must present the direct answer and practical guidance "
-            "before the roadmap, with source methodology afterward; "
+            "HTML must use the compact five-section order; "
             f"expected {', '.join(expected_section_order)}, found "
             f"{', '.join(collector.section_order) or 'none'}."
         )
+
+    markdown_sections: dict[str, str] = {}
+    for index, section_id in enumerate(expected_section_order):
+        start = markdown_section_positions[index]
+        end = (
+            markdown_section_positions[index + 1]
+            if index + 1 < len(markdown_section_positions)
+            else len(markdown)
+        )
+        markdown_sections[section_id] = markdown[start:end] if start >= 0 else ""
+
+    resources_section = markdown_sections.get("resources", "")
+    track_start = resources_section.find(f"### {labels['choose_a_route']}")
+    cards_start = resources_section.find(f"### {labels['resource_cards']}")
+    markdown_tracks = (
+        resources_section[track_start:cards_start]
+        if track_start >= 0 and cards_start > track_start
+        else ""
+    )
 
     for resource in data["resources"]:
         title = normalized(resource["title"])
@@ -197,12 +218,11 @@ def validate_deliverables(
             errors.append(f"HTML is missing resource link: {url}")
 
     parity_items: list[Any] = [
-        data["orientation"]["bottom_line"],
-        *data["orientation"]["key_points"],
-        *data["orientation"]["tradeoffs"],
+        data["guide"]["bottom_line"],
+        *data["guide"]["key_points"],
         *(
             value
-            for recommendation in data["orientation"]["recommendations"]
+            for recommendation in data["guide"]["recommendations"]
             for value in (
                 recommendation["choice"],
                 recommendation["best_for"],
@@ -210,28 +230,21 @@ def validate_deliverables(
                 recommendation["tradeoffs"],
             )
         ),
-        data["field_guide"]["as_of"],
-        data["field_guide"]["scope"],
         *(
             value
-            for entry in data["field_guide"]["entries"]
+            for guide_section in data["guide"]["sections"]
             for value in (
-                entry["name"],
-                entry["category"],
-                entry["why_it_matters"],
-                *entry["representative_examples"],
-                entry["selection_note"],
+                guide_section["title"],
+                guide_section["purpose"],
             )
         ),
         *(
             value
-            for item in data["action_kit"]["setup"]
-            for value in (item["item"], item["recommendation"], item["why"])
+            for guide_section in data["guide"]["sections"]
+            for item in guide_section["items"]
+            for value in (item["name"], item["explanation"], *item["examples"])
         ),
-        *data["action_kit"]["first_session"],
-        *data["action_kit"]["decision_rules"],
-        *data["action_kit"]["safety_checks"],
-        *data["action_kit"]["failure_modes"],
+        *data["guide"]["next_action"].values(),
         *(
             value
             for track in data["resource_tracks"]
@@ -242,6 +255,12 @@ def validate_deliverables(
                 *track["sequence"],
             )
         ),
+        data["source_directory"]["selection_note"],
+        *(
+            value
+            for group in data["source_directory"]["groups"]
+            for value in (group["name"], group["description"])
+        ),
     ]
     for item in parity_items:
         value = normalized(item)
@@ -249,6 +268,57 @@ def validate_deliverables(
             errors.append(f"Markdown is missing answer-first content: {value}")
         if value not in html_text:
             errors.append(f"HTML is missing answer-first content: {value}")
+
+    track_resource_ids = {
+        resource_id
+        for track in data["resource_tracks"]
+        for resource_id in track["resource_ids"]
+    }
+    roadmap_resource_ids = {
+        resource_id
+        for stage in data["roadmap"]
+        for resource_id in stage["resource_ids"]
+    }
+    source_resource_ids = {
+        resource_id
+        for group in data["source_directory"]["groups"]
+        for resource_id in group["resource_ids"]
+    }
+    resources_by_id = {resource["id"]: resource for resource in data["resources"]}
+    link_locations = (
+        (
+            "resource track",
+            track_resource_ids,
+            markdown_tracks,
+            collector.context_links["track"],
+        ),
+        (
+            "roadmap",
+            roadmap_resource_ids,
+            markdown_sections.get("roadmap", ""),
+            collector.context_links["roadmap"],
+        ),
+        (
+            "source directory",
+            source_resource_ids,
+            markdown_sections.get("sources", ""),
+            collector.context_links["source"],
+        ),
+    )
+    for location, resource_ids, markdown_context, html_links in link_locations:
+        for resource_id in resource_ids:
+            resource = resources_by_id[resource_id]
+            url = str(resource["url"])
+            if url not in markdown_context:
+                errors.append(
+                    f"Markdown {location} is missing clickable resource: "
+                    f"{resource['title']}"
+                )
+            if url not in html_links:
+                errors.append(
+                    f"HTML {location} is missing clickable resource: "
+                    f"{resource['title']}"
+                )
 
     for stage in data["roadmap"]:
         title = normalized(stage["title"])

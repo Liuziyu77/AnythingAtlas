@@ -34,12 +34,12 @@ Whether you want to enter quantitative finance, research AI agents, understand a
 
 - **Proactive clarification:** AnythingAtlas asks only about details that change the result, including the goal, starting point, urgency, normal session length, preferred format, language, access, and desired depth.
 - **Answer first:** It leads with a direct conclusion, concrete recommendations, and decisive trade-offs instead of making the user read through generic background.
-- **Practical field guide:** It maps the actual tools, platforms, products, people, institutions, methods, works, or representative players the user will encounter.
+- **Compact core guide:** It combines the direct answer with only the task-specific concepts, tools, works, people, or options that materially help the user.
 - **Topic-aware discovery:** It distinguishes between knowledge domains, academic questions, new skills, events, and other topic types, then applies a suitable discovery strategy and chooses sources accordingly.
 - **Broad research:** It searches the information channels that fit the topic, including academic indexes, archives, official documentation, code repositories, professional institutions, expert accounts, and practitioner communities.
 - **Information verification:** It checks the authority and reliability of resources and information.
 - **Resource fit:** It builds short-session, balanced, or deep resource tracks that specify who each route suits and exactly what to consume.
-- **Action kit:** For practical requests, it names the setup and gives a first-session workflow, decision rules, and relevant safety or quality checks.
+- **Practical detail:** For action-oriented requests, it names the setup and gives a first-session workflow, decision rules, and relevant safety or quality checks inside the core guide.
 - **Learning design:** It builds a roadmap with explicit resource assignments, tasks, time estimates, milestones, stage deliverables, and completion criteria.
 - **Easy reading:** It produces synchronized Markdown alongside responsive, accessible, print-friendly HTML.
 
@@ -50,15 +50,13 @@ Initial request: the topic and the time available
    ↓
 Focused clarification and confirmed brief: guided questions to understand the learner and their needs
    ↓
-Direct orientation and field guide: answer the real question and map concrete options
-   ↓
-Practical action kit: setup, first-session workflow, and decision rules
+Compact core guide: answer the real question, map concrete options, and give the first action
    ↓
 Topic classification, discovery, verification, ranking, and curation
    ↓
-User-fit resource tracks and a detailed personalized roadmap
+Clickable user-fit resource tracks and a detailed personalized roadmap
    ↓
-Source and information-channel appendix: show how information quality was verified
+Channel-grouped source directory: official sites, books, YouTube, Bilibili, repositories, and other relevant channels
    ↓
 Output: Markdown file + polished, self-contained HTML file
 ```
@@ -83,15 +81,15 @@ Every completed run creates:
 1. `anything-atlas-<topic-slug>.md` — a structured, portable, editable atlas.
 2. `anything-atlas-<topic-slug>.html` — a thoughtfully designed standalone presentation.
 
-Both files use an answer-first sequence: confirmed brief, direct orientation,
-field guide, practical action kit, knowledge map, user-fit resource tracks,
-curated resources, detailed roadmap, source strategy, source notes, and the
-next action.
+Both files use the same compact five-section sequence: confirmed brief, core
+guide, curated resources with user-fit tracks, detailed roadmap, and a final
+channel-grouped source directory. Resources assigned in a track or roadmap are
+clickable in both Markdown and HTML.
 
-The answer-first content model is schema `0.2`. It replaces the earlier
-`topic_brief` and `starting_point` fields with required `orientation`,
-`field_guide`, `action_kit`, and `resource_tracks` fields; older JSON models
-must be migrated before building.
+The content model is schema `0.3`. Internal field mapping, practical setup,
+knowledge dependencies, and source verification remain required research
+checks, but they no longer become repetitive standalone chapters. Older JSON
+models must be migrated before building.
 
 ## 🎨 HTML themes
 

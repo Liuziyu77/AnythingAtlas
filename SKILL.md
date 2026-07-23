@@ -16,8 +16,10 @@ Turn an unfamiliar topic into a verified knowledge atlas and an executable learn
 - Explain why every resource is included, who it suits, what to focus on, and what its limitations are.
 - Answer first: put the direct conclusion, concrete options, and decisive
   trade-offs before background, methodology, and the learning plan.
-- Include a field guide with exact, representative tools, platforms, products,
-  works, people, institutions, methods, or players appropriate to the topic.
+- Cover exact, representative tools, platforms, products, works, people,
+  institutions, methods, or players, but synthesize them into one compact core
+  guide instead of forcing separate field-map, action-kit, and knowledge-map
+  chapters.
 - Match resources to the user's preferred format and normal session length;
   provide distinct quick, balanced, or deep tracks when useful.
 - For action-oriented requests, name the actual setup and give an executable
@@ -26,6 +28,10 @@ Turn an unfamiliar topic into a verified knowledge atlas and an executable learn
 - Make every roadmap stage executable with tasks, time, milestones, deliverables, and completion criteria.
 - Produce both a complete Markdown file and a polished, self-contained HTML file.
 - Generate both files from the same structured content and validate their parity before delivery.
+- Keep the visible information architecture to five flexible top-level
+  sections; express topic-specific structure as concise guide subsections.
+- Keep every resource clickable wherever it is assigned, including resource
+  tracks and roadmap stages.
 
 ## Workflow
 
@@ -70,9 +76,10 @@ Build a dependency-aware knowledge map containing:
 - common misconceptions;
 - optional deeper directions.
 
-Separately build a field guide that names the concrete landscape the user will
-encounter: major segments, representative choices or actors, what each is
-known for, and how to select among them. Date-stamp it when the field changes.
+Separately map the concrete landscape, practical setup, and conceptual
+dependencies during research. Date-stamp changing facts. Treat these as
+coverage checks, then merge the useful parts into named subsections of the core
+guide. Do not automatically expose each internal map as its own chapter.
 
 ### 3. Design the source and channel plan
 
@@ -129,6 +136,7 @@ Keep the core set deliberately small. Move useful but nonessential materials int
 Organize the selected resources into one or more user-fit tracks. Every track
 must state who it fits, the cadence, exact resource order, and exact portions
 to consume. Do not mix books, videos, sites, and accounts indiscriminately.
+Retain each resource's verified URL in the track and roadmap renderings.
 
 ### 6. Build the detailed roadmap
 
@@ -158,9 +166,11 @@ Read [references/output-schema.md](references/output-schema.md). Create one UTF-
 
 Treat the JSON as an intermediate build artifact, not as a required user deliverable. Store it in a temporary location unless the user requests the source data.
 
-The model must carry the direct orientation, field guide, action kit, resource
-tracks, curated resources, roadmap, and evidence notes. Do not bury essential
-recommendations in prose that the renderers cannot preserve.
+The model must carry a compact core guide, resource tracks, curated resources,
+the roadmap, and a final source directory grouped by recognizable channels.
+The core guide may contain task-specific subsections for field context,
+comparison, concepts, setup, viewing or practice method, and first action.
+Include only the subsections that add distinct value.
 
 ### 8. Render and validate both files
 
@@ -192,19 +202,18 @@ anything-atlas-<topic-slug>.md
 anything-atlas-<topic-slug>.html
 ```
 
-Keep this answer-first order in both deliverables:
+Keep this compact answer-first order in both deliverables:
 
 1. confirmed brief;
-2. direct orientation;
-3. field guide;
-4. practical action kit;
-5. knowledge map;
-6. resource tracks;
-7. curated resources;
-8. detailed roadmap;
-9. source and channel plan;
-10. source notes;
-11. next action.
+2. core guide;
+3. curated resources, including user-fit tracks;
+4. detailed roadmap;
+5. source directory grouped by channel.
+
+Do not add standalone source-methodology, source-notes, or next-action chapters.
+Attach material caveats to the relevant recommendation or resource, place the
+immediate action inside the guide or first roadmap stage, and keep the source
+directory last.
 
 Keep the HTML self-contained by embedding its CSS. Do not place the AnythingAtlas logo, a brand banner, or a brand block in the generated atlas. Credit AnythingAtlas once, as text, in the footer.
 

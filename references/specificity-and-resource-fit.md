@@ -37,7 +37,7 @@ give conditional or scenario-based options. Never imply a license, fiduciary
 relationship, diagnosis, guaranteed outcome, or certainty that the evidence
 does not support.
 
-## Field-guide requirement
+## Internal coverage, compact presentation
 
 Map the field as it exists for this user's goal, not only as a textbook
 taxonomy. Depending on the topic, include the relevant mix of:
@@ -54,6 +54,12 @@ For fast-changing, commercial, industry, current-event, or high-stakes topics,
 date-stamp the field guide and verify current names, availability, and status.
 For stable or historical topics, interpret "current" as the present state of
 scholarship, access, or practice.
+
+The field map, practical setup, and conceptual dependencies are research
+checks, not mandatory standalone chapters. Synthesize only the useful parts
+into a small number of named subsections under one core guide. Do not expose
+internal planning artifacts as separate user-facing modules when they repeat
+the same people, concepts, tools, or actions.
 
 ## Practical-action requirement
 
@@ -116,3 +122,22 @@ Delete generic encouragement, repeated context, textbook throat-clearing,
 obvious definitions, and disclaimers that do not change behavior. Use tables,
 ranked lists, and compact cards when they make comparison faster.
 
+## Presentation budget
+
+Use five flexible top-level sections:
+
+1. confirmed brief;
+2. core guide;
+3. curated resources;
+4. roadmap;
+5. source directory.
+
+Put topic-specific structure into concise guide subsections rather than adding
+top-level chapters. Put the immediate next action inside the core guide or
+roadmap, not in a one-item top-level section.
+
+The source directory is the final section. Group links by the channels the
+user recognizes, such as official institutions, books, YouTube, Bilibili,
+podcasts, repositories, newsletters, or communities. Every resource assigned
+in a resource track or roadmap must remain a clickable link in both Markdown
+and HTML.

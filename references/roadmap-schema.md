@@ -54,6 +54,10 @@ Do not overload a stage. Prefer one primary resource plus complementary evidence
 When multiple formats are plausible, assign one named resource track rather
 than mixing unrelated books, videos, sites, and accounts into every stage.
 
+Every assigned resource title must link to its verified canonical URL in both
+Markdown and HTML. A resource name rendered as plain text is a validation
+failure, even when the same URL appears elsewhere in the document.
+
 ## Completion examples
 
 Use observable checks such as:

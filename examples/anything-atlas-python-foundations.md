@@ -25,7 +25,7 @@
   - The learner can install Python or use a browser-based environment
   - The learner wants general automation rather than data science specialization
 
-## 2. Direct Orientation
+## 2. Core Guide
 
 ### Bottom line
 
@@ -51,100 +51,74 @@ Start with the official Python runtime and a plain code editor, learn only the s
 - **Why:** Its examples turn syntax into recognizable tasks instead of treating Python as abstract theory.
 - **Trade-offs:** The book is much broader than this plan; only the assigned chapters and one project should be core.
 
-### Trade-offs
 
-- A browser notebook reduces setup friction but hides some file, terminal, and environment skills.
-- A video-first route feels easier initially but needs deliberate typing and debugging to produce durable skill.
+### Use one simple toolchain
 
-## 3. Field Guide
+> **What this section answers:** Choose where to run, write, and practice Python without wasting the first week on tooling.
 
-- **As of:** 2026-07-23
-- **Scope:** Beginner Python environments, editors, learning resources, and practice options for general automation; excludes web frameworks, data science, and production deployment.
+#### Runtime
 
-### Runtime and environment
+Install the current stable Python 3 release and run files locally. Use a browser notebook only when installation is blocked.
 
-- **Category:** Where Python code runs
-- **Why it matters:** A local runtime teaches files and terminal execution, while a browser environment removes installation friction.
-- **Representative examples:** Python from python.org, IDLE, Google Colab
-- **Selection note:** Use local Python for the core path; use Colab only if installation is blocked.
+**Examples:** Python from python.org; Google Colab as a temporary fallback
 
-### Code editor
+#### Editor
 
-- **Category:** Where programs are written and debugged
-- **Why it matters:** A lightweight editor with syntax highlighting and a visible terminal reduces avoidable friction.
-- **Representative examples:** Visual Studio Code with the Microsoft Python extension, IDLE
-- **Selection note:** Choose VS Code if comfortable installing an editor; choose IDLE for the smallest possible setup.
+Use one editor with syntax highlighting and a visible terminal for the full six-week path.
 
-### Guided practice
+**Examples:** Visual Studio Code with the Microsoft Python extension; IDLE for the smallest setup
 
-- **Category:** Feedback and repetition
-- **Why it matters:** Short exercises expose gaps that reading alone does not reveal.
-- **Representative examples:** Exercism Python track, Exercises from Automate the Boring Stuff
-- **Selection note:** Use Exercism for concept repetition and the book exercises for project context.
+#### Practice loop
 
-## 4. Practical Action Kit
+End every session with code that runs or a documented error you can explain; passive watching does not count as practice.
 
-### Setup
-
-- **Python runtime:** Install the current stable Python 3 release from python.org and confirm python3 --version in a terminal. — Why: It provides the canonical interpreter and makes later file-automation tasks realistic.
-- **Editor:** Use Visual Studio Code with the Microsoft Python extension, or IDLE if a smaller setup is preferable. — Why: Both support a beginner workflow without introducing a framework or complex project tooling.
-
-### First session
-
-- Create hello.py, print one line, and run it from the terminal.
-- Add a variable, input, one condition, and one loop by modifying a working example.
-- Trigger a SyntaxError and a NameError deliberately, then read and fix each traceback.
-- Save a short note explaining how to run the file again.
-
-### Decision rules
-
-- If local installation takes more than 20 minutes, complete the first session in Google Colab and return to local setup in week one.
-- Do not add a library until the standard library clearly cannot complete the chosen task.
-- Every learning session must end with code that runs or a documented error that was explained.
-
-### Safety or quality checks
-
-- Practice on copies of files until the script has a dry-run or verification step.
-- Do not paste secrets, credentials, or private work documents into public browser notebooks.
-
-### Failure modes
-
-- Watching examples without typing them: pause and reproduce each example from memory.
-- Changing tools repeatedly: keep one runtime and editor for the six-week core path.
-- Starting an oversized project: reduce it to one input, one transformation, and one output.
-
-## 5. Knowledge Map
-
-### Execution and basic syntax
-
-Running Python, expressions, variables, strings, numbers, and basic input and output.
-
-### Control flow and functions
-
-Conditions, loops, reusable functions, arguments, return values, and scope.
-
-**Depends on:** Execution and basic syntax
-
-### Data and files
-
-Lists, dictionaries, sets, text processing, files, and structured data.
-
-**Depends on:** Control flow and functions
-
-### Reliable small programs
-
-Errors, debugging, tests, decomposition, and an end-to-end automation script.
-
-**Depends on:** Data and files
+**Examples:** Modify one working example; Complete one Exercism concept task; Record and fix one traceback
 
 
-## 6. Resource Tracks
+### Learn capabilities in dependency order
 
-### Short-session practical track
+> **What this section answers:** Focus on the smallest concept sequence that leads to a useful automation script.
+
+#### Run and read code
+
+Start with expressions, variables, strings, input, output, and reading simple tracebacks.
+
+**Examples:** A greeting script; A deliberate SyntaxError and NameError
+
+#### Control and reuse
+
+Add conditions, loops, and functions so a script can make decisions and avoid repeated code.
+
+**Examples:** A text game; A function that validates input
+
+#### Process data and files
+
+Use lists, dictionaries, text processing, and files to solve realistic automation tasks.
+
+**Examples:** Summarize a text file; Read and write JSON
+
+#### Make the script reliable
+
+Handle empty and invalid inputs, break work into functions, and document how another person can run the program.
+
+**Examples:** Failure-case checklist; Short usage guide; Reusable command-line script
+
+
+### Next Action
+
+- **Action:** Open The Python Tutorial and run the examples in sections 1–3, changing at least one value in every example.
+- **When:** Today, for 45 minutes
+- **Expected output:** A saved Python file containing three modified examples and one sentence about what each demonstrates.
+
+## 3. Curated Resource Atlas
+
+### Choose a route
+
+#### Short-session practical track
 
 - **Best for:** A beginner learning in 30–45 minute sessions who wants visible progress every day
 - **Cadence:** Five 30–45 minute sessions per week
-- **Assigned resources:** Automate the Boring Stuff with Python, Python on Exercism, The Python Tutorial
+- **Assigned resources:** [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/), [Python on Exercism](https://exercism.org/tracks/python), [The Python Tutorial](https://docs.python.org/3/tutorial/)
 
 **Sequence**
 
@@ -153,11 +127,11 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 - Use the remaining time for one small Exercism task or one debugging note.
 - Consult the matching Python Tutorial section only when a concept needs a canonical explanation.
 
-### Reference-first track
+#### Reference-first track
 
 - **Best for:** A learner who prefers precise written explanations and can sustain 60–90 minute sessions
 - **Cadence:** Three 60–90 minute sessions per week
-- **Assigned resources:** The Python Tutorial, Automate the Boring Stuff with Python, Python on Exercism
+- **Assigned resources:** [The Python Tutorial](https://docs.python.org/3/tutorial/), [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/), [Python on Exercism](https://exercism.org/tracks/python)
 
 **Sequence**
 
@@ -165,11 +139,12 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 - Complete the matching project-book chapter.
 - Finish one or two concept exercises and record any errors that required documentation.
 
-## 7. Curated Resource Atlas
+### Resource details
 
-### [The Python Tutorial](https://docs.python.org/3/tutorial/)
+#### [The Python Tutorial](https://docs.python.org/3/tutorial/)
 
 - **Creator:** Python Software Foundation
+- **Channel:** Official documentation
 - **Type:** Official tutorial
 - **Role:** Core foundation
 - **Level:** Beginner with some general programming familiarity
@@ -185,9 +160,10 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 
 **Limitations:** It explicitly expects basic programming understanding and is less project-driven than a beginner course.
 
-### [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
+#### [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
 
 - **Creator:** Al Sweigart
+- **Channel:** Author-maintained open book
 - **Type:** Open web book
 - **Role:** Guided learning
 - **Level:** Complete beginner
@@ -203,9 +179,10 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 
 **Limitations:** The project breadth is wider than this six-week path, so most later chapters should be treated as optional.
 
-### [Python on Exercism](https://exercism.org/tracks/python)
+#### [Python on Exercism](https://exercism.org/tracks/python)
 
 - **Creator:** Exercism
+- **Channel:** Practice platform
 - **Type:** Exercise track
 - **Role:** Practice
 - **Level:** Beginner to advanced
@@ -221,7 +198,7 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 
 **Limitations:** The catalog and mentoring availability can change, and an account may be needed for the full workflow.
 
-## 8. Detailed Learning or Exploration Roadmap
+## 4. Detailed Learning or Exploration Roadmap
 
 ### Stage 1: Learn to read and run Python
 
@@ -240,8 +217,8 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 
 **Assigned resources**
 
-- The Python Tutorial
-- Automate the Boring Stuff with Python
+- [The Python Tutorial](https://docs.python.org/3/tutorial/)
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
 
 **Tasks**
 
@@ -278,9 +255,9 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 
 **Assigned resources**
 
-- The Python Tutorial
-- Automate the Boring Stuff with Python
-- Python on Exercism
+- [The Python Tutorial](https://docs.python.org/3/tutorial/)
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
+- [Python on Exercism](https://exercism.org/tracks/python)
 
 **Tasks**
 
@@ -318,8 +295,8 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 
 **Assigned resources**
 
-- Automate the Boring Stuff with Python
-- Python on Exercism
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/)
+- [Python on Exercism](https://exercism.org/tracks/python)
 
 **Tasks**
 
@@ -342,43 +319,29 @@ Errors, debugging, tests, decomposition, and an end-to-end automation script.
 - Package the script as a command-line tool
 - Request feedback on one Exercism solution
 
-## 9. Source and Channel Plan
 
-- **Topic type:** Practical skill with a mature technical foundation
-- **Required materials:**
-  - Official language tutorial
-  - Beginner-friendly project book
-  - Automated coding exercises
-  - Current runtime and editor setup documentation
+## 5. Source Directory
 
-### Priority channels
+**How these sources were selected:** The core set combines one canonical language source, one beginner project source, and one feedback-oriented practice source. Each resource is free on the web and assigned in exact portions.
 
-- **Official Python documentation (Primary):** Canonical language explanations, downloads, and current syntax
-- **Author-maintained open book (Primary):** Guided practical projects with a beginner orientation
-- **Exercise platform (Complementary):** Repeated short-session practice, automated checks, and optional mentoring
-- **Official editor and extension documentation (Supporting):** Current installation and debugging workflow
+### Official documentation
 
-- **Credibility policy:**
-  - Prefer official documentation for language behavior and installation
-  - Use current author-maintained material for projects
-  - Use exercises as practice rather than as the sole explanation
-  - Treat platform popularity as a usability signal, not proof of technical authority
-- **Recency rule:** Check the current Python 3 release, documentation version, editor extension, and platform availability at the time of use.
-- **Format and cadence fit:** The core track uses 15-minute reading or demonstration units plus hands-on practice for 30–45 minute sessions; the alternative track supports longer reference-first sessions.
-- **Channel cautions:**
-  - The official tutorial assumes some general programming familiarity
-  - Exercise catalogs, mentoring features, and editor workflows can change
-## 10. Source Notes
+Use for canonical Python behavior, terminology, and version-current explanations.
 
-- **Official tutorial audience (caution):** The Python Tutorial says it is designed for programmers new to Python rather than people entirely new to programming, so the project book supplies extra beginner scaffolding.
-- **Changing platforms (note):** Exercise counts, mentoring features, and access workflows may change; verify the current track before assigning exact exercises.
-- **Scope (note):** This roadmap intentionally postpones classes, packaging, web frameworks, data science, and advanced testing.
+- [The Python Tutorial](https://docs.python.org/3/tutorial/) — Python Software Foundation; Sections 1–8 first; use later sections as references when the roadmap calls for them.
 
-## 11. Next Action
+### Open book
 
-- **Action:** Open The Python Tutorial and run the examples in sections 1–3, changing at least one value in every example.
-- **When:** Today, for 45 minutes
-- **Expected output:** A saved Python file containing three modified examples and one sentence about what each demonstrates.
+Use for complete-beginner explanations and practical automation projects.
+
+- [Automate the Boring Stuff with Python](https://automatetheboringstuff.com/) — Al Sweigart; Chapters 1–12, then choose one automation chapter that matches the learner’s interests.
+
+### Practice platform
+
+Use for short exercises, automated feedback, and optional mentoring.
+
+- [Python on Exercism](https://exercism.org/tracks/python) — Exercism; Complete the tutorial exercise and selected concept exercises on basics, conditions, loops, strings, lists, and dictionaries.
+
 
 ---
 

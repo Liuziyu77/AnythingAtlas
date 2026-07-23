@@ -124,6 +124,8 @@
 .theme-archive .field-card,
 .theme-archive .setup-card,
 .theme-archive .track-card,
+.theme-archive .guide-item,
+.theme-archive .source-group,
 .theme-archive .resource-card,
 .theme-archive .plan-block {
   background: rgba(255, 251, 241, 0.80);

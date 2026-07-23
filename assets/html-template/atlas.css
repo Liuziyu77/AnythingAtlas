@@ -260,6 +260,8 @@ button:focus-visible {
 .field-grid,
 .setup-grid,
 .track-grid,
+.guide-item-grid,
+.source-group-grid,
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -272,6 +274,8 @@ button:focus-visible {
 .field-card,
 .setup-card,
 .track-card,
+.guide-item,
+.source-group,
 .resource-card,
 .plan-block {
   min-width: 0;
@@ -321,6 +325,8 @@ button:focus-visible {
 .field-card h3,
 .setup-card h3,
 .track-card h3,
+.guide-item h4,
+.source-group h3,
 .resource-card h3 {
   margin-top: 0;
 }
@@ -398,6 +404,62 @@ button:focus-visible {
 
 .track-card {
   border-top: 4px solid var(--indigo);
+}
+
+.guide-section {
+  margin-top: 30px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.guide-section__purpose {
+  margin: -2px 0 16px;
+  color: var(--muted);
+}
+
+.guide-item-grid,
+.source-group-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.guide-item {
+  border-left: 4px solid var(--cyan);
+}
+
+.guide-item h4 {
+  font-size: 1.05rem;
+}
+
+.guide-item ul,
+.source-group ul,
+.linked-resource-list {
+  margin: 8px 0 0;
+  padding-left: 1.25rem;
+}
+
+.linked-resource-list {
+  display: grid;
+  gap: 6px;
+}
+
+.linked-resource-list a {
+  font-weight: 750;
+}
+
+.source-selection {
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  background: var(--soft);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+}
+
+.source-selection p:last-child {
+  margin-bottom: 0;
+}
+
+.source-group {
+  border-top: 4px solid var(--blue);
 }
 
 .dependency-list,
@@ -684,6 +746,8 @@ button:focus-visible {
   .field-grid,
   .setup-grid,
   .track-grid,
+  .guide-item-grid,
+  .source-group-grid,
   .plan-grid,
   .resource-grid,
   .roadmap-stage__grid {
@@ -784,6 +848,8 @@ button:focus-visible {
   .field-card,
   .setup-card,
   .track-card,
+  .guide-item,
+  .source-group,
   .roadmap-stage,
   .starting-card,
   .next-card {

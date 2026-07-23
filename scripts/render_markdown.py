@@ -33,6 +33,11 @@ def labeled_value(label: str, value: Any) -> list[str]:
     return lines
 
 
+def resource_link(resource: dict[str, Any]) -> str:
+    """Render a verified resource as a Markdown link."""
+    return f"[{inline(resource['title'])}]({resource['url']})"
+
+
 def render_markdown(data: dict[str, Any]) -> str:
     """Return a complete Markdown atlas."""
     meta = data["meta"]
@@ -65,21 +70,21 @@ def render_markdown(data: dict[str, Any]) -> str:
     for key, label_key in brief_fields:
         lines.extend(labeled_value(labels[label_key], brief.get(key)))
 
-    orientation = data["orientation"]
-    lines.extend(["", f"## 2. {labels['orientation']}", ""])
+    guide = data["guide"]
+    lines.extend(["", f"## 2. {labels['guide']}", ""])
     lines.extend(
         [
             f"### {labels['bottom_line']}",
             "",
-            str(orientation["bottom_line"]).strip(),
+            str(guide["bottom_line"]).strip(),
             "",
             f"### {labels['key_points']}",
             "",
         ]
     )
-    lines.extend(bullet_lines(orientation["key_points"]))
+    lines.extend(bullet_lines(guide["key_points"]))
     lines.extend(["", f"### {labels['recommendations']}", ""])
-    for recommendation in orientation["recommendations"]:
+    for recommendation in guide["recommendations"]:
         lines.extend(
             [
                 f"#### {inline(recommendation['choice'])}",
@@ -90,81 +95,50 @@ def render_markdown(data: dict[str, Any]) -> str:
                 "",
             ]
         )
-    lines.extend([f"### {labels['tradeoffs']}", ""])
-    lines.extend(bullet_lines(orientation["tradeoffs"]))
-
-    field_guide = data["field_guide"]
-    lines.extend(["", f"## 3. {labels['field_guide']}", ""])
-    lines.extend(labeled_value(labels["as_of"], field_guide.get("as_of")))
-    lines.extend(labeled_value(labels["scope"], field_guide.get("scope")))
-    lines.append("")
-    for entry in field_guide["entries"]:
+    for guide_section in guide["sections"]:
         lines.extend(
             [
-                f"### {inline(entry['name'])}",
                 "",
-                f"- **{labels['category']}:** {inline(entry['category'])}",
-                f"- **{labels['why_it_matters']}:** "
-                f"{inline(entry['why_it_matters'])}",
-                f"- **{labels['representative_examples']}:** "
-                + ", ".join(
-                    inline(item) for item in listify(entry["representative_examples"])
-                ),
-                f"- **{labels['selection_note']}:** "
-                f"{inline(entry['selection_note'])}",
+                f"### {inline(guide_section['title'])}",
+                "",
+                f"> **{labels['guide_purpose']}:** "
+                f"{inline(guide_section['purpose'])}",
                 "",
             ]
         )
-
-    action_kit = data["action_kit"]
-    lines.extend([f"## 4. {labels['action_kit']}", ""])
-    if listify(action_kit.get("setup")):
-        lines.extend([f"### {labels['setup']}", ""])
-        for item in action_kit["setup"]:
+        for item in guide_section["items"]:
             lines.extend(
                 [
-                    f"- **{inline(item['item'])}:** "
-                    f"{inline(item['recommendation'])} — "
-                    f"{labels['rationale']}: {inline(item['why'])}"
-                ]
-            )
-        lines.append("")
-    for key in ("first_session", "decision_rules", "safety_checks", "failure_modes"):
-        values = listify(action_kit.get(key))
-        if values:
-            lines.extend([f"### {labels[key]}", ""])
-            lines.extend(bullet_lines(values))
-            lines.append("")
-
-    lines.extend([f"## 5. {labels['knowledge_map']}", ""])
-    for node in data["knowledge_map"]:
-        lines.extend([f"### {inline(node['name'])}", "", str(node["description"]).strip()])
-        dependencies = listify(node.get("depends_on"))
-        if dependencies:
-            lines.extend(
-                [
+                    f"#### {inline(item['name'])}",
                     "",
-                    f"**{labels['depends_on']}:** "
-                    + ", ".join(inline(item) for item in dependencies),
+                    str(item["explanation"]).strip(),
+                    "",
+                    f"**{labels['guide_examples']}:** "
+                    + "; ".join(inline(example) for example in item["examples"]),
+                    "",
                 ]
             )
-        lines.append("")
 
-    lines.extend(["", f"## 6. {labels['resource_tracks']}", ""])
+    next_action = guide["next_action"]
+    lines.extend(["", f"### {labels['next_action']}", ""])
+    for key in ("action", "when", "output"):
+        lines.append(f"- **{labels[key]}:** {inline(next_action[key])}")
+
+    lines.extend(["", f"## 3. {labels['resources']}", ""])
+    lines.extend([f"### {labels['choose_a_route']}", ""])
     for track in data["resource_tracks"]:
         assigned = [
-            resources[resource_id]["title"]
+            resource_link(resources[resource_id])
             for resource_id in track["resource_ids"]
             if resource_id in resources
         ]
         lines.extend(
             [
-                f"### {inline(track['title'])}",
+                f"#### {inline(track['title'])}",
                 "",
                 f"- **{labels['best_for']}:** {inline(track['best_for'])}",
                 f"- **{labels['cadence']}:** {inline(track['cadence'])}",
-                f"- **{labels['assigned_resources']}:** "
-                + ", ".join(inline(item) for item in assigned),
+                f"- **{labels['assigned_resources']}:** " + ", ".join(assigned),
                 "",
                 f"**{labels['sequence']}**",
                 "",
@@ -173,15 +147,16 @@ def render_markdown(data: dict[str, Any]) -> str:
         lines.extend(bullet_lines(track["sequence"]))
         lines.append("")
 
-    lines.extend([f"## 7. {labels['resources']}", ""])
+    lines.extend([f"### {labels['resource_cards']}", ""])
     for resource in data["resources"]:
         title = inline(resource["title"])
         url = str(resource["url"])
         lines.extend(
             [
-                f"### [{title}]({url})",
+                f"#### [{title}]({url})",
                 "",
                 f"- **{labels['creator']}:** {inline(resource['creator'])}",
+                f"- **{labels['channel']}:** {inline(resource['channel'])}",
                 f"- **{labels['type']}:** {inline(resource['type'])}",
                 f"- **{labels['role']}:** {inline(resource['role'])}",
                 f"- **{labels['level']}:** {inline(resource['level'])}",
@@ -200,10 +175,10 @@ def render_markdown(data: dict[str, Any]) -> str:
             ]
         )
 
-    lines.extend([f"## 8. {labels['roadmap']}", ""])
+    lines.extend([f"## 4. {labels['roadmap']}", ""])
     for stage in sorted(data["roadmap"], key=lambda item: item["stage"]):
         assigned = [
-            resources[resource_id]["title"]
+            resource_link(resources[resource_id])
             for resource_id in stage["resource_ids"]
             if resource_id in resources
         ]
@@ -222,7 +197,7 @@ def render_markdown(data: dict[str, Any]) -> str:
         lines.extend(["", f"**{labels['prerequisites']}**", ""])
         lines.extend(bullet_lines(stage["prerequisites"]))
         lines.extend(["", f"**{labels['assigned_resources']}**", ""])
-        lines.extend(bullet_lines(assigned))
+        lines.extend(f"- {item}" for item in assigned)
         lines.extend(["", f"**{labels['tasks']}**", ""])
         lines.extend(bullet_lines(stage["tasks"]))
         lines.extend(
@@ -241,51 +216,31 @@ def render_markdown(data: dict[str, Any]) -> str:
             lines.extend(bullet_lines(optional))
         lines.append("")
 
-    source_plan = data["source_plan"]
-    lines.extend([f"## 9. {labels['source_plan']}", ""])
-    for key in (
-        "topic_type",
-        "materials",
-        "channels",
-        "credibility_policy",
-        "recency",
-        "format_fit",
-        "cautions",
-    ):
-        value = source_plan.get(key)
-        if key == "channels" and value:
-            if lines and lines[-1] != "":
-                lines.append("")
-            lines.append(f"### {labels[key]}")
-            lines.append("")
-            for channel in listify(value):
-                if isinstance(channel, dict):
-                    name = inline(channel.get("name", ""))
-                    priority = inline(channel.get("priority", ""))
-                    reason = inline(channel.get("reason", ""))
-                    suffix = f" ({priority})" if priority else ""
-                    lines.append(f"- **{name}{suffix}:** {reason}")
-                else:
-                    lines.append(f"- {inline(channel)}")
-            lines.append("")
-        else:
-            lines.extend(labeled_value(labels[key], value))
-
-    lines.extend([f"## 10. {labels['source_notes']}", ""])
-    for note in data["source_notes"]:
-        if isinstance(note, dict):
-            topic = inline(note.get("topic", labels["source_notes"]))
-            severity = inline(note.get("severity", "note"))
-            content = str(note.get("note", "")).strip()
-            lines.append(f"- **{topic} ({severity}):** {content}")
-        else:
-            lines.append(f"- {inline(note)}")
-
-    next_action = data["next_action"]
-    lines.extend(["", f"## 11. {labels['next_action']}", ""])
-    for key in ("action", "when", "output"):
-        if next_action.get(key):
-            lines.append(f"- **{labels[key]}:** {inline(next_action[key])}")
+    source_directory = data["source_directory"]
+    lines.extend(["", f"## 5. {labels['source_directory']}", ""])
+    lines.extend(
+        [
+            f"**{labels['source_selection']}:** "
+            f"{str(source_directory['selection_note']).strip()}",
+            "",
+        ]
+    )
+    for group in source_directory["groups"]:
+        lines.extend(
+            [
+                f"### {inline(group['name'])}",
+                "",
+                str(group["description"]).strip(),
+                "",
+            ]
+        )
+        for resource_id in group["resource_ids"]:
+            resource = resources[resource_id]
+            lines.append(
+                f"- {resource_link(resource)} — {inline(resource['creator'])}; "
+                f"{inline(resource['focus'])}"
+            )
+        lines.append("")
 
     lines.extend(
         [

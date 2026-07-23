@@ -20,35 +20,27 @@ Include:
 
 - a focused hero with the atlas title and executive summary;
 - a compact confirmed-brief panel;
-- an answer-first orientation panel with concrete recommendations;
-- a field guide that surfaces representative examples and selection rules;
-- a practical action kit for setup, first-session tasks, and decision checks;
-- compact resource tracks matched to session length and format preference;
+- one answer-first core guide that combines only the useful recommendations,
+  context, comparisons, concepts, methods, setup, or immediate action;
+- compact resource tracks and resource cards in the same section;
 - easy section navigation;
-- knowledge-map cards with dependencies;
-- source-plan callouts;
 - resource cards showing role, level, format, time, reason, focus, and limitations;
-- a roadmap timeline with stages, tasks, deliverables, and completion checks;
-- visually distinct caution and next-action panels.
+- a roadmap timeline with clickable assigned resources, tasks, deliverables,
+  and completion checks;
+- a final source directory grouped by recognizable channels.
 
 Present the atlas in this sequence:
 
 1. confirmed brief;
-2. direct orientation;
-3. field guide;
-4. practical action kit;
-5. knowledge map;
-6. resource tracks;
-7. curated resources;
-8. detailed roadmap;
-9. source and channel plan;
-10. source notes;
-11. next action.
+2. core guide;
+3. curated resources;
+4. detailed roadmap;
+5. source directory.
 
 The first screenful after the brief should make the answer and recommended
-direction obvious. Keep methodology and source strategy after the roadmap as an
-evidence appendix. Use comparison cards or compact tables when the user must
-distinguish several options.
+direction obvious. Do not expose internal research artifacts as separate
+chapters. Use comparison cards or compact tables when the user must distinguish
+several options. Keep the navigation short enough to scan at a glance.
 
 ## Accessibility
 
@@ -90,7 +82,7 @@ Check:
 
 1. standalone opening without network access;
 2. section and resource parity with Markdown;
-3. the direct answer and practical sections appear before the roadmap;
+3. exactly the five standard top-level sections;
 4. heading and landmark structure;
 5. internal anchors;
 6. external URL schemes;
@@ -98,3 +90,5 @@ Check:
 8. the selected `theme-*` body class;
 9. a text-only AnythingAtlas footer credit and no brand image;
 10. absence of raw template placeholders.
+11. clickable resource links inside every resource track and roadmap stage;
+12. a final source directory containing every curated resource.
