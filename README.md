@@ -49,7 +49,7 @@ Three fields, three learning goals, and three visual themes. Select a cover to o
       <br><br>
       Build from musical language, periods, and representative works to comparing interpretations.
       <br><br>
-      <a href="examples/anything-atlas-classical-music-from-scratch.html"><strong>Explore the atlas →</strong></a>
+      <a href="https://htmlpreview.github.io/?https://github.com/Liuziyu77/AnythingAtlas/blob/main/examples/anything-atlas-classical-music-from-scratch.html"><strong>Explore the atlas →</strong></a>
     </td>
     <td width="33.33%" align="center" valign="top">
       <a href="examples/anything-atlas-impressionism-for-museum-visitors.html">
@@ -62,7 +62,7 @@ Three fields, three learning goals, and three visual themes. Select a cover to o
       <br><br>
       Learn to read light, color, brushwork, subject, and composition while looking at art.
       <br><br>
-      <a href="examples/anything-atlas-impressionism-for-museum-visitors.html"><strong>Explore the atlas →</strong></a>
+      <a href="https://htmlpreview.github.io/?https://github.com/Liuziyu77/AnythingAtlas/blob/main/examples/anything-atlas-impressionism-for-museum-visitors.html"><strong>Explore the atlas →</strong></a>
     </td>
     <td width="33.33%" align="center" valign="top">
       <a href="examples/anything-atlas-portrait-photography-8-week-portfolio.html">
@@ -75,7 +75,7 @@ Three fields, three learning goals, and three visual themes. Select a cover to o
       <br><br>
       Move from exposure, focus, and natural light to a coherent series of 8–12 portraits.
       <br><br>
-      <a href="examples/anything-atlas-portrait-photography-8-week-portfolio.html"><strong>Explore the atlas →</strong></a>
+      <a href="https://htmlpreview.github.io/?https://github.com/Liuziyu77/AnythingAtlas/blob/main/examples/anything-atlas-portrait-photography-8-week-portfolio.html"><strong>Explore the atlas →</strong></a>
     </td>
   </tr>
 </table>
